@@ -1,0 +1,3205 @@
+BL_shougun_weixin_modifier = {
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.a_global_flag
+		}
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				add_country_modifier = {
+					name = feichuguanqia_1
+					duration = -1
+					hidden = yes
+				}
+			}
+			add_country_modifier = {
+				name = feichuguanqia_1
+				duration = -1
+				hidden = yes
+			}
+			add_country_modifier = {
+				name = feichuguanqia_2
+				duration = -1
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = feichuguanqia_1
+					duration = -1
+					hidden = yes
+				}
+				add_country_modifier = {
+					name = feichuguanqia_2
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_saved_global_event_target = xiayi
+		}
+		mf_refresh_xiayi_campaign_effect = yes
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.b_global_flag
+		}
+		event_target:zhengyidajiangjun = {
+			add_country_modifier = {
+				name = mulingjiandi
+				duration = -1
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = mulingjiandi
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.c_global_flag
+		}
+		event_target:zhengyidajiangjun = {
+			add_country_modifier = {
+				name = shenfentongzhi
+				duration = -1
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = shenfentongzhi
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.d_global_flag #禁中并公
+		}
+		event_target:zhengyidajiangjun = { 
+			add_country_modifier = {
+				name = jinzhongbinggong
+				duration = -1
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = jinzhongbinggong 
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.e_global_flag #货币统一
+		}
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				add_country_modifier = {
+					name = huobitongyi_1
+					duration = -1
+					hidden = yes
+				}
+			}
+			add_country_modifier = {
+				name = huobitongyi_1
+				duration = -1
+				hidden = yes
+			}
+			add_country_modifier = {
+				name = huobitongyi_2
+				duration = -1
+				hidden = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.f_global_flag #武家诸法
+		}
+		event_target:zhengyidajiangjun = {
+			add_country_modifier = {
+				name = wujiazhufa
+				duration = -1
+				hidden = yes
+			}
+			every_subject_country = {
+				add_country_modifier = {
+					name = wujiazhufa
+					duration = -1
+					hidden = yes
+				}
+				if = {
+					limit = {
+						NOT = { has_country_flag = shogun_weixin_ban_war_flag } #禁止宣战
+					}
+					set_country_flag = shogun_weixin_ban_war_flag
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.g_global_flag #农本商末
+		}
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				add_country_modifier = {
+					name = nongbenshangmo
+					duration = -1
+					hidden = yes
+				}
+			}
+			add_country_modifier = {
+				name = nongbenshangmo
+				duration = -1
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = nongbenshangmo
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.h_global_flag
+		}
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				add_country_modifier = {
+					name = jiujizhengshi_1
+					duration = -1
+					hidden = yes
+				}
+			}
+			add_country_modifier = {
+				name = jiujizhengshi_1
+				duration = -1
+				hidden = yes
+			}
+			add_country_modifier = {
+				name = jiujizhengshi_2
+				duration = -1	
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = jiujizhengshi_1
+					duration = -1
+					hidden = yes
+				}
+				add_country_modifier = {
+					name = jiujizhengshi_2
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.i_global_flag
+		}
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				add_country_modifier = {
+					name = xuewentongzhi_1
+					duration = -1
+					hidden = yes
+				}
+			}
+			add_country_modifier = {
+				name = xuewentongzhi_1
+				duration = -1
+				hidden = yes
+			}
+			add_country_modifier = {
+				name = xuewentongzhi_2
+				duration = -1	
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = xuewentongzhi_1
+					duration = -1
+					hidden = yes
+				}
+				add_country_modifier = {
+					name = xuewentongzhi_2
+					duration = -1	
+					hidden = yes
+				}
+			}
+		}
+	}
+}
+BL_shogun_express_modifier = {
+	set_variable = {
+		which = shogun_value_express_1 #御统值显示修正的变量 叛乱
+		value = -50
+	}
+	change_variable = {
+		which = shogun_value_express_1
+		which = shogun_value
+	}
+	multiply_variable = { #
+		which = shogun_value_express_1
+		value = 0.05
+	}
+	set_variable = {
+		which = shogun_value_express_2 #御统值显示修正的变量 正面其他各种buff
+		value = -50
+	}
+	change_variable = {
+		which = shogun_value_express_2
+		which = shogun_value
+	}
+	multiply_variable = { #
+		which = shogun_value_express_2
+		value = 0.4
+	}
+	set_variable = {
+		which = shogun_value_express_3 #御统值显示修正的变量 表示负面叛乱度
+		value = 50
+	}
+	subtract_variable = {
+		which = shogun_value_express_3
+		which = shogun_value
+	}
+	multiply_variable = { #
+		which = shogun_value_express_3
+		value = 0.1
+	}
+	set_variable = {
+		which = shogun_value_express_4 #御统值显示修正的变量 表示陆军士气
+		value = 50.0
+	}
+	subtract_variable = {
+		which = shogun_value_express_4
+		which = shogun_value
+	}
+	multiply_variable = { #
+		which = shogun_value_express_4
+		value = 0.4
+	}
+	set_variable = {
+		which = shogun_value_express_5 #御统值显示修正的变量 表示雇佣兵维护费
+		value = 50
+	}
+	subtract_variable = {
+		which = shogun_value_express_5
+		which = shogun_value
+	}
+	multiply_variable = { #
+		which = shogun_value_express_5
+		value = 2
+	}
+	set_variable = {
+		which = shogun_value_express_6 #御统值显示修正的变量 表示其他各种
+		value = 50
+	}
+	subtract_variable = {
+		which = shogun_value_express_6
+		which = shogun_value
+	}
+	multiply_variable = { #
+		which = shogun_value_express_6
+		value = 1
+	}
+}
+
+
+BL_shogun_remove_modifier = {
+remove_country_modifier = jinzhongbinggong
+remove_country_modifier = feichuguanqia_1
+remove_country_modifier = feichuguanqia_2
+remove_country_modifier = mulingjiandi
+remove_country_modifier = shenfentongzhi
+remove_country_modifier = jinzhongbinggong
+remove_country_modifier = huobitongyi_1
+remove_country_modifier = huobitongyi_2
+remove_country_modifier = nongbenshangmo
+remove_country_modifier = jiujizhengshi_1
+remove_country_modifier = jiujizhengshi_2
+remove_country_modifier = xuewentongzhi_1
+remove_country_modifier = xuewentongzhi_2
+remove_country_modifier = wujiazhufa
+##################
+remove_country_modifier = shogun_scale_modifier_0
+remove_country_modifier = shogun_scale_modifier_1
+remove_country_modifier = shogun_scale_modifier_2
+remove_country_modifier = shogun_scale_modifier_3
+remove_country_modifier = shogun_scale_modifier_4
+remove_country_modifier = shogun_scale_modifier_5
+remove_country_modifier = shogun_scale_modifier_6
+remove_country_modifier = shogun_scale_modifier_7
+remove_country_modifier = shogun_scale_modifier_8
+remove_country_modifier = shogun_scale_modifier_9
+remove_country_modifier = shogun_scale_modifier_10
+remove_country_modifier = shogun_scale_modifier_11
+remove_country_modifier = shogun_scale_modifier_12
+remove_country_modifier = shogun_scale_modifier_13
+remove_country_modifier = shogun_scale_modifier_14
+remove_country_modifier = shogun_scale_modifier_15
+remove_country_modifier = shogun_scale_modifier_16
+remove_country_modifier = shogun_scale_modifier_17
+remove_country_modifier = shogun_scale_modifier_18
+remove_country_modifier = shogun_scale_modifier_19
+remove_country_modifier = shogun_scale_modifier_20
+remove_country_modifier = shogun_scale_modifier_21
+remove_country_modifier = shogun_scale_modifier_22
+remove_country_modifier = shogun_scale_modifier_23
+remove_country_modifier = shogun_scale_modifier_24
+remove_country_modifier = shogun_scale_modifier_25
+remove_country_modifier = shogun_scale_modifier_26
+remove_country_modifier = shogun_scale_modifier_27
+remove_country_modifier = shogun_scale_modifier_28
+remove_country_modifier = shogun_scale_modifier_29
+remove_country_modifier = shogun_scale_modifier_30
+remove_country_modifier = shogun_scale_modifier_31
+remove_country_modifier = shogun_scale_modifier_32
+remove_country_modifier = shogun_scale_modifier_33
+remove_country_modifier = shogun_scale_modifier_34
+remove_country_modifier = shogun_scale_modifier_35
+remove_country_modifier = shogun_scale_modifier_36
+remove_country_modifier = shogun_scale_modifier_37
+remove_country_modifier = shogun_scale_modifier_38
+remove_country_modifier = shogun_scale_modifier_39
+remove_country_modifier = shogun_scale_modifier_40
+remove_country_modifier = shogun_scale_modifier_41
+remove_country_modifier = shogun_scale_modifier_42
+remove_country_modifier = shogun_scale_modifier_43
+remove_country_modifier = shogun_scale_modifier_44
+remove_country_modifier = shogun_scale_modifier_45
+remove_country_modifier = shogun_scale_modifier_46
+remove_country_modifier = shogun_scale_modifier_47
+remove_country_modifier = shogun_scale_modifier_48
+remove_country_modifier = shogun_scale_modifier_49
+remove_country_modifier = shogun_scale_modifier_50
+remove_country_modifier = shogun_scale_modifier_51
+remove_country_modifier = shogun_scale_modifier_52
+remove_country_modifier = shogun_scale_modifier_53
+remove_country_modifier = shogun_scale_modifier_54
+remove_country_modifier = shogun_scale_modifier_55
+remove_country_modifier = shogun_scale_modifier_56
+remove_country_modifier = shogun_scale_modifier_57
+remove_country_modifier = shogun_scale_modifier_58
+remove_country_modifier = shogun_scale_modifier_59
+remove_country_modifier = shogun_scale_modifier_60
+remove_country_modifier = shogun_scale_modifier_61
+remove_country_modifier = shogun_scale_modifier_62
+remove_country_modifier = shogun_scale_modifier_63
+remove_country_modifier = shogun_scale_modifier_64
+remove_country_modifier = shogun_scale_modifier_65
+remove_country_modifier = shogun_scale_modifier_66
+remove_country_modifier = shogun_scale_modifier_67
+remove_country_modifier = shogun_scale_modifier_68
+remove_country_modifier = shogun_scale_modifier_69
+remove_country_modifier = shogun_scale_modifier_70
+remove_country_modifier = shogun_scale_modifier_71
+remove_country_modifier = shogun_scale_modifier_72
+remove_country_modifier = shogun_scale_modifier_73
+remove_country_modifier = shogun_scale_modifier_74
+remove_country_modifier = shogun_scale_modifier_75
+remove_country_modifier = shogun_scale_modifier_76
+remove_country_modifier = shogun_scale_modifier_77
+remove_country_modifier = shogun_scale_modifier_78
+remove_country_modifier = shogun_scale_modifier_79
+remove_country_modifier = shogun_scale_modifier_80
+remove_country_modifier = shogun_scale_modifier_81
+remove_country_modifier = shogun_scale_modifier_82
+remove_country_modifier = shogun_scale_modifier_83
+remove_country_modifier = shogun_scale_modifier_84
+remove_country_modifier = shogun_scale_modifier_85
+remove_country_modifier = shogun_scale_modifier_86
+remove_country_modifier = shogun_scale_modifier_87
+remove_country_modifier = shogun_scale_modifier_88
+remove_country_modifier = shogun_scale_modifier_89
+remove_country_modifier = shogun_scale_modifier_90
+remove_country_modifier = shogun_scale_modifier_91
+remove_country_modifier = shogun_scale_modifier_92
+remove_country_modifier = shogun_scale_modifier_93
+remove_country_modifier = shogun_scale_modifier_94
+remove_country_modifier = shogun_scale_modifier_95
+remove_country_modifier = shogun_scale_modifier_96
+remove_country_modifier = shogun_scale_modifier_97
+remove_country_modifier = shogun_scale_modifier_98
+remove_country_modifier = shogun_scale_modifier_99
+remove_country_modifier = shogun_scale_modifier_100
+}
+
+BL_shogun_give_modifier = {
+if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 0
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 1
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_0
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 1
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 2
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_1
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 2
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 3
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_2
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 3
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 4
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_3
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 4
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 5
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_4
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 5
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 6
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_5
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 6
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 7
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_6
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 7
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 8
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_7
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 8
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 9
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_8
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 9
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 10
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_9
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 10
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 11
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_10
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 11
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 12
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_11
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 12
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 13
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_12
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 13
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 14
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_13
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 14
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 15
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_14
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 15
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 16
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_15
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 16
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 17
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_16
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 17
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 18
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_17
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 18
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 19
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_18
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 19
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 20
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_19
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 20
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 21
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_20
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 21
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 22
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_21
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 22
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 23
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_22
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 23
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 24
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_23
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 24
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 25
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_24
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 25
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 26
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_25
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 26
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 27
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_26
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 27
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 28
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_27
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 28
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 29
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_28
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 29
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 30
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_29
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 30
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 31
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_30
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 31
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 32
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_31
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 32
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 33
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_32
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 33
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 34
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_33
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 34
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 35
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_34
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 35
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 36
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_35
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 36
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 37
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_36
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 37
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 38
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_37
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 38
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 39
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_38
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 39
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 40
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_39
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 40
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 41
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_40
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 41
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 42
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_41
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 42
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 43
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_42
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 43
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 44
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_43
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 44
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 45
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_44
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 45
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 46
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_45
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 46
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 47
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_46
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 47
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 48
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_47
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 48
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 49
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_48
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 49
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 50
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_49
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 50
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 51
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_50
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 51
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 52
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_51
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 52
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 53
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_52
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 53
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 54
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_53
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 54
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 55
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_54
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 55
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 56
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_55
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 56
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 57
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_56
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 57
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 58
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_57
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 58
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 59
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_58
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 59
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 60
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_59
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 60
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 61
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_60
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 61
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 62
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_61
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 62
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 63
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_62
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 63
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 64
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_63
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 64
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 65
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_64
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 65
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 66
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_65
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 66
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 67
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_66
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 67
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 68
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_67
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 68
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 69
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_68
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 69
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 70
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_69
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 70
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 71
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_70
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 71
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 72
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_71
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 72
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 73
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_72
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 73
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 74
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_73
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 74
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 75
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_74
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 75
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 76
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_75
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 76
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 77
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_76
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 77
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 78
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_77
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 78
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 79
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_78
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 79
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 80
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_79
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 80
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 81
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_80
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 81
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 82
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_81
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 82
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 83
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_82
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 83
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 84
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_83
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 84
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 85
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_84
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 85
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 86
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_85
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 86
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 87
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_86
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 87
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 88
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_87
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 88
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 89
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_88
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 89
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 90
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_89
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 90
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 91
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_90
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 91
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 92
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_91
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 92
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 93
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_92
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 93
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 94
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_93
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 94
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 95
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_94
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 95
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 96
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_95
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 96
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 97
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_96
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 97
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 98
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_97
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 98
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 99
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_98
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 99
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 100
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_99
+        duration = -1 hidden = yes
+    }
+}
+else_if = {
+    limit = { 1020 = {
+        check_variable = {
+            which = shogun_value
+            value = 100
+        }
+        NOT = {
+            check_variable = {
+                which = shogun_value
+            value = 101
+            }
+        }
+    }
+    }add_country_modifier = {
+        name = shogun_scale_modifier_100
+        duration = -1 hidden = yes
+    }
+}
+}
+#刷新大名盾徽
+bl_shogun_refresh = {
+clear_global_event_target = shogun_daming_1
+clear_global_event_target = shogun_daming_2
+clear_global_event_target = shogun_daming_3
+clear_global_event_target = shogun_daming_4
+clear_global_event_target = shogun_daming_5
+clear_global_event_target = shogun_daming_6
+clear_global_event_target = shogun_daming_7
+clear_global_event_target = shogun_daming_8
+clear_global_event_target = shogun_daming_9
+clear_global_event_target = shogun_daming_10
+clear_global_event_target = shogun_daming_11
+clear_global_event_target = shogun_daming_12
+clear_global_event_target = shogun_daming_13
+clear_global_event_target = shogun_daming_14
+clear_global_event_target = shogun_daming_15
+clear_global_event_target = shogun_daming_16
+clear_global_event_target = shogun_daming_17
+clear_global_event_target = shogun_daming_18
+clear_global_event_target = shogun_daming_19
+clear_global_event_target = shogun_daming_20
+clear_global_event_target = shogun_daming_21
+clear_global_event_target = shogun_daming_22
+clear_global_event_target = shogun_daming_23
+clear_global_event_target = shogun_daming_24
+clear_global_event_target = shogun_daming_25
+clear_global_event_target = shogun_daming_26
+clear_global_event_target = shogun_daming_27
+clear_global_event_target = shogun_daming_28
+clear_global_event_target = shogun_daming_29
+clear_global_event_target = shogun_daming_30
+	event_target:zhengyidajiangjun = {
+		1020 = {
+			set_variable = {
+				which = daming_shuliang #大名数量变量
+				value = 0
+			}
+		}
+		every_subject_country = {
+			1020 = {
+				change_variable = {
+					which = daming_shuliang
+					value = 1
+				}
+			}
+		}
+		every_country = {
+			set_variable = {
+				which = daming_bianhao #大名编号变量
+				value = 0
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 1
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 2
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 3
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 4
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 5
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 6
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 7
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 8
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 9
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 10
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 11
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 12
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 13
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 14
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 15
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 16
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 17
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 18
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 19
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 20
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 21
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 22
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 23
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 24
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 25
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 26
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 27
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 28
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 29
+			}
+		}
+		random_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 1
+					}
+				}
+			}
+			change_variable = {
+				which = daming_bianhao
+				value = 30
+			}
+		}
+		#############################
+		every_subject_country = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 2
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_1
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 2
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 3
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_2
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 3
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 4
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_3
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 4
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 5
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_4
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 5
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 6
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_5
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 6
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 7
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_6
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 7
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 8
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_7
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 8
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 9
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_8
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 9
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 10
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_9
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 10
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 11
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_10
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 11
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 12
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_11
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 12
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 13
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_12
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 13
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 14
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_13
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 14
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 15
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_14
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 15
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 16
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_15
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 16
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 17
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_16
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 17
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 18
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_17
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 18
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 19
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_18
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 19
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 20
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_19
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 20
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 21
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_20
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 21
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 22
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_21
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 22
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 23
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_22
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 23
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 24
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_23
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 24
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 25
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_24
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 25
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 26
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_25
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 26
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 27
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_26
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 27
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 28
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_27
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 28
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 29
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_28
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 29
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 30
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_29
+		}
+		every_subject_country = {
+			limit = {
+				check_variable = {
+					which = daming_bianhao
+					value = 30
+				}
+				NOT = {
+					check_variable = {
+						which = daming_bianhao
+						value = 31
+					}
+				}
+			}
+			save_global_event_target_as = shogun_daming_30
+		}
+	}
+}

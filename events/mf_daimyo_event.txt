@@ -1,0 +1,488 @@
+namespace = mf_daimyo
+
+########## 参勤交代 ##########
+country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
+	id = mf_daimyo.10
+	title = "mf_daimyo.10.t"
+	desc = "mf_daimyo.10.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		sort_of_mf = yes
+		NOT = { has_reform = shogunate }
+		overlord = {
+			OR = {
+				AND = {
+					has_reform = shogunate
+					has_country_modifier = shogun_yuling_b
+				}
+				AND = {
+					overlord = {
+						has_reform = shogunate
+						has_country_modifier = shogun_yuling_b
+					}
+				}
+			}
+		}
+		NOT = {
+			has_country_modifier = mf_sankin_kotai_travel
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			# 费用 = 发展度/10 + 与宗主首都距离/2 + 固定 3。
+			export_to_variable = {
+				variable_name = mf_sankin_development
+				value = total_development
+			}
+			export_to_variable = {
+				variable_name = mf_sankin_distance
+				value = capital_distance
+				who = overlord
+			}
+			set_variable = {
+				which = mf_sankin_cost
+				which = mf_sankin_development
+			}
+			divide_variable = {
+				which = mf_sankin_cost
+				value = 10
+			}
+			set_variable = {
+				which = mf_sankin_distance_cost
+				which = mf_sankin_distance
+			}
+			divide_variable = {
+				which = mf_sankin_distance_cost
+				value = 2
+			}
+			change_variable = {
+				which = mf_sankin_cost
+				which = mf_sankin_distance_cost
+			}
+			change_variable = {
+				which = mf_sankin_cost
+				value = 3
+			}
+		}
+	}
+
+	option = {
+		name = "mf_daimyo.10.a"
+		custom_tooltip = mf_daimyo.10.a.tt
+		# 独立倾向低时才会主动接受参勤。
+		trigger = {
+			NOT = {
+				liberty_desire = 50
+			}
+		}
+		add_country_modifier = {
+			name = mf_sankin_kotai_travel
+			duration = 182
+		}
+		treasury_reduce = {
+			variable = mf_sankin_cost
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				liberty_desire = 50
+			}
+			modifier = {
+				factor = 0
+				num_of_loans = 5
+			}
+		}
+	}
+
+	option = {
+		name = "mf_daimyo.10.c"
+		custom_tooltip = mf_daimyo.10.c.tt
+		# 财政困难时允许暂缓，但会付出声望、独立倾向和邻国观感代价。
+		trigger = {
+			num_of_loans = 5
+			NOT = {
+				liberty_desire = 50
+			}
+		}
+		add_prestige = -10
+		add_liberty_desire = -10
+		add_country_modifier = {
+			name = mf_sankin_kotai_suspended
+			duration = 365
+		}
+		every_neighbor_country = {
+			limit = {
+				sort_of_mf = yes
+				NOT = { has_reform = shogunate }
+				is_subject_of = event_target:zhengyidajiangjun
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mf_sankin_suspended
+			}
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOT = {
+					num_of_loans = 5
+				}
+			}
+			modifier = {
+				factor = 0
+				liberty_desire = 50
+			}
+		}
+	}
+
+	option = {
+		name = "mf_daimyo.10.b"
+		custom_tooltip = mf_daimyo.10.b.tt
+		# 高独立倾向大名会拒绝参勤，并给幕府整肃理由。
+		add_country_modifier = {
+			name = mf_sankin_kotai_refused
+			duration = 365
+		}
+		set_country_flag = mf_refused_sankin_kotai
+		overlord = {
+			mf_change_shogun_value = {
+				value = -5
+			}
+			add_casus_belli = {
+				target = ROOT
+				type = cb_disloyal_vassal
+				months = 60
+			}
+			country_event = {
+				id = mf_daimyo.11
+			}
+		}
+		ai_chance = {
+			factor = 0
+			modifier = {
+				factor = 100
+				liberty_desire = 50
+			}
+		}
+	}
+}
+
+country_event = { # 大名拒绝参勤后的幕府提示。
+	id = mf_daimyo.11
+	title = "mf_daimyo.11.t"
+	desc = "mf_daimyo.11.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "mf_daimyo.11.a"
+	}
+}
+
+province_event = { # 被恢复的大名重新纳入幕府体系。
+	id = mf_daimyo.12
+	title = "mf_daimyo.12.t"
+	desc = "mf_daimyo.12.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		remove_province_modifier = mf_unlawful_daimyo_land
+		owner = {
+			# 归还领地可能复活已灭亡大名；若它还不在幕府下，立即重新分封。
+			if = {
+				limit = {
+					NOT = { tag = event_target:zhengyidajiangjun }
+					NOT = { is_subject_of = event_target:zhengyidajiangjun }
+				}
+				event_target:zhengyidajiangjun = {
+					create_subject = {
+						subject_type = daimyo_vassal
+						subject = PREV
+					}
+					PREV = {
+						mf_normalize_daimyo_first_layer_reform_effect = yes
+					}
+					mf_promote_retainer_daimyos_to_shogunate_effect = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "mf_daimyo.12.a"
+	}
+}
+
+province_event = { # 大名从自有领地中分封陪臣大名。
+	id = mf_daimyo.13
+	title = "mf_daimyo.13.t"
+	desc = "mf_daimyo.13.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		owner = {
+			if = {
+				limit = {
+					NOT = { tag = event_target:mf_release_retainer_daimyo_overlord }
+					NOT = { is_subject_of = event_target:mf_release_retainer_daimyo_overlord }
+				}
+				event_target:mf_release_retainer_daimyo_overlord = {
+					create_subject = {
+						subject_type = mf_retainer_daimyo_vassal
+						subject = PREV
+					}
+					PREV = {
+						mf_normalize_daimyo_first_layer_reform_effect = yes
+					}
+					mf_promote_retainer_daimyos_to_shogunate_effect = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "mf_daimyo.13.a"
+	}
+}
+
+country_event = {
+	id = mf_daimyo.14
+	title = "mf_daimyo.12.t"
+	desc = "mf_daimyo.12.d"
+	picture = COURT_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	trigger = {
+		has_reform = shogunate
+	}
+
+	immediate = {
+		mf_initialize_new_shogun_authority_effect = yes
+		mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
+		mf_promote_retainer_daimyos_to_shogunate_effect = yes
+	}
+
+	option = {
+		name = "mf_daimyo.12.a"
+	}
+}
+
+########## 旧机制保留段 ##########
+country_event = { # 旧版大名参勤交代：已停用，保留作移植参考。
+    id = mf_daimyo.1
+	title = "mf_daimyo.1.t"
+    desc = "mf_daimyo.1.d"
+    picture = COUNTRY_COLLAPSE_eventPicture
+
+	trigger = { 
+		always = no # 旧版参勤事件，现由 mf_daimyo.10 替代。
+		is_subject_of_type = daimyo_vassal
+		has_country_modifier = mf_sankin_kotai_began
+		NOT = { has_country_modifier = subject_sankin_kotai }
+	}
+	
+	mean_time_to_happen = {
+		days = 180
+			modifier = {
+				factor = 1000
+				is_bankrupt = yes
+			}
+			modifier = {
+				factor = 0.75
+				is_in_war = {
+					attacker_leader = ROOT
+				}
+			}
+			modifier = {
+				factor = 1.5
+				capital_distance = {
+					who = FORM
+					distance = 4
+				}
+			}
+			modifier = {
+				factor = 2
+				capital_distance = {
+					who = FORM
+					distance = 6
+				}
+			}
+			
+	}
+
+	immediate = {
+		hidden_effect = {  
+			export_to_variable = {
+				variable_name = daimyo_overlord_distance
+				value = capital_distance
+				Who = FROM
+			}
+			set_variable = {  
+				which = treasury_to_reduce
+				which = daimyo_overlord_distance
+			}
+			divide_variable = {            
+				which = treasury_to_reduce
+				value = 2
+			}
+			change_variable = {            
+				which = treasury_to_reduce
+				value = 6
+			}
+			set_variable = {  
+				which = year_treasury_to_reduce
+				which = treasury_to_reduce
+			}
+			divide_variable = {            
+				which = year_treasury_to_reduce
+				value = 24
+			}
+		}
+	}
+
+	option = {
+		name = mf_daimyo.1.a
+		treasury_reduce = {
+			variable = treasury_to_reduce
+		}
+		year_treasury_reduce = {
+			variable = year_treasury_to_reduce
+		}
+	}
+}
+province_event = { # 旧版幕府分离事件：已停用，保留作移植参考。
+	id = mf_daimyo.2
+	title = "mf_daimyo.2.t"
+	desc = "mf_daimyo.2.d"
+    picture = COUNTRY_COLLAPSE_eventPicture
+    
+    hidden = yes
+	
+	trigger = {
+			always = no # 旧版分离事件，当前体系不再使用此叛军类型。
+			owner = { 
+				sort_of_mf = yes
+			}
+			NOT = {
+				has_province_modifier = mf_local_nationalism_against
+				controlled_by = REB
+				has_rebel_faction = tm_nationalist_rebels
+			}
+			likely_rebels = tm_nationalist_rebels
+	}
+	mean_time_to_happen = {
+	months = 480
+	modifier = {
+		factor = 3
+		owner = {
+			tag = TKG # 德川
+		}
+	}
+	modifier = {
+		factor = 0.5
+		owner = {
+			is_bankrupt = yes
+		}
+	}
+	modifier = {
+		factor = 0.5
+		owner = {
+			num_of_cities = 5
+		}
+	}
+	modifier = {
+		factor = 0.5
+		owner = {
+			num_of_cities = 15
+		}
+	}
+	modifier = {
+		factor = 0.5
+		owner = {
+			num_of_cities = 10
+		}
+	}
+	modifier = {
+		factor = 0.5
+		owner = {
+			NOT = { culture_group = ROOT }
+		}
+	}
+	modifier = {
+		factor = 0.5
+		NOT = { is_core = owner }
+	}	
+	modifier = {
+		factor = 0.8
+		owner = { is_at_war = yes }
+	}
+	modifier = {
+		factor = 0.58
+		NOT = { has_owner_accepted_culture = yes }
+	}
+		modifier = {
+			factor = 0.9
+			nationalism = 5
+		}
+		modifier = {
+			factor = 0.9
+			nationalism = 10
+		}
+		modifier = {
+			factor = 0.9
+			nationalism = 20
+		}
+		modifier = {
+			factor = 0.9
+			owner = {
+				NOT = { stability = 0 }
+			}
+		}
+		modifier = {
+			factor = 0.9
+			owner = {
+				NOT = { stability = -2 }
+			}
+		}
+	}
+
+	goto = ROOT
+	option = {
+		name = flavor_fra.206.b
+		add_province_modifier = { 
+			name = mf_local_nationalism_against
+			duration = 1825
+		}
+		add_local_autonomy  = 30
+		add_nationalism = 10
+		if = {
+			limit = {  culture_group = ROOT }
+			spawn_rebels = {
+				type = tm_nationalist_rebels
+				size = 7
+			}
+		}
+		else = {
+			spawn_rebels = {
+				type = tm_nationalist_rebels
+				size = 14
+			}
+		}
+		
+	}
+}

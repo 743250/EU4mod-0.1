@@ -1,0 +1,9 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_diplomacy_action_shogun"
+		texturefile = "gfx//interface//shogun//diplomacy_action_shogun.dds"
+		alwaystransparent = yes
+	}
+
+}

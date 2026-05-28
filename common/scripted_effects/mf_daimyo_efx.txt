@@ -1,0 +1,479 @@
+########## 通用费用处理 ##########
+treasury_reduce = {
+	hidden_effect = {
+		while = {
+			# 先按整数扣款，再把剩余小数放大到分位处理。
+			limit = {
+				check_variable = {
+					which = $variable$
+					value = 1
+				}
+			}
+			add_treasury = -1
+			subtract_variable = {
+				which = $variable$
+				value = 1
+			}
+		}
+		multiply_variable = {
+			which = $variable$
+			value = 100
+		}
+		while = {
+			limit = {
+				check_variable = {
+					which = $variable$
+					value = 1
+				}
+			}
+			add_treasury = -0.01
+			subtract_variable = {
+				which = $variable$
+				value = 1
+			}
+		}
+	}
+}
+year_treasury_reduce = {
+	hidden_effect = {
+		while = {
+			# 先按整数扣年收入，再把剩余小数放大到分位处理。
+			limit = {
+				check_variable = {
+					which = $variable$
+					value = 1
+				}
+			}
+			add_years_of_income = -1
+			subtract_variable = {
+				which = $variable$
+				value = 1
+			}
+		}
+		multiply_variable = {
+			which = $variable$
+			value = 100
+		}
+		while = {
+			limit = {
+				check_variable = {
+					which = $variable$
+					value = 1
+				}
+			}
+			add_years_of_income = -0.01
+			subtract_variable = {
+				which = $variable$
+				value = 1
+			}
+		}
+	}
+}
+
+########## 御统与幕府外交效果 ##########
+mf_change_shogun_value = {
+	# 御统显示与缩放都读 1020；所有增减统一从这里走，防止越过 0-100。
+	1020 = {
+		change_variable = {
+			which = shogun_value
+			value = $value$
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = shogun_value
+						value = 0
+					}
+				}
+			}
+			set_variable = {
+				which = shogun_value
+				value = 0
+			}
+			set_variable = {
+				which = shogun_value_Profix
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = shogun_value
+					value = 100
+				}
+			}
+			set_variable = {
+				which = shogun_value
+				value = 100
+			}
+			set_variable = {
+				which = shogun_value_Profix
+				value = 0
+			}
+		}
+		set_variable = {
+			which = shogun_value_display
+			which = shogun_value
+		}
+		set_variable = {
+			which = shogun_value_display_fraction
+			which = shogun_value_Profix
+		}
+		multiply_variable = {
+			which = shogun_value_display_fraction
+			value = 0.01
+		}
+		change_variable = {
+			which = shogun_value_display
+			which = shogun_value_display_fraction
+		}
+	}
+}
+
+mf_initialize_new_shogun_authority_effect = {
+	if = {
+		limit = {
+			has_reform = shogunate
+			OR = {
+				NOT = { has_saved_global_event_target = zhengyidajiangjun }
+				NOT = { tag = event_target:zhengyidajiangjun }
+			}
+		}
+		save_global_event_target_as = zhengyidajiangjun
+		1020 = {
+			set_variable = {
+				which = shogun_value
+				value = 50
+			}
+			set_variable = {
+				which = shogun_value_Profix
+				value = 0
+			}
+		}
+		set_global_flag = mf_shogun_initialized
+		if = {
+			limit = {
+				NOT = { has_saved_global_event_target = tianhuang }
+			}
+			random_subject_country = {
+				save_global_event_target_as = tianhuang
+				set_country_flag = mf_tianhuang_target
+			}
+		}
+		mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
+		mf_promote_retainer_daimyos_to_shogunate_effect = yes
+		mf_refresh_tianhuang_target_effect = yes
+		bl_mp_effect = yes
+		bl_shogun_refresh = yes
+	}
+}
+
+
+
+
+
+mf_promote_retainer_daimyos_to_shogunate_effect = {
+	# 统一整理幕府属国层级。
+	# 幕府不能保留陪臣大名，非幕府大名也不能直接拥有谱代大名。
+	if = {
+		limit = {
+			has_reform = shogunate
+		}
+		save_global_event_target_as = zhengyidajiangjun
+		every_subject_country = {
+			limit = {
+				is_subject_of_type = mf_retainer_daimyo_vassal
+			}
+			change_subject_type = {
+				subject_type = daimyo_vassal
+			}
+			mf_normalize_daimyo_first_layer_reform_effect = yes
+		}
+		mf_refresh_tianhuang_target_effect = yes
+		bl_shogun_refresh = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_reform = shogunate
+			}
+		}
+		save_global_event_target_as = mf_daimyo_rehome_lord
+		every_subject_country = {
+			limit = {
+				is_subject_of_type = mf_daimyo_vassal
+			}
+			mf_rehome_daimyo_subjects_effect = yes
+			change_subject_type = {
+				subject_type = mf_retainer_daimyo_vassal
+			}
+			mf_normalize_daimyo_first_layer_reform_effect = yes
+		}
+		clear_global_event_target = mf_daimyo_rehome_lord
+	}
+}
+
+mf_rehome_daimyo_subjects_effect = {
+	# 把被收服或被重整的大名直属陪臣转挂到新上级，避免层级断裂。
+	every_subject_country = {
+		limit = {
+			OR = {
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+				is_subject_of_type = mf_retainer_daimyo_vassal
+			}
+		}
+		if = {
+			limit = {
+				is_subject = yes
+			}
+			overlord = {
+				free_vassal = PREV
+			}
+		}
+		event_target:mf_daimyo_rehome_lord = {
+			vassalize = PREV
+		}
+		if = {
+			limit = {
+				event_target:mf_daimyo_rehome_lord = {
+					has_reform = shogunate
+				}
+			}
+			change_subject_type = {
+				subject_type = daimyo_vassal
+			}
+		}
+		else = {
+			change_subject_type = {
+				subject_type = mf_retainer_daimyo_vassal
+			}
+		}
+	}
+}
+
+mf_relink_direct_daimyos_after_shogunate_transfer_effect = {
+	# 原版 japan.1 只会重挂普通大名；这里补上本 mod 新增的谱代、陪臣和异常独立大名。
+	if = {
+		limit = {
+			has_reform = shogunate
+		}
+		save_global_event_target_as = mf_daimyo_rehome_lord
+		every_country = {
+			limit = {
+				NOT = { has_reform = shogunate }
+				NOT = { is_subject_of = ROOT }
+				NOT = { war_with = ROOT }
+				OR = {
+					is_subject_of_type = mf_daimyo_vassal
+					is_subject_of_type = mf_retainer_daimyo_vassal
+					AND = {
+						has_reform = indep_daimyo
+						capital_scope = { region = japan_region }
+						culture_group = japanese_g
+					}
+					AND = {
+						OR = {
+							has_reform = daimyo
+							has_reform = mf_daimyo
+						}
+						capital_scope = { region = japan_region }
+						culture_group = japanese_g
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				overlord = {
+					free_vassal = PREV
+				}
+			}
+			ROOT = {
+				vassalize = PREV
+			}
+			mf_rehome_daimyo_subjects_effect = yes
+			if = {
+				limit = {
+					is_subject_of = ROOT
+					is_subject_of_type = mf_retainer_daimyo_vassal
+				}
+				change_subject_type = {
+					subject_type = daimyo_vassal
+				}
+				mf_normalize_daimyo_first_layer_reform_effect = yes
+			}
+			if = {
+				limit = {
+					is_subject_of = ROOT
+					has_reform = indep_daimyo
+				}
+				remove_government_reform = indep_daimyo
+				if = {
+					limit = {
+						is_subject_of_type = mf_daimyo_vassal
+					}
+					add_government_reform = mf_daimyo
+				}
+				else = {
+					add_government_reform = daimyo
+				}
+			}
+			if = {
+				limit = {
+					is_subject_of = ROOT
+					is_subject_of_type = mf_daimyo_vassal
+					has_reform = daimyo
+				}
+				remove_government_reform = daimyo
+				add_government_reform = mf_daimyo
+			}
+			if = {
+				limit = {
+					is_subject_of = ROOT
+					is_subject_of_type = daimyo_vassal
+					has_reform = mf_daimyo
+				}
+				remove_government_reform = mf_daimyo
+				add_government_reform = daimyo
+			}
+		}
+		every_country = {
+			limit = {
+				NOT = { has_reform = shogunate }
+				NOT = { is_subject_of = ROOT }
+				war_with = ROOT
+				OR = {
+					is_subject_of_type = mf_daimyo_vassal
+					is_subject_of_type = mf_retainer_daimyo_vassal
+					AND = {
+						has_reform = indep_daimyo
+						capital_scope = { region = japan_region }
+						culture_group = japanese_g
+					}
+					AND = {
+						OR = {
+							has_reform = daimyo
+							has_reform = mf_daimyo
+						}
+						capital_scope = { region = japan_region }
+						culture_group = japanese_g
+					}
+				}
+			}
+			ROOT = {
+				add_casus_belli = {
+					target = PREV
+					type = cb_vassalize_mission
+					months = 300
+				}
+			}
+		}
+		mf_promote_retainer_daimyos_to_shogunate_effect = yes
+		clear_global_event_target = mf_daimyo_rehome_lord
+	}
+}
+
+mf_normalize_daimyo_first_layer_reform_effect = {
+	# 第一层改革只允许落到“大名体系”里，避免转封和刷新后残留错误改革。
+	if = {
+		limit = {
+			overlord = {
+				has_reform = shogunate
+			}
+			is_subject_of_type = mf_daimyo_vassal
+		}
+		if = {
+			limit = {
+				has_reform = daimyo
+			}
+			remove_government_reform = daimyo
+		}
+		if = {
+			limit = {
+				has_reform = indep_daimyo
+			}
+			remove_government_reform = indep_daimyo
+		}
+		if = {
+			limit = {
+				NOT = { has_reform = mf_daimyo }
+			}
+			add_government_reform = mf_daimyo
+		}
+	}
+	else = {
+		if = {
+			limit = {
+				has_reform = mf_daimyo
+			}
+			remove_government_reform = mf_daimyo
+		}
+		if = {
+			limit = {
+				has_reform = indep_daimyo
+			}
+			remove_government_reform = indep_daimyo
+		}
+		if = {
+			limit = {
+				NOT = { has_reform = daimyo }
+			}
+			add_government_reform = daimyo
+		}
+	}
+}
+
+mf_pick_returnable_daimyo_land_effect = {
+	random_owned_province = {
+		limit = {
+			NOT = { is_core = ROOT }
+			any_core_country = {
+				exists = no
+				sort_of_mf = yes
+			}
+		}
+		save_event_target_as = mf_return_daimyo_land_province
+		random_core_country = {
+			limit = {
+				sort_of_mf = yes
+			}
+			save_event_target_as = mf_return_daimyo_land_owner
+		}
+	}
+}
+
+mf_refresh_shogun_leader_target_effect = {
+	# ROOT 不是幕府本体时，清掉陈旧的征夷大将军目标，避免旧足利继续吃到幕府决议。
+	if = {
+		limit = {
+			has_saved_global_event_target = zhengyidajiangjun
+			event_target:zhengyidajiangjun = {
+				exists = no
+			}
+		}
+		clear_global_event_target = zhengyidajiangjun
+	}
+	if = {
+		limit = {
+			has_saved_global_event_target = zhengyidajiangjun
+			event_target:zhengyidajiangjun = {
+				exists = yes
+				NOT = { has_reform = shogunate }
+			}
+		}
+		clear_global_event_target = zhengyidajiangjun
+	}
+	if = {
+		limit = {
+			has_reform = shogunate
+			OR = {
+				NOT = { has_saved_global_event_target = zhengyidajiangjun }
+				NOT = { tag = event_target:zhengyidajiangjun }
+			}
+		}
+		save_global_event_target_as = zhengyidajiangjun
+	}
+}

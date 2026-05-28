@@ -1,0 +1,13 @@
+﻿l_english:
+#大名属国
+ mf_daimyo_vassal:0 "1ŒãN'YT"
+ mf_daimyo_vassal_title:0 "1ŒãN'YT"
+ mf_daimyo_vassal_title_plural:0 "1ŒãN'YT"
+ mf_daimyo_vassal_is_our:0 "§Y$NAME$§!/fbìN„v1ŒãN'YT0"
+ mf_daimyo_vassal_long_desc:1 "1ŒãN'YT(WY²NNwQ	gôfSINCgÿNïSIN¨R±RbÿïSåN«ˆTv^0ÖNìNôfNèlùRêñT†˜W„vú^¾‹ÿÔkN,‚„v^SýVN²NôfY„v/Ñ‘ÿ(W›Q–N±‚9ôfYÿFOmNôf¹RfÍSÛS0"
+ mf_convert_daimyo_tooltip:0 "gYåb	g	N*N1ŒãN'YT"
+ mf_convert_daimyo_title:0 "ÐcÔb:N§Y1ŒãN'YT§!"
+ mf_convert_daimyo_desc:0 "1ŒãN'YT(WY²NNwQ	gôfSINCgÿïSåN«ˆTv^0ÖNìNôfNèlùRêñT†˜W„vú^¾‹ÿÔkN,‚„v^SýVN²NôfY„v/Ñ‘ÿ(W›Q–N±‚9ôfYÿFOmNôf¹RfÍSÛS0"
+ mf_daimyo_nation:0 "'YT" 
+ 
+ 

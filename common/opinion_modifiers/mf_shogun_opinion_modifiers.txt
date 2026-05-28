@@ -1,0 +1,14 @@
+opinion_mf_returned_land = {
+	opinion = -25
+	years = 10
+}
+
+opinion_mf_refused_return_land = {
+	opinion = -30
+	years = 10
+}
+
+opinion_mf_sankin_suspended = {
+	opinion = -20
+	years = 5
+}

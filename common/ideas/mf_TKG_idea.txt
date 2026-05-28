@@ -1,0 +1,38 @@
+TKG_ideas = {
+	start = {
+		infantry_power = 0.15
+		global_tax_modifier = 0.20
+	}
+	bonus = {
+		development_cost = -0.1
+	}
+	trigger = {
+		tag = TKG
+	}
+	
+	free = yes
+	
+	tkg_mikawa_bushi = {
+		land_morale = 0.1
+	}
+	tkg_strengthen_the_sekisho_network = {
+		spy_offence = 0.2
+	}
+	tkg_hatamoto = {
+		discipline = 0.05
+	}
+	tkg_metsuke = {
+		stability_cost_modifier = -0.1
+		reduced_liberty_desire = 10
+	}
+	tkg_matsudaira_branches = {
+		global_autonomy = -0.05
+		years_of_nationalism = -10
+	}
+	tkg_toshogu = {
+		tolerance_own = 2
+	}
+	tkg_famine_policies = {
+		global_unrest = -2
+	}
+}

@@ -1,0 +1,48 @@
+########## 幕府属国判定 ##########
+sort_of_mf = {
+	OR = {
+		has_reform = shogunate
+		has_reform = daimyo
+		has_reform = mf_daimyo
+		has_reform = indep_daimyo
+		is_subject_of_type = daimyo_vassal
+		is_subject_of_type = mf_daimyo_vassal
+		is_subject_of_type = mf_retainer_daimyo_vassal
+	}
+}
+
+mf_has_releasable_extinct_daimyo_land = {
+	any_owned_province = {
+		OR = {
+			region = japan_region
+			ROOT = { has_global_flag = shogun_weixin.f_global_flag }
+		}
+		any_core_country = {
+			exists = no
+			sort_of_mf = yes
+			NOT = { has_reform = shogunate }
+		}
+	}
+}
+
+mf_can_choose_weixin_order_route = {
+	NOT = { has_global_flag = mf_weixin_route_unification }
+}
+
+mf_can_choose_weixin_unification_route = {
+	NOT = { has_global_flag = mf_weixin_route_order }
+}
+
+mf_can_issue_shogun_yuling = {
+	# 御令十年只能存在一项，且需要足够的正统性支付代价。
+	legitimacy = 20
+	NOT = {
+		OR = {
+			has_country_modifier = shogun_yuling_a
+			has_country_modifier = shogun_yuling_b
+			has_country_modifier = shogun_yuling_c
+			has_country_modifier = shogun_yuling_d
+			has_country_modifier = shogun_yuling_e
+		}
+	}
+}

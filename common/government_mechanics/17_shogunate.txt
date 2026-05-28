@@ -1,0 +1,11 @@
+shogunate_mechanic = {
+	alert_icon_gfx = GFX_alerticons_government_mechanics
+	alert_icon_index = 16
+	available = {
+		has_dlc = "Mandate of Heaven"
+	}
+	
+	interactions = {
+		# 旧幕府交互已收束到御令面板，政府机制本体不再单独提供参勤、刀狩和驱逐浪人。
+	}
+}

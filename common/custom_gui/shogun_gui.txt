@@ -1,0 +1,1623 @@
+custom_window  = {
+	name = shogun_gui_window
+	potential = {
+		has_country_flag = shogun_gui_window_open # 窗口开关
+	}
+}
+custom_window  = {
+	name = shogun_button_gui_window
+	potential = {
+		ROOT = {
+			has_discovered = 1818
+		}
+		NOT = { has_global_flag = clear_shogun_ui }
+	}
+}
+custom_button = {
+	name = enable_shogun_gui # 打开幕府面板的小按钮
+	potential = {
+	}
+	trigger = {
+	}
+	effect = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = shogun_gui_window_open }
+				}
+				if = {
+					limit = {
+						has_reform = shogunate
+					}
+					save_global_event_target_as = zhengyidajiangjun
+					if = {
+						limit = {
+							NOT = { has_saved_global_event_target = tianhuang }
+						}
+						random_subject_country = {
+							save_global_event_target_as = tianhuang
+							set_country_flag = mf_tianhuang_target
+						}
+					}
+				}
+				bl_shogun_refresh = yes
+				set_country_flag = shogun_gui_window_open # 置开关，打开面板
+			}
+			else = {
+				clr_country_flag = shogun_gui_window_open
+			}
+		}
+	}
+	tooltip = enable_shogun_gui.tt
+}
+custom_button = {
+	name = shogun_close_button # 关闭窗口
+	potential = {
+	}
+	trigger = {
+
+	}
+	effect = {
+		clr_country_flag = shogun_gui_window_open
+	}
+}
+custom_icon = {
+	name = shogun_gui_bg
+	potential = {
+	}
+}
+custom_icon = {
+	name = shogun_gui_dip_icon
+	potential = {
+	}
+	tooltip = shogun_gui_dip_icon.tt
+}
+custom_shield = {
+	name = shogun_zhengyidajiangjun #征夷大将军
+	potential = {
+	}
+	trigger = {
+	}
+	effect = { }
+	tooltip = shogun_zhengyidajiangjun.tt
+	global_event_target = zhengyidajiangjun
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_tianhuang #天皇
+	potential = {
+		has_saved_global_event_target = tianhuang
+	}
+	trigger = {
+	}
+	effect = { }
+	tooltip = shogun_tianhuang.tt
+	global_event_target = tianhuang
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_xiayi #虾夷
+	potential = {
+		has_saved_global_event_target = xiayi
+	}
+	trigger = {
+	}
+	effect = { }
+	tooltip = shogun_xiayi.tt
+	global_event_target = xiayi
+	open_country = yes
+}
+custom_text_box = { #幕府文本
+	# 界面分区：标题与核心状态文本。
+	name = shogun_text
+	potential = {
+	}
+}
+custom_text_box = {
+	name = shogun_zhengyidajiangjun_text #征夷大将军文本
+	potential = {
+	}
+}
+custom_text_box = {
+	name = shogun_yutong_text #御统文本
+	potential = {
+	}
+}
+custom_text_box = {
+	name = shogun_daming_text #大名文本
+	potential = {
+	}
+}
+custom_text_box = {
+	name = shogun_yuling_text #御令文本
+	potential = {
+	}
+}
+custom_text_box = {
+	name = shogun_weixin_text #维新文本
+	potential = {
+	}
+}
+########## 御统 ##########
+custom_text_box = {
+	name = shogun_yutong_value #御统数值
+	potential = {
+	}
+	tooltip = shogun_yutong_value.tt
+}
+custom_text_box = {
+	name = shogun_yutong_monthly_value #月度御统数值
+	potential = {
+	}
+	tooltip = shogun_yutong_monthly_value.tt
+}
+custom_text_box = {
+	name = shogun_yutong_small_value # 显示在界面上的小数值
+	potential = {
+	}
+}
+
+########## 御令 ###############
+custom_button = {
+	name = shogun_yuling.a #驱逐浪人
+	potential = {
+	}
+	trigger = {
+		hidden_trigger = {
+			ROOT = { tag = event_target:zhengyidajiangjun }
+			event_target:zhengyidajiangjun = {
+				mf_can_issue_shogun_yuling = yes
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = shogun_yuling_x.tt
+		custom_tooltip = shogun_yuling_x_a.tt
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					mf_can_issue_shogun_yuling = yes
+				}
+				ROOT = { 
+					tag = event_target:zhengyidajiangjun 
+				}
+			}
+			event_target:zhengyidajiangjun = {
+				mf_apply_shogun_yuling_a = yes
+			}
+		}
+		else = {
+			tooltip = {
+				event_target:zhengyidajiangjun = {
+					add_country_modifier = {
+						name = quzhulangren #驱逐浪人
+						duration = 3650
+					}
+				}
+			}
+		}
+	}
+	tooltip = shogun_yuling.a.tt
+}
+custom_button = {
+	name = shogun_yuling.b #参勤交代
+	potential = {
+	}
+	trigger = {
+		hidden_trigger = {
+			ROOT = { tag = event_target:zhengyidajiangjun }
+			event_target:zhengyidajiangjun = {
+				mf_can_issue_shogun_yuling = yes
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = shogun_yuling_x.tt
+		custom_tooltip = shogun_yuling_x_b.tt
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					mf_can_issue_shogun_yuling = yes
+				}
+				ROOT = { 
+					tag = event_target:zhengyidajiangjun 
+				}
+			}
+			event_target:zhengyidajiangjun = {
+				mf_apply_shogun_yuling_b = yes
+			}
+		}
+		else = {
+			tooltip = {
+				event_target:zhengyidajiangjun = {
+					add_country_modifier = {
+						name = mf_sankin_kotai_began
+						duration = 3650
+					}
+				}
+			}
+		}
+	}
+	tooltip = shogun_yuling.b.tt
+}
+custom_button = {
+	name = shogun_yuling.c #刀狩令
+	potential = {
+	}
+	trigger = {
+		hidden_trigger = {
+			ROOT = { tag = event_target:zhengyidajiangjun }
+			event_target:zhengyidajiangjun = {
+				mf_can_issue_shogun_yuling = yes
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = shogun_yuling_x.tt
+		custom_tooltip = shogun_yuling_x_c.tt
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					mf_can_issue_shogun_yuling = yes
+				}
+				ROOT = { 
+					tag = event_target:zhengyidajiangjun 
+				}
+			}
+			event_target:zhengyidajiangjun = {
+				hidden_effect = {
+					mf_apply_shogun_yuling_c = yes
+				}
+			}
+		}
+		else = {
+			custom_tooltip = shogun_yuling_x_c.tt
+		}
+	}
+	tooltip = shogun_yuling.c.tt
+}
+custom_button = {
+	name = shogun_yuling.d #乐市乐座
+	potential = {
+	}
+	trigger = {
+		hidden_trigger = {
+			ROOT = { tag = event_target:zhengyidajiangjun }
+			event_target:zhengyidajiangjun = {
+				mf_can_issue_shogun_yuling = yes
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = shogun_yuling_x.tt
+		custom_tooltip = shogun_yuling_x_d.tt
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					mf_can_issue_shogun_yuling = yes
+				}
+				ROOT = { 
+					tag = event_target:zhengyidajiangjun 
+				}
+			}
+			event_target:zhengyidajiangjun = {
+				mf_apply_shogun_yuling_d = yes
+			}
+		}
+		else = {
+			tooltip = {
+				event_target:zhengyidajiangjun = {
+					add_country_modifier = {
+						name = leshilezuo
+						duration = 3650
+					}
+				}
+			}
+		}
+	}
+	tooltip = shogun_yuling.d.tt
+}
+custom_button = {
+	name = shogun_yuling.e #兵农分离
+	potential = {
+	}
+	trigger = {
+		hidden_trigger = {
+			ROOT = { tag = event_target:zhengyidajiangjun }
+			event_target:zhengyidajiangjun = {
+				mf_can_issue_shogun_yuling = yes
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = shogun_yuling_x.tt
+		custom_tooltip = shogun_yuling_x_e.tt
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					mf_can_issue_shogun_yuling = yes
+				}
+				ROOT = { 
+					tag = event_target:zhengyidajiangjun 
+				}
+			}
+			event_target:zhengyidajiangjun = {
+				mf_apply_shogun_yuling_e = yes
+			}
+		}
+		else = {
+			tooltip = {
+				event_target:zhengyidajiangjun = {
+					add_country_modifier = {
+						name = bingnongfenli
+						duration = 3650
+					}
+				}
+			}
+		}
+	}
+	tooltip = shogun_yuling.e.tt
+}
+custom_button = {
+	name = shogun_yuling_up_arrow
+	potential = {
+	}
+	trigger = {
+	}
+	effect = {
+	}
+}
+custom_button = {
+	name = shogun_yuling_down_arrow
+	potential = {
+	}
+	trigger = {
+	}
+	effect = {
+	}
+}
+custom_icon = {
+	name = shogun_yuling_gou_1
+	potential = {
+		event_target:zhengyidajiangjun = {
+			has_country_modifier = shogun_yuling_a
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_gou_2
+	potential = {
+		event_target:zhengyidajiangjun = {
+			has_country_modifier = shogun_yuling_b
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_gou_3
+	potential = {
+		event_target:zhengyidajiangjun = {
+			has_country_modifier = shogun_yuling_c
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_gou_4
+	potential = {
+		event_target:zhengyidajiangjun = {
+			has_country_modifier = shogun_yuling_d
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_gou_5
+	potential = {
+		event_target:zhengyidajiangjun = {
+			has_country_modifier = shogun_yuling_e
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_bangdai_1
+	potential = {
+		event_target:zhengyidajiangjun = {
+		NOT = { has_country_modifier = shogun_yuling_a }
+		OR = {
+			has_country_modifier = shogun_yuling_b
+			has_country_modifier = shogun_yuling_c
+			has_country_modifier = shogun_yuling_d
+			has_country_modifier = shogun_yuling_e
+		}
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_bangdai_2
+	potential = {
+		event_target:zhengyidajiangjun = {
+		NOT = { has_country_modifier = shogun_yuling_b }
+		OR = {
+			has_country_modifier = shogun_yuling_a
+			has_country_modifier = shogun_yuling_c
+			has_country_modifier = shogun_yuling_d
+			has_country_modifier = shogun_yuling_e
+		}
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_bangdai_3
+	potential = {
+		event_target:zhengyidajiangjun = {
+		NOT = { has_country_modifier = shogun_yuling_c }
+		OR = {
+			has_country_modifier = shogun_yuling_a
+			has_country_modifier = shogun_yuling_b
+			has_country_modifier = shogun_yuling_d
+			has_country_modifier = shogun_yuling_e
+		}
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_bangdai_4
+	potential = {	
+		event_target:zhengyidajiangjun = {
+		NOT = { has_country_modifier = shogun_yuling_d }
+		OR = {
+			has_country_modifier = shogun_yuling_a
+			has_country_modifier = shogun_yuling_b
+			has_country_modifier = shogun_yuling_c
+			has_country_modifier = shogun_yuling_e
+		}
+		}
+	}
+}
+custom_icon = {
+	name = shogun_yuling_bangdai_5
+	potential = {
+		event_target:zhengyidajiangjun = {
+		NOT = { has_country_modifier = shogun_yuling_e }
+		OR = {
+			has_country_modifier = shogun_yuling_a
+			has_country_modifier = shogun_yuling_b
+			has_country_modifier = shogun_yuling_c
+			has_country_modifier = shogun_yuling_d
+		}
+		}
+	}
+}
+########## 维新 ###############
+custom_icon = { # 维新完成标记图标
+	name = shogun_weixin_gou_1
+	potential = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = weixin_page_2
+				}
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			has_global_flag = shogun_weixin.a_global_flag
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			has_global_flag = shogun_weixin.d_global_flag
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				has_country_flag = weixin_page_3
+			}
+			has_global_flag = shogun_weixin.g_global_flag
+		}
+	}
+}
+custom_icon = {
+	name = shogun_weixin_gou_2
+	potential = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = weixin_page_2
+				}
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			has_global_flag = shogun_weixin.b_global_flag
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			has_global_flag = shogun_weixin.e_global_flag
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				has_country_flag = weixin_page_3
+			}
+			has_global_flag = shogun_weixin.h_global_flag
+		}
+	}
+}
+custom_icon = {
+	name = shogun_weixin_gou_3
+	potential = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = weixin_page_2
+				}
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			has_global_flag = shogun_weixin.c_global_flag
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			has_global_flag = shogun_weixin.f_global_flag
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				has_country_flag = weixin_page_3
+			}
+			has_global_flag = shogun_weixin.i_global_flag
+		}
+	}
+}
+custom_button = {
+	name = shogun_weixin.a #废除关卡
+	potential = {
+		NOT = {
+			has_country_flag = weixin_page_2
+		}
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+		mf_can_choose_weixin_unification_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.a_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.a_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.a.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_unification
+			set_global_flag = shogun_weixin.a_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.b #幕领检括
+	potential = {
+		NOT = {
+			has_country_flag = weixin_page_2
+		}
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+		mf_can_choose_weixin_unification_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.b_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.b.a.tt
+			event_target:zhengyidajiangjun = {
+				all_subject_country = {
+					NOT = { liberty_desire = 50 }
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.b_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.b.b.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_unification
+			set_global_flag = shogun_weixin.b_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.c #身份统制
+	potential = {
+		NOT = {
+			has_country_flag = weixin_page_2
+		}
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+		mf_can_choose_weixin_order_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.c_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.c_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.c.a.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_order
+			mf_change_shogun_value = { value = -70 }
+			set_global_flag = shogun_weixin.c_global_flag
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.d #禁中并公
+	potential = {
+		has_country_flag = weixin_page_2
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+		mf_can_choose_weixin_order_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.d_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.d_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.d.a.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_order
+			mf_change_shogun_value = { value = -70 }
+			set_global_flag = shogun_weixin.d_global_flag
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.e #货币统一
+	potential = {
+		has_country_flag = weixin_page_2
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+		mf_can_choose_weixin_unification_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.e_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+		treasury = 1000
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.b.a.tt
+			event_target:zhengyidajiangjun = {
+				all_subject_country = {
+					NOT = { liberty_desire = 50 }
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.e_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.e.a.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_unification
+			mf_change_shogun_value = { value = -70 }
+			set_global_flag = shogun_weixin.e_global_flag
+		}
+	
+		
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.f #武家诸法
+	potential = {
+		has_country_flag = weixin_page_2
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+		mf_can_choose_weixin_order_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.f_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.b.a.tt
+			event_target:zhengyidajiangjun = {
+				all_subject_country = {
+					NOT = { liberty_desire = 50 }
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.f.k.tt
+			calc_true_if = {
+				has_global_flag = shogun_weixin.a_global_flag
+				has_global_flag = shogun_weixin.b_global_flag
+				has_global_flag = shogun_weixin.c_global_flag
+				has_global_flag = shogun_weixin.d_global_flag
+				has_global_flag = shogun_weixin.e_global_flag
+				has_global_flag = shogun_weixin.f_global_flag
+				has_global_flag = shogun_weixin.g_global_flag
+				has_global_flag = shogun_weixin.h_global_flag
+				has_global_flag = shogun_weixin.i_global_flag
+				amount = 3
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.f_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.f.a.tt #解锁转移属国，并放宽重新分封区域限制
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_order
+			mf_change_shogun_value = { value = -70 }
+			set_global_flag = shogun_weixin.f_global_flag
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.g #农本商末
+	potential = {
+		has_country_flag = weixin_page_2
+		has_country_flag = weixin_page_3
+		mf_can_choose_weixin_order_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.g_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.g_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.g.a.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_order
+			mf_change_shogun_value = { value = -70 }
+			set_global_flag = shogun_weixin.g_global_flag
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.h #救恤政施
+	potential = {
+		has_country_flag = weixin_page_2
+		has_country_flag = weixin_page_3
+		mf_can_choose_weixin_order_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.h_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.h_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.h.a.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_order
+			set_global_flag = shogun_weixin.h_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.i #学问统制
+	potential = {
+		has_country_flag = weixin_page_2
+		has_country_flag = weixin_page_3
+		mf_can_choose_weixin_unification_route = yes
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.i_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.i_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.i.a.tt
+		hidden_effect = {
+			set_global_flag = mf_weixin_route_unification
+			set_global_flag = shogun_weixin.i_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_icon = {
+	name = shogun_weixin_gunlun.a #滚轮
+	potential = {
+		NOT = {
+			has_country_flag = weixin_page_2
+		}
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+	}
+	tooltip = shogun_weixin_gunlun.tt
+}
+custom_icon = {
+	name = shogun_weixin_gunlun.b #滚轮
+	potential = {
+		has_country_flag = weixin_page_2
+		NOT = {
+			has_country_flag = weixin_page_3
+		}
+	}
+	tooltip = shogun_weixin_gunlun.tt
+}
+custom_icon = {
+	name = shogun_weixin_gunlun.c #滚轮
+	potential = {
+		has_country_flag = weixin_page_2
+		has_country_flag = weixin_page_3
+	}
+	tooltip = shogun_weixin_gunlun.tt
+}
+custom_button = {
+	name = shogun_weixin_up_arrow
+	potential = {
+	}
+	trigger = {
+	}
+	effect = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = weixin_page_2
+				}
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			set_country_flag = weixin_page_3
+			set_country_flag = weixin_page_2
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			clr_country_flag = weixin_page_2
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				has_country_flag = weixin_page_3
+			}
+			clr_country_flag = weixin_page_3
+		}
+	}
+}
+custom_button = {
+	name = shogun_weixin_down_arrow 
+	potential = {
+	}
+	trigger = {
+	}
+	effect = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = weixin_page_2
+				}
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			set_country_flag = weixin_page_2
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				NOT = {
+					has_country_flag = weixin_page_3
+				}
+			}
+			set_country_flag = weixin_page_3
+		}
+		else_if = {
+			limit = {
+				has_country_flag = weixin_page_2
+				has_country_flag = weixin_page_3
+			}
+			clr_country_flag = weixin_page_2
+			clr_country_flag = weixin_page_3
+		}
+	}
+}
+########大名盾徽#########
+custom_button = {
+	name = shogun_daming_refresh
+	potential = {
+	}
+	trigger = {
+	}
+	effect = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_reform = shogunate
+				}
+				save_global_event_target_as = zhengyidajiangjun
+				if = {
+					limit = {
+						NOT = { has_saved_global_event_target = tianhuang }
+					}
+					random_subject_country = {
+						save_global_event_target_as = tianhuang
+						set_country_flag = mf_tianhuang_target
+					}
+				}
+			}
+			bl_shogun_refresh = yes
+		}
+	}
+}
+custom_shield = {
+	name = shogun_daming_1 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_1
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 1
+			}
+		}
+	}
+	trigger = {
+		
+	}
+	effect = { }
+	global_event_target = shogun_daming_1
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_2 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_2
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 2
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_2
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_3 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_3
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 3
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_3
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_4 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_4
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 4
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_4
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_5 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_5
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 5
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_5
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_6 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_6
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 6
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_6
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_7 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_7
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 7
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_7
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_8 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_8
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 8
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_8
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_9 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_9
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 9
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_9
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_10 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_10
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 10
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_10
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_11 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_11
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 11
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_11
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_12 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_12
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 12
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_12
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_13 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_13
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 13
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_13
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_14 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_14
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 14
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_14
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_15 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_15
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 15
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_15
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_16 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_16
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 16
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_16
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_17 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_17
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 17
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_17
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_18 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_18
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 18
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_18
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_19 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_19
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 19
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_19
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_20 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_20
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 20
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_20
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_21 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_21
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 21
+			}
+		}
+	}
+	trigger = {
+		
+	}
+	effect = { }
+	global_event_target = shogun_daming_21
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_22 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_22
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 22
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_22
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_23 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_23
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 23
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_23
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_24 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_24
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 24
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_24
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_25 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_25
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 25
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_25
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_26 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_26
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 26
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_26
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_27 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_27
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 27
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_27
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_28 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_28
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 28
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_28
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_29 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_29
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 29
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_29
+	open_country = yes
+}
+custom_shield = {
+	name = shogun_daming_30 #大名盾徽
+	potential = {
+		has_saved_global_event_target = shogun_daming_30
+		1020 = {
+			check_variable = {
+				which = daming_shuliang
+				value = 30
+			}
+		}
+	}
+	trigger = {
+	}
+	effect = { }
+	global_event_target = shogun_daming_30
+	open_country = yes
+}

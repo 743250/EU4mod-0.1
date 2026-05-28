@@ -1,0 +1,50 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_enable_shogun_gui"
+		texturefile = "gfx//interface//shogun//enable_shogun_gui.dds"
+		effectFile = "gfx/FX/buttonstate.lua"
+		clicksound = click
+		noOfFrames = 1
+	}
+	spriteType = {
+		name = "GFX_shogun_gui_bg"
+		texturefile = "gfx//interface//shogun//shogun_gui_bg.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_gunlun_a"
+		texturefile = "gfx//interface//shogun//gunlun_a.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_gunlun_b"
+		texturefile = "gfx//interface//shogun//gunlun_b.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_gunlun_c"
+		texturefile = "gfx//interface//shogun//gunlun_c.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_icon_daimyo_vassal_subject_type" 
+		texturefile = "gfx//interface//shogun//icon_daimyo_vassal_subject_type.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_icon_diplomacy_lead_daimyo_vassal_subject_type" 
+		texturefile = "gfx//interface//shogun//icon_diplomacy_lead_daimyo_vassal_subject_type.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_icon_diplomacy_am_daimyo_vassal_subject_type" 
+		texturefile = "gfx//interface//shogun//icon_diplomacy_am_daimyo_vassal_subject_type.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
+		name = "GFX_bl_iberian_conflict_cathoic" 
+		texturefile = "gfx//interface//shogun//bl_more_dip_actions_icon_papacy.dds"
+		transparencecheck = yes
+	}
+}

@@ -1,0 +1,475 @@
+bl_mp_effect = { #月度脉冲增加东西在这里修改
+	###########御统值变量计算##########
+	1020 = { #把这个变量放在京都
+		event_target:zhengyidajiangjun = {
+			BL_shogun_remove_modifier = yes
+			every_subject_country = {
+				BL_shogun_remove_modifier = yes
+				every_subject_country = {
+					BL_shogun_remove_modifier = yes
+				}
+			}
+		}
+		set_variable = {
+			which = shogun_monthly_value #御统值月度变量
+			value = 0.00 #基础值0
+		}
+		#稳定影响因素
+		set_variable = {
+			which = shogun_monthly_value_1 #御统值月度变量第一个影响因素稳定
+			value = 0.00 #基础值0
+		}
+		set_variable = {
+			which = shogun_monthly_value_2 #御统值月度变量第一个影响因素城市---京都
+			value = 0.00 #基础值0
+		}
+		set_variable = {
+			which = shogun_monthly_value_3 #御统值月度变量第二个影响因素城市---筑前
+			value = 0.00 #基础值0
+		}
+		set_variable = {
+			which = shogun_monthly_value_4 #御统值月度变量第三个影响因素城市---伊予
+			value = 0.00 #基础值0
+		}
+		set_variable = {
+			which = shogun_monthly_value_5 #御统值月度变量第四个影响因素城市---武藏
+			value = 0.00 #基础值0
+		}
+		set_variable = {
+			which = shogun_monthly_value_6 #大名数量
+			value = 0.00 #基础值0
+		}
+		set_variable = {
+			which = shogun_monthly_value_7 #正统性
+			value = 0.00 #基础值0
+		}
+		set_variable = {
+			which = shogun_monthly_value_8 #整合度
+			value = 0.00#基础值0
+		}
+		multiply_variable = {
+			which = shogun_value_Profix
+			value = 0.01
+		}
+		#稳定因素影响
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					NOT = { stability = -2 }
+					stability = -3
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_1
+				value = -0.06
+			}
+		}
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					NOT = { stability = -1 }
+					stability = -2
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_1
+				value = -0.04
+			}
+		}
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					NOT = { stability = 0 }
+					stability = -1
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_1
+				value = -0.02
+			}
+		}
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					NOT = { stability = 2 }
+					stability = 1
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_1
+				value = 0.02
+			}
+		}
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					NOT = { stability = 3 }
+					stability = 2
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_1
+				value = 0.04
+			}
+		}
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					stability = 3
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_1
+				value = 0.06
+			}
+		}
+		#稳定影响因素
+
+		#城市因素影响
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						1020 = {
+							country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+						}
+						1020 = {
+							owner = {
+								OR = {
+									is_subject_of = event_target:zhengyidajiangjun
+									overlord = {
+										is_subject_of = event_target:zhengyidajiangjun
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_2 #御统值月度变量第一个影响因素城市---京都
+				value = -0.03 #基础值0
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						1818 = {
+							country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+						}
+						1818 = {
+							owner = {
+								OR = {
+									is_subject_of = event_target:zhengyidajiangjun
+									overlord = {
+										is_subject_of = event_target:zhengyidajiangjun
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_3 #御统值月度变量第二个影响因素城市---筑前
+				value = -0.03 #基础值0
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						4186 = {
+							country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+						}
+						4186 = {
+							owner = {
+								OR = {
+									is_subject_of = event_target:zhengyidajiangjun
+									overlord = {
+										is_subject_of = event_target:zhengyidajiangjun
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_4 #御统值月度变量第三个影响因素城市---伊予
+				value = -0.03 #基础值0
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						1028 = {
+							country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+						}
+						1028 = {
+							owner = {
+								OR = {
+									is_subject_of = event_target:zhengyidajiangjun
+									overlord = {
+										is_subject_of = event_target:zhengyidajiangjun
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_5 #御统值月度变量第四个影响因素城市---武藏
+				value = -0.03 #基础值0
+			}
+		}
+		#大名数量：把幕府链内的谱代、外样、陪臣都算进来。
+		every_country = {
+			limit = {
+				sort_of_mf = yes
+				NOT = { has_reform = shogunate }
+				OR = {
+					is_subject_of = event_target:zhengyidajiangjun
+					overlord = {
+						is_subject_of = event_target:zhengyidajiangjun
+					}
+				}
+			}
+			1020 = {
+				change_variable = {
+					which = shogun_monthly_value_6 #大名数量
+					value = 0.01 #基础值0
+				}
+			}
+		}
+		1020 = {
+			if = {
+				limit = {
+					check_variable = {
+						which = shogun_monthly_value_6
+						value = 0.2
+					}
+				}
+				set_variable = {
+					which = shogun_monthly_value_6 #大名数量
+					value = 0.2 #封顶值
+				}
+			}
+		}
+		##########正统性
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					legitimacy_equivalent = 90
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_7 #正统性
+				value = 0.02 
+			}
+		}
+		if = {
+			limit = {
+				event_target:zhengyidajiangjun = {
+					NOT = { legitimacy_equivalent = 50 }
+				}
+			}
+			change_variable = {
+				which = shogun_monthly_value_7 #正统性
+				value = -0.05 
+			}
+		}
+		#########整合度
+		japan_region = {
+			limit = {
+				NOT = {
+					OR = {
+						country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+						owner = {
+							OR = {
+								is_subject_of = event_target:zhengyidajiangjun
+								overlord = {
+									is_subject_of = event_target:zhengyidajiangjun
+								}
+							}
+						}
+					}
+				}
+			}
+			1020 = {
+				change_variable = {
+					which = shogun_monthly_value_8 #整合度
+					value = -0.01
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_country = {
+					sort_of_mf = yes
+					NOT = { has_reform = shogunate }
+					OR = {
+						is_subject_of = event_target:zhengyidajiangjun
+						overlord = {
+							is_subject_of = event_target:zhengyidajiangjun
+						}
+					}
+					is_at_war = yes
+				}
+			}
+			# 只要有大名在打仗，整合度就下滑。
+			change_variable = {
+				which = shogun_monthly_value_8 #整合度
+				value = -0.10
+			}
+		}
+		else = {
+			# 所有大名都处于和平时，整合度回升。
+			change_variable = {
+				which = shogun_monthly_value_8 #整合度
+				value = 0.10
+			}
+		}
+		######归纳
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_1
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_2
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_3
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_4
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_5
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_6
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_7
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_8
+		}
+		change_variable = { #将御统月度增长值加入小数中
+			which = shogun_value_Profix
+			which = shogun_monthly_value
+		}
+		multiply_variable = { #小数需乘以100，才能把小数转化为整数
+			which = shogun_value_Profix
+			value = 100
+		}
+		#这是一个退位代码
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = shogun_value_Profix
+						value = 0
+					}
+				}
+			}
+			change_variable = {
+				which = shogun_value
+				value = -1
+			}
+			change_variable = {
+				which = shogun_value_Profix
+				value = 100
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					which = shogun_value_Profix
+					value = 100
+				}
+			}
+			change_variable = {
+				which = shogun_value
+				value = 1
+			}
+			change_variable = {
+				which = shogun_value_Profix
+				value = -100
+			}
+		}
+		#这句可以不要，但是最好不要删，能跑就别动
+		else = {
+			change_variable = {
+				which = shogun_value
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = shogun_value
+					value = 100
+				}
+			}
+			set_variable = {
+				which = shogun_value
+				value = 100
+			}
+			set_variable = {
+				which = shogun_value_Profix
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = shogun_value
+						value = 0
+					}
+				}
+			}
+			set_variable = {
+				which = shogun_value
+				value = 0
+			}
+			set_variable = {
+				which = shogun_value_Profix
+				value = 0
+			}	
+		}
+		set_variable = {
+			which = shogun_value_display
+			which = shogun_value
+		}
+		set_variable = {
+			which = shogun_value_display_fraction
+			which = shogun_value_Profix
+		}
+		multiply_variable = {
+			which = shogun_value_display_fraction
+			value = 0.01
+		}
+		change_variable = {
+			which = shogun_value_display
+			which = shogun_value_display_fraction
+		}
+		BL_shogun_express_modifier = yes
+	}
+	event_target:zhengyidajiangjun = {
+		BL_shogun_give_modifier = yes
+	}
+	BL_shougun_weixin_modifier = yes #维新效果给予
+}

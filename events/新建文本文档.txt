@@ -1,0 +1,17 @@
+country_event = {#开发者模式
+    id = tm_kaifa_event.1
+    title = "tm_kaifa_event.1.NAME1"
+    desc = "tm_kaifa_event.1.DESC1"
+    picture = COUNTRY_COLLAPSE_eventPicture
+	hidden = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = tm_kaifazhe.1
+		#set_global_flag = eoc_vassalize_tributaries
+	}
+    option = {
+        name = "tm_kaifa_event.a"
+		
+	}
+}

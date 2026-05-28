@@ -1,0 +1,52 @@
+mf_sankin_kotai_began = {
+	state_maintenance_modifier = 1
+	development_cost = -0.2
+}
+mf_sankin_kotai_travel = {
+	state_maintenance_modifier = 0.5
+	global_unrest = -1
+}
+mf_sankin_kotai_refused = {
+	global_unrest = 2
+}
+mf_sankin_kotai_suspended = {
+	prestige = -0.5
+	global_unrest = 1
+}
+# 高统御下的大名攻城限制。
+mf_daimyo_authority_siege_restriction = {
+	siege_ability = -0.3
+}
+# 刀狩令：降低围城效率。
+mf_daimyo_siege_restriction = {
+	siege_ability = -0.3
+}
+mf_fudai_institution_isolation = {
+	global_institution_spread = -0.5
+}
+mf_tozama_foreign_institution_learning = {
+	global_institution_spread = 0.25
+}
+mf_subject_nation = {
+	global_tax_modifier = 0.2
+	land_maintenance_modifier = -0.15
+}
+mf_daimyo_nation = {
+	land_forcelimit	= -3
+	naval_forcelimit = -6
+}
+mf_daimyo_subject = {
+	reduced_liberty_desire = 5
+}
+mf_local_nationalism_against ={
+local_missionary_strength = -0.05
+trade_goods_size_modifier = -0.7
+local_unrest = 10
+}
+
+mf_unlawful_daimyo_land = {
+	local_manpower_modifier = -0.5
+	local_unrest = 10
+	local_tax_modifier = -0.33
+	local_autonomy = 0.5
+}

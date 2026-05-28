@@ -1,0 +1,255 @@
+########## AI 御令与虾夷处理 ##########
+mf_apply_xuanxiafengxing_effect = {
+	# 复位旧天皇家族目标
+	if = {
+		limit = { has_saved_global_event_target = tianhuang }
+		event_target:tianhuang = {
+			clr_country_flag = mf_tianhuang_target
+			clear_global_event_target = tianhuang
+		}
+	}
+	FROM = {
+		save_global_event_target_as = tianhuang
+		set_country_flag = mf_tianhuang_target
+	}
+	clr_country_flag = xuanxiafengxing_flag
+	set_country_flag = xuanxiafengxing_flag
+	mf_change_shogun_value = {
+		value = -10
+	}
+}
+
+mf_ai_apply_xuanxiafengxing_effect = {
+	# AI 选天皇目标
+	if = {
+		limit = { has_saved_global_event_target = tianhuang }
+		event_target:tianhuang = {
+			clr_country_flag = mf_tianhuang_target
+			clear_global_event_target = tianhuang
+		}
+	}
+	random_subject_country = {
+		limit = {
+			NOT = { has_country_flag = mf_xiayi_target }
+			NOT = { has_country_flag = mf_tianhuang_target }
+		}
+		save_global_event_target_as = tianhuang
+		set_country_flag = mf_tianhuang_target
+	}
+	clr_country_flag = xuanxiafengxing_flag
+	set_country_flag = xuanxiafengxing_flag
+	mf_change_shogun_value = {
+		value = -10
+	}
+}
+
+mf_apply_shouyexiayi_effect = {
+	# 复位旧虾夷目标并重新登记
+	if = {
+		limit = { has_saved_global_event_target = xiayi }
+		event_target:xiayi = {
+			clr_country_flag = mf_xiayi_target
+			clear_global_event_target = xiayi
+		}
+	}
+	FROM = {
+		save_global_event_target_as = xiayi
+		set_country_flag = mf_xiayi_target
+	}
+	mf_refresh_xiayi_campaign_effect = yes
+	clr_country_flag = shouyexiayi_flag
+	set_country_flag = shouyexiayi_flag
+}
+
+mf_ai_apply_shouyexiayi_effect = {
+	# AI 选虾夷目标
+	if = {
+		limit = { has_saved_global_event_target = xiayi }
+		event_target:xiayi = {
+			clr_country_flag = mf_xiayi_target
+			clear_global_event_target = xiayi
+		}
+	}
+	random_country = {
+		limit = {
+			NOT = { has_country_flag = mf_tianhuang_target }
+			NOT = { has_country_flag = mf_xiayi_target }
+			any_neighbor_country = {
+				OR = {
+					tag = event_target:zhengyidajiangjun
+					is_subject_of = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		save_global_event_target_as = xiayi
+		set_country_flag = mf_xiayi_target
+	}
+	clr_country_flag = shouyexiayi_flag
+	set_country_flag = shouyexiayi_flag
+	mf_refresh_xiayi_campaign_effect = yes
+}
+
+mf_apply_shogun_yuling_a = {
+	# 驱逐浪人
+	add_country_modifier = {
+		name = quzhulangren
+		duration = 3650
+	}
+	add_legitimacy = -20
+	every_subject_country = {
+		add_country_modifier = {
+			name = shogun_yuling_a
+			duration = 3650
+			hidden = yes
+		}
+	}
+	add_country_modifier = {
+		name = shogun_yuling_a
+		duration = 3650
+		hidden = yes
+	}
+}
+
+mf_apply_shogun_yuling_b = {
+	# 鍙傚嫟浜や唬寰′护锛氭妸骞曞簻鏈綋鍒囨崲鍒板弬鍕ょЗ搴忕姸鎬侊紝骞村害鍙傚嫟浜嬩欢閾剧户缁礋璐ｈ澶у悕鐨勫疄闄呮墽琛屻€?
+	add_legitimacy = -20
+	add_country_modifier = {
+		name = mf_sankin_kotai_began
+		duration = 3650
+	}
+	add_country_modifier = {
+		name = shogun_yuling_b
+		duration = 3650
+		hidden = yes
+	}
+}
+mf_apply_shogun_yuling_c = {
+	# 鍒€鐙╀护锛氬帇浣庤澶у悕鏀诲煄鏁堢巼锛岃€屼笉鏄洿鎺ョ姝㈡垬浜夈€?
+	add_legitimacy = -20
+	every_subject_country = {
+		add_country_modifier = {
+			name = mf_daimyo_siege_restriction
+			duration = 3650
+		}
+		every_subject_country = {
+			add_country_modifier = {
+				name = mf_daimyo_siege_restriction
+				duration = 3650
+			}
+		}
+	}
+	add_country_modifier = {
+		name = shogun_yuling_c
+		duration = 3650
+		hidden = yes
+	}
+}
+
+mf_apply_shogun_yuling_d = {
+	# 婵炴垶姊归崝鏇犵博閼哥數鈻曢柟閭﹀墴閻涙捇鏌ㄥ☉娆愮殤缂侇喒鈧秮瑙勬償閿涘嫧鍋撳畡閭﹀殫闁炽儱寮舵慨銏ゆ煏?
+	add_country_modifier = {
+		name = leshilezuo
+		duration = 3650
+	}
+	add_legitimacy = -20
+	add_country_modifier = {
+		name = shogun_yuling_d
+		duration = 3650
+		hidden = yes
+	}
+}
+
+mf_apply_shogun_yuling_e = {
+	# 闂佺绻樺褔宕鈧畷姘跺幢濞嗘鈧煡鏌ㄥ☉娆掑闁哥喐顨嗙粋宥団偓锝庝簽閳ь剙鍢查銉╁灳閸欏袘闂?
+	add_country_modifier = {
+		name = bingnongfenli
+		duration = 3650
+	}
+	add_legitimacy = -20
+	add_country_modifier = {
+		name = shogun_yuling_e
+		duration = 3650
+		hidden = yes
+	}
+}
+
+mf_refresh_tianhuang_target_effect = {
+	# ROOT 婵炴垶鎸搁幖顐ょ礊鐎ｎ喖绀堢€广儱鎳愰搴ㄥ箹鐎涙ê娈犻柍褜鍓欓崐鐣屸偓姘ュ灪瀵板嫰鍩￠崘鈺冩毈闁诲海顢婇崺鏍涘畝鍕€舵い鎾寸箞椤庢鏌熺€涙澧抽柛鏃€姘ㄧ划瀣嫚閼碱剦鍟傞柟鐓庣摠缁牏绱炵€ｎ剙瀵插ù鍏肩懅缁€澶愭煕閹烘挾鎳囬柛锝嗘倐瀵剚锛愭担铏圭厾闂佺儵鏅濋ˉ鎰閻楀牆绶炵憸宥夊箖閺囩喓鈻旀い鎾跺枎閻﹀綊鎮楃憴鍕惛闁?
+	if = {
+		limit = {
+			has_saved_global_event_target = tianhuang
+			event_target:tianhuang = {
+				exists = no
+			}
+		}
+		clear_global_event_target = tianhuang
+	}
+	if = {
+		limit = {
+			has_saved_global_event_target = tianhuang
+			event_target:tianhuang = {
+				exists = yes
+				NOT = { is_subject_of = ROOT }
+			}
+		}
+		event_target:tianhuang = {
+			clr_country_flag = mf_tianhuang_target
+		}
+		clear_global_event_target = tianhuang
+	}
+	if = {
+		limit = {
+			NOT = { has_saved_global_event_target = tianhuang }
+		}
+	# 闂佹儳绻戦崕鎶藉Φ濡ゅ懏鍎庢い鏃傛櫕閸ㄥジ鎮楀☉娅亜锕㈤鍫濈睄閻犱礁婀辩粈澶岀磽娴ｅ湱鎳冪紒鐘绘敱閹柨顭ㄩ埀顒傜箔瀹€鈧幏鐘电矙鐟併倓娴烽梺鍛婅壘缁夋挳宕哄☉銏犳濡绀侀ˇ鏌ユ煛閸愵厽纭剧紒鑸电〒閹峰濡搁妷顖滅濠殿喗蓱閺岋綁鍩€?
+	if = {
+			limit = {
+				NOT = { has_country_flag = mf_xiayi_target }
+			}
+			save_global_event_target_as = tianhuang
+			set_country_flag = mf_tianhuang_target
+		}
+	}
+}
+
+mf_refresh_xiayi_campaign_effect = {
+	# 重新刷新虾夷目标状态
+	if = {
+		limit = {
+			has_saved_global_event_target = xiayi
+			event_target:xiayi = {
+				exists = no
+			}
+		}
+		clear_global_event_target = xiayi
+	}
+	if = {
+		limit = {
+			has_saved_global_event_target = xiayi
+			event_target:xiayi = {
+				exists = yes
+				OR = {
+					tag = event_target:zhengyidajiangjun
+					is_subject_of = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		event_target:xiayi = {
+			if = {
+				limit = { is_subject_of = event_target:zhengyidajiangjun }
+				change_subject_type = {
+					subject_type = daimyo_vassal
+				}
+			}
+			mf_normalize_daimyo_first_layer_reform_effect = yes
+			clr_country_flag = mf_xiayi_target
+		}
+		clear_global_event_target = xiayi
+	}
+	if = {
+		limit = {
+			has_saved_global_event_target = xiayi
+		}
+		event_target:zhengyidajiangjun = { bl_shogun_refresh = yes }
+	}
+}

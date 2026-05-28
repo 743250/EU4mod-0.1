@@ -1,0 +1,153 @@
+on_startup = {
+	if = {
+		limit = {
+			has_reform = shogunate
+		}
+		mf_refresh_shogun_leader_target_effect = yes
+		save_global_event_target_as = zhengyidajiangjun
+		if = {
+			limit = {
+				NOT = { has_saved_global_event_target = tianhuang }
+			}
+			random_subject_country = {
+				save_global_event_target_as = tianhuang
+				set_country_flag = mf_tianhuang_target
+			}
+		}
+		mf_refresh_tianhuang_target_effect = yes
+		if = {
+			limit = {
+				NOT = { has_global_flag = mf_shogun_initialized }
+			}
+			1020 = {
+				set_variable = {
+					which = shogun_value
+					value = 50
+				}
+				set_variable = {
+					which = shogun_value_Profix
+					value = 0
+				}
+			}
+			bl_mp_effect = yes
+			1020 = {
+				set_variable = {
+					which = shogun_value
+					value = 50
+				}
+				set_variable = {
+					which = shogun_value_Profix
+					value = 0
+				}
+			}
+			set_global_flag = mf_shogun_initialized
+		}
+		mf_refresh_tianhuang_target_effect = yes
+		mf_promote_retainer_daimyos_to_shogunate_effect = yes
+		bl_shogun_refresh = yes
+	}
+}
+
+on_monthly_pulse = {
+	if = {
+		limit = {
+			has_reform = shogunate
+		}
+		mf_refresh_shogun_leader_target_effect = yes
+		mf_initialize_new_shogun_authority_effect = yes
+		save_global_event_target_as = zhengyidajiangjun
+		if = {
+			limit = {
+				NOT = { has_saved_global_event_target = tianhuang }
+			}
+			random_subject_country = {
+				save_global_event_target_as = tianhuang
+				set_country_flag = mf_tianhuang_target
+			}
+		}
+		mf_refresh_tianhuang_target_effect = yes
+	}
+	if = {
+		limit = {
+			tag = event_target:zhengyidajiangjun
+		}
+		bl_mp_effect = yes
+		bl_shogun_refresh = yes
+	}
+}
+
+on_siege_won_country = {
+	if = {
+		limit = {
+			has_saved_global_event_target = xiayi
+			ROOT = {
+				OR = {
+					tag = event_target:zhengyidajiangjun
+					is_subject_of = event_target:zhengyidajiangjun
+				}
+			}
+			FROM = {
+				owned_by = event_target:xiayi
+			}
+		}
+		random = {
+			chance = 20
+			FROM = {
+				add_core = ROOT
+			}
+		}
+	}
+}
+
+on_province_owner_change = {
+	if = {
+		limit = {
+			province_id = 1020
+		}
+		owner = {
+			country_event = {
+				id = mf_daimyo.14
+				days = 1
+			}
+		}
+	}
+}
+
+	on_yearly_pulse = {
+		if = {
+			limit = {
+				tag = event_target:zhengyidajiangjun
+				has_reform = shogunate
+			}
+			every_country = {
+				limit = {
+					sort_of_mf = yes
+					NOT = { has_reform = shogunate }
+				}
+				country_event = {
+					id = mf_daimyo.10
+				}
+			}
+		}
+}
+
+on_government_change = {
+	mf_refresh_shogun_leader_target_effect = yes
+	mf_initialize_new_shogun_authority_effect = yes
+	mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
+	mf_promote_retainer_daimyos_to_shogunate_effect = yes
+}
+
+on_reform_enacted = {
+	mf_refresh_shogun_leader_target_effect = yes
+	mf_initialize_new_shogun_authority_effect = yes
+	mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
+	mf_promote_retainer_daimyos_to_shogunate_effect = yes
+}
+
+on_reform_changed = {
+	mf_refresh_shogun_leader_target_effect = yes
+	mf_initialize_new_shogun_authority_effect = yes
+	mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
+	mf_promote_retainer_daimyos_to_shogunate_effect = yes
+}

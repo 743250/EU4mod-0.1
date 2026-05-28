@@ -1,0 +1,480 @@
+defined_text = {
+	name = Getshogun_monthly_value_PosNeg
+	random = no
+
+	text = {
+		localisation_key = positive_prefix
+		trigger = {
+			check_variable = {
+				which = shogun_monthly_value
+				value = 0.01
+			}
+		}
+	}
+	text = {
+		localisation_key = negative_prefix
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = shogun_monthly_value
+					value = 0
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			check_variable = {
+				which = shogun_monthly_value
+				value = 0
+			}
+			NOT = {
+				check_variable = {
+					which = shogun_monthly_value
+					value = -0.01
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getshogun_monthly_value_1_PosNeg
+	random = no
+
+	text = {
+		localisation_key = positive_prefix
+		trigger = {
+			check_variable = {
+				which = shogun_monthly_value_1
+				value = 0.01
+			}
+		}
+	}
+	text = {
+		localisation_key = negative_prefix
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = shogun_monthly_value_1
+					value = -0.01
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			NOT = {
+				OR = {
+					check_variable = {
+						which = shogun_monthly_value_1
+						value = 0.01
+					}
+					NOT = {
+						check_variable = {
+							which = shogun_monthly_value_1
+							value = -0.01
+						}
+					}
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getshogun_monthly_value_8_PosNeg
+	random = no
+
+	text = {
+		localisation_key = positive_prefix
+		trigger = {
+			check_variable = {
+				which = shogun_monthly_value_8
+				value = 0.01
+			}
+		}
+	}
+	text = {
+		localisation_key = negative_prefix
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = shogun_monthly_value_8
+					value = -0.01
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			NOT = {
+				OR = {
+					check_variable = {
+						which = shogun_monthly_value_8
+						value = 0.01
+					}
+					NOT = {
+						check_variable = {
+							which = shogun_monthly_value_8
+							value = -0.01
+						}
+					}
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getshogun_monthly_value_7_PosNeg
+	random = no
+
+	text = {
+		localisation_key = positive_prefix
+		trigger = {
+			check_variable = {
+				which = shogun_monthly_value_7
+				value = 0.01
+			}
+		}
+	}
+	text = {
+		localisation_key = negative_prefix
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = shogun_monthly_value_7
+					value = -0.01
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			NOT = {
+				OR = {
+					check_variable = {
+						which = shogun_monthly_value_7
+						value = 0.01
+					}
+					NOT = {
+						check_variable = {
+							which = shogun_monthly_value_7
+							value = -0.01
+						}
+					}
+				}
+			}
+		}
+	}
+	text = {
+		localisation_key = neutral_prefix
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getshogun_monthly_value_2_PosNeg
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				1020 = {
+					country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		localisation_key = Getshogun_monthly_value_2_PosNeg.tt
+	}
+
+	text = {
+		localisation_key = ""
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getshogun_monthly_value_3_PosNeg
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				1818 = {
+					country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		localisation_key = Getshogun_monthly_value_3_PosNeg.tt
+	}
+
+	text = {
+		localisation_key = ""
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getshogun_monthly_value_4_PosNeg
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				4186 = {
+					country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		localisation_key = Getshogun_monthly_value_4_PosNeg.tt
+	}
+
+	text = {
+		localisation_key = ""
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getshogun_monthly_value_5_PosNeg
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				1028 = {
+					country_or_non_sovereign_subject_holds = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		localisation_key = Getshogun_monthly_value_5_PosNeg.tt
+	}
+
+	text = {
+		localisation_key = ""
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+defined_text = {
+	name = Getshogun_value_Profix
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				1020 = {
+					check_variable = {
+						which = shogun_value_Profix
+						value = 10
+					}
+				}
+			}
+		}
+		localisation_key = Getshogun_value_Profix.a.tt
+	}
+
+	text = {
+		trigger = {
+			1020 = {
+				check_variable = {
+					which = shogun_value_Profix
+					value = 10
+				}
+			}
+		}
+		localisation_key = Getshogun_value_Profix.b.tt
+	}
+
+	text = {
+		trigger = {
+			always = yes
+		}
+		localisation_key = Getshogun_value_Profix.b.tt
+	}
+}
+defined_text = {
+	name = Getweixin_trigger
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+		}
+		localisation_key = Getweixin_trigger.a.tt
+	}
+
+	text = {
+		localisation_key = Getweixin_trigger.b.tt
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			has_global_flag = shogun_weixin.a_global_flag
+		}
+	}
+
+	#text = {
+	#	localisation_key = Getweixin_trigger.c.tt
+	#	trigger = {
+	#		has_global_flag = shogun_weixin.a_global_flag
+	#	}
+	#}
+	text = {
+		localisation_key = Getweixin_trigger.d.tt
+		trigger = {
+			always = yes
+		}
+	}
+}
+defined_text = {
+	name = Getjiangjun_trigger
+	random = no
+	
+	text = {
+		trigger = {
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+		localisation_key = ""
+	}
+
+	text = {
+		trigger = {
+			NOT = {
+				ROOT = {
+					tag = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		localisation_key = Getjiangjun_trigger.a.tt
+	}
+}
+defined_text = {
+	name = Getshogun_express_modifier
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = shogun_value
+					value = 50
+				}
+			}
+		}
+		localisation_key = Getshogun_express_modifier.a.tt
+	}
+
+	text = {
+		trigger = {
+			check_variable = {
+				which = shogun_value
+				value = 51
+			}
+		}
+		localisation_key = Getshogun_express_modifier.b.tt
+	}
+}
+defined_text = {
+	name = Getshogun_jinzhongbingong_dip
+	random = no
+	
+	text = {
+		trigger = {
+			has_global_flag = shogun_weixin.d_global_flag
+		}
+		localisation_key = Getshogun_jinzhongbingong_dip.tt
+	}
+
+	text = {
+		trigger = {
+			always = yes
+		}
+		localisation_key = ""
+	}
+}
+defined_text = {
+	name = Get_shogun_yuling_cd_trigger
+	random = no
+	
+	text = {
+		trigger = {
+			event_target:zhengyidajiangjun = {
+				OR = {
+					has_country_modifier = shogun_yuling_a
+					has_country_modifier = shogun_yuling_b
+					has_country_modifier = shogun_yuling_c
+					has_country_modifier = shogun_yuling_d
+					has_country_modifier = shogun_yuling_e
+				}
+			}
+		}
+		localisation_key = Get_shogun_yuling_cd_trigger.a.tt
+	}
+
+	text = {
+		trigger = {
+			always = yes
+		}
+		localisation_key = ""
+	}
+}
+defined_text = {
+	name = Get_shogun_yuling_jiangjun
+	random = no
+	
+	text = {
+		trigger = {
+			NOT = {
+				ROOT = {
+					tag = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		localisation_key = Get_shogun_yuling_jiangjun.a.tt
+	}
+
+	text = {
+		trigger = {
+			always = yes
+		}
+		localisation_key = ""
+	}
+}

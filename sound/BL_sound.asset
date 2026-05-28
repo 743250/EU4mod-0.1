@@ -1,0 +1,4 @@
+sound = {
+	name = shogun
+	file = "shogun.wav"
+}

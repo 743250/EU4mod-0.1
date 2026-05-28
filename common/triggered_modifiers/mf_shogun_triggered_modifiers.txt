@@ -1,0 +1,25 @@
+mf_xiayi_campaign_modifier = {
+	potential = {
+		OR = {
+			has_reform = shogunate
+			sort_of_mf = yes
+		}
+	}
+
+	trigger = {
+		has_saved_global_event_target = xiayi
+		event_target:xiayi = {
+			exists = yes
+			has_country_flag = mf_xiayi_target
+		}
+		OR = {
+			tag = event_target:zhengyidajiangjun
+			is_subject_of = event_target:zhengyidajiangjun
+			overlord = {
+				is_subject_of = event_target:zhengyidajiangjun
+			}
+		}
+	}
+
+	land_morale = 0.10
+}

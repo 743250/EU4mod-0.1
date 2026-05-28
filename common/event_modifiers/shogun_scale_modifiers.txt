@@ -1,0 +1,906 @@
+shogun_scale_modifier_0 = {
+    reduced_liberty_desire = -50
+    vassal_forcelimit_bonus = -0.50
+    global_tax_modifier =-0.50
+    land_morale = -0.20
+    global_unrest = 5.00
+    merc_maintenance_modifier = 1.00
+    legitimacy = -2
+}
+shogun_scale_modifier_1 = {
+    reduced_liberty_desire = -49
+    vassal_forcelimit_bonus = -0.49
+    global_tax_modifier =-0.49
+    land_morale = -0.196
+    global_unrest = 4.900
+    merc_maintenance_modifier = 0.98
+    legitimacy = -2
+}
+
+shogun_scale_modifier_2 = {
+    reduced_liberty_desire = -48
+    vassal_forcelimit_bonus = -0.48
+    global_tax_modifier =-0.48
+    land_morale = -0.192
+    global_unrest = 4.800
+    merc_maintenance_modifier = 0.96
+    legitimacy = -2
+}
+
+shogun_scale_modifier_3 = {
+    reduced_liberty_desire = -47
+    vassal_forcelimit_bonus = -0.47
+    global_tax_modifier =-0.47
+    land_morale = -0.188
+    global_unrest = 4.700
+    merc_maintenance_modifier = 0.94
+    legitimacy = -2
+}
+
+shogun_scale_modifier_4 = {
+    reduced_liberty_desire = -46
+    vassal_forcelimit_bonus = -0.46
+    global_tax_modifier =-0.46
+    land_morale = -0.184
+    global_unrest = 4.600
+    merc_maintenance_modifier = 0.92
+    legitimacy = -2
+}
+
+shogun_scale_modifier_5 = {
+    reduced_liberty_desire = -45
+    vassal_forcelimit_bonus = -0.45
+    global_tax_modifier =-0.45
+    land_morale = -0.180
+    global_unrest = 4.500
+    merc_maintenance_modifier = 0.90
+    legitimacy = -2
+}
+
+shogun_scale_modifier_6 = {
+    reduced_liberty_desire = -44
+    vassal_forcelimit_bonus = -0.44
+    global_tax_modifier =-0.44
+    land_morale = -0.176
+    global_unrest = 4.400
+    merc_maintenance_modifier = 0.88
+    legitimacy = -2
+}
+
+shogun_scale_modifier_7 = {
+    reduced_liberty_desire = -43
+    vassal_forcelimit_bonus = -0.43
+    global_tax_modifier =-0.43
+    land_morale = -0.172
+    global_unrest = 4.300
+    merc_maintenance_modifier = 0.86
+    legitimacy = -2
+}
+
+shogun_scale_modifier_8 = {
+    reduced_liberty_desire = -42
+    vassal_forcelimit_bonus = -0.42
+    global_tax_modifier =-0.42
+    land_morale = -0.168
+    global_unrest = 4.200
+    merc_maintenance_modifier = 0.84
+    legitimacy = -2
+}
+
+shogun_scale_modifier_9 = {
+    reduced_liberty_desire = -41
+    vassal_forcelimit_bonus = -0.41
+    global_tax_modifier =-0.41
+    land_morale = -0.164
+    global_unrest = 4.100
+    merc_maintenance_modifier = 0.82
+    legitimacy = -2
+}
+
+shogun_scale_modifier_10 = {
+    reduced_liberty_desire = -40
+    vassal_forcelimit_bonus = -0.40
+    global_tax_modifier =-0.40
+    land_morale = -0.160
+    global_unrest = 4.000
+    merc_maintenance_modifier = 0.80
+    legitimacy = -2
+}
+
+shogun_scale_modifier_11 = {
+    reduced_liberty_desire = -39
+    vassal_forcelimit_bonus = -0.39
+    global_tax_modifier =-0.39
+    land_morale = -0.156
+    global_unrest = 3.900
+    merc_maintenance_modifier = 0.78
+    legitimacy = -2
+}
+
+shogun_scale_modifier_12 = {
+    reduced_liberty_desire = -38
+    vassal_forcelimit_bonus = -0.38
+    global_tax_modifier =-0.38
+    land_morale = -0.152
+    global_unrest = 3.800
+    merc_maintenance_modifier = 0.76
+    legitimacy = -2
+}
+
+shogun_scale_modifier_13 = {
+    reduced_liberty_desire = -37
+    vassal_forcelimit_bonus = -0.37
+    global_tax_modifier =-0.37
+    land_morale = -0.148
+    global_unrest = 3.700
+    merc_maintenance_modifier = 0.74
+    legitimacy = -2
+}
+
+shogun_scale_modifier_14 = {
+    reduced_liberty_desire = -36
+    vassal_forcelimit_bonus = -0.36
+    global_tax_modifier =-0.36
+    land_morale = -0.144
+    global_unrest = 3.600
+    merc_maintenance_modifier = 0.72
+    legitimacy = -2
+}
+
+shogun_scale_modifier_15 = {
+    reduced_liberty_desire = -35
+    vassal_forcelimit_bonus = -0.35
+    global_tax_modifier =-0.35
+    land_morale = -0.140
+    global_unrest = 3.500
+    merc_maintenance_modifier = 0.70
+    legitimacy = -2
+}
+
+shogun_scale_modifier_16 = {
+    reduced_liberty_desire = -34
+    vassal_forcelimit_bonus = -0.34
+    global_tax_modifier =-0.34
+    land_morale = -0.136
+    global_unrest = 3.400
+    merc_maintenance_modifier = 0.68
+    legitimacy = -2
+}
+
+shogun_scale_modifier_17 = {
+    reduced_liberty_desire = -33
+    vassal_forcelimit_bonus = -0.33
+    global_tax_modifier =-0.33
+    land_morale = -0.132
+    global_unrest = 3.300
+    merc_maintenance_modifier = 0.66
+    legitimacy = -2
+}
+
+shogun_scale_modifier_18 = {
+    reduced_liberty_desire = -32
+    vassal_forcelimit_bonus = -0.32
+    global_tax_modifier =-0.32
+    land_morale = -0.128
+    global_unrest = 3.200
+    merc_maintenance_modifier = 0.64
+    legitimacy = -2
+}
+
+shogun_scale_modifier_19 = {
+    reduced_liberty_desire = -31
+    vassal_forcelimit_bonus = -0.31
+    global_tax_modifier =-0.31
+    land_morale = -0.124
+    global_unrest = 3.100
+    merc_maintenance_modifier = 0.62
+    legitimacy = -2
+}
+
+shogun_scale_modifier_20 = {
+    reduced_liberty_desire = -30
+    vassal_forcelimit_bonus = -0.30
+    global_tax_modifier =-0.30
+    land_morale = -0.120
+    global_unrest = 3.000
+    merc_maintenance_modifier = 0.60
+    legitimacy = -2
+}
+
+shogun_scale_modifier_21 = {
+    reduced_liberty_desire = -29
+    vassal_forcelimit_bonus = -0.29
+    global_tax_modifier =-0.29
+    land_morale = -0.116
+    global_unrest = 2.900
+    merc_maintenance_modifier = 0.58
+    legitimacy = -2
+}
+
+shogun_scale_modifier_22 = {
+    reduced_liberty_desire = -28
+    vassal_forcelimit_bonus = -0.28
+    global_tax_modifier =-0.28
+    land_morale = -0.112
+    global_unrest = 2.800
+    merc_maintenance_modifier = 0.56
+    legitimacy = -2
+}
+
+shogun_scale_modifier_23 = {
+    reduced_liberty_desire = -27
+    vassal_forcelimit_bonus = -0.27
+    global_tax_modifier =-0.27
+    land_morale = -0.108
+    global_unrest = 2.700
+    merc_maintenance_modifier = 0.54
+    legitimacy = -2
+}
+
+shogun_scale_modifier_24 = {
+    reduced_liberty_desire = -26
+    vassal_forcelimit_bonus = -0.26
+    global_tax_modifier =-0.26
+    land_morale = -0.104
+    global_unrest = 2.600
+    merc_maintenance_modifier = 0.52
+    legitimacy = -2
+}
+
+shogun_scale_modifier_25 = {
+    reduced_liberty_desire = -25
+    vassal_forcelimit_bonus = -0.25
+    global_tax_modifier =-0.25
+    land_morale = -0.100
+    global_unrest = 2.500
+    merc_maintenance_modifier = 0.50
+    legitimacy = -2
+}
+
+shogun_scale_modifier_26 = {
+    reduced_liberty_desire = -24
+    vassal_forcelimit_bonus = -0.24
+    global_tax_modifier =-0.24
+    land_morale = -0.096
+    global_unrest = 2.400
+    merc_maintenance_modifier = 0.48
+    legitimacy = -2
+}
+
+shogun_scale_modifier_27 = {
+    reduced_liberty_desire = -23
+    vassal_forcelimit_bonus = -0.23
+    global_tax_modifier =-0.23
+    land_morale = -0.092
+    global_unrest = 2.300
+    merc_maintenance_modifier = 0.46
+    legitimacy = -2
+}
+
+shogun_scale_modifier_28 = {
+    reduced_liberty_desire = -22
+    vassal_forcelimit_bonus = -0.22
+    global_tax_modifier =-0.22
+    land_morale = -0.088
+    global_unrest = 2.200
+    merc_maintenance_modifier = 0.44
+    legitimacy = -2
+}
+
+shogun_scale_modifier_29 = {
+    reduced_liberty_desire = -21
+    vassal_forcelimit_bonus = -0.21
+    global_tax_modifier =-0.21
+    land_morale = -0.084
+    global_unrest = 2.100
+    merc_maintenance_modifier = 0.42
+    legitimacy = -2
+}
+
+shogun_scale_modifier_30 = {
+    reduced_liberty_desire = -20
+    vassal_forcelimit_bonus = -0.20
+    global_tax_modifier =-0.20
+    land_morale = -0.080
+    global_unrest = 2.000
+    merc_maintenance_modifier = 0.40
+    legitimacy = -2
+}
+
+shogun_scale_modifier_31 = {
+    reduced_liberty_desire = -19
+    vassal_forcelimit_bonus = -0.19
+    global_tax_modifier =-0.19
+    land_morale = -0.076
+    global_unrest = 1.900
+    merc_maintenance_modifier = 0.38
+    legitimacy = -2
+}
+
+shogun_scale_modifier_32 = {
+    reduced_liberty_desire = -18
+    vassal_forcelimit_bonus = -0.18
+    global_tax_modifier =-0.18
+    land_morale = -0.072
+    global_unrest = 1.800
+    merc_maintenance_modifier = 0.36
+    legitimacy = -2
+}
+
+shogun_scale_modifier_33 = {
+    reduced_liberty_desire = -17
+    vassal_forcelimit_bonus = -0.17
+    global_tax_modifier =-0.17
+    land_morale = -0.068
+    global_unrest = 1.700
+    merc_maintenance_modifier = 0.34
+    legitimacy = -2
+}
+
+shogun_scale_modifier_34 = {
+    reduced_liberty_desire = -16
+    vassal_forcelimit_bonus = -0.16
+    global_tax_modifier =-0.16
+    land_morale = -0.064
+    global_unrest = 1.600
+    merc_maintenance_modifier = 0.32
+    legitimacy = -2
+}
+
+shogun_scale_modifier_35 = {
+    reduced_liberty_desire = -15
+    vassal_forcelimit_bonus = -0.15
+    global_tax_modifier =-0.15
+    land_morale = -0.060
+    global_unrest = 1.500
+    merc_maintenance_modifier = 0.30
+    legitimacy = -2
+}
+
+shogun_scale_modifier_36 = {
+    reduced_liberty_desire = -14
+    vassal_forcelimit_bonus = -0.14
+    global_tax_modifier =-0.14
+    land_morale = -0.056
+    global_unrest = 1.400
+    merc_maintenance_modifier = 0.28
+    legitimacy = -2
+}
+
+shogun_scale_modifier_37 = {
+    reduced_liberty_desire = -13
+    vassal_forcelimit_bonus = -0.13
+    global_tax_modifier =-0.13
+    land_morale = -0.052
+    global_unrest = 1.300
+    merc_maintenance_modifier = 0.26
+    legitimacy = -2
+}
+
+shogun_scale_modifier_38 = {
+    reduced_liberty_desire = -12
+    vassal_forcelimit_bonus = -0.12
+    global_tax_modifier =-0.12
+    land_morale = -0.048
+    global_unrest = 1.200
+    merc_maintenance_modifier = 0.24
+    legitimacy = -2
+}
+
+shogun_scale_modifier_39 = {
+    reduced_liberty_desire = -11
+    vassal_forcelimit_bonus = -0.11
+    global_tax_modifier =-0.11
+    land_morale = -0.044
+    global_unrest = 1.100
+    merc_maintenance_modifier = 0.22
+    legitimacy = -2
+}
+
+shogun_scale_modifier_40 = {
+    reduced_liberty_desire = -10
+    vassal_forcelimit_bonus = -0.10
+    global_tax_modifier =-0.10
+    land_morale = -0.040
+    global_unrest = 1.000
+    merc_maintenance_modifier = 0.20
+    legitimacy = -2
+}
+
+shogun_scale_modifier_41 = {
+    reduced_liberty_desire = -9
+    vassal_forcelimit_bonus = -0.09
+    global_tax_modifier =-0.09
+    land_morale = -0.036
+    global_unrest = 0.900
+    merc_maintenance_modifier = 0.18
+    legitimacy = -2
+}
+
+shogun_scale_modifier_42 = {
+    reduced_liberty_desire = -8
+    vassal_forcelimit_bonus = -0.08
+    global_tax_modifier =-0.08
+    land_morale = -0.032
+    global_unrest = 0.800
+    merc_maintenance_modifier = 0.16
+    legitimacy = -2
+}
+
+shogun_scale_modifier_43 = {
+    reduced_liberty_desire = -7
+    vassal_forcelimit_bonus = -0.07
+    global_tax_modifier =-0.07
+    land_morale = -0.028
+    global_unrest = 0.700
+    merc_maintenance_modifier = 0.14
+    legitimacy = -2
+}
+
+shogun_scale_modifier_44 = {
+    reduced_liberty_desire = -6
+    vassal_forcelimit_bonus = -0.06
+    global_tax_modifier =-0.06
+    land_morale = -0.024
+    global_unrest = 0.600
+    merc_maintenance_modifier = 0.12
+    legitimacy = -2
+}
+
+shogun_scale_modifier_45 = {
+    reduced_liberty_desire = -5
+    vassal_forcelimit_bonus = -0.05
+    global_tax_modifier =-0.05
+    land_morale = -0.020
+    global_unrest = 0.500
+    merc_maintenance_modifier = 0.10
+    legitimacy = -2
+}
+
+shogun_scale_modifier_46 = {
+    reduced_liberty_desire = -4
+    vassal_forcelimit_bonus = -0.04
+    global_tax_modifier =-0.04
+    land_morale = -0.016
+    global_unrest = 0.400
+    merc_maintenance_modifier = 0.08
+    legitimacy = -2
+}
+
+shogun_scale_modifier_47 = {
+    reduced_liberty_desire = -3
+    vassal_forcelimit_bonus = -0.03
+    global_tax_modifier =-0.03
+    land_morale = -0.012
+    global_unrest = 0.300
+    merc_maintenance_modifier = 0.06
+    legitimacy = -2
+}
+
+shogun_scale_modifier_48 = {
+    reduced_liberty_desire = -2
+    vassal_forcelimit_bonus = -0.02
+    global_tax_modifier =-0.02
+    land_morale = -0.008
+    global_unrest = 0.200
+    merc_maintenance_modifier = 0.04
+    legitimacy = -2
+}
+
+shogun_scale_modifier_49 = {
+    reduced_liberty_desire = -1
+    vassal_forcelimit_bonus = -0.01
+    global_tax_modifier =-0.01
+    land_morale = -0.004
+    global_unrest = 0.100
+    merc_maintenance_modifier = 0.02
+    legitimacy = -2
+}
+
+shogun_scale_modifier_50 = {
+    reduced_liberty_desire = 0
+    vassal_forcelimit_bonus = 0.00
+    global_tax_modifier =0.00
+    land_morale = 0.000
+    global_unrest = 0.000
+    merc_maintenance_modifier = 0.00
+}
+shogun_scale_modifier_51 = {
+    legitimacy = 1
+    global_unrest = -0.05
+    vassal_forcelimit_bonus = 0.004
+    global_tax_modifier =0.004
+    province_warscore_cost = -0.004
+}
+
+shogun_scale_modifier_52 = {
+    legitimacy = 1
+    global_unrest = -0.1
+    vassal_forcelimit_bonus = 0.008
+    global_tax_modifier =0.008
+    province_warscore_cost = -0.008
+}
+
+shogun_scale_modifier_53 = {
+    legitimacy = 1
+    global_unrest = -0.150
+    vassal_forcelimit_bonus = 0.012
+    global_tax_modifier =0.012
+    province_warscore_cost = -0.012
+}
+
+shogun_scale_modifier_54 = {
+    legitimacy = 1
+    global_unrest = -0.2
+    vassal_forcelimit_bonus = 0.016
+    global_tax_modifier =0.016
+    province_warscore_cost = -0.016
+}
+
+shogun_scale_modifier_55 = {
+    legitimacy = 1
+    global_unrest = -0.25
+    vassal_forcelimit_bonus = 0.02
+    global_tax_modifier =0.02
+    province_warscore_cost = -0.02
+}
+
+shogun_scale_modifier_56 = {
+    legitimacy = 1
+    global_unrest = -0.3
+    vassal_forcelimit_bonus = 0.024
+    global_tax_modifier =0.024
+    province_warscore_cost = -0.024
+}
+
+shogun_scale_modifier_57 = {
+    legitimacy = 1
+    global_unrest = -0.350
+    vassal_forcelimit_bonus = 0.028
+    global_tax_modifier =0.028
+    province_warscore_cost = -0.028
+}
+
+shogun_scale_modifier_58 = {
+    legitimacy = 1
+    global_unrest = -0.4
+    vassal_forcelimit_bonus = 0.032
+    global_tax_modifier =0.032
+    province_warscore_cost = -0.032
+}
+
+shogun_scale_modifier_59 = {
+    legitimacy = 1
+    global_unrest = -0.45
+    vassal_forcelimit_bonus = 0.0360
+    global_tax_modifier =0.0360
+    province_warscore_cost = -0.0360
+}
+
+shogun_scale_modifier_60 = {
+    legitimacy = 1
+    global_unrest = -0.5
+    vassal_forcelimit_bonus = 0.040
+    global_tax_modifier =0.040
+    province_warscore_cost = -0.040
+}
+
+shogun_scale_modifier_61 = {
+    legitimacy = 1
+    global_unrest = -0.55
+    vassal_forcelimit_bonus = 0.044
+    global_tax_modifier =0.044
+    province_warscore_cost = -0.044
+}
+
+shogun_scale_modifier_62 = {
+    legitimacy = 1
+    global_unrest = -0.60
+    vassal_forcelimit_bonus = 0.048
+    global_tax_modifier =0.048
+    province_warscore_cost = -0.048
+}
+
+shogun_scale_modifier_63 = {
+    legitimacy = 1
+    global_unrest = -0.65
+    vassal_forcelimit_bonus = 0.0520
+    global_tax_modifier =0.0520
+    province_warscore_cost = -0.0520
+}
+
+shogun_scale_modifier_64 = {
+    legitimacy = 1
+    global_unrest = -0.70
+    vassal_forcelimit_bonus = 0.056
+    global_tax_modifier =0.056
+    province_warscore_cost = -0.056
+}
+
+shogun_scale_modifier_65 = {
+    legitimacy = 1
+    global_unrest = -0.75
+    vassal_forcelimit_bonus = 0.06
+    global_tax_modifier =0.06
+    province_warscore_cost = -0.06
+}
+
+shogun_scale_modifier_66 = {
+    legitimacy = 1
+    global_unrest = -0.8
+    vassal_forcelimit_bonus = 0.064
+    global_tax_modifier =0.064
+    province_warscore_cost = -0.064
+}
+
+shogun_scale_modifier_67 = {
+    legitimacy = 1
+    global_unrest = -0.85
+    vassal_forcelimit_bonus = 0.068
+    global_tax_modifier =0.068
+    province_warscore_cost = -0.068
+}
+
+shogun_scale_modifier_68 = {
+    legitimacy = 1
+    global_unrest = -0.90
+    vassal_forcelimit_bonus = 0.072
+    global_tax_modifier =0.072
+    province_warscore_cost = -0.072
+}
+
+shogun_scale_modifier_69 = {
+    legitimacy = 1
+    global_unrest = -0.95
+    vassal_forcelimit_bonus = 0.076
+    global_tax_modifier =0.076
+    province_warscore_cost = -0.076
+}
+
+shogun_scale_modifier_70 = {
+    legitimacy = 1
+    global_unrest = -1.0
+    vassal_forcelimit_bonus = 0.08
+    global_tax_modifier =0.08
+    province_warscore_cost = -0.08
+}
+
+shogun_scale_modifier_71 = {
+    legitimacy = 1
+    global_unrest = -1.05
+    vassal_forcelimit_bonus = 0.084
+    global_tax_modifier =0.084
+    province_warscore_cost = -0.084
+}
+
+shogun_scale_modifier_72 = {
+    legitimacy = 1
+    global_unrest = -1.1
+    vassal_forcelimit_bonus = 0.088
+    global_tax_modifier =0.088
+    province_warscore_cost = -0.088
+}
+
+shogun_scale_modifier_73 = {
+    legitimacy = 1
+    global_unrest = -1.15
+    vassal_forcelimit_bonus = 0.092
+    global_tax_modifier =0.092
+    province_warscore_cost = -0.092
+}
+
+shogun_scale_modifier_74 = {
+    legitimacy = 1
+    global_unrest = -1.20
+    vassal_forcelimit_bonus = 0.096
+    global_tax_modifier =0.096
+    province_warscore_cost = -0.096
+}
+
+shogun_scale_modifier_75 = {
+    legitimacy = 1
+    global_unrest = -1.25
+    vassal_forcelimit_bonus = 0.1
+    global_tax_modifier =0.1
+    province_warscore_cost = -0.1
+}
+
+shogun_scale_modifier_76 = {
+    legitimacy = 1
+    global_unrest = -1.3
+    vassal_forcelimit_bonus = 0.104
+    global_tax_modifier =0.104
+    province_warscore_cost = -0.104
+}
+
+shogun_scale_modifier_77 = {
+    legitimacy = 1
+    global_unrest = -1.35
+    vassal_forcelimit_bonus = 0.108
+    global_tax_modifier =0.108
+    province_warscore_cost = -0.108
+}
+
+shogun_scale_modifier_78 = {
+    legitimacy = 1
+    global_unrest = -1.40
+    vassal_forcelimit_bonus = 0.112
+    global_tax_modifier =0.112
+    province_warscore_cost = -0.112
+}
+
+shogun_scale_modifier_79 = {
+    legitimacy = 1
+    global_unrest = -1.45
+    vassal_forcelimit_bonus = 0.116
+    global_tax_modifier =0.116
+    province_warscore_cost = -0.116
+}
+
+shogun_scale_modifier_80 = {
+    legitimacy = 1
+    global_unrest = -1.50
+    vassal_forcelimit_bonus = 0.120
+    global_tax_modifier =0.120
+    province_warscore_cost = -0.120
+}
+
+shogun_scale_modifier_81 = {
+    legitimacy = 1
+    global_unrest = -1.55
+    vassal_forcelimit_bonus = 0.124
+    global_tax_modifier =0.124
+    province_warscore_cost = -0.124
+}
+
+shogun_scale_modifier_82 = {
+    legitimacy = 1
+    global_unrest = -1.6
+    vassal_forcelimit_bonus = 0.128
+    global_tax_modifier =0.128
+    province_warscore_cost = -0.128
+}
+
+shogun_scale_modifier_83 = {
+    legitimacy = 1
+    global_unrest = -1.65
+    vassal_forcelimit_bonus = 0.132
+    global_tax_modifier =0.132
+    province_warscore_cost = -0.132
+}
+
+shogun_scale_modifier_84 = {
+    legitimacy = 1
+    global_unrest = -1.70
+    vassal_forcelimit_bonus = 0.136
+    global_tax_modifier =0.136
+    province_warscore_cost = -0.136
+}
+
+shogun_scale_modifier_85 = {
+    legitimacy = 1
+    global_unrest = -1.75
+    vassal_forcelimit_bonus = 0.14
+    global_tax_modifier =0.14
+    province_warscore_cost = -0.14
+}
+
+shogun_scale_modifier_86 = {
+    legitimacy = 1
+    global_unrest = -1.8
+    vassal_forcelimit_bonus = 0.144
+    global_tax_modifier =0.144
+    province_warscore_cost = -0.144
+}
+
+shogun_scale_modifier_87 = {
+    legitimacy = 1
+    global_unrest = -1.85
+    vassal_forcelimit_bonus = 0.148
+    global_tax_modifier =0.148
+    province_warscore_cost = -0.148
+}
+
+shogun_scale_modifier_88 = {
+    legitimacy = 1
+    global_unrest = -1.90
+    vassal_forcelimit_bonus = 0.152
+    global_tax_modifier =0.152
+    province_warscore_cost = -0.152
+}
+
+shogun_scale_modifier_89 = {
+    legitimacy = 1
+    global_unrest = -1.95
+    vassal_forcelimit_bonus = 0.156
+    global_tax_modifier =0.156
+    province_warscore_cost = -0.156
+}
+
+shogun_scale_modifier_90 = {
+    legitimacy = 1
+    global_unrest = -2.0
+    vassal_forcelimit_bonus = 0.16
+    global_tax_modifier =0.16
+    province_warscore_cost = -0.16
+}
+
+shogun_scale_modifier_91 = {
+    legitimacy = 1
+    global_unrest = -2.05
+    vassal_forcelimit_bonus = 0.164
+    global_tax_modifier =0.164
+    province_warscore_cost = -0.164
+}
+
+shogun_scale_modifier_92 = {
+    legitimacy = 1
+    global_unrest = -2.1
+    vassal_forcelimit_bonus = 0.168
+    global_tax_modifier =0.168
+    province_warscore_cost = -0.168
+}
+
+shogun_scale_modifier_93 = {
+    legitimacy = 1
+    global_unrest = -2.15
+    vassal_forcelimit_bonus = 0.172
+    global_tax_modifier =0.172
+    province_warscore_cost = -0.172
+}
+
+shogun_scale_modifier_94 = {
+    legitimacy = 1
+    global_unrest = -2.1999999999999997
+    vassal_forcelimit_bonus = 0.176
+    global_tax_modifier =0.176
+    province_warscore_cost = -0.176
+}
+
+shogun_scale_modifier_95 = {
+    legitimacy = 1
+    global_unrest = -2.25
+    vassal_forcelimit_bonus = 0.18
+    global_tax_modifier =0.18
+    province_warscore_cost = -0.18
+}
+
+shogun_scale_modifier_96 = {
+    legitimacy = 1
+    global_unrest = -2.3
+    vassal_forcelimit_bonus = 0.184
+    global_tax_modifier =0.184
+    province_warscore_cost = -0.184
+}
+
+shogun_scale_modifier_97 = {
+    legitimacy = 1
+    global_unrest = -2.35
+    vassal_forcelimit_bonus = 0.188
+    global_tax_modifier =0.188
+    province_warscore_cost = -0.188
+}
+
+shogun_scale_modifier_98 = {
+    legitimacy = 1
+    global_unrest = -2.4
+    vassal_forcelimit_bonus = 0.192
+    global_tax_modifier =0.192
+    province_warscore_cost = -0.192
+}
+
+shogun_scale_modifier_99 = {
+    legitimacy = 1
+    global_unrest = -2.45
+    vassal_forcelimit_bonus = 0.196
+    global_tax_modifier =0.196
+    province_warscore_cost = -0.196
+}
+
+shogun_scale_modifier_100 = {
+    legitimacy = 1
+    global_unrest = -2.5
+    vassal_forcelimit_bonus = 0.2
+    global_tax_modifier =0.2
+    province_warscore_cost = -0.2
+}

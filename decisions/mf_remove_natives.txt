@@ -1,0 +1,278 @@
+country_decisions = {
+	
+	yincang_yichutuzhu = { ###显示/隐藏移除土著决议
+		potential = {
+			has_country_flag = tm_kaifazhe.1
+		}
+		allow = { 
+					
+					}
+		major = yes
+		
+		effect = {
+			if = {
+				limit = {has_country_flag = yincangtuzhujveyi }
+				custom_tooltip = "yincangtuzhujveyi_close_t"
+				clr_country_flag = yincangtuzhujveyi
+			}
+			else = {
+				custom_tooltip = "yincangtuzhujveyi_open_t"
+				set_country_flag = yincangtuzhujveyi
+			}
+		}
+		ai_will_do = {
+			factor = 0
+			
+		}
+	}
+	
+	
+	
+	yichu_tuzhu = { ###移除土著，只包括1.31新加的恶心土著
+		potential = {
+			has_country_flag = yincangtuzhujveyi 
+		}
+		major = yes
+		allow = {
+				always = yes
+				#ai = no
+				}
+		effect = {
+			custom_tooltip = yichu_tuzhu_t
+			hidden_effect = {
+				every_country = {
+					limit = {
+							OR = {
+								government = native
+								AND = {
+									capital_scope = {
+										continent = oceania
+									}
+									technology_group = polynesian_tech
+								}
+							}
+							ai = yes
+							is_colonial_nation = no
+							NOT = {is_subject_of = root }
+						}
+					every_owned_province = {
+						cede_province = observer
+					}
+				}
+			}
+		}
+		ai_will_do = {factor = 0 }
+	}
+	
+	
+	yichu_meizhou_tuzhu = { #移除南北美洲全部土著
+		potential = {
+			has_country_flag = yincangtuzhujveyi 
+		}
+		major = yes
+		allow = {
+			always = yes
+			#ai = no 
+		}
+		effect = {
+			custom_tooltip = yichu_meizhou_tuzhu_t
+			hidden_effect = {
+				every_country = {
+					limit = {
+						capital_scope = {
+							OR = {
+								continent = south_america
+								continent = north_america
+								
+							}
+						}
+						ai = yes
+						is_colonial_nation = no
+						NOT = {is_subject_of = root }
+					}
+					every_owned_province = {
+						cede_province = observer
+					}
+				}
+			}
+		}
+		ai_will_do = {factor = 0 }
+	}
+	
+	yichu_aozhou_tuzhu = { #移除澳大利亚、大洋洲全部土著
+		potential = {
+			has_country_flag = yincangtuzhujveyi 	
+		}
+		major = yes
+		allow = {
+			always = yes
+			#ai = no 
+		}
+		effect = {
+			custom_tooltip = yichu_aozhou_tuzhu_t
+			hidden_effect = {
+				every_country = {
+					limit = {
+						capital_scope = {
+							OR = {
+								continent = oceania
+								continent = australia
+								superregion = africa_superregion
+								superregion = southern_africa_superregion
+							}
+							NOT = { region = maghreb_region }
+						}
+						ai = yes
+						is_colonial_nation = no
+						NOT = {is_subject_of = root }
+					}
+					every_owned_province = {
+						cede_province = observer
+					}
+				}
+			}
+		}
+		ai_will_do = {factor = 0 }
+	}
+	tianchao_shengfen_modifier = { #天朝省份发展度修正
+		potential = {	always = no
+				 has_country_flag = yincangtuzhujveyi 
+				NOT = { has_country_flag = fa_zhang_du_had_promote}
+		}
+		major = yes
+		allow = {
+			always = yes
+			#ai = no 
+		}
+		effect = {
+			custom_tooltip = yichu_tuzhu_t
+			hidden_effect = {
+				every_province = {
+					limit = {
+							superregion = china_superregion						
+						NOT = { has_province_modifier = tianchao_fazhangdu}
+							}	
+					add_base_manpower = 2
+					add_province_modifier = { name = tiaochao_fazhangdu duration = -1   hidden = yes }
+				}
+			}
+			set_country_flag = fa_zhang_du_had_promote
+		}
+		ai_will_do = {factor = 0 }
+	}
+	riben_shengfen_modifier = { #日本省份发展度修正
+		potential = {
+			has_country_flag = yincangtuzhujveyi 
+			always = no
+		}
+		major = yes
+		allow = {
+				
+				ai = no
+				}
+		effect = {
+			custom_tooltip = yichu_tuzhu_t
+			hidden_effect = {
+				every_province = {
+					limit = {
+						region = japan_region
+						NOT = { has_province_modifier = riben_fazhangdu}
+							}	
+					
+					add_base_tax = 2
+					add_base_production = 2
+					add_base_manpower = 2
+					add_province_modifier = { name = riben_fazhangdu duration = -1   hidden = yes }
+				}
+			}
+		}
+		ai_will_do = {factor = 0 }
+	}
+	yichu_quanbu_else_riben_luoma = { #移除日本(和罗马)外的所有国家
+		potential = {
+			has_country_flag = yincangtuzhujveyi 
+			always = no
+		}
+		major = yes
+		allow = {
+			ai = no
+		}
+		effect = {
+			custom_tooltip = yichu_tuzhu_t
+			hidden_effect = {
+				every_country = {
+					limit = {
+						NOT = {capital_scope = {
+						region = japan_region
+							}
+							owns = 118
+					}}
+					every_owned_province = {
+						cede_province = observer
+					}
+				}
+			}
+		}
+		ai_will_do = {factor = 0 }
+	}
+	yichu_quanbu_else_dongya_luoma = { #移除亚洲(和罗马)外的所有国家
+		potential = {
+			has_country_flag = yincangtuzhujveyi 
+		}
+		major = yes
+		allow = {
+			always = yes
+			#ai = no 
+		}
+		effect = {
+			custom_tooltip = yichu_tuzhu_t
+			hidden_effect = {
+				every_country = {
+					limit = {
+							capital_scope = {
+								#OR = {		superregion = china_superregion					
+								#		superregion = far_east_superregion
+								#		superregion = tartary_superregion
+								#		superregion = east_indies_superregion
+								#}
+								NOT = { continent = asia }
+								NOT = { owns = 118 }
+							}
+						}
+					every_owned_province = {
+						cede_province = observer
+					}
+				}
+			}
+		}
+		ai_will_do = {factor = 0 }
+	}
+	yichu_quanbu_else_zg = { #移除中国外的所有国家
+		potential = {
+			has_country_flag = yincangtuzhujveyi 
+		}
+		major = yes
+		allow = {
+			always = yes
+			#ai = no 
+		}
+		effect = {
+			custom_tooltip = yichu_tuzhu_t
+			hidden_effect = {
+				every_country = {
+					limit = {
+						NOT = {capital_scope = {
+						superregion = china_superregion					
+								}
+							
+							
+					}}
+					every_owned_province = {
+						cede_province = observer
+					}
+				}
+			}
+		}
+		ai_will_do = {factor = 0 }
+	}
+}

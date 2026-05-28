@@ -1,0 +1,54 @@
+country_decisions = {
+	mf_release_retainer_daimyo_from_land = {
+		major = yes
+		potential = {
+			OR = {
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+			}
+			overlord = {
+				has_reform = shogunate
+			}
+			mf_has_releasable_extinct_daimyo_land = yes
+		}
+		allow = {
+			is_at_war = no
+			mf_has_releasable_extinct_daimyo_land = yes
+		}
+		effect = {
+			hidden_effect = {
+				save_global_event_target_as = mf_release_retainer_daimyo_overlord
+				random_owned_province = {
+					limit = {
+						OR = {
+							region = japan_region
+							ROOT = { has_global_flag = shogun_weixin.f_global_flag }
+						}
+						any_core_country = {
+							exists = no
+						}
+					}
+					save_event_target_as = mf_release_retainer_daimyo_land_province
+					random_core_country = {
+						limit = {
+							exists = no
+						}
+						save_event_target_as = mf_release_retainer_daimyo_land_owner
+					}
+				}
+				event_target:mf_release_retainer_daimyo_land_province = {
+					cede_province = event_target:mf_release_retainer_daimyo_land_owner
+					province_event = {
+						id = mf_daimyo.13
+					}
+				}
+			}
+			mf_change_shogun_value = {
+				value = 2
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

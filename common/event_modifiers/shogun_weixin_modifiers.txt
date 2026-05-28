@@ -1,0 +1,44 @@
+feichuguanqia_1 = {
+	trade_efficiency = 0.05
+}
+feichuguanqia_2 = {
+	diplomats = 1
+}
+mulingjiandi = {
+	global_tax_modifier = 0.10
+	governing_capacity_modifier = 0.05
+}
+shenfentongzhi = {
+	legitimacy = 1
+	global_unrest = -1
+}
+jinzhongbinggong = {
+	diplomatic_reputation = 1
+}
+huobitongyi_1 = {
+	global_tax_income = 6
+}
+huobitongyi_2 = {
+	inflation_reduction = 0.1
+	administrative_efficiency = 0.025
+}
+wujiazhufa = {
+	can_transfer_vassal_wargoal = yes
+}
+nongbenshangmo = {
+	production_efficiency = 0.1
+	global_trade_goods_size_modifier = 0.1
+}
+jiujizhengshi_1 = {
+	global_manpower_modifier = 0.1
+}
+jiujizhengshi_2 = {
+	reduced_liberty_desire = 10
+}
+xuewentongzhi_1 = {
+	global_institution_spread = 0.5
+	embracement_cost = -0.2
+}
+xuewentongzhi_2 = {
+	technology_cost = -0.1
+}

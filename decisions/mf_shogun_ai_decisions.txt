@@ -1,0 +1,431 @@
+country_decisions = {
+
+	mf_ai_xuanxiafengxing = {##选天皇
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			has_global_flag = shogun_weixin.d_global_flag
+		}
+		allow = {
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 10
+				}
+			}
+			OR = {
+				had_country_flag = {
+					flag = xuanxiafengxing_flag
+					days = 3650
+				}
+				NOT = { has_country_flag = xuanxiafengxing_flag }
+			}
+			any_subject_country = {
+				NOT = { has_country_flag = mf_xiayi_target }
+				NOT = { has_country_flag = mf_tianhuang_target }
+			}
+		}
+		effect = {
+			mf_ai_apply_xuanxiafengxing_effect = yes
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	mf_ai_shouyexiayi = {##选虾夷
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+		}
+		allow = {
+			OR = {
+				has_global_flag = shogun_weixin.f_global_flag
+				OR = {
+					had_country_flag = {
+						flag = shouyexiayi_flag
+						days = 3650
+					}
+					NOT = { has_country_flag = shouyexiayi_flag }
+				}
+			}
+			any_country = {
+				NOT = { has_country_flag = mf_tianhuang_target }
+				NOT = { has_country_flag = mf_xiayi_target }
+				any_neighbor_country = {
+					OR = {
+						tag = event_target:zhengyidajiangjun
+						is_subject_of = event_target:zhengyidajiangjun
+					}
+				}
+			}
+		}
+		effect = {
+			mf_ai_apply_shouyexiayi_effect = yes
+		}
+		ai_will_do = {
+			factor = 15
+		}
+	}
+
+	########## AI 御令选择 ##########
+	# 御令一：驱逐浪人
+	mf_ai_shogun_yuling_a = {
+		major = no
+		potential = { ai = yes has_reform = shogunate tag = event_target:zhengyidajiangjun }
+		allow = { mf_can_issue_shogun_yuling = yes } 
+		effect = { mf_apply_shogun_yuling_a = yes } 
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 1.5
+				any_subject_country = {
+					liberty_desire = 50
+				}
+			}
+		}
+	}
+	# 御令二：参勤交代
+	mf_ai_shogun_yuling_b = {
+		major = no
+		potential = { ai = yes has_reform = shogunate tag = event_target:zhengyidajiangjun }
+		allow = { mf_can_issue_shogun_yuling = yes } 
+		effect = { mf_apply_shogun_yuling_b = yes } 
+		ai_will_do = {
+			factor = 60
+				modifier = {
+					factor = 2
+					any_subject_country = {
+						is_at_war = yes
+					}
+			}
+		}
+	}
+	# 御令三：刀狩令
+	mf_ai_shogun_yuling_c = {
+		major = no
+		potential = { ai = yes has_reform = shogunate tag = event_target:zhengyidajiangjun }
+		allow = { mf_can_issue_shogun_yuling = yes } 
+		effect = { mf_apply_shogun_yuling_c = yes } 
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				any_subject_country = {
+					is_at_war = yes
+				}
+			}
+		}
+	}
+	# 御令四：乐市乐座
+	mf_ai_shogun_yuling_d = {
+		major = no
+		potential = { ai = yes has_reform = shogunate tag = event_target:zhengyidajiangjun }
+		allow = { mf_can_issue_shogun_yuling = yes } 
+		effect = { mf_apply_shogun_yuling_d = yes } 
+		ai_will_do = {
+			factor = 18
+		}
+	}
+	# 御令五：兵农分离
+	mf_ai_shogun_yuling_e = {
+		major = no
+		potential = { ai = yes has_reform = shogunate tag = event_target:zhengyidajiangjun }
+		allow = { mf_can_issue_shogun_yuling = yes } 
+		effect = { mf_apply_shogun_yuling_e = yes } 
+		ai_will_do = {
+			factor = 16
+			modifier = {
+				factor = 2
+				NOT = { manpower_percentage = 0.5 }
+			}
+		}
+	}
+
+	########## AI 维新改革 ##########
+	# 维新一：废除关卡
+	mf_ai_shogun_weixin_a = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_unification_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.a_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			stability = 1
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_unification
+			set_global_flag = shogun_weixin.a_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 30
+		}
+	}
+	# 维新二：幕领检地
+	mf_ai_shogun_weixin_b = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_unification_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.b_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			stability = 1
+			event_target:zhengyidajiangjun = {
+				all_subject_country = {
+					NOT = { liberty_desire = 50 }
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_unification
+			set_global_flag = shogun_weixin.b_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 25
+		}
+	}
+	# 维新三：身份统制
+	mf_ai_shogun_weixin_c = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_order_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.c_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_order
+			set_global_flag = shogun_weixin.c_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 90
+		}
+	}
+	# 维新四：禁中并公
+	mf_ai_shogun_weixin_d = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_order_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.d_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_order
+			set_global_flag = shogun_weixin.d_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 60
+		}
+	}
+	# 维新五：货币统一
+	mf_ai_shogun_weixin_e = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_unification_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.e_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			stability = 1
+			treasury = 1000
+			event_target:zhengyidajiangjun = {
+				all_subject_country = {
+					NOT = { liberty_desire = 50 }
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_unification
+			set_global_flag = shogun_weixin.e_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 20
+		}
+	}
+	# 维新六：武家诸法
+	mf_ai_shogun_weixin_f = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_order_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.f_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			event_target:zhengyidajiangjun = {
+				all_subject_country = {
+					NOT = { liberty_desire = 50 }
+				}
+			}
+			calc_true_if = {
+				has_global_flag = shogun_weixin.a_global_flag
+				has_global_flag = shogun_weixin.b_global_flag
+				has_global_flag = shogun_weixin.c_global_flag
+				has_global_flag = shogun_weixin.d_global_flag
+				has_global_flag = shogun_weixin.e_global_flag
+				has_global_flag = shogun_weixin.f_global_flag
+				has_global_flag = shogun_weixin.g_global_flag
+				has_global_flag = shogun_weixin.h_global_flag
+				has_global_flag = shogun_weixin.i_global_flag
+				amount = 3
+			}
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_order
+			set_global_flag = shogun_weixin.f_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 3
+				any_subject_country = {
+					is_at_war = yes
+				}
+			}
+		}
+	}
+	# 维新七：农本商末
+	mf_ai_shogun_weixin_g = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_order_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.g_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_order
+			set_global_flag = shogun_weixin.g_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 30
+		}
+	}
+	# 维新八：救恤政施
+	mf_ai_shogun_weixin_h = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_order_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.h_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_order
+			set_global_flag = shogun_weixin.h_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 35
+		}
+	}
+	# 维新九：学问统制
+	mf_ai_shogun_weixin_i = {
+		major = no
+		potential = {
+			ai = yes
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			mf_can_choose_weixin_unification_route = yes
+		}
+		allow = {
+			NOT = { has_global_flag = shogun_weixin.i_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			stability = 1
+		}
+		effect = {
+			set_global_flag = mf_weixin_route_unification
+			set_global_flag = shogun_weixin.i_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+		ai_will_do = {
+			factor = 15
+		}
+	}
+}

@@ -1,0 +1,374 @@
+########## 幕府属国类型 ##########
+mf_daimyo_vassal = {}
+mf_retainer_daimyo_vassal = {}
+
+daimyo_vassal = { # 外样大名。
+	copy_from = vassal
+	count = vassal
+	is_potential_overlord = {
+		has_reform = shogunate
+	}
+	
+	has_power_projection = yes
+	takes_diplo_slot = no
+	gives_daimyo_bonuses = yes
+	gets_help_with_rebels = no
+	separatists_become_subjects = yes
+	allows_taking_land_without_independence = no
+	can_use_claims = no
+	can_have_subjects_of_other_types = yes
+	forms_trade_companies = no
+	can_concentrate_development = no
+	can_be_integrated = no # 不能被合并
+	can_be_annexed = no # 不能被吞并
+
+	trust_on_start = 0
+	
+	base_liberty_desire = 10.0 
+	military_focus = 1.2
+	liberty_desire_development_ratio = 0.65
+	liberty_desire_negative_prestige = 1
+
+	relative_power_class = 1
+	should_quit_wars_on_activation = yes
+
+	can_fight = {
+		same_overlord = daimyo_vassal
+		same_overlord = mf_daimyo_vassal
+	}
+	can_rival = {
+		same_overlord = daimyo_vassal
+	}
+	can_ally = {
+		same_overlord = daimyo_vassal
+	}
+	can_marry = {
+		same_overlord = daimyo_vassal
+	}
+	
+	# 幕府不能靠外交吞并来消灭大名，领土调整改走授予、没收、归还和重新分封。
+	scutage = no
+	grant_core_claim = yes
+	grant_province = yes
+	place_relative_on_throne = no
+	enforce_religion = no
+	enforce_culture = no
+	seize_territory = yes
+	# 保留符合幕府体系的内部治理动作。
+	force_seppuku = yes
+	contribute_to_capital = yes
+	conscript_general = yes
+	force_isolation = yes
+	return_land = yes
+	# 特殊幕府动作：体现战国大名体系的历史味道。
+	sword_hunt = yes
+	sankin_kotai = yes
+	expel_ronin = yes
+	
+	
+	modifier_overlord = clear 
+	modifier_subject = clear 
+	modifier_subject = {
+		modifier = mf_daimyo_nation
+	}
+	modifier_subject = {
+		modifier = tributary_state_behind_overlord_tech_adm
+		trigger = {
+			overlord = {
+				has_reform = shogunate
+			}
+			any_known_country = {
+				exists = yes
+				NOT = {
+					OR = {
+						has_reform = shogunate
+						has_reform = daimyo
+						has_reform = mf_daimyo
+						has_reform = indep_daimyo
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+						is_subject_of_type = mf_retainer_daimyo_vassal
+					}
+				}
+				ROOT = {
+					capital_scope = {
+						has_discovered = PREV
+					}
+					NOT = { adm_tech = PREV }
+				}
+				NOT = {
+					border_distance = {
+						who = ROOT
+						distance = 300
+					}
+				}
+			}
+		}
+	}
+	modifier_subject = {
+		modifier = tributary_state_behind_overlord_tech_dip
+		trigger = {
+			overlord = {
+				has_reform = shogunate
+			}
+			any_known_country = {
+				exists = yes
+				NOT = {
+					OR = {
+						has_reform = shogunate
+						has_reform = daimyo
+						has_reform = mf_daimyo
+						has_reform = indep_daimyo
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+						is_subject_of_type = mf_retainer_daimyo_vassal
+					}
+				}
+				ROOT = {
+					capital_scope = {
+						has_discovered = PREV
+					}
+					NOT = { dip_tech = PREV }
+				}
+				NOT = {
+					border_distance = {
+						who = ROOT
+						distance = 300
+					}
+				}
+			}
+		}
+	}
+	modifier_subject = {
+		modifier = tributary_state_behind_overlord_tech_mil
+		trigger = {
+			overlord = {
+				has_reform = shogunate
+			}
+			any_known_country = {
+				exists = yes
+				NOT = {
+					OR = {
+						has_reform = shogunate
+						has_reform = daimyo
+						has_reform = mf_daimyo
+						has_reform = indep_daimyo
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+						is_subject_of_type = mf_retainer_daimyo_vassal
+					}
+				}
+				ROOT = {
+					capital_scope = {
+						has_discovered = PREV
+					}
+					NOT = { mil_tech = PREV }
+				}
+				NOT = {
+					border_distance = {
+						who = ROOT
+						distance = 300
+					}
+				}
+			}
+		}
+	}
+	modifier_subject = {
+		modifier = mf_tozama_foreign_institution_learning
+		trigger = {
+			overlord = {
+				has_reform = shogunate
+			}
+			any_known_country = {
+				exists = yes
+				NOT = {
+					OR = {
+						has_reform = shogunate
+						has_reform = daimyo
+						has_reform = mf_daimyo
+						has_reform = indep_daimyo
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+						is_subject_of_type = mf_retainer_daimyo_vassal
+					}
+				}
+				ROOT = {
+					capital_scope = {
+						has_discovered = PREV
+					}
+				}
+				NOT = {
+					border_distance = {
+						who = ROOT
+						distance = 300
+					}
+				}
+				institution_difference = {
+					who = ROOT
+					value = 1
+				}
+			}
+		}
+	}
+	forcelimit_to_overlord = 0.1 # 普通大名给幕府提供基础陆军上限
+	naval_forcelimit_to_overlord = 0.1 # 普通大名给幕府提供基础海军上限
+	modifier_subject = {
+		modifier = mf_daimyo_authority_siege_restriction # 高统御限制大名攻城效率
+		trigger = {
+			overlord = {
+				has_reform = shogunate
+			}
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 50
+				}
+			}
+		}
+	}
+}
+
+mf_daimyo_vassal = { # 谱代大名
+	copy_from = daimyo_vassal
+	count = vassal
+	is_potential_overlord = {
+		has_reform = shogunate
+	}
+	
+	has_power_projection = no # 用独立倾向代替力量投射
+	gets_help_with_rebels = yes # 宗主帮助平叛
+	allows_taking_land_without_independence = no # 独立前不能获得省份
+	can_have_subjects_of_other_types = yes
+	can_be_annexed = no # 不能被吞并
+	can_be_integrated = no # 不能被合并
+	can_fight_independence_war = yes # 可以发起独立战争
+
+	overlord_enforce_peace_attacking = yes # 宗主可以强制和平
+	trust_on_start = 20 # 初始信任加成
+
+	pays_overlord = 1.2 # 谱代向幕府提供更高贡金
+	forcelimit_to_overlord = 0.15 # 谱代比普通大名提供更多陆军上限
+	naval_forcelimit_to_overlord = 0.15 # 谱代比普通大名提供更多海军上限
+	manpower_to_overlord = 0.5 # 谱代向幕府提供更多人力
+	base_liberty_desire = -10.0 # 基础独立倾向
+	military_focus = 1.5 # 军事倾向
+
+	relative_power_class = 1 # 独立考虑所有谱代大名
+	should_quit_wars_on_activation = yes
+
+	can_fight = {
+		same_overlord = daimyo_vassal
+		same_overlord = mf_daimyo_vassal
+	}
+	can_rival = {
+		same_overlord = daimyo_vassal
+	}
+	can_ally = {
+		same_overlord = daimyo_vassal
+		same_overlord = mf_daimyo_vassal
+	}
+	can_marry = {
+		same_overlord = daimyo_vassal
+		same_overlord = mf_daimyo_vassal
+	}
+	
+	
+	scutage = no
+	place_relative_on_throne = no
+	enforce_religion = no
+	enforce_culture = no
+	seize_territory = yes
+
+	force_seppuku = yes
+	contribute_to_capital = yes
+	conscript_general = yes
+	force_isolation = yes
+	return_land = yes
+	grant_core_claim = yes
+	grant_province = yes
+	send_officers = yes # 派遣军官
+
+	sword_hunt = yes
+	sankin_kotai = yes
+	expel_ronin = yes
+	annex_cost_per_development = 4.0
+
+	modifier_overlord = clear 
+	modifier_subject = clear 
+	modifier_subject = {
+		modifier = mf_subject_nation
+	}
+	modifier_subject = {
+		modifier = mf_fudai_institution_isolation
+	}
+	modifier_subject = {
+		modifier = mf_daimyo_authority_siege_restriction
+		trigger = {
+			overlord = {
+				has_reform = shogunate
+			}
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 50
+				}
+			}
+		}
+	}
+	modifier_overlord = {
+		modifier = mf_daimyo_subject 	# 谱代使用亲幕府修正
+	}
+}
+
+mf_retainer_daimyo_vassal = { # 陪臣大名
+	copy_from = mf_daimyo_vassal # 继承大名基础规则
+	count = vassal
+	is_potential_overlord = {
+		NOT = { has_reform = shogunate }
+		OR = {
+			has_reform = daimyo
+			has_reform = mf_daimyo
+			has_reform = indep_daimyo
+		}
+	}
+
+	overlord_can_be_subject = yes
+	can_have_subjects_of_other_types = no
+	can_be_integrated = no # 禁止外交合并。
+	can_be_annexed = no # 禁止吞并
+	can_fight_independence_war = yes
+	trust_on_start = 0 # 初始信任加成
+
+	pays_overlord = 1.5 # 陪臣向上级大名提供更高贡金
+	forcelimit_to_overlord = 0.2 # 陪臣大名提供更高的陆军上限
+	naval_forcelimit_to_overlord = 0.2 # 陪臣大名提供更高的海军上限
+	manpower_to_overlord = 0.1 # 提供更多人力
+
+	relative_power_class = 1
+	should_quit_wars_on_activation = yes
+
+	can_fight = {
+	}
+
+	modifier_overlord = clear 
+	modifier_subject = clear 
+	modifier_subject = {
+		modifier = mf_daimyo_nation
+	}
+	modifier_subject = {
+		modifier = mf_daimyo_authority_siege_restriction
+		trigger = {
+			overlord = {
+				overlord = {
+					has_reform = shogunate
+				}
+			}
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 50
+				}
+			}
+		}
+	}
+}
