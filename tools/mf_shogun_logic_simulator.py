@@ -4,10 +4,15 @@ from pathlib import Path
 
 DAIMYO_SUBJECTS = {"daimyo_vassal", "mf_daimyo_vassal", "mf_retainer_daimyo_vassal"}
 ROOT = Path(__file__).resolve().parents[1]
+HIGAN_ROOT = Path(r"E:\SteamLibrary\steamapps\workshop\content\236850\1635373831")
 
 
 def read_mod_text(path):
     return (ROOT / path).read_bytes().decode("latin-1")
+
+
+def read_higan_text(path):
+    return (HIGAN_ROOT / path).read_bytes().decode("latin-1")
 
 
 def block_between(text, start, end):
@@ -225,19 +230,43 @@ class World:
         for country in self.countries.values():
             country.flags.discard("mf_xiayi_target")
         self.countries[target].flags.add("mf_xiayi_target")
-        self.xiayi = target
+        self.event_targets["xiayi"] = target
 
-    def xiayi_cb_available(self, target):
-        country = self.countries[target]
+    def cb_mf_xiayi_campaign_available(self, attacker, target):
+        assert_xiayi_cb_script_chain()
+        attacker_country = self.countries[attacker]
+        target_country = self.countries[target]
         return (
-            getattr(self, "xiayi", None) == target
-            and "mf_xiayi_target" in country.flags
-            and country.subject_type not in DAIMYO_SUBJECTS
-            and country.alive
+            attacker_country.alive
+            and target_country.alive
+            and "shogunate" in attacker_country.reforms
+            and self.event_targets.get("zhengyidajiangjun") == attacker
+            and self.event_targets.get("xiayi") == target
+            and "mf_xiayi_target" in target_country.flags
+            and target != self.event_targets.get("zhengyidajiangjun")
+            and target_country.overlord != self.event_targets.get("zhengyidajiangjun")
+            and target_country.subject_type not in DAIMYO_SUBJECTS
+            and "sort_of_mf" not in target_country.flags
+            and "mf_tianhuang_target" not in target_country.flags
+        )
+
+    def higan_cb_return_hecatia_war_available(self, attacker, target):
+        assert_higan_return_hecatia_cb_script_chain()
+        attacker_country = self.countries[attacker]
+        target_country = self.countries[target]
+        hecatia_exists = "HEC" in self.countries and self.countries["HEC"].alive
+        return (
+            attacker_country.alive
+            and target_country.alive
+            and "hig_has_return_hecatia_war_cb_flag" in attacker_country.flags
+            and (
+                target == "HEC"
+                or (not hecatia_exists and 5327 in target_country.provinces)
+            )
         )
 
     def subjugate_xiayi(self, target):
-        self.require(self.xiayi_cb_available(target), "xiayi campaign cb is available")
+        self.require(self.cb_mf_xiayi_campaign_available("SHO", target), "xiayi campaign cb is available")
         self.set_subject(target, "SHO", "daimyo_vassal")
         self.countries[target].flags.discard("mf_xiayi_target")
         self.normalize_daimyo_reform(target)
@@ -289,6 +318,28 @@ def assert_private_subjugation_script_chain():
     World.require("mf_normalize_daimyo_first_layer_reform_effect = yes" in rehome, "rehome effect normalizes moved subjects")
 
 
+def assert_xiayi_cb_script_chain():
+    cb_text = read_mod_text("common/cb_types/00_cb_types.txt")
+    cb = block_between(cb_text, "cb_mf_xiayi_campaign = {", "# A HRE prince has been annexed")
+    prerequisites_self = block_between(cb, "prerequisites_self = {", "\n\t}\n\n\tprerequisites = {")
+    prerequisites = block_between(cb, "prerequisites = {", "\n\t}\n\n\twar_goal = mf_xiayi_conquest_wg")
+
+    World.require("has_reform = shogunate" in prerequisites_self, "xiayi cb requires shogunate attacker")
+    World.require("tag = event_target:zhengyidajiangjun" in prerequisites_self, "xiayi cb attacker must be current shogun")
+    World.require("has_country_flag = mf_xiayi_target" in prerequisites, "xiayi cb target must have xiayi flag")
+    World.require("tag = event_target:xiayi" in prerequisites, "xiayi cb target must match xiayi event target")
+    World.require("FROM = {" not in prerequisites and "from = {" not in prerequisites, "xiayi cb target checks stay in target scope")
+
+
+def assert_higan_return_hecatia_cb_script_chain():
+    cb_text = read_higan_text("common/cb_types/touhou_cb_types.txt")
+    cb = block_between(cb_text, "cb_return_hecatia_war = {", "# War of Repentance")
+    World.require("has_country_flag = hig_has_return_hecatia_war_cb_flag" in cb, "higan Hecatia cb uses attacker flag")
+    World.require("NOT = { exists = HEC }" in cb, "higan Hecatia cb checks missing HEC branch")
+    World.require("FROM = { owns = 5327 }" in cb, "higan Hecatia cb checks target province owner through FROM")
+    World.require("FROM = { tag = HEC }" in cb, "higan Hecatia cb checks direct HEC target through FROM")
+
+
 def build_world():
     world = World()
     world.add_country("SHO", reforms={"shogunate"}, provinces={"kyoto"})
@@ -296,6 +347,7 @@ def build_world():
     world.add_country("B", reforms={"daimyo"}, provinces={"b1", "b2"})
     world.set_subject("A", "SHO", "daimyo_vassal")
     world.set_subject("B", "SHO", "daimyo_vassal")
+    world.event_targets["zhengyidajiangjun"] = "SHO"
     return world
 
 
@@ -437,12 +489,40 @@ def test_xiayi_campaign():
     world = build_world()
     world.add_country("XIA", reforms=set(), provinces={"x1"})
     world.set_xiayi_target("XIA")
-    world.require(world.xiayi_cb_available("XIA"), "xiayi cb is available for current target")
+    world.require(world.cb_mf_xiayi_campaign_available("SHO", "XIA"), "xiayi cb is available for current target")
     world.subjugate_xiayi("XIA")
     world.require(world.countries["XIA"].overlord == "SHO", "xiayi target becomes direct shogun subject")
     world.require(world.countries["XIA"].subject_type == "daimyo_vassal", "xiayi target becomes outside daimyo")
     world.require("mf_xiayi_target" not in world.countries["XIA"].flags, "xiayi target flag is cleared")
-    world.require(not world.xiayi_cb_available("XIA"), "xiayi cb disappears after subjugation")
+    world.require(not world.cb_mf_xiayi_campaign_available("SHO", "XIA"), "xiayi cb disappears after subjugation")
+
+
+def test_xiayi_campaign_cb_availability():
+    world = build_world()
+    world.add_country("XIA", reforms=set(), provinces={"x1"})
+    world.add_country("OTHER", reforms=set(), provinces={"o1"})
+    world.set_xiayi_target("XIA")
+
+    world.require(world.cb_mf_xiayi_campaign_available("SHO", "XIA"), "shogun has xiayi cb against current target")
+    world.require(not world.cb_mf_xiayi_campaign_available("SHO", "OTHER"), "shogun has no xiayi cb against non-target")
+    world.require(not world.cb_mf_xiayi_campaign_available("A", "XIA"), "daimyo subject does not get xiayi cb")
+    world.require("mf_xiayi_target" in world.countries["XIA"].flags, "xiayi target flag is set")
+    world.require(world.event_targets.get("xiayi") == "XIA", "xiayi event target points to XIA")
+
+
+def test_higan_return_hecatia_cb_scope():
+    world = World()
+    world.add_country("HIG", reforms=set(), provinces={"h1"})
+    world.add_country("HEC", reforms=set(), provinces={5327})
+    world.add_country("OTHER", reforms=set(), provinces={"o1"})
+    world.countries["HIG"].flags.add("hig_has_return_hecatia_war_cb_flag")
+
+    world.require(world.higan_cb_return_hecatia_war_available("HIG", "HEC"), "higan cb works against HEC target")
+    world.require(not world.higan_cb_return_hecatia_war_available("HIG", "OTHER"), "higan cb rejects unrelated target while HEC exists")
+
+    world.countries["HEC"].alive = False
+    world.countries["OTHER"].provinces.add(5327)
+    world.require(world.higan_cb_return_hecatia_war_available("HIG", "OTHER"), "higan cb works against 5327 owner when HEC is missing")
 
 
 def main():
@@ -456,6 +536,8 @@ def main():
         test_lecture_grace_enforce_partition_executor,
         test_shogunate_transfer_and_layer_cleanup,
         test_xiayi_campaign,
+        test_xiayi_campaign_cb_availability,
+        test_higan_return_hecatia_cb_scope,
     ]
     for test in tests:
         test()

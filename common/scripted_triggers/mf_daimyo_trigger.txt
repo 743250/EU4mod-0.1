@@ -63,14 +63,6 @@ mf_has_releasable_extinct_daimyo_land = {
 	}
 }
 
-mf_can_choose_weixin_order_route = {
-	always = yes
-}
-
-mf_can_choose_weixin_unification_route = {
-	always = yes
-}
-
 mf_can_issue_shogun_yuling = {
 	# 御令十年只能存在一项，且需要足够的正统性支付代价。
 	legitimacy = 20

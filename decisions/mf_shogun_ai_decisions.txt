@@ -389,30 +389,4 @@ country_decisions = {
 		}
 	}
 	# 征讨虾夷玩家入口已启用；AI 暂不自动推进该风险改革。
-	# 维新九：征讨虾夷
-	#mf_ai_shogun_weixin_i = {
-	#	major = no
-	#	potential = {
-	#		ai = yes
-	#		has_reform = shogunate
-	#		tag = event_target:zhengyidajiangjun
-	#	}
-	#	allow = {
-	#		NOT = { has_global_flag = shogun_weixin.i_global_flag }
-	#		1020 = {
-	#			check_variable = {
-	#				which = shogun_value
-	#				value = 80
-	#			}
-	#		}
-	#		mf_shogun_controls_japan_region_except_hokkaido = yes
-	#	}
-	#	effect = {
-	#		set_global_flag = shogun_weixin.i_global_flag
-	#		mf_change_shogun_value = { value = -70 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 15
-	#	}
-	#}
 }
