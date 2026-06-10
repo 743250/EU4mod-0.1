@@ -275,6 +275,7 @@ country_event = {
 		mf_initialize_new_shogun_authority_effect = yes
 		mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
 		mf_promote_retainer_daimyos_to_shogunate_effect = yes
+		swap_non_generic_missions = yes
 	}
 
 	option = {

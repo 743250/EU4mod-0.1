@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="956" height="1654" viewBox="0 0 956 1654">
+<style>
+text{font-family:'Microsoft YaHei','Noto Sans CJK SC',Arial,sans-serif;}
+.bg{fill:#17252f;}
+.grid{stroke:#34444e;stroke-width:1;opacity:.45;}
+.edge{fill:none;stroke:#b8c0c5;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.node{fill:#283842;stroke:#b8c0c5;stroke-width:2;rx:7;}
+.nodeText{fill:#f2f3f0;font-size:14px;font-weight:700;text-anchor:middle;dominant-baseline:central;}
+.caption{fill:#cad0d3;font-size:12px;}
+.title{fill:#f2f3f0;font-size:18px;font-weight:700;}
+</style>
+<rect class="bg" x="0" y="0" width="100%" height="100%"/>
+<text class="title" x="52" y="28">EU4 任务树布局预览</text>
+<line class="grid" x1="118.0" y1="34" x2="118.0" y2="1609"/>
+<text class="caption" x="103.0" y="1636">slot 1</text>
+<line class="grid" x1="298.0" y1="34" x2="298.0" y2="1609"/>
+<text class="caption" x="283.0" y="1636">slot 2</text>
+<line class="grid" x1="478.0" y1="34" x2="478.0" y2="1609"/>
+<text class="caption" x="463.0" y="1636">slot 3</text>
+<line class="grid" x1="658.0" y1="34" x2="658.0" y2="1609"/>
+<text class="caption" x="643.0" y="1636">slot 4</text>
+<line class="grid" x1="838.0" y1="34" x2="838.0" y2="1609"/>
+<text class="caption" x="823.0" y="1636">slot 5</text>
+<text class="caption" x="12" y="81.0">pos 1</text>
+<text class="caption" x="12" y="191.0">pos 2</text>
+<text class="caption" x="12" y="301.0">pos 3</text>
+<text class="caption" x="12" y="411.0">pos 4</text>
+<text class="caption" x="12" y="521.0">pos 5</text>
+<text class="caption" x="12" y="631.0">pos 6</text>
+<text class="caption" x="12" y="741.0">pos 7</text>
+<text class="caption" x="12" y="851.0">pos 8</text>
+<text class="caption" x="12" y="961.0">pos 9</text>
+<text class="caption" x="12" y="1071.0">pos 10</text>
+<text class="caption" x="12" y="1181.0">pos 11</text>
+<text class="caption" x="12" y="1291.0">pos 12</text>
+<text class="caption" x="12" y="1401.0">pos 13</text>
+<text class="caption" x="12" y="1511.0">pos 14</text>
+<polyline class="edge" points="118.0,100.0 118.0,187.0 118.0,187.0 118.0,274.0"/>
+<polyline class="edge" points="298.0,430.0 298.0,462.0 118.0,462.0 118.0,494.0"/>
+<polyline class="edge" points="118.0,320.0 118.0,407.0 118.0,407.0 118.0,494.0"/>
+<polyline class="edge" points="298.0,100.0 298.0,187.0 298.0,187.0 298.0,274.0"/>
+<polyline class="edge" points="478.0,210.0 478.0,242.0 298.0,242.0 298.0,274.0"/>
+<polyline class="edge" points="298.0,320.0 298.0,352.0 298.0,352.0 298.0,384.0"/>
+<polyline class="edge" points="298.0,430.0 298.0,517.0 298.0,517.0 298.0,604.0"/>
+<polyline class="edge" points="478.0,540.0 478.0,572.0 298.0,572.0 298.0,604.0"/>
+<polyline class="edge" points="298.0,650.0 298.0,682.0 298.0,682.0 298.0,714.0"/>
+<polyline class="edge" points="478.0,100.0 478.0,132.0 478.0,132.0 478.0,164.0"/>
+<polyline class="edge" points="478.0,210.0 478.0,297.0 478.0,297.0 478.0,384.0"/>
+<polyline class="edge" points="658.0,320.0 658.0,352.0 478.0,352.0 478.0,384.0"/>
+<polyline class="edge" points="478.0,430.0 478.0,462.0 478.0,462.0 478.0,494.0"/>
+<polyline class="edge" points="478.0,540.0 478.0,572.0 478.0,572.0 478.0,604.0"/>
+<polyline class="edge" points="478.0,650.0 478.0,682.0 478.0,682.0 478.0,714.0"/>
+<polyline class="edge" points="658.0,100.0 658.0,187.0 658.0,187.0 658.0,274.0"/>
+<polyline class="edge" points="478.0,210.0 478.0,242.0 658.0,242.0 658.0,274.0"/>
+<polyline class="edge" points="658.0,320.0 658.0,352.0 658.0,352.0 658.0,384.0"/>
+<polyline class="edge" points="658.0,430.0 658.0,462.0 658.0,462.0 658.0,494.0"/>
+<polyline class="edge" points="658.0,540.0 658.0,627.0 658.0,627.0 658.0,714.0"/>
+<polyline class="edge" points="838.0,100.0 838.0,132.0 838.0,132.0 838.0,164.0"/>
+<polyline class="edge" points="838.0,210.0 838.0,242.0 838.0,242.0 838.0,274.0"/>
+<polyline class="edge" points="658.0,430.0 658.0,462.0 838.0,462.0 838.0,494.0"/>
+<polyline class="edge" points="838.0,320.0 838.0,407.0 838.0,407.0 838.0,494.0"/>
+<polyline class="edge" points="838.0,540.0 838.0,572.0 838.0,572.0 838.0,604.0"/>
+<polyline class="edge" points="838.0,650.0 838.0,682.0 838.0,682.0 838.0,714.0"/>
+<polyline class="edge" points="118.0,980.0 118.0,1012.0 118.0,1012.0 118.0,1044.0"/>
+<polyline class="edge" points="298.0,980.0 298.0,1067.0 298.0,1067.0 298.0,1154.0"/>
+<polyline class="edge" points="118.0,1090.0 118.0,1122.0 298.0,1122.0 298.0,1154.0"/>
+<polyline class="edge" points="478.0,980.0 478.0,1012.0 478.0,1012.0 478.0,1044.0"/>
+<polyline class="edge" points="478.0,1090.0 478.0,1177.0 478.0,1177.0 478.0,1264.0"/>
+<polyline class="edge" points="298.0,1200.0 298.0,1232.0 478.0,1232.0 478.0,1264.0"/>
+<polyline class="edge" points="478.0,980.0 478.0,1012.0 658.0,1012.0 658.0,1044.0"/>
+<polyline class="edge" points="658.0,1090.0 658.0,1122.0 658.0,1122.0 658.0,1154.0"/>
+<polyline class="edge" points="658.0,1200.0 658.0,1287.0 658.0,1287.0 658.0,1374.0"/>
+<polyline class="edge" points="478.0,1310.0 478.0,1342.0 658.0,1342.0 658.0,1374.0"/>
+<polyline class="edge" points="658.0,1420.0 658.0,1452.0 658.0,1452.0 658.0,1484.0"/>
+<polyline class="edge" points="838.0,980.0 838.0,1012.0 838.0,1012.0 838.0,1044.0"/>
+<g><title>JAP_pacify_the_north</title><rect class="node" x="52.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="77.0">Pacify the…</text></g>
+<g><title>JAP_take_the_thousand_islands</title><rect class="node" x="52.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="297.0">Take the K…</text></g>
+<g><title>JAP_siberian_intervention</title><rect class="node" x="52.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="517.0">Siberian I…</text></g>
+<g><title>the_divine_wind</title><rect class="node" x="232.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="77.0">The Divine…</text></g>
+<g><title>conquer_southern_korea</title><rect class="node" x="232.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="297.0">Conquer Ko…</text></g>
+<g><title>establish_footholding_in_manchuria</title><rect class="node" x="232.0" y="384.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="407.0">Invade Man…</text></g>
+<g><title>JAP_emperor_of_china</title><rect class="node" x="232.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="627.0">Imperial M…</text></g>
+<g><title>JAP_go_to_indochina</title><rect class="node" x="232.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="737.0">Indochines…</text></g>
+<g><title>JAP_expand_the_kokka</title><rect class="node" x="412.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="77.0">Expand the…</text></g>
+<g><title>JAP_establish_political_supremacy</title><rect class="node" x="412.0" y="164.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="187.0">Win Politi…</text></g>
+<g><title>conquer_okinawa</title><rect class="node" x="412.0" y="384.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="407.0">Conquer Ok…</text></g>
+<g><title>jap_colonize_taiwan</title><rect class="node" x="412.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="517.0">Colonize T…</text></g>
+<g><title>JAP_secure_the_pacific</title><rect class="node" x="412.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="627.0">Secure the…</text></g>
+<g><title>JAP_colonize_california</title><rect class="node" x="412.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="737.0">Colonize C…</text></g>
+<g><title>strengthen_the_bushido</title><rect class="node" x="592.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="77.0">The Bushid…</text></g>
+<g><title>unite_japan_mission</title><rect class="node" x="592.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="297.0">Unite Japan</text></g>
+<g><title>JAP_construct_the_gokaido</title><rect class="node" x="592.0" y="384.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="407.0">Construct …</text></g>
+<g><title>JAP_sankin_kotai</title><rect class="node" x="592.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="517.0">Sankin-Kot…</text></g>
+<g><title>JAP_regulate_the_social_order</title><rect class="node" x="592.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="737.0">Regulate t…</text></g>
+<g><title>JAP_balance_the_four_divisions</title><rect class="node" x="772.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="77.0">Balance th…</text></g>
+<g><title>JAP_issue_new_erizeni_rei</title><rect class="node" x="772.0" y="164.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="187.0">Issue New …</text></g>
+<g><title>JAP_permit_ryogaesho</title><rect class="node" x="772.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="297.0">Permit Ryo…</text></g>
+<g><title>JAP_survey_the_secret_fields</title><rect class="node" x="772.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="517.0">Survey the…</text></g>
+<g><title>JAP_encourage_financial_cliques</title><rect class="node" x="772.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="627.0">Encourage …</text></g>
+<g><title>JAP_dominate_the_market</title><rect class="node" x="772.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="737.0">Dominate t…</text></g>
+<g><title>mf_shogun_reaffirm_kubou</title><rect class="node" x="52.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="957.0">重申公方秩序</text></g>
+<g><title>mf_shogun_house_rolls</title><rect class="node" x="52.0" y="1044.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="1067.0">整理诸家名帐</text></g>
+<g><title>mf_shogun_restore_court_channel</title><rect class="node" x="232.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="957.0">修复朝廷通道</text></g>
+<g><title>mf_shogun_court_arbitration</title><rect class="node" x="232.0" y="1154.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="1177.0">公仪裁断</text></g>
+<g><title>mf_shogun_codify_buke_law</title><rect class="node" x="412.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="957.0">编定武家法度</text></g>
+<g><title>mf_shogun_enforce_peace_order</title><rect class="node" x="412.0" y="1044.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="1067.0">止息诸家私战</text></g>
+<g><title>mf_shogun_executor_system</title><rect class="node" x="412.0" y="1264.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="1287.0">确立执行国</text></g>
+<g><title>mf_shogun_recover_old_houses</title><rect class="node" x="592.0" y="1044.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="1067.0">恢复旧家秩序</text></g>
+<g><title>mf_shogun_transfer_domains</title><rect class="node" x="592.0" y="1154.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="1177.0">推行国替</text></g>
+<g><title>mf_shogun_inspection_network</title><rect class="node" x="592.0" y="1374.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="1397.0">诸藩监察网</text></g>
+<g><title>mf_shogun_ordered_realm</title><rect class="node" x="592.0" y="1484.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="1507.0">诸国归于公仪</text></g>
+<g><title>mf_shogun_school_of_order</title><rect class="node" x="772.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="957.0">学问与家格</text></g>
+<g><title>mf_shogun_ezo_campaign</title><rect class="node" x="772.0" y="1044.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="1067.0">定虾夷征讨</text></g>
+</svg>

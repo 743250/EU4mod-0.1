@@ -12,3 +12,53 @@ opinion_mf_sankin_suspended = {
 	opinion = -20
 	years = 5
 }
+
+opinion_mf_lectured_by_shogun = {
+	opinion = -25
+	years = 10
+}
+
+opinion_mf_graced_by_shogun = {
+	opinion = 35
+	years = 10
+}
+
+opinion_mf_enforced_daimyo_peace = {
+	opinion = -30
+	years = 10
+}
+
+opinion_mf_shogunate_peace_aid = {
+	opinion = 25
+	years = 10
+}
+
+opinion_mf_demanded_partition = {
+	opinion = -50
+	years = 15
+}
+
+opinion_mf_partition_restored_land = {
+	opinion = 50
+	years = 15
+}
+
+opinion_mf_appointed_executor = {
+	opinion = 25
+	years = 10
+}
+
+opinion_mf_refused_executor = {
+	opinion = -35
+	years = 10
+}
+
+opinion_mf_excommunicated_by_shogun = {
+	opinion = -60
+	years = 10
+}
+
+opinion_mf_forced_shogunate_obedience = {
+	opinion = -40
+	years = 10
+}

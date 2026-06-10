@@ -4,13 +4,18 @@ mf_xiayi_campaign_modifier = {
 			has_reform = shogunate
 			sort_of_mf = yes
 		}
-	}
-
-	trigger = {
 		has_saved_global_event_target = xiayi
 		event_target:xiayi = {
 			exists = yes
 			has_country_flag = mf_xiayi_target
+			NOT = { sort_of_mf = yes }
+			NOT = { has_country_flag = mf_tianhuang_target }
+		}
+	}
+
+	trigger = {
+		event_target:xiayi = {
+			war_with = ROOT
 		}
 		OR = {
 			tag = event_target:zhengyidajiangjun
@@ -22,4 +27,5 @@ mf_xiayi_campaign_modifier = {
 	}
 
 	land_morale = 0.10
+	manpower_recovery_speed = 0.10
 }

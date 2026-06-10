@@ -1,0 +1,9 @@
+estate_nobles = {
+	modifier_definition = {
+		type = privileges
+		key = mf_shogunate_diplomatic_acceptance
+		trigger = {
+			always = no
+		}
+	}
+}

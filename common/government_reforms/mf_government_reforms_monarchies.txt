@@ -59,7 +59,12 @@ daimyo = {
 	allow_normal_conversion = no
 	potential = {
 		NOT = { has_country_flag = formed_japan_flag }
-		overlord = { has_reform = shogunate }
+		overlord = {
+			OR = {
+				has_reform = shogunate
+				has_reform = daimyo
+			}
+		}
 		NOT = { is_subject_of_type = mf_daimyo_vassal }
 	}
 	replacement_on_independence_war = indep_daimyo

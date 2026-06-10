@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="956" height="1104" viewBox="0 0 956 1104">
+<style>
+text{font-family:'Microsoft YaHei','Noto Sans CJK SC',Arial,sans-serif;}
+.bg{fill:#17252f;}
+.grid{stroke:#34444e;stroke-width:1;opacity:.45;}
+.edge{fill:none;stroke:#b8c0c5;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.node{fill:#283842;stroke:#b8c0c5;stroke-width:2;rx:7;}
+.nodeText{fill:#f2f3f0;font-size:14px;font-weight:700;text-anchor:middle;dominant-baseline:central;}
+.caption{fill:#cad0d3;font-size:12px;}
+.title{fill:#f2f3f0;font-size:18px;font-weight:700;}
+</style>
+<rect class="bg" x="0" y="0" width="100%" height="100%"/>
+<text class="title" x="52" y="28">EU4 任务树布局预览</text>
+<line class="grid" x1="118.0" y1="34" x2="118.0" y2="1059"/>
+<text class="caption" x="103.0" y="1086">slot 1</text>
+<line class="grid" x1="298.0" y1="34" x2="298.0" y2="1059"/>
+<text class="caption" x="283.0" y="1086">slot 2</text>
+<line class="grid" x1="478.0" y1="34" x2="478.0" y2="1059"/>
+<text class="caption" x="463.0" y="1086">slot 3</text>
+<line class="grid" x1="658.0" y1="34" x2="658.0" y2="1059"/>
+<text class="caption" x="643.0" y="1086">slot 4</text>
+<line class="grid" x1="838.0" y1="34" x2="838.0" y2="1059"/>
+<text class="caption" x="823.0" y="1086">slot 5</text>
+<text class="caption" x="12" y="81.0">pos 1</text>
+<text class="caption" x="12" y="191.0">pos 2</text>
+<text class="caption" x="12" y="301.0">pos 3</text>
+<text class="caption" x="12" y="411.0">pos 4</text>
+<text class="caption" x="12" y="521.0">pos 5</text>
+<text class="caption" x="12" y="631.0">pos 6</text>
+<text class="caption" x="12" y="741.0">pos 7</text>
+<text class="caption" x="12" y="851.0">pos 8</text>
+<text class="caption" x="12" y="961.0">pos 9</text>
+<polyline class="edge" points="118.0,100.0 118.0,132.0 118.0,132.0 118.0,164.0"/>
+<polyline class="edge" points="118.0,210.0 118.0,242.0 118.0,242.0 118.0,274.0"/>
+<polyline class="edge" points="118.0,320.0 118.0,407.0 118.0,407.0 118.0,494.0"/>
+<polyline class="edge" points="298.0,650.0 298.0,682.0 118.0,682.0 118.0,714.0"/>
+<polyline class="edge" points="118.0,870.0 118.0,902.0 118.0,902.0 118.0,934.0"/>
+<polyline class="edge" points="118.0,100.0 118.0,132.0 298.0,132.0 298.0,164.0"/>
+<polyline class="edge" points="298.0,210.0 298.0,242.0 298.0,242.0 298.0,274.0"/>
+<polyline class="edge" points="298.0,430.0 298.0,462.0 298.0,462.0 298.0,494.0"/>
+<polyline class="edge" points="298.0,540.0 298.0,572.0 298.0,572.0 298.0,604.0"/>
+<polyline class="edge" points="298.0,650.0 298.0,682.0 298.0,682.0 298.0,714.0"/>
+<polyline class="edge" points="298.0,870.0 298.0,902.0 298.0,902.0 298.0,934.0"/>
+<polyline class="edge" points="478.0,100.0 478.0,187.0 478.0,187.0 478.0,274.0"/>
+<polyline class="edge" points="478.0,320.0 478.0,407.0 478.0,407.0 478.0,494.0"/>
+<polyline class="edge" points="298.0,650.0 298.0,682.0 478.0,682.0 478.0,714.0"/>
+<polyline class="edge" points="838.0,210.0 838.0,242.0 658.0,242.0 658.0,274.0"/>
+<polyline class="edge" points="658.0,320.0 658.0,352.0 658.0,352.0 658.0,384.0"/>
+<polyline class="edge" points="658.0,540.0 658.0,572.0 658.0,572.0 658.0,604.0"/>
+<polyline class="edge" points="658.0,870.0 658.0,902.0 658.0,902.0 658.0,934.0"/>
+<polyline class="edge" points="838.0,100.0 838.0,132.0 838.0,132.0 838.0,164.0"/>
+<polyline class="edge" points="838.0,210.0 838.0,242.0 838.0,242.0 838.0,274.0"/>
+<polyline class="edge" points="838.0,320.0 838.0,352.0 838.0,352.0 838.0,384.0"/>
+<polyline class="edge" points="838.0,430.0 838.0,462.0 838.0,462.0 838.0,494.0"/>
+<polyline class="edge" points="658.0,430.0 658.0,462.0 838.0,462.0 838.0,494.0"/>
+<polyline class="edge" points="658.0,540.0 658.0,572.0 838.0,572.0 838.0,604.0"/>
+<polyline class="edge" points="838.0,540.0 838.0,572.0 838.0,572.0 838.0,604.0"/>
+<polyline class="edge" points="658.0,650.0 658.0,682.0 838.0,682.0 838.0,714.0"/>
+<polyline class="edge" points="838.0,650.0 838.0,682.0 838.0,682.0 838.0,714.0"/>
+<polyline class="edge" points="838.0,870.0 838.0,902.0 838.0,902.0 838.0,934.0"/>
+<g><title>HIG_recruit_oni_strike_force</title><rect class="node" x="52.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="77.0">VßR&lt;›…</text></g>
+<g><title>HIG_take_over_the_road_of_liminality</title><rect class="node" x="52.0" y="164.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="187.0">TwS…</text></g>
+<g><title>HIG_land_of_the_dead</title><rect class="node" x="52.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="297.0">ÄžÉlKN…</text></g>
+<g><title>HIG_take_over_chireiden</title><rect class="node" x="52.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="517.0">HYÖSçe…</text></g>
+<g><title>HIG_remove_tenshi_from_heaven</title><rect class="node" x="52.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="737.0">TRd–)Y…</text></g>
+<g><title>HIG_enact_the_first_reform_tier</title><rect class="node" x="52.0" y="824.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="847.0">˜Lˆ–™…</text></g>
+<g><title>HIG_lecture_the_bad</title><rect class="node" x="52.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="957.0">­‹ë‹OW…</text></g>
+<g><title>HIG_handle_the_gang_wars</title><rect class="node" x="232.0" y="164.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="187.0">Yt.^…</text></g>
+<g><title>HIG_stablize_the_animal_realms</title><rect class="node" x="232.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="297.0">3zšRju…</text></g>
+<g><title>HIG_reorganize_the_shinigami</title><rect class="node" x="232.0" y="384.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="407.0">te»l‰k…</text></g>
+<g><title>HIG_deal_with_komachis_slack</title><rect class="node" x="232.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="517.0">eRHYwP…</text></g>
+<g><title>HIG_improve_hells_infrastructure</title><rect class="node" x="232.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="627.0">9e„U0W…</text></g>
+<g><title>HIG_take_control_over_netherworld</title><rect class="node" x="232.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="737.0">¡NuplQ…</text></g>
+<g><title>HIG_enact_the_second_reform_tier</title><rect class="node" x="232.0" y="824.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="847.0">˜Lˆ,r…</text></g>
+<g><title>HIG_appoint_competent_executor</title><rect class="node" x="232.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="298.0" y="957.0">f‹^²b…</text></g>
+<g><title>HIG_hire_yama_advisors</title><rect class="node" x="412.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="77.0">Œ˜î•ŽN…</text></g>
+<g><title>HIG_improve_the_sanzu_river_income</title><rect class="node" x="412.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="297.0">	N³l…</text></g>
+<g><title>HIG_move_the_ministry_to_gensokyo</title><rect class="node" x="412.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="517.0">Äuú^°e…</text></g>
+<g><title>HIG_show_yukaris_place</title><rect class="node" x="412.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="627.0">­‹¥e™–…</text></g>
+<g><title>HIG_hecatia_and_eiki</title><rect class="node" x="412.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="737.0">kaS…</text></g>
+<g><title>HIG_empire_of_higan</title><rect class="node" x="412.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="478.0" y="957.0">HIG_empire…</text></g>
+<g><title>HIG_side_with_a_shrine_maiden</title><rect class="node" x="592.0" y="164.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="187.0">ûN‹T—R…</text></g>
+<g><title>HIG_the_jizo_of_japan</title><rect class="node" x="592.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="297.0">åe,g0W…</text></g>
+<g><title>HIG_the_way_of_buddhism</title><rect class="node" x="592.0" y="384.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="407.0">iOÕlKN…</text></g>
+<g><title>HIG_discover_the_middle_east</title><rect class="node" x="592.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="517.0">T‰¨c…</text></g>
+<g><title>HIG_discover_europe</title><rect class="node" x="592.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="627.0">¢c0t&#x27;k…</text></g>
+<g><title>HIG_resolve_the_immortal_conflict</title><rect class="node" x="592.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="737.0">NwN…</text></g>
+<g><title>HIG_enact_the_third_reform_tier</title><rect class="node" x="592.0" y="824.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="847.0">˜Lˆ,r…</text></g>
+<g><title>HIG_peace_freedom_justice_and_security</title><rect class="node" x="592.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="957.0">Cg›RR…</text></g>
+<g><title>HIG_establish_hig_fleet</title><rect class="node" x="772.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="77.0">Áˆ2Rw…</text></g>
+<g><title>HIG_beyond_the_barrier</title><rect class="node" x="772.0" y="164.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="187.0">ûŠ&#x27;Y…</text></g>
+<g><title>HIG_gather_the_10_kings</title><rect class="node" x="772.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="297.0">ûRŒbAS…</text></g>
+<g><title>HIG_yama_influence_in_south_east_asia</title><rect class="node" x="772.0" y="384.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="407.0">*rÇT„v…</text></g>
+<g><title>HIG_the_concept_of_dharma</title><rect class="node" x="772.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="517.0">¾idKN…</text></g>
+<g><title>HIG_afterlive_of_the_deserts</title><rect class="node" x="772.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="627.0">™l.ole…</text></g>
+<g><title>HIG_the_christian_afterworld</title><rect class="node" x="772.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="737.0">™R¯eÁˆ…</text></g>
+<g><title>HIG_enact_the_last_reform_tier</title><rect class="node" x="772.0" y="824.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="847.0">˜Lˆ+g…</text></g>
+<g><title>HIG_greatest_of_the_yama</title><rect class="node" x="772.0" y="934.0" width="132" height="46"/>
+<text class="nodeText" x="838.0" y="957.0">HIG_greate…</text></g>
+</svg>

@@ -1,0 +1,84 @@
+########## 幕府大型计划共用判定 ##########
+
+mf_shogun_system_holds_province = {
+	# 从幕府 ROOT 视角检查单个省份是否在幕府体系内。
+	OR = {
+		country_or_non_sovereign_subject_holds = ROOT
+		owner = {
+			sort_of_mf = yes
+			OR = {
+				is_subject_of = ROOT
+				overlord = {
+					is_subject_of = ROOT
+				}
+			}
+		}
+	}
+}
+
+mf_shogun_controls_japan_region = {
+	# 从幕府 ROOT 视角检查，日本地区全部由幕府或非主权属国持有。
+	japan_region = {
+		type = all
+		OR = {
+			is_empty = yes
+			mf_shogun_system_holds_province = yes
+		}
+	}
+}
+
+mf_shogun_controls_japan_region_except_hokkaido = {
+	# 北海道以外的日本地区全部由幕府或非主权属国持有。
+	japan_region = {
+		type = all
+		OR = {
+			area = hokkaido_area
+			is_empty = yes
+			mf_shogun_system_holds_province = yes
+		}
+	}
+}
+
+mf_shogun_controls_hokkaido_area = {
+	# 北海道全境由幕府或非主权属国持有。
+	hokkaido_area = {
+		type = all
+		OR = {
+			is_empty = yes
+			mf_shogun_system_holds_province = yes
+		}
+	}
+}
+
+mf_target_owns_hokkaido_province = {
+	# 用于目标国家作用域：目标或其非主权属国拥有任一北海道省份。
+	OR = {
+		owns_or_non_sovereign_subject_of = 1031
+		owns_or_non_sovereign_subject_of = 1032
+		owns_or_non_sovereign_subject_of = 1847
+		owns_or_non_sovereign_subject_of = 1852
+		owns_or_non_sovereign_subject_of = 4193
+	}
+}
+
+mf_all_direct_daimyos_have_no_forbidden_subjects = {
+	# 直属大名只能保留本模组允许的大名层级属国。
+	all_subject_country = {
+		OR = {
+			NOT = {
+				sort_of_mf = yes
+				OR = {
+					is_subject_of_type = daimyo_vassal
+					is_subject_of_type = mf_daimyo_vassal
+				}
+			}
+			NOT = {
+				any_subject_country = {
+					NOT = {
+						is_subject_of_type = mf_retainer_daimyo_vassal
+					}
+				}
+			}
+		}
+	}
+}

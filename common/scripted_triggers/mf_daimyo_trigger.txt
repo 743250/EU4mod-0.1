@@ -11,6 +11,46 @@ sort_of_mf = {
 	}
 }
 
+mf_daimyo_foreign_learning_range = {
+	exists = yes
+	NOT = { sort_of_mf = yes }
+	capital_scope = {
+		ROOT = {
+			has_discovered = PREV
+		}
+	}
+	OR = {
+		AND = {
+			ROOT = { dip_tech = 22 }
+			NOT = { border_distance = { who = ROOT distance = 1200 } }
+		}
+		AND = {
+			ROOT = { dip_tech = 18 }
+			NOT = { border_distance = { who = ROOT distance = 900 } }
+		}
+		AND = {
+			ROOT = { dip_tech = 14 }
+			NOT = { border_distance = { who = ROOT distance = 700 } }
+		}
+		AND = {
+			ROOT = { dip_tech = 10 }
+			NOT = { border_distance = { who = ROOT distance = 550 } }
+		}
+		AND = {
+			ROOT = { dip_tech = 7 }
+			NOT = { border_distance = { who = ROOT distance = 400 } }
+		}
+		AND = {
+			ROOT = { dip_tech = 5 }
+			NOT = { border_distance = { who = ROOT distance = 300 } }
+		}
+		AND = {
+			ROOT = { dip_tech = 3 }
+			NOT = { border_distance = { who = ROOT distance = 200 } }
+		}
+	}
+}
+
 mf_has_releasable_extinct_daimyo_land = {
 	any_owned_province = {
 		OR = {
@@ -19,18 +59,16 @@ mf_has_releasable_extinct_daimyo_land = {
 		}
 		any_core_country = {
 			exists = no
-			sort_of_mf = yes
-			NOT = { has_reform = shogunate }
 		}
 	}
 }
 
 mf_can_choose_weixin_order_route = {
-	NOT = { has_global_flag = mf_weixin_route_unification }
+	always = yes
 }
 
 mf_can_choose_weixin_unification_route = {
-	NOT = { has_global_flag = mf_weixin_route_order }
+	always = yes
 }
 
 mf_can_issue_shogun_yuling = {

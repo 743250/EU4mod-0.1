@@ -5,12 +5,17 @@ mf_sengoku_subjugation = {
 		badboy_factor = 0.75
 		prestige_factor = 1
 		peace_cost_factor = 1.0	
-		
-		peace_options = {
-			po_mf_subjugate_daimyo
+
+		allowed_provinces = {
+			owned_by = FROM
 		}
 		
-		deny_annex = yes
+		peace_options = {
+			po_demand_provinces
+			po_mf_subjugate_daimyo
+		}
+
+		prov_desc = ALL_PROVS
 	}
 	
 	defender = {
@@ -18,11 +23,16 @@ mf_sengoku_subjugation = {
 		prestige_factor = 1
 		peace_cost_factor = 1
 
+		allowed_provinces = {
+			owned_by = ROOT
+		}
+
 		peace_options = {
+			po_demand_provinces
 			po_mf_subjugate_daimyo
 		}
 
-		deny_annex = yes
+		prov_desc = ALL_PROVS
 	}
 
 	war_name = PRIMITIVE_WAR_NAME
@@ -54,6 +64,78 @@ mf_return_daimyo_land_wg = {
 	war_name = MF_RETURN_DAIMYO_LAND_WAR_NAME
 }
 
+mf_partition_daimyo_wg = {
+	type = take_capital
+
+	attacker = {
+		badboy_factor = 1
+		prestige_factor = 2
+		peace_cost_factor = 0.1
+
+		peace_options = {
+			po_mf_partition_daimyo
+			po_release_vassals
+			po_release_annexed
+			po_return_cores
+		}
+		deny_annex = yes
+	}
+
+	defender = {
+		badboy_factor = 1
+		prestige_factor = 2
+		peace_cost_factor = 0.1
+	}
+
+	war_name = MF_PARTITION_DAIMYO_WAR_NAME
+}
+
+mf_enforce_executor_position_wg = {
+	type = superiority
+
+	attacker = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 1
+
+		peace_options = {
+			po_mf_enforce_executor_appointment
+		}
+		deny_annex = yes
+	}
+
+	defender = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 1
+	}
+
+	war_name = MF_EXECUTOR_DAIMYO_WAR_NAME
+}
+
+mf_shogunate_excommunication_wg = {
+	type = superiority
+
+	attacker = {
+		badboy_factor = 0.25
+		prestige_factor = 1
+		peace_cost_factor = 0.5
+
+		peace_options = {
+			po_mf_enforce_shogunate_obedience
+		}
+		deny_annex = yes
+	}
+
+	defender = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 1
+	}
+
+	war_name = MF_SHOGUNATE_EXCOMMUNICATION_WAR_NAME
+}
+
 mf_xiayi_conquest_wg = {
 	type = take_province
 
@@ -68,6 +150,7 @@ mf_xiayi_conquest_wg = {
 
 		peace_options = {
 			po_demand_provinces
+			po_mf_subjugate_xiayi_daimyo
 		}
 
 		prov_desc = ALL_PROVS
@@ -87,32 +170,6 @@ mf_xiayi_conquest_wg = {
 		}
 
 		prov_desc = ALL_PROVS
-	}
-
-	war_name = MF_XIAYI_CAMPAIGN_WAR_NAME
-}
-
-mf_xiayi_campaign_wg = {
-	type = take_capital
-
-	attacker = {
-		badboy_factor = 0.75
-		prestige_factor = 1
-		peace_cost_factor = 1.0
-
-		peace_options = {
-			po_mf_subjugate_xiayi_daimyo
-		}
-	}
-
-	defender = {
-		badboy_factor = 1
-		prestige_factor = 1
-		peace_cost_factor = 1
-
-		peace_options = {
-			po_demand_provinces
-		}
 	}
 
 	war_name = MF_XIAYI_CAMPAIGN_WAR_NAME

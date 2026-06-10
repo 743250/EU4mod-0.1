@@ -60,10 +60,10 @@ po_mf_subjugate_daimyo = {
 			mf_normalize_daimyo_first_layer_reform_effect = yes
 		}
 		mf_promote_retainer_daimyos_to_shogunate_effect = yes
-		mf_change_shogun_value = {
-			value = 2
+		if = {
+			limit = { has_saved_global_event_target = mf_daimyo_rehome_lord }
+			clear_global_event_target = mf_daimyo_rehome_lord
 		}
-		clear_global_event_target = mf_daimyo_rehome_lord
 	}
 
 	ai_weight = {
@@ -74,16 +74,80 @@ po_mf_subjugate_daimyo = {
 	}
 }
 
-po_mf_subjugate_xiayi_daimyo = {
-	# 狩野虾夷征讨和平：目标纳入幕府直属大名体系，而不是成为征讨大名的陪臣。
+po_mf_partition_daimyo = {
+	# 幕府强制分割：只执行恢复旧家，不允许借此直接吞并目标。
 	category = 6
 	power_projection = vassalized_rival
-	power_cost_base = 1.0
+	power_cost_base = 0.1
 	prestige_base = 1.0
-	ae_base = 0.5
+	ae_base = 0.0
 
 	warscore_cost = {
-		all_provinces = 0.75
+		all_provinces = 0.0
+		no_provinces = 500.0
+		owner_keeps = 0.0
+		conquered = 0.0
+		returned_core = 0.0
+		released_nation = 0.0
+		cancelled_subject = 0.0
+		concede_colonial_region = 0.0
+	}
+	warscore_cap = 80
+
+	requires_is_allowed = yes
+
+	is_visible = {
+		has_reform = shogunate
+		FROM = {
+			is_subject_of = ROOT
+			OR = {
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+			}
+			any_owned_province = {
+				is_capital = no
+				any_core_country = {
+					exists = no
+				}
+			}
+		}
+	}
+
+	is_allowed = {
+		always = yes
+	}
+
+	effect = {
+		FROM = {
+			mf_force_partition_daimyo_effect = yes
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mf_demanded_partition
+			}
+		}
+		mf_change_shogun_value = {
+			value = 5
+		}
+	}
+
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+	}
+}
+
+po_mf_enforce_executor_appointment = {
+	# 拒绝任命后的强制任命和平。
+	category = 6
+	power_projection = vassalized_rival
+	power_cost_base = 0.33
+	prestige_base = 0.5
+	ae_base = 0.15
+
+	warscore_cost = {
+		all_provinces = 1.0
 		no_provinces = 0.0
 		owner_keeps = 0.0
 		conquered = 0.0
@@ -96,74 +160,103 @@ po_mf_subjugate_xiayi_daimyo = {
 
 	is_make_subject = yes
 	requires_is_allowed = yes
-	applies_to_war_target = yes
 
 	is_visible = {
-		OR = {
-			has_reform = shogunate
-			is_subject_of = event_target:zhengyidajiangjun
+		has_reform = shogunate
+		NOT = {
+			calc_true_if = {
+				all_subject_country = {
+					has_country_modifier = mf_shogunate_executor
+				}
+				amount = 1
+			}
 		}
 		FROM = {
-			has_country_flag = mf_xiayi_target
-			NOT = { has_country_flag = mf_tianhuang_target }
-			NOT = { is_subject_of = event_target:zhengyidajiangjun }
+			is_subject_of = ROOT
+			OR = {
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+			}
+			NOT = { has_country_modifier = mf_shogunate_executor }
 		}
 	}
 
 	is_allowed = {
-		OR = {
-			has_reform = shogunate
-			is_subject_of = event_target:zhengyidajiangjun
-		}
-		FROM = {
-			has_country_flag = mf_xiayi_target
-			NOT = { has_country_flag = mf_tianhuang_target }
-			NOT = { is_subject_of = event_target:zhengyidajiangjun }
-		}
+		always = yes
 	}
 
 	effect = {
-		save_global_event_target_as = mf_daimyo_rehome_lord
-		if = {
-			limit = { has_reform = shogunate }
-			create_subject = {
-				subject = FROM
-				subject_type = daimyo_vassal
-			}
+		mf_appoint_executor_daimyo_effect = yes
+		mf_change_shogun_value = {
+			value = 5
 		}
-		else_if = {
-			limit = { is_subject_of = event_target:zhengyidajiangjun }
-			event_target:zhengyidajiangjun = {
-				create_subject = {
-					subject = FROM
-					subject_type = daimyo_vassal
-				}
-			}
-		}
-		FROM = {
-			mf_rehome_daimyo_subjects_effect = yes
-		}
-		FROM = {
-			mf_normalize_daimyo_first_layer_reform_effect = yes
-			clr_country_flag = mf_xiayi_target
-		}
-		event_target:zhengyidajiangjun = {
-			mf_change_shogun_value = {
-				value = 2
-			}
-			mf_promote_retainer_daimyos_to_shogunate_effect = yes
-		}
-		if = {
-			limit = { has_saved_global_event_target = xiayi }
-			mf_refresh_xiayi_campaign_effect = yes
-		}
-		clear_global_event_target = mf_daimyo_rehome_lord
 	}
 
 	ai_weight = {
 		export_to_variable = {
 			variable_name = ai_value
-			value = 100
+			value = 500
+		}
+	}
+}
+
+po_mf_enforce_shogunate_obedience = {
+	# 绝罚战争的服从和平：解除绝罚、清理拒命状态，并返还幕府御统。
+	category = 6
+	power_projection = vassalized_rival
+	power_cost_base = 0.25
+	prestige_base = 0.5
+	ae_base = 0.0
+
+	warscore_cost = {
+		all_provinces = 0.0
+		no_provinces = 250.0
+		owner_keeps = 0.0
+		conquered = 0.0
+		returned_core = 0.0
+		released_nation = 0.0
+		cancelled_subject = 0.0
+		concede_colonial_region = 0.0
+	}
+	warscore_cap = 80
+
+	requires_is_allowed = yes
+
+	is_visible = {
+		has_reform = shogunate
+		FROM = {
+			is_subject_of = ROOT
+			OR = {
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+			}
+			has_country_flag = mf_under_shogunate_excommunication
+		}
+	}
+
+	is_allowed = {
+		always = yes
+	}
+
+	effect = {
+		FROM = {
+			mf_clear_shogun_refusal_flags_effect = yes
+			remove_country_modifier = mf_shogunate_excommunication
+			add_liberty_desire = -30
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mf_forced_shogunate_obedience
+			}
+		}
+		mf_change_shogun_value = {
+			value = 10
+		}
+	}
+
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
 		}
 	}
 }

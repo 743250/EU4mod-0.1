@@ -1,0 +1,97 @@
+po_mf_subjugate_xiayi_daimyo = {
+	# 狩野虾夷征讨和平：目标纳入幕府直属大名体系，而不是成为征讨大名的陪臣。
+	category = 6
+	power_projection = vassalized_rival
+	power_cost_base = 1.0
+	prestige_base = 1.0
+	ae_base = 0.5
+
+	warscore_cost = {
+		all_provinces = 0.75
+		no_provinces = 0.0
+		owner_keeps = 0.0
+		conquered = 0.0
+		returned_core = 0.0
+		released_nation = 0.0
+		cancelled_subject = 0.0
+		concede_colonial_region = 0.0
+	}
+	warscore_cap = 80
+
+	is_make_subject = yes
+	requires_is_allowed = yes
+	applies_to_war_target = yes
+
+	is_visible = {
+		has_saved_global_event_target = xiayi
+		OR = {
+			has_reform = shogunate
+			is_subject_of = event_target:zhengyidajiangjun
+		}
+		FROM = {
+			has_country_flag = mf_xiayi_target
+			tag = event_target:xiayi
+			NOT = { has_country_flag = mf_tianhuang_target }
+			NOT = { is_subject_of = event_target:zhengyidajiangjun }
+		}
+	}
+
+	is_allowed = {
+		has_saved_global_event_target = xiayi
+		OR = {
+			has_reform = shogunate
+			is_subject_of = event_target:zhengyidajiangjun
+		}
+		FROM = {
+			has_country_flag = mf_xiayi_target
+			tag = event_target:xiayi
+			NOT = { has_country_flag = mf_tianhuang_target }
+			NOT = { is_subject_of = event_target:zhengyidajiangjun }
+		}
+	}
+
+	effect = {
+		save_global_event_target_as = mf_daimyo_rehome_lord
+		if = {
+			limit = { has_reform = shogunate }
+			create_subject = {
+				subject = FROM
+				subject_type = daimyo_vassal
+			}
+		}
+		else_if = {
+			limit = { is_subject_of = event_target:zhengyidajiangjun }
+			event_target:zhengyidajiangjun = {
+				create_subject = {
+					subject = FROM
+					subject_type = daimyo_vassal
+				}
+			}
+		}
+		FROM = {
+			mf_rehome_daimyo_subjects_effect = yes
+		}
+		FROM = {
+			mf_normalize_daimyo_first_layer_reform_effect = yes
+			clr_country_flag = mf_xiayi_target
+		}
+		event_target:zhengyidajiangjun = {
+			mf_change_shogun_value = {
+				value = 2
+			}
+			mf_promote_retainer_daimyos_to_shogunate_effect = yes
+		}
+		clear_global_event_target = xiayi
+		if = {
+			limit = { has_saved_global_event_target = mf_daimyo_rehome_lord }
+			clear_global_event_target = mf_daimyo_rehome_lord
+		}
+	}
+
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 100
+		}
+	}
+}

@@ -1,0 +1,55 @@
+########## 幕府大型计划共用效果 ##########
+
+mf_add_permanent_claims_on_japan_region_effect = {
+	# 给日本地区未核心、未永久宣称省份添加永久宣称。
+	japan_region = {
+		limit = {
+			NOT = { is_core = ROOT }
+			NOT = { is_permanent_claim = ROOT }
+		}
+		add_permanent_claim = ROOT
+	}
+}
+
+mf_add_permanent_claims_on_ryukyu_korea_effect = {
+	# 琉球方向只取冲绳单省，避免误覆盖越南区域。
+	mf_add_permanent_claim_on_ryukyu_effect = yes
+	mf_add_permanent_claims_on_korea_region_effect = yes
+}
+
+mf_add_permanent_claim_on_ryukyu_effect = {
+	# 琉球方向只取冲绳单省，避免误覆盖越南区域。
+	if = {
+		limit = {
+			1015 = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+		}
+		1015 = {
+			add_permanent_claim = ROOT
+		}
+	}
+}
+
+mf_add_permanent_claims_on_korea_region_effect = {
+	# 给朝鲜地区未核心、未永久宣称省份添加永久宣称。
+	korea_region = {
+		limit = {
+			NOT = { is_core = ROOT }
+			NOT = { is_permanent_claim = ROOT }
+		}
+		add_permanent_claim = ROOT
+	}
+}
+
+mf_clear_shogun_refusal_flags_effect = {
+	# 在当前国家作用域清理拒绝幕府命令留下的惩戒与冷却标记。
+	clr_country_flag = mf_refused_sankin_kotai
+	clr_country_flag = mf_refused_return_land
+	clr_country_flag = mf_recently_refused_return_daimyo_land
+	clr_country_flag = mf_refused_enforce_daimyo_peace
+	clr_country_flag = mf_refused_partition_daimyo
+	clr_country_flag = mf_refused_executor_appointment
+	clr_country_flag = mf_under_shogunate_excommunication
+}

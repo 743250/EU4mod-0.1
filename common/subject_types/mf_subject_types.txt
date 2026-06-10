@@ -78,29 +78,9 @@ daimyo_vassal = { # 外样大名。
 				has_reform = shogunate
 			}
 			any_known_country = {
-				exists = yes
-				NOT = {
-					OR = {
-						has_reform = shogunate
-						has_reform = daimyo
-						has_reform = mf_daimyo
-						has_reform = indep_daimyo
-						is_subject_of_type = daimyo_vassal
-						is_subject_of_type = mf_daimyo_vassal
-						is_subject_of_type = mf_retainer_daimyo_vassal
-					}
-				}
+				mf_daimyo_foreign_learning_range = yes
 				ROOT = {
-					capital_scope = {
-						has_discovered = PREV
-					}
 					NOT = { adm_tech = PREV }
-				}
-				NOT = {
-					border_distance = {
-						who = ROOT
-						distance = 300
-					}
 				}
 			}
 		}
@@ -112,29 +92,9 @@ daimyo_vassal = { # 外样大名。
 				has_reform = shogunate
 			}
 			any_known_country = {
-				exists = yes
-				NOT = {
-					OR = {
-						has_reform = shogunate
-						has_reform = daimyo
-						has_reform = mf_daimyo
-						has_reform = indep_daimyo
-						is_subject_of_type = daimyo_vassal
-						is_subject_of_type = mf_daimyo_vassal
-						is_subject_of_type = mf_retainer_daimyo_vassal
-					}
-				}
+				mf_daimyo_foreign_learning_range = yes
 				ROOT = {
-					capital_scope = {
-						has_discovered = PREV
-					}
 					NOT = { dip_tech = PREV }
-				}
-				NOT = {
-					border_distance = {
-						who = ROOT
-						distance = 300
-					}
 				}
 			}
 		}
@@ -146,29 +106,9 @@ daimyo_vassal = { # 外样大名。
 				has_reform = shogunate
 			}
 			any_known_country = {
-				exists = yes
-				NOT = {
-					OR = {
-						has_reform = shogunate
-						has_reform = daimyo
-						has_reform = mf_daimyo
-						has_reform = indep_daimyo
-						is_subject_of_type = daimyo_vassal
-						is_subject_of_type = mf_daimyo_vassal
-						is_subject_of_type = mf_retainer_daimyo_vassal
-					}
-				}
+				mf_daimyo_foreign_learning_range = yes
 				ROOT = {
-					capital_scope = {
-						has_discovered = PREV
-					}
 					NOT = { mil_tech = PREV }
-				}
-				NOT = {
-					border_distance = {
-						who = ROOT
-						distance = 300
-					}
 				}
 			}
 		}
@@ -180,29 +120,7 @@ daimyo_vassal = { # 外样大名。
 				has_reform = shogunate
 			}
 			any_known_country = {
-				exists = yes
-				NOT = {
-					OR = {
-						has_reform = shogunate
-						has_reform = daimyo
-						has_reform = mf_daimyo
-						has_reform = indep_daimyo
-						is_subject_of_type = daimyo_vassal
-						is_subject_of_type = mf_daimyo_vassal
-						is_subject_of_type = mf_retainer_daimyo_vassal
-					}
-				}
-				ROOT = {
-					capital_scope = {
-						has_discovered = PREV
-					}
-				}
-				NOT = {
-					border_distance = {
-						who = ROOT
-						distance = 300
-					}
-				}
+				mf_daimyo_foreign_learning_range = yes
 				institution_difference = {
 					who = ROOT
 					value = 1
@@ -246,10 +164,10 @@ mf_daimyo_vassal = { # 谱代大名
 	overlord_enforce_peace_attacking = yes # 宗主可以强制和平
 	trust_on_start = 20 # 初始信任加成
 
-	pays_overlord = 1.2 # 谱代向幕府提供更高贡金
+	pays_overlord = 1.5 # 谱代向幕府提供更高贡金
 	forcelimit_to_overlord = 0.15 # 谱代比普通大名提供更多陆军上限
 	naval_forcelimit_to_overlord = 0.15 # 谱代比普通大名提供更多海军上限
-	manpower_to_overlord = 0.5 # 谱代向幕府提供更多人力
+	manpower_to_overlord = 0.2 # 谱代向幕府提供更多人力
 	base_liberty_desire = -10.0 # 基础独立倾向
 	military_focus = 1.5 # 军事倾向
 
@@ -340,9 +258,9 @@ mf_retainer_daimyo_vassal = { # 陪臣大名
 	trust_on_start = 0 # 初始信任加成
 
 	pays_overlord = 1.5 # 陪臣向上级大名提供更高贡金
-	forcelimit_to_overlord = 0.2 # 陪臣大名提供更高的陆军上限
+	forcelimit_to_overlord = 0.25 # 陪臣大名提供更高的陆军上限
 	naval_forcelimit_to_overlord = 0.2 # 陪臣大名提供更高的海军上限
-	manpower_to_overlord = 0.1 # 提供更多人力
+	manpower_to_overlord = 0.15 # 提供更多人力
 
 	relative_power_class = 1
 	should_quit_wars_on_activation = yes

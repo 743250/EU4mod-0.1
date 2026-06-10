@@ -50,3 +50,35 @@ mf_unlawful_daimyo_land = {
 	local_tax_modifier = -0.33
 	local_autonomy = 0.5
 }
+
+mf_shogunate_lecture = {
+	global_unrest = 2
+	land_morale = -0.05
+	legitimacy = -0.5
+}
+
+mf_shogunate_grace = {
+	global_unrest = -1
+	reduced_liberty_desire = 10
+	legitimacy = 0.5
+}
+
+mf_shogunate_partitioned = {
+	global_unrest = 3
+	prestige = -0.5
+}
+
+mf_shogunate_executor = {
+	diplomatic_reputation = 1
+	land_morale = 0.05
+	manpower_recovery_speed = 0.1
+	siege_ability = 0.10
+	land_forcelimit_modifier = 0.10
+}
+
+mf_shogunate_excommunication = {
+	prestige = -1
+	diplomatic_reputation = -3
+	global_unrest = 3
+	legitimacy = -1
+}

@@ -137,25 +137,54 @@ cb_mf_return_daimyo_land = {
 	war_goal = mf_return_daimyo_land_wg
 }
 
+cb_mf_partition_daimyo = {
+	valid_for_subject = no
+
+	is_triggered_only = yes
+	months = 60
+
+	war_goal = mf_partition_daimyo_wg
+}
+
+cb_mf_enforce_executor_service = {
+	valid_for_subject = no
+
+	is_triggered_only = yes
+	months = 120
+
+	war_goal = mf_enforce_executor_position_wg
+}
+
+cb_mf_shogunate_excommunication = {
+	valid_for_subject = no
+
+	is_triggered_only = yes
+	months = 120
+
+	war_goal = mf_shogunate_excommunication_wg
+}
+
 cb_mf_xiayi_campaign = {
-	valid_for_subject = yes
+	valid_for_subject = no
 
 	prerequisites_self = {
 		is_revolutionary = no
-		OR = {
-			has_reform = shogunate
-			is_subject_of = event_target:zhengyidajiangjun
-		}
+		has_reform = shogunate
+		has_saved_global_event_target = zhengyidajiangjun
+		tag = event_target:zhengyidajiangjun
 	}
 
 	prerequisites = {
-		FROM = {
-			has_country_flag = mf_xiayi_target
-			NOT = { has_country_flag = mf_tianhuang_target }
-		}
+		has_saved_global_event_target = xiayi
+		has_country_flag = mf_xiayi_target
+		tag = event_target:xiayi
+		NOT = { tag = event_target:zhengyidajiangjun }
+		NOT = { is_subject_of = event_target:zhengyidajiangjun }
+		NOT = { sort_of_mf = yes }
+		NOT = { has_country_flag = mf_tianhuang_target }
 	}
 
-	war_goal = mf_xiayi_campaign_wg
+	war_goal = mf_xiayi_conquest_wg
 }
 
 # A HRE prince has been annexed
@@ -685,6 +714,10 @@ cb_sengoku = {
 		OR = {
 			is_neighbor_of = FROM
 			claim = FROM
+			any_subject_country = {
+				is_subject_of_type = mf_retainer_daimyo_vassal
+				is_neighbor_of = FROM
+			}
 		}
 		from = {
 			OR = {

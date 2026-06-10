@@ -1,94 +1,4 @@
-########## AI 御令与虾夷处理 ##########
-mf_apply_xuanxiafengxing_effect = {
-	# 复位旧天皇家族目标
-	if = {
-		limit = { has_saved_global_event_target = tianhuang }
-		event_target:tianhuang = {
-			clr_country_flag = mf_tianhuang_target
-			clear_global_event_target = tianhuang
-		}
-	}
-	FROM = {
-		save_global_event_target_as = tianhuang
-		set_country_flag = mf_tianhuang_target
-	}
-	clr_country_flag = xuanxiafengxing_flag
-	set_country_flag = xuanxiafengxing_flag
-	mf_change_shogun_value = {
-		value = -10
-	}
-}
-
-mf_ai_apply_xuanxiafengxing_effect = {
-	# AI 选天皇目标
-	if = {
-		limit = { has_saved_global_event_target = tianhuang }
-		event_target:tianhuang = {
-			clr_country_flag = mf_tianhuang_target
-			clear_global_event_target = tianhuang
-		}
-	}
-	random_subject_country = {
-		limit = {
-			NOT = { has_country_flag = mf_xiayi_target }
-			NOT = { has_country_flag = mf_tianhuang_target }
-		}
-		save_global_event_target_as = tianhuang
-		set_country_flag = mf_tianhuang_target
-	}
-	clr_country_flag = xuanxiafengxing_flag
-	set_country_flag = xuanxiafengxing_flag
-	mf_change_shogun_value = {
-		value = -10
-	}
-}
-
-mf_apply_shouyexiayi_effect = {
-	# 复位旧虾夷目标并重新登记
-	if = {
-		limit = { has_saved_global_event_target = xiayi }
-		event_target:xiayi = {
-			clr_country_flag = mf_xiayi_target
-			clear_global_event_target = xiayi
-		}
-	}
-	FROM = {
-		save_global_event_target_as = xiayi
-		set_country_flag = mf_xiayi_target
-	}
-	mf_refresh_xiayi_campaign_effect = yes
-	clr_country_flag = shouyexiayi_flag
-	set_country_flag = shouyexiayi_flag
-}
-
-mf_ai_apply_shouyexiayi_effect = {
-	# AI 选虾夷目标
-	if = {
-		limit = { has_saved_global_event_target = xiayi }
-		event_target:xiayi = {
-			clr_country_flag = mf_xiayi_target
-			clear_global_event_target = xiayi
-		}
-	}
-	random_country = {
-		limit = {
-			NOT = { has_country_flag = mf_tianhuang_target }
-			NOT = { has_country_flag = mf_xiayi_target }
-			any_neighbor_country = {
-				OR = {
-					tag = event_target:zhengyidajiangjun
-					is_subject_of = event_target:zhengyidajiangjun
-				}
-			}
-		}
-		save_global_event_target_as = xiayi
-		set_country_flag = mf_xiayi_target
-	}
-	clr_country_flag = shouyexiayi_flag
-	set_country_flag = shouyexiayi_flag
-	mf_refresh_xiayi_campaign_effect = yes
-}
-
+########## 御令处理 ##########
 mf_apply_shogun_yuling_a = {
 	# 驱逐浪人
 	add_country_modifier = {
@@ -201,10 +111,10 @@ mf_refresh_tianhuang_target_effect = {
 		limit = {
 			NOT = { has_saved_global_event_target = tianhuang }
 		}
-	# 闂佹儳绻戦崕鎶藉Φ濡ゅ懏鍎庢い鏃傛櫕閸ㄥジ鎮楀☉娅亜锕㈤鍫濈睄閻犱礁婀辩粈澶岀磽娴ｅ湱鎳冪紒鐘绘敱閹柨顭ㄩ埀顒傜箔瀹€鈧幏鐘电矙鐟併倓娴烽梺鍛婅壘缁夋挳宕哄☉銏犳濡绀侀ˇ鏌ユ煛閸愵厽纭剧紒鑸电〒閹峰濡搁妷顖滅濠殿喗蓱閺岋綁鍩€?
-	if = {
+		random_subject_country = {
 			limit = {
 				NOT = { has_country_flag = mf_xiayi_target }
+				NOT = { has_country_flag = mf_tianhuang_target }
 			}
 			save_global_event_target_as = tianhuang
 			set_country_flag = mf_tianhuang_target
@@ -212,44 +122,16 @@ mf_refresh_tianhuang_target_effect = {
 	}
 }
 
-mf_refresh_xiayi_campaign_effect = {
-	# 重新刷新虾夷目标状态
+mf_set_xiayi_campaign_target_effect = {
+	# 设置虾夷征讨目标，战争借口由 cb_types 条件直接提供。
+	every_country = {
+		limit = { has_country_flag = mf_xiayi_target }
+		clr_country_flag = mf_xiayi_target
+	}
 	if = {
-		limit = {
-			has_saved_global_event_target = xiayi
-			event_target:xiayi = {
-				exists = no
-			}
-		}
+		limit = { has_saved_global_event_target = xiayi }
 		clear_global_event_target = xiayi
 	}
-	if = {
-		limit = {
-			has_saved_global_event_target = xiayi
-			event_target:xiayi = {
-				exists = yes
-				OR = {
-					tag = event_target:zhengyidajiangjun
-					is_subject_of = event_target:zhengyidajiangjun
-				}
-			}
-		}
-		event_target:xiayi = {
-			if = {
-				limit = { is_subject_of = event_target:zhengyidajiangjun }
-				change_subject_type = {
-					subject_type = daimyo_vassal
-				}
-			}
-			mf_normalize_daimyo_first_layer_reform_effect = yes
-			clr_country_flag = mf_xiayi_target
-		}
-		clear_global_event_target = xiayi
-	}
-	if = {
-		limit = {
-			has_saved_global_event_target = xiayi
-		}
-		event_target:zhengyidajiangjun = { bl_shogun_refresh = yes }
-	}
+	save_global_event_target_as = xiayi
+	set_country_flag = mf_xiayi_target
 }

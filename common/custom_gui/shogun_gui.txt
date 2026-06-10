@@ -517,6 +517,13 @@ custom_icon = { # 维新完成标记图标
 			}
 			has_global_flag = shogun_weixin.g_global_flag
 		}
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = weixin_page_2 }
+				has_country_flag = weixin_page_3
+			}
+			has_global_flag = shogun_weixin.j_global_flag
+		}
 	}
 }
 custom_icon = {
@@ -548,6 +555,13 @@ custom_icon = {
 				has_country_flag = weixin_page_3
 			}
 			has_global_flag = shogun_weixin.h_global_flag
+		}
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = weixin_page_2 }
+				has_country_flag = weixin_page_3
+			}
+			has_global_flag = shogun_weixin.k_global_flag
 		}
 	}
 }
@@ -581,6 +595,13 @@ custom_icon = {
 			}
 			has_global_flag = shogun_weixin.i_global_flag
 		}
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = weixin_page_2 }
+				has_country_flag = weixin_page_3
+			}
+			has_global_flag = shogun_weixin.l_global_flag
+		}
 	}
 }
 custom_button = {
@@ -592,7 +613,6 @@ custom_button = {
 		NOT = {
 			has_country_flag = weixin_page_3
 		}
-		mf_can_choose_weixin_unification_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -617,7 +637,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.a.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_unification
 			set_global_flag = shogun_weixin.a_global_flag
 			mf_change_shogun_value = { value = -70 }
 		}
@@ -634,7 +653,6 @@ custom_button = {
 		NOT = {
 			has_country_flag = weixin_page_3
 		}
-		mf_can_choose_weixin_unification_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -667,7 +685,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.b.b.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_unification
 			set_global_flag = shogun_weixin.b_global_flag
 			mf_change_shogun_value = { value = -70 }
 		}
@@ -683,7 +700,6 @@ custom_button = {
 		NOT = {
 			has_country_flag = weixin_page_3
 		}
-		mf_can_choose_weixin_order_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -708,7 +724,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.c.a.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_order
 			mf_change_shogun_value = { value = -70 }
 			set_global_flag = shogun_weixin.c_global_flag
 		}
@@ -722,7 +737,6 @@ custom_button = {
 		NOT = {
 			has_country_flag = weixin_page_3
 		}
-		mf_can_choose_weixin_order_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -747,7 +761,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.d.a.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_order
 			mf_change_shogun_value = { value = -70 }
 			set_global_flag = shogun_weixin.d_global_flag
 		}
@@ -755,13 +768,12 @@ custom_button = {
 	tooltip = shogun_weixin.x.tt
 }
 custom_button = {
-	name = shogun_weixin.e #货币统一
+	name = shogun_weixin.e #谱代大名
 	potential = {
 		has_country_flag = weixin_page_2
 		NOT = {
 			has_country_flag = weixin_page_3
 		}
-		mf_can_choose_weixin_unification_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -776,13 +788,11 @@ custom_button = {
 				tag = event_target:zhengyidajiangjun
 			}
 		}
-		treasury = 1000
 		custom_trigger_tooltip = {
-			tooltip = shogun_weixin.b.a.tt
-			event_target:zhengyidajiangjun = {
-				all_subject_country = {
-					NOT = { liberty_desire = 50 }
-				}
+			tooltip = shogun_weixin.e.k.tt
+			OR = {
+				has_global_flag = shogun_weixin.b_global_flag
+				has_global_flag = shogun_weixin.c_global_flag
 			}
 		}
 	}
@@ -795,7 +805,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.e.a.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_unification
 			mf_change_shogun_value = { value = -70 }
 			set_global_flag = shogun_weixin.e_global_flag
 		}
@@ -811,7 +820,6 @@ custom_button = {
 		NOT = {
 			has_country_flag = weixin_page_3
 		}
-		mf_can_choose_weixin_order_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -842,7 +850,6 @@ custom_button = {
 				has_global_flag = shogun_weixin.c_global_flag
 				has_global_flag = shogun_weixin.d_global_flag
 				has_global_flag = shogun_weixin.e_global_flag
-				has_global_flag = shogun_weixin.f_global_flag
 				has_global_flag = shogun_weixin.g_global_flag
 				has_global_flag = shogun_weixin.h_global_flag
 				has_global_flag = shogun_weixin.i_global_flag
@@ -859,7 +866,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.f.a.tt #解锁转移属国，并放宽重新分封区域限制
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_order
 			mf_change_shogun_value = { value = -70 }
 			set_global_flag = shogun_weixin.f_global_flag
 		}
@@ -867,11 +873,10 @@ custom_button = {
 	tooltip = shogun_weixin.x.tt
 }
 custom_button = {
-	name = shogun_weixin.g #农本商末
+	name = shogun_weixin.g #闭关锁国
 	potential = {
 		has_country_flag = weixin_page_2
 		has_country_flag = weixin_page_3
-		mf_can_choose_weixin_order_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -886,6 +891,21 @@ custom_button = {
 				tag = event_target:zhengyidajiangjun
 			}
 		}
+		is_at_war = no
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.b.a.tt
+			event_target:zhengyidajiangjun = {
+				all_subject_country = {
+					NOT = { liberty_desire = 50 }
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.g.k.tt
+			event_target:zhengyidajiangjun = {
+				mf_shogun_controls_japan_region = yes
+			}
+		}
 	}
 	effect = {
 		if = {
@@ -896,7 +916,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.g.a.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_order
 			mf_change_shogun_value = { value = -70 }
 			set_global_flag = shogun_weixin.g_global_flag
 		}
@@ -904,11 +923,10 @@ custom_button = {
 	tooltip = shogun_weixin.x.tt
 }
 custom_button = {
-	name = shogun_weixin.h #救恤政施
+	name = shogun_weixin.h #参勤交代
 	potential = {
 		has_country_flag = weixin_page_2
 		has_country_flag = weixin_page_3
-		mf_can_choose_weixin_order_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -923,6 +941,12 @@ custom_button = {
 				tag = event_target:zhengyidajiangjun
 			}
 		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.h.k.tt
+			event_target:zhengyidajiangjun = {
+				has_country_modifier = shogun_yuling_b
+			}
+		}
 	}
 	effect = {
 		if = {
@@ -933,7 +957,6 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.h.a.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_order
 			set_global_flag = shogun_weixin.h_global_flag
 			mf_change_shogun_value = { value = -70 }
 		}
@@ -941,11 +964,10 @@ custom_button = {
 	tooltip = shogun_weixin.x.tt
 }
 custom_button = {
-	name = shogun_weixin.i #学问统制
+	name = shogun_weixin.i #征讨虾夷
 	potential = {
 		has_country_flag = weixin_page_2
 		has_country_flag = weixin_page_3
-		mf_can_choose_weixin_unification_route = yes
 	}
 	trigger = {
 		hidden_trigger = {
@@ -960,6 +982,12 @@ custom_button = {
 				tag = event_target:zhengyidajiangjun
 			}
 		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.i.k.tt
+			event_target:zhengyidajiangjun = {
+				mf_shogun_controls_japan_region_except_hokkaido = yes
+			}
+		}
 	}
 	effect = {
 		if = {
@@ -970,8 +998,131 @@ custom_button = {
 		}
 		custom_tooltip = shogun_weixin.i.a.tt
 		hidden_effect = {
-			set_global_flag = mf_weixin_route_unification
 			set_global_flag = shogun_weixin.i_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.j #公仪裁断
+	potential = {
+		NOT = { has_country_flag = weixin_page_2 }
+		has_country_flag = weixin_page_3
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.j_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.j.k.tt
+			has_global_flag = shogun_weixin.c_global_flag
+			has_global_flag = shogun_weixin.d_global_flag
+			has_global_flag = shogun_weixin.f_global_flag
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.j_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.j.a.tt
+		hidden_effect = {
+			set_global_flag = shogun_weixin.j_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.k #国替令
+	potential = {
+		NOT = { has_country_flag = weixin_page_2 }
+		has_country_flag = weixin_page_3
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.k_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.k.k.tt
+			has_global_flag = shogun_weixin.j_global_flag
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.k_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.k.a.tt
+		hidden_effect = {
+			set_global_flag = shogun_weixin.k_global_flag
+			mf_change_shogun_value = { value = -70 }
+		}
+	}
+	tooltip = shogun_weixin.x.tt
+}
+custom_button = {
+	name = shogun_weixin.l #诸藩监察
+	potential = {
+		NOT = { has_country_flag = weixin_page_2 }
+		has_country_flag = weixin_page_3
+	}
+	trigger = {
+		hidden_trigger = {
+			NOT = { has_global_flag = shogun_weixin.l_global_flag }
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+			ROOT = {
+				tag = event_target:zhengyidajiangjun
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = shogun_weixin.l.k.tt
+			has_global_flag = shogun_weixin.k_global_flag
+			event_target:zhengyidajiangjun = {
+				any_subject_country = {
+					has_country_modifier = mf_shogunate_executor
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				has_global_flag = shogun_weixin.l_global_flag
+			}
+			custom_tooltip = weixin_complete.tt
+		}
+		custom_tooltip = shogun_weixin.l.a.tt
+		hidden_effect = {
+			set_global_flag = shogun_weixin.l_global_flag
 			mf_change_shogun_value = { value = -70 }
 		}
 	}
@@ -1007,6 +1158,14 @@ custom_icon = {
 	}
 	tooltip = shogun_weixin_gunlun.tt
 }
+custom_icon = {
+	name = shogun_weixin_gunlun.d #滚轮
+	potential = {
+		NOT = { has_country_flag = weixin_page_2 }
+		has_country_flag = weixin_page_3
+	}
+	tooltip = shogun_weixin_gunlun.tt
+}
 custom_button = {
 	name = shogun_weixin_up_arrow
 	potential = {
@@ -1024,7 +1183,6 @@ custom_button = {
 				}
 			}
 			set_country_flag = weixin_page_3
-			set_country_flag = weixin_page_2
 		}
 		else_if = {
 			limit = {
@@ -1041,6 +1199,13 @@ custom_button = {
 				has_country_flag = weixin_page_3
 			}
 			clr_country_flag = weixin_page_3
+		}
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = weixin_page_2 }
+				has_country_flag = weixin_page_3
+			}
+			set_country_flag = weixin_page_2
 		}
 	}
 }
@@ -1077,6 +1242,12 @@ custom_button = {
 				has_country_flag = weixin_page_3
 			}
 			clr_country_flag = weixin_page_2
+		}
+		else_if = {
+			limit = {
+				NOT = { has_country_flag = weixin_page_2 }
+				has_country_flag = weixin_page_3
+			}
 			clr_country_flag = weixin_page_3
 		}
 	}

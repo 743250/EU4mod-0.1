@@ -1,0 +1,309 @@
+﻿l_english:
+ shogun_tianhuang.tt:0 ")Y‡v=fU^œ^Õlt-N„v^yCgaŒV0S›QåNV7Y'YS›QTINú^Ëzfk¶R?eCgÿFOg÷^îvhÅV‰˜ÝOc(WU^œ^SOû|…Qÿ&TRlQêNTRO×S0Rmc³R0"
+ shogun_zhengyidajiangjun.tt:0 "V7Y'YS›Q„vCgZegêg÷^±RNÿmNegêùRø‹'YT„vžRE–ßu¡V0U^œ^—‰ôuc¬Ný0ø‹é…ŒT8hÃVéy^ÿMbýw©‹S›QCgZ«ˆb²‹0"
+ shogun_xiayi.tt:0 "Œ†7Y=fU^œ^cšR„vqQTV¨‹îvh0ŒRbøvsQôu°eTÿS›QïSåNcšRSOû|YýV¶R:NŒ†7YîvhÿVüRø‹'YTùRY(uuQ0"
+ shogun_gui_dip_icon.tt:0 "ïS(uU^œ^Y²NLˆ¨Rÿ\n§YérÎ‘Œ†7Y§![1020.Getshogun_jinzhongbingong_dip]"
+ Getshogun_jinzhongbingong_dip.tt:0 "\n§Y±RNIYLˆ§!"
+ enable_shogun_gui.tt:0 "U^œ^\nëVwc.•ÿ§YF13§!"
+ shogun_text:0 "U^œ^"
+ shogun_zhengyidajiangjun_text:0 "V7Y'YS›Q"
+ shogun_yutong_text:0 "¡Vßu"
+ shogun_daming_text:0 "'YT"
+ shogun_yuling_text:0 "¡VäN"
+ shogun_weixin_text:0 "ôu°e"
+ shogun_daming_refresh_title:0 "7R°e"
+ shogun_yutong_value:0 "[1020.shogun_value_display.GetValue]"
+ shogun_yutong_small_value:0 "[1020.shogun_value.GetValue]"
+ shogun_close_button_title:0 "sQí•"
+ neutral_prefix:0 "§Y"
+ negative_prefix:0 "§R"
+ positive_prefix:0 "§G+"
+ Getshogun_monthly_value_2_PosNeg.tt:0 "\n)Y‡vbS›Q*gåb	gv^µc6R§Y[1020.GetName]§!ÿ§R-0.03§!"
+ Getshogun_monthly_value_3_PosNeg.tt:0 "\n)Y‡vbS›Q*gåb	gv^µc6R§Y[1818.GetName]§!ÿ§R-0.03§!"
+ Getshogun_monthly_value_4_PosNeg.tt:0 "\n)Y‡vbS›Q*gåb	gv^µc6R§Y[4186.GetName]§!ÿ§R-0.03§!"
+ Getshogun_monthly_value_5_PosNeg.tt:0 "\n)Y‡vbS›Q*gåb	gv^µc6R§Y[1028.GetName]§!ÿ§R-0.03§!"
+ shogun_yutong_monthly_value:0 "[1020.Getshogun_monthly_value_PosNeg][1020.shogun_monthly_value.GetValue]§!"
+ shogun_yutong_monthly_value.tt:0 "qVÍTÏkg§Y¡VßužX•§!„vàV.tÿ\n3zšR¦^ÿ[1020.Getshogun_monthly_value_1_PosNeg][1020.shogun_monthly_value_1.GetValue]§!\n'YTpeÿ§G+[1020.shogun_monthly_value_6.GetValue]§!\nckßu'`ÿ[1020.Getshogun_monthly_value_7_PosNeg][1020.shogun_monthly_value_7.GetValue]§!\nteT¦^ÿ[1020.Getshogun_monthly_value_8_PosNeg][1020.shogun_monthly_value_8.GetValue]§![Getshogun_monthly_value_2_PosNeg][Getshogun_monthly_value_3_PosNeg][Getshogun_monthly_value_4_PosNeg][Getshogun_monthly_value_5_PosNeg]"
+ shogun_yutong_value.tt:0 "¡VßuãNhˆ)Y‡vbV7Y'YS›Q(Wåe,g…Qè„vZgNßu»léy^0¡VßuïS(uŽN¨cÛôu°e0˜^‹TäNŒTgbLˆU^œ^Y²NLˆ¨R0\n---------------------\nSVMR¡VßuÙuˆNåNNîOckÿ\n[1020.Getshogun_express_modifier]\n\nØšŽN§Y50§!¡VßuöeÿS	cÔk‹O·ƒ—Vÿ\nhQýVÛSqN¦^ÿ§G-2.5§!\nt^¦^ckßu'`ÿ§G+1.00§!\nD–¸^ýVÛ!6eeQÿ§G+20%§!\nD–¸^!.s„vF–›QNP–ÿ§G+20%§!\nwýNb‰NRpe±‚9ÿ§G-20%§!\n\nNOŽN§Y50§!¡VßuöeÿS	cÔk‹O×S0Rÿ\nhQýVÛSqN¦^ÿ§R+5.0§!\nt^¦^ckßu'`ÿ§R-2.00§!\nz6e6eeQîOckÿ§R-50%§!\nD–¸^!.s„vF–›QNP–ÿ§R-50%§!\n^SýVìrËz>PTÿ§R+50%§!\nÇ–cOuQôu²b9ÿ§R+100%§!\nF–›QëXlÿ§R-20%§!\n\nIN‰egnÿ3zšR¦^0³YY„v'YT0Øšckßu'`0•g1uTN¶R'YTÅbûNS›Q0\nIN‰mc1YÿSOû|YýV¶Rµc6Råe,g†˜W0NO3zšR¦^0*gµc6Råe,gR›SIN‰ÎW^0"
+ Getshogun_value_Profix.a.tt:0 "0[1020.shogun_value_Profix.GetValue]"
+ Getshogun_value_Profix.b.tt:0 "[1020.shogun_value_Profix.GetValue]"
+ Getshogun_express_modifier.b.tt:0 "hQýVÛSqN¦^ÿ§G-[1020.shogun_value_express_1.GetValue]§!\nt^¦^ckßu'`ÿ§G+1.00§!\nD–¸^ýVÛ!6eeQÿ§G+[1020.shogun_value_express_2.GetValue]%§!\nD–¸^!.s„vF–›QNP–ÿ§G+[1020.shogun_value_express_2.GetValue]%§!\nwýNb‰NRpe±‚9ÿ§G-[1020.shogun_value_express_2.GetValue]%§!"
+ Getshogun_express_modifier.a.tt:0 "hQýVÛSqN¦^ÿ§R+[1020.shogun_value_express_3.GetValue]§!\nt^¦^ckßu'`ÿ§R-2.00§!\nz6e6eeQîOckÿ§R-[1020.shogun_value_express_6.GetValue]%§!\nD–¸^!.s„vF–›QNP–ÿ§R-[1020.shogun_value_express_6.GetValue]%§!\n^SýVìrËz>PTÿ§R+[1020.shogun_value_express_6.GetValue]%§!\nÇ–cOuQôu²b9ÿ§R+[1020.shogun_value_express_5.GetValue]%§!\nF–›QëXlÿ§R-[1020.shogun_value_express_4.GetValue]%§!"
+ shogun_weixin_y.tt:0 "å‹9ei—òTÏuŒRb"
+ shogun_weixin.x.tt:0 "[1020.Getweixin_trigger]\n[ROOT.Getjiangjun_trigger]"
+ weixin_complete.tt:0 "\n§W- å‹9ei—òTÏuŒRb§!\n--------------"
+ Getjiangjun_trigger.a.tt:0 "§RÅV‰˜b:N§Y)Y‡vbV7Y'YS›Q§!Mbýw¨cLˆôu°eÿ§!"
+ Getweixin_trigger.a.tt:0 "§R- ¨cLˆå‹y˜9ei——‰óS§Y80.00§!¡Vßu0\n-\nå‹9ei—³Q®‹±‚9§Y70.00§!¡VßuÿFOSVMRêS	g§Y[1020.shogun_value_display.GetValue]§!¡Vßu0§!"
+ Getweixin_trigger.b.tt:0 "§W- å‹9ei—³Q®‹òTÏuÇ§!\n§R¨cLˆå‹y˜9ei——‰óS§Y80.00§!¡Vßu0\n-\nå‹9ei—³Q®‹±‚9§Y70.00§!¡VßuÿFOSVMRêS	g§Y[1020.shogun_value_display.GetValue]§!¡Vßu0§!"
+ Getweixin_trigger.c.tt:0 "§W- å‹9ei—³Q®‹òTÏuÇ§!"
+ Getweixin_trigger.d.tt:0 "ÙS±‚9bìN§Y70§!¡Vßu0"
+ mf_weixin_order_route_available_tt:0 "*g	éb§YTNï¿u§!0	ébûNNTNï¿u9ei—Tÿ§Yéy^ï¿u§!9ei—SNïSQ	0"
+ mf_weixin_unification_route_available_tt:0 "*g	éb§Yéy^ï¿u§!0	ébûNNéy^ï¿u9ei—Tÿ§YTNï¿u§!9ei—SNïSQ	0"
+ shogun_weixin_gunlun.tt:0 "§OÙN=fwck„vÚnnÿ÷‹¹pûQ­r4Y0§!"
+ shogun_yuling.a_title:0 "qšjmºN"
+ shogun_yuling.b_title:0 "ÂSäR²NãN"
+ shogun_yuling.c_title:0 "RéräN"
+ shogun_yuling.d_title:0 "PN^PNµ^"
+ shogun_yuling.e_title:0 "uQœQR»y"
+ shogun_yuling.a.tt:0 "qšjmºN[ROOT.Get_shogun_yuling_jiangjun][ROOT.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling.b.tt:0 "ÂSäR²NãN[ROOT.Get_shogun_yuling_jiangjun][ROOT.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling.c.tt:0 "RéräN[ROOT.Get_shogun_yuling_jiangjun][ROOT.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling.d.tt:0 "PN^PNµ^[ROOT.Get_shogun_yuling_jiangjun][ROOT.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling.e.tt:0 "uQœQR»y[ROOT.Get_shogun_yuling_jiangjun][ROOT.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling_x.tt:0 "Ïk!kêSýw˜^Ny˜¡VäN0¡VäNcíu§Y10t^§!ÿ˜^öeˆmw§Y20§!ckßu'`0"
+ shogun_yuling_x_a.tt:0 "S›Q·ƒ—V§YqšjmºN§!ÿ^SýVìrËz>PT§G-10%§!ÿhQýVÛSqN¦^§G-2§!0"
+ shogun_yuling_x_b.tt:0 "S›QÛeQ§YÂSäRéy^§!ÿÏkt^æ‰ÑSÂSäR²NãN‹NöNÿ'YT—‰	cÑSUS¦^ŒT0RU^œ^–™ý„vÝ»ybÅbÂSäR9(u0"
+ shogun_yuling_x_c.tt:0 "Nb	gôv^S'YTŒTj–ã'YT·ƒ—V§YU^œ^›QIe‹S6R§!ÿôVÎWýw›R§R-30%§!0"
+ shogun_yuling_x_d.tt:0 "S›Q·ƒ—V§YPN^PNµ^§!ÿwýN8fÞz‰N›R§G+20%§!ÿ8fHe‡s§G+10%§!0"
+ shogun_yuling_x_e.tt:0 "S›Q·ƒ—V§YuQœQR»y§!ÿekuQjObýw›R§G+10%§!ÿS†˜ôVÎW§G+2§!0"
+ Get_shogun_yuling_jiangjun.a.tt:0 "\n§R- êS	g)Y‡vbS›QMbýw˜^¡VäN0§!"
+ Get_shogun_yuling_cd_trigger.a.tt:0 "\n§R- SVMR¡VäNòTÏu˜^ÿS(WASt^T0Rg0§!"
+ shogun_yuling_a:0 "qšjmºN¡VäN"
+ shogun_yuling_b:0 "ÂSäR²NãN¡VäN"
+ shogun_yuling_c:0 "RéräN¡VäN"
+ shogun_yuling_d:0 "PN^PNµ^¡VäN"
+ shogun_yuling_e:0 "uQœQR»y¡VäN"
+ quzhulangren:0 "qšjmºN"
+ desc_quzhulangren:0 "ŠbAmce„vjmºNÍ‘°e³ueQ¶RãN0W¹eéy^ÿ‹SNO8n»yfkÅˆŒT4NöeÓuZQÿHQ3zOO…QèQŒib.V0"
+ leshilezuo:0 "PN^PNµ^"
+ desc_leshilezuo:0 ">eËR^µ^NFU8P–6RÿŠb0ÌRüRTU^œ^ïSµc„vÎWG•ŒTFUïÿžX:V0?eNAmÿmN©‹0W¹eÏuNmôfImÃ0ôf¾–«ˆçe6R•‰k0"
+ bingnongfenli:0 "uQœQR»y"
+ desc_bingnongfenli:0 "ŠbfkºNNœQl„vÒ‰r‚ÆbVÿ¿OŽNôuc8^Yfk›RŒTIeÎW‹S6RÿãN÷N=f>yOÓu„gôfõPlxÿ0W¹e.V›RmNôfØš0"
+ shogun_weixin.a_title:0 "Ÿ^d–ÁysQ"
+ shogun_weixin.b_title:0 "U^†˜Àh0W"
+ shogun_weixin.c_title:0 "«ŽýNßu6R"
+ shogun_weixin.d_title:0 "y-Nv^lQ"
+ shogun_weixin.e_title:0 "1ŒãN'YT"
+ shogun_weixin.f_title:0 "fk¶Rø‹Õl"
+ shogun_weixin.g_title:0 "í•sQ•ýV"
+ shogun_weixin.h_title:0 "ÂSäR²NãN"
+ shogun_weixin.i_title:0 "V¨‹Œ†7Y"
+ shogun_weixin.j_title:0 "lQêNÁˆ­e"
+ shogun_weixin.k_title:0 "ýVÿfäN"
+ shogun_weixin.l_title:0 "ø‹é…ÑvßR"
+ shogun_weixin.a.tt:0 "Ÿ^d–ø‹é…Áy¾‹sQaSÿŠbSï0¿R:WŒTAmCg6eRVlQêN¡rt0\n\nU^œ^SOû|·ƒ—Vÿ\n8fHe‡sÿ§G+5.0%§!\n\nS›QŒT)Y‡vîvh·ƒ—Vÿ\nFUºNÿ§G+1§!"
+ shogun_weixin.b.a.tt:0 "Nb	gôv^S^SýVìrËz>PTNOŽN§Y50%§!0"
+ shogun_weixin.b.b.tt:0 "ú^ËzhQýVW0W&ŒQÿnx²‹U^œ^ùRåe,g0W:S„vÕltINCg0\n\nS›QŒT)Y‡vîvh·ƒ—Vÿ\nhQýVz6eîOckÿ§G+10.0%§!\n»lt¹RÏ‘îOckÿ§G+5.0%§!\n\nTíuûN¡RO(Wåb	g)Y‡vîvhTÙuˆNåe,g0W:S8lEN±Rðy0"
+ shogun_weixin.c.a.tt:0 "úVšR'YT¶R<hŒTëXœQåTFU«ŽýNÿ©‹U^œ^‹TäNåb	gïS°‹UV0ïSý1„v>yOéy^0\n\nS›QŒT)Y‡vîvh·ƒ—Vÿ\nt^¦^ckßu'`ÿ§G+1.00§!\nhQýVÛSqNÿ§G-1.00§!\n^SýVìrËz>PTÿ§G-5.0%§!\nU^œ^Y²N¥c×S¦^ÿ§G+5§!"
+ shogun_weixin.d.a.tt:0 "Šbg÷^ûN˜RN<yêN³ueQU^œ^Õlt0\n\nã‰•U^œ^Y²NLˆ¨Rÿ§Y±RNIYLˆ§!0\n±RNIYLˆˆmw§Y10§!¡Vßuÿ·QtS§Y10§!t^ÿïSÍ‘°ecšR)Y‡vîvh0"
+ shogun_weixin.e.k.tt:0 "—‰ŒRb§Y«ŽýNßu6R§!b§YU^†˜Àh0W§!0"
+ shogun_weixin.e.a.tt:0 "ú^Ëz²NU^œ^-N¢gé…„vûN‹T6R¦^0\n\nã‰•U^œ^Y²NLˆ¨Rÿ§YcšR1ŒãN'YT§!0\núWNxNP–:N§Y3§!*N1ŒãN'YTÿŒRbûN¡R§Y1ŒãN-N¢g§!TÐcGS:N§Y5§!0"
+ shogun_weixin.f.k.tt:0 "óSŒRb§Y3§!y˜âe	gôu°e9ei—0"
+ shogun_weixin.f.a.tt:0 "åNfk¶Rø‹ÕlÍ‘te'YTéy^ÿ:VSU^œ^ùR'YTŒTj–ã„vµc6R0\n\nS›QÊSU^œ^ôv^S'YT·ƒ—Vÿ\nAQ¸‹O(uŸSHr§Ylûy^SýV§!ŒTŒag>k\n^SýVìrËz>PTÿ§G-5.0%§!\nU^œ^Y²N¥c×S¦^ÿ§G+10§!\n\nŒRbå‹9ei—TÿU^œ^N'YTÍ‘°eRSòTmp¡Nçe¶RöeÿNQNSP–ŽNåe,g:SßW0\n\nøvsQY²NLˆ¨R—‰ÇU^œ^ûN¡RhK„žRÕl¦^Tã‰•0"
+ shogun_weixin.g.k.tt:0 "d–zz0WYÿte*Nåe,g0W:SÅV‰˜1uU^œ^0ôv^S^SýV0j–ãb^—g!^SýVµc6R0"
+ shogun_weixin.g.a.tt:0 "V=Tí•sQ•ýVÿ(WøvùRSí•„v¯sƒX-N‰RšbfkëX0‹S6RFUÁTÏuNmŒT:Vé…Žb=gÃÁ0\n\nU^œ^SOû|hQSO·ƒ—Vÿ\nÑyŽb±‚9ÿ§R+20.0%§!\nÑSUSb,gÿ§G-10.0%§!\nfkëXàVÚ‹qVÍTÿ§G+10.0%§!\nFUºNàVÚ‹qVÍTÿ§R-10.0%§!\nFUºNqVÍT›Rÿ§G-5.0%§!"
+ shogun_weixin.h.k.tt:0 "SVMR¡VäNÅV‰˜Ç‘(u§YÂSäR²NãN§!0"
+ shogun_weixin.h.a.tt:0 "ŠbÂSäR²NãNÎN4Nöe¡VäNÐcGS:Né`b6R¦^0\n\nã‰•U^œ^Y²NLˆ¨Rÿ§Y:V6RÂSäR²NãN§!0\n«ˆ:V6RÂSäR„v'YTOÛeQÂSäR-Nv^M–NOìrËz>PTÿŒRbTíuûN¡RTé`bHeœgžX:V0"
+ shogun_weixin.i.k.tt:0 "d–SwmSYÿåe,g0W:SÅV‰˜1uU^œ^SOû|µc6R0"
+ shogun_weixin.i.a.tt:0 "ŒRb,gWéy^TV=TS¹eV¨‹0\n\nã‰•U^œ^Y²NLˆ¨Rÿ§YérÎ‘Œ†7Y§!0\nûN¡R§Ys^šRŒ†7Y§!MRÿêSýwŠbåb	gSwmSwýN„výV¶R¾‹:NŒ†7Yîvh0\n\nS›Q·ƒ—Vÿ\nt^¦^F–›Q.Oßuÿ§G+1.00§!"
+ shogun_weixin.j.k.tt:0 "òTŒRb§Y«ŽýNßu6R§!0§Yy-Nv^lQ§!ŒT§Yfk¶Rø‹Õl§!0"
+ shogun_weixin.j.a.tt:0 "Šb'YT‰Nïz0çe¶Rb`Y0ÁybjPbkNgbLˆýVûN‹T³ueQlQêNÁˆ­e0U^œ^‹TäNOôf¹Rf«ˆ'YTÆ‰:N6R¦^Áˆ³Q0\n\nS›QŒT)Y‡vîvh·ƒ—Vÿ\nY²NðX‰Šÿ§G+1§!\nhQýVÛSqNÿ§G-1§!\nU^œ^Y²N¥c×S¦^ÿ§G+10§!\n\n§Y:V6RRrR§!ŒT§YûN‹TgbLˆýV§!—‰ŒRbûN¡Rh-N„v§YlQêNÁˆ­e§!Tã‰•0"
+ shogun_weixin.k.k.tt:0 "òTŒRb§YlQêNÁˆ­e§!0"
+ shogun_weixin.k.a.tt:0 "nxËzýVÿfNlSŸSRÿJR1V'YT•gØvŽN0WbVb„vÍSU^œ^9húW0\n\nS›QŒT)Y‡vîvh·ƒ—Vÿ\nÞTôu²b9ÿ§G-10.0%§!\nhQNSê»l¦^ÿ§G-2.00§!\n^SýVìrËz>PTÿ§G-5.0%§!\nU^œ^Y²N¥c×S¦^ÿ§G+5§!\n\n§YûN‹TgbLˆýV§!„v¡VßuˆmwM–:N§Y10§!0"
+ shogun_weixin.l.k.tt:0 "òTŒRb§YýVÿfäN§!ÿNóSûN‹TÇN*N§YU^œ^gbLˆýV§!0"
+ shogun_weixin.l.a.tt:0 "åNîvØN0áTÁ‰OŒTgbLˆýVÞ¥cø‹é…ÑvßRQÜuÿ©‹U^œ^ýwôféeÑS°sÁyb0Òb‹TNTv^çe¶Réy^„v×‚4Y0\n\nS›QŒT)Y‡vîvh·ƒ—Vÿ\nô•ŒQú^¾‹ýw›Rÿ§G+10.0%§!\nO‚‚ÅeLˆöeô•ÿ§G-20.0%§!\nU^œ^Y²N¥c×S¦^ÿ§G+5§!0"
+ feichuguanqia_1:0 "Ÿ^d–ÁysQ"
+ desc_feichuguanqia_1:0 "U^œ^Ÿ^d–ø‹é…Áy¾‹sQaSÿŠbSï0¿R:WŒTAmCgÍ‘°e³ueQlQêN¡rt0"
+ feichuguanqia_2:0 "Ÿ^d–ÁysQ"
+ desc_feichuguanqia_2:0 "S›QN)Y‡vîvhµc6RýV…QAmTRÿïSåNôfôv¥c0WÄuÇuFUïŒT8f‚‚¹p0"
+ jinzhongbinggong:0 "y-Nv^lQ"
+ desc_jinzhongbinggong:0 "U^œ^Šbg÷^ûN˜R0<yêNŒTÕltS³ueQlQêNéy^0"
+ shenfentongzhi:0 "«ŽýNßu6R"
+ desc_shenfentongzhi:0 "'YT¶R<hNëXœQåTFU«ŽýN«ˆúVšRNegÿU^œ^‹TäN·ƒ—VïS°‹UV0ïSý1„v>yOúWNx0"
+ mulingjiandi:0 "U^†˜Àh0W"
+ desc_mulingjiandi:0 "U^œ^Í‘°etetW0W&ŒQÿnx²‹åe,g0W:S„vÕltINCgŒTz6eúWNx0"
+ huobitongyi_1:0 "1ŒãN-N¢g"
+ desc_huobitongyi_1:0 "²NU^œ^'YT«ˆ³ueQ-N¢géy^ÿbÅbôucU^œ^SO6R„v›QyVN?e»l1ûN0"
+ huobitongyi_2:0 "1ŒãN-N¢g"
+ desc_huobitongyi_2:0 "U^œ^òTú^Ëz²NU^œ^-N¢gé…ÿïSåNôf3zšR0WgbLˆ0W¹eÁˆ­e0"
+ wujiazhufa:0 "fk¶Rø‹Õl"
+ desc_wujiazhufa:0 "ø‹'YT„vb‰N0RSŒTÎN^SsQû|«ˆ³ueQU^œ^Õl¦^0"
+ mf_sakoku_isolation:0 "í•sQ•ýV"
+ desc_mf_sakoku_isolation:0 "U^œ^åNSí•éy^‹S6RFUÁTÏuNmŒTé…ýVŽb=gÃÁÿO:Vé…¾–åNíQYè²NAm(W›Q‹NN…ÇS›Q0"
+ jiujizhengshi_1:0 "ÂSäR²NãN"
+ desc_jiujizhengshi_1:0 "ÂSäR²NãNÐcØš0W¹e»ltb,gÿFOmN‹SNO†N'YTlQV—b‹TŒT0W¹e¨RqN0"
+ jiujizhengshi_2:0 "ÂSäR²NãN"
+ desc_jiujizhengshi_2:0 "ÂSäR²NãNb:NU^œ^cíuÑvcwø‹é…„v6R¦^åTwQ0"
+ mf_ezo_campaign_preparation:0 "V¨‹Œ†7Y"
+ desc_mf_ezo_campaign_preparation:0 "U^œ^òTŠbS¹e¹ƒX³ueQqQT›Q‹NîvhÿV¨‹ÏuŒš3zšR‰lÀm:NS›Q¶R„v›Q?eýw›R0"
+ gongyicaiduan:0 "lQêNÁˆ­e"
+ desc_gongyicaiduan:0 "U^œ^Šbø‹'YT‰Nïz³ueQlQêNÁˆ­eÿ‹TäNNQêS=fS›Q¶RÁyaÿwb:NïS«ˆø‹¶Rb²‹„v6R¦^Áˆ³Q0"
+ guotiling:0 "ýVÿfäN"
+ desc_guotiling:0 "U^œ^ÝOYuÅV‰öeÍ‘’c†˜ýVNlS'YT„vCg›RÿO0W¹ežR›RNóŽN•gúVS:NÍSU^œ^„vìrËz9húW0"
+ zhufanjiancha:0 "ø‹é…ÑvßR"
+ desc_zhufanjiancha:0 "îvØNNgbLˆýVqQTÑvcwø‹é…ÿOU^œ^ôféeÑS°sÝäN0ÁybN|Qv^çe¶Réy^„v×‚4Y0"
+ nongbenshangmo:0 "çe6RWYu"
+ desc_nongbenshangmo:0 "çeHrôu°eWYuîOckÿ7R°eU^œ^ôu°eTO«ˆnt0"
+ xuewentongzhi_1:0 "çe6RWYu"
+ xuewentongzhi_2:0 "çe6RWYu"
+ desc_xuewentongzhi_1:0 "çeHrôu°eWYuîOckÿ7R°eU^œ^ôu°eTO«ˆnt0"
+ desc_xuewentongzhi_2:0 "çeHrôu°eWYuîOckÿ7R°eU^œ^ôu°eTO«ˆnt0"
+ mf_ai_shogun_yuling_title:0 "AI ˜^¡VäN"
+ mf_ai_shogun_yuling_desc:0 "U^œ^ AI (WTagöNN	ébv^˜^¡VäN0"
+ mf_ai_shogun_weixin_a_title:0 "AI ôu°eÿŸ^d–ÁysQ"
+ mf_ai_shogun_weixin_a_desc:0 "U^œ^ AI (WTagöNN¨cÛŸ^d–ÁysQ0"
+ mf_ai_shogun_weixin_b_title:0 "AI ôu°eÿU^†˜Àh0W"
+ mf_ai_shogun_weixin_b_desc:0 "U^œ^ AI (WTagöNN¨cÛU^†˜Àh0W0"
+ mf_ai_shogun_weixin_c_title:0 "AI ôu°eÿ«ŽýNßu6R"
+ mf_ai_shogun_weixin_c_desc:0 "U^œ^ AI (WTagöNN¨cÛ«ŽýNßu6R0"
+ mf_ai_shogun_weixin_d_title:0 "AI ôu°eÿy-Nv^lQ"
+ mf_ai_shogun_weixin_d_desc:0 "U^œ^ AI (WTagöNN¨cÛy-Nv^lQ0"
+ mf_ai_shogun_weixin_e_title:0 "AI ôu°eÿ1ŒãN'YT"
+ mf_ai_shogun_weixin_e_desc:0 "U^œ^ AI (WTagöNN¨cÛ1ŒãN'YT6R¦^0"
+ mf_ai_shogun_weixin_f_title:0 "AI ôu°eÿfk¶Rø‹Õl"
+ mf_ai_shogun_weixin_f_desc:0 "U^œ^ AI (WTagöNN¨cÛfk¶Rø‹Õl0"
+ mf_ai_shogun_weixin_g_title:0 "AI ôu°eÿí•sQ•ýV"
+ mf_ai_shogun_weixin_g_desc:0 "U^œ^ AI (WTagöNN¨cÛí•sQ•ýV0"
+ mf_ai_shogun_weixin_h_title:0 "AI ôu°eÿÂSäR²NãN"
+ mf_ai_shogun_weixin_h_desc:0 "U^œ^ AI (WTagöNN¨cÛÂSäR²NãN6R¦^0"
+ mf_ai_shogun_weixin_i_title:0 "AI ôu°eÿV¨‹Œ†7Y"
+ mf_ai_shogun_weixin_i_desc:0 "U^œ^ AI (WTagöNN¨cÛV¨‹Œ†7Y6R¦^0"
+ mf_ai_shogun_weixin_j_title:0 "AI ôu°eÿlQêNÁˆ­e"
+ mf_ai_shogun_weixin_j_desc:0 "U^œ^ AI (WTagöNN¨cÛlQêNÁˆ­e0"
+ mf_ai_shogun_weixin_k_title:0 "AI ôu°eÿýVÿfäN"
+ mf_ai_shogun_weixin_k_desc:0 "U^œ^ AI (WTagöNN¨cÛýVÿfäN0"
+ mf_ai_shogun_weixin_l_title:0 "AI ôu°eÿø‹é…ÑvßR"
+ mf_ai_shogun_weixin_l_desc:0 "U^œ^ AI (WTagöNN¨cÛø‹é…ÑvßR0"
+ shogun_scale_modifier_0:0 "NO¡Vßu"
+ shogun_scale_modifier_1:0 "NO¡Vßu"
+ shogun_scale_modifier_2:0 "NO¡Vßu"
+ shogun_scale_modifier_3:0 "NO¡Vßu"
+ shogun_scale_modifier_4:0 "NO¡Vßu"
+ shogun_scale_modifier_5:0 "NO¡Vßu"
+ shogun_scale_modifier_6:0 "NO¡Vßu"
+ shogun_scale_modifier_7:0 "NO¡Vßu"
+ shogun_scale_modifier_8:0 "NO¡Vßu"
+ shogun_scale_modifier_9:0 "NO¡Vßu"
+ shogun_scale_modifier_10:0 "NO¡Vßu"
+ shogun_scale_modifier_11:0 "NO¡Vßu"
+ shogun_scale_modifier_12:0 "NO¡Vßu"
+ shogun_scale_modifier_13:0 "NO¡Vßu"
+ shogun_scale_modifier_14:0 "NO¡Vßu"
+ shogun_scale_modifier_15:0 "NO¡Vßu"
+ shogun_scale_modifier_16:0 "NO¡Vßu"
+ shogun_scale_modifier_17:0 "NO¡Vßu"
+ shogun_scale_modifier_18:0 "NO¡Vßu"
+ shogun_scale_modifier_19:0 "NO¡Vßu"
+ shogun_scale_modifier_20:0 "NO¡Vßu"
+ shogun_scale_modifier_21:0 "NO¡Vßu"
+ shogun_scale_modifier_22:0 "NO¡Vßu"
+ shogun_scale_modifier_23:0 "NO¡Vßu"
+ shogun_scale_modifier_24:0 "NO¡Vßu"
+ shogun_scale_modifier_25:0 "NO¡Vßu"
+ shogun_scale_modifier_26:0 "NO¡Vßu"
+ shogun_scale_modifier_27:0 "NO¡Vßu"
+ shogun_scale_modifier_28:0 "NO¡Vßu"
+ shogun_scale_modifier_29:0 "NO¡Vßu"
+ shogun_scale_modifier_30:0 "NO¡Vßu"
+ shogun_scale_modifier_31:0 "NO¡Vßu"
+ shogun_scale_modifier_32:0 "NO¡Vßu"
+ shogun_scale_modifier_33:0 "NO¡Vßu"
+ shogun_scale_modifier_34:0 "NO¡Vßu"
+ shogun_scale_modifier_35:0 "NO¡Vßu"
+ shogun_scale_modifier_36:0 "NO¡Vßu"
+ shogun_scale_modifier_37:0 "NO¡Vßu"
+ shogun_scale_modifier_38:0 "NO¡Vßu"
+ shogun_scale_modifier_39:0 "NO¡Vßu"
+ shogun_scale_modifier_40:0 "NO¡Vßu"
+ shogun_scale_modifier_41:0 "NO¡Vßu"
+ shogun_scale_modifier_42:0 "NO¡Vßu"
+ shogun_scale_modifier_43:0 "NO¡Vßu"
+ shogun_scale_modifier_44:0 "NO¡Vßu"
+ shogun_scale_modifier_45:0 "NO¡Vßu"
+ shogun_scale_modifier_46:0 "NO¡Vßu"
+ shogun_scale_modifier_47:0 "NO¡Vßu"
+ shogun_scale_modifier_48:0 "NO¡Vßu"
+ shogun_scale_modifier_49:0 "NO¡Vßu"
+ shogun_scale_modifier_50:0 "-N¡Vßu"
+ shogun_scale_modifier_51:0 "Øš¡Vßu"
+ shogun_scale_modifier_52:0 "Øš¡Vßu"
+ shogun_scale_modifier_53:0 "Øš¡Vßu"
+ shogun_scale_modifier_54:0 "Øš¡Vßu"
+ shogun_scale_modifier_55:0 "Øš¡Vßu"
+ shogun_scale_modifier_56:0 "Øš¡Vßu"
+ shogun_scale_modifier_57:0 "Øš¡Vßu"
+ shogun_scale_modifier_58:0 "Øš¡Vßu"
+ shogun_scale_modifier_59:0 "Øš¡Vßu"
+ shogun_scale_modifier_60:0 "Øš¡Vßu"
+ shogun_scale_modifier_61:0 "Øš¡Vßu"
+ shogun_scale_modifier_62:0 "Øš¡Vßu"
+ shogun_scale_modifier_63:0 "Øš¡Vßu"
+ shogun_scale_modifier_64:0 "Øš¡Vßu"
+ shogun_scale_modifier_65:0 "Øš¡Vßu"
+ shogun_scale_modifier_66:0 "Øš¡Vßu"
+ shogun_scale_modifier_67:0 "Øš¡Vßu"
+ shogun_scale_modifier_68:0 "Øš¡Vßu"
+ shogun_scale_modifier_69:0 "Øš¡Vßu"
+ shogun_scale_modifier_70:0 "Øš¡Vßu"
+ shogun_scale_modifier_71:0 "Øš¡Vßu"
+ shogun_scale_modifier_72:0 "Øš¡Vßu"
+ shogun_scale_modifier_73:0 "Øš¡Vßu"
+ shogun_scale_modifier_74:0 "Øš¡Vßu"
+ shogun_scale_modifier_75:0 "Øš¡Vßu"
+ shogun_scale_modifier_76:0 "Øš¡Vßu"
+ shogun_scale_modifier_77:0 "Øš¡Vßu"
+ shogun_scale_modifier_78:0 "Øš¡Vßu"
+ shogun_scale_modifier_79:0 "Øš¡Vßu"
+ shogun_scale_modifier_80:0 "Øš¡Vßu"
+ shogun_scale_modifier_81:0 "Øš¡Vßu"
+ shogun_scale_modifier_82:0 "Øš¡Vßu"
+ shogun_scale_modifier_83:0 "Øš¡Vßu"
+ shogun_scale_modifier_84:0 "Øš¡Vßu"
+ shogun_scale_modifier_85:0 "Øš¡Vßu"
+ shogun_scale_modifier_86:0 "Øš¡Vßu"
+ shogun_scale_modifier_87:0 "Øš¡Vßu"
+ shogun_scale_modifier_88:0 "Øš¡Vßu"
+ shogun_scale_modifier_89:0 "Øš¡Vßu"
+ shogun_scale_modifier_90:0 "Øš¡Vßu"
+ shogun_scale_modifier_91:0 "Øš¡Vßu"
+ shogun_scale_modifier_92:0 "Øš¡Vßu"
+ shogun_scale_modifier_93:0 "Øš¡Vßu"
+ shogun_scale_modifier_94:0 "Øš¡Vßu"
+ shogun_scale_modifier_95:0 "Øš¡Vßu"
+ shogun_scale_modifier_96:0 "Øš¡Vßu"
+ shogun_scale_modifier_97:0 "Øš¡Vßu"
+ shogun_scale_modifier_98:0 "Øš¡Vßu"
+ shogun_scale_modifier_99:0 "Øš¡Vßu"
+ shogun_scale_modifier_100:0 "Øš¡Vßu"
+ haixiao:0 "wmxUâlÊS0W:S"
+ mozhiyingwuzheyihui:0 "¨XKNqVfkw®‹O"
+ zhuxiangzhigaige:0 "©RaN6R9ei—"
+ kaikenzuqing:0 "V¦W³‰"
+ fengraozhimengsui:0 "0NpzKN¦hŽx"
+ qianghuahaijin:0 ":VSwmy"
+ xingxingxiangrong:0 "1k1kTcƒ"
+ bl_japan.1_name:0 "sQN'Y0W—"
+ bl_japan.1_desc:0 "sQNø‹ýVmG'Y0W—ÿÎW^0SïŒT^y>y×Smc0U^œ^ÅV‰˜³QšRåNYS¡VßuôucQeŒpŒT0W¹eéy^0"
+ bl_japan.1.a:0 "HŒpÿVÓNHŒpÿ"
+ bl_japan.1.a.tt:0 "[ROOT.GetName]ÏQS§R10.00§!¹p¡Vßu0"
+ bl_japan.1.b:0 "?aÖNìN¬qÇÙ*NöeãN0"
+ bl_japan.1.b.tt:0 "[ROOT.GetName]ÏQS§R20.00§!¹p¡Vßu0"
+ bl_japan.2_name:0 "[GetYear]wmxU"
+ bl_japan.2_desc:0 "wmxU²QûQ¿l¸Sÿwm9‚0nQgŒT=nãS×Smc0U^œ^ÅV‰˜YtŒpTéy^ŒT¿lwmlu0"
+ bl_japan.2.a:0 "gïS`„viVw0"
+ bl_japan.3_name:0 "S›Q¡VNb„vqVfkw"
+ bl_japan.3_desc:0 "S›Q¡VNb.OúQNeyAmŠÿqVfkwN…Qœ^4–Œpb¨Rø‹é…Æ‰¿u0U^œ^ÅV‰˜YtÙ:W?e»lqS:g0"
+ bl_japan.3.a:0 "ÑS¨R1V0uè•KNØS0"
+ bl_japan.3.b:0 "ôucŽP!QS›Q0"
+ bl_japan.3.b.tt:0 "[ROOT.GetName]žX R§G10.00§!¹p¡Vßu0"
+ bl_japan.4_name:0 "©RaN6R9ei—Hh"
+ bl_japan.4_desc:0 "ÂSäR0¿R:WŒTÐ“b,gåeÊv‰lÍ‘ÿFUºNŒT0W¹eãN˜RÐcúQ©RaN6R9ei—Hh0U^œ^ÅV‰˜(W3zšRfk¶Réy^ŒTôucAmKNô•ÖS‚0"
+ bl_japan.4.a:0 "¨cLˆÙy˜9ei—0"
+ bl_japan.4.b:0 "	gºNó`czzbìN„véy^0"
+ bl_japan.5_name:0 "°e0uV¦W®‹Hh"
+ bl_japan.5_desc:0 "0W¹e÷‹Blib'Y°e0uVÑS0®|ß˜0³RyVŒT4l)RŽb=gur¨Rø‹é…0?eÿmNïSýwVÑS°e„v0W¹e²Qz0"
+ bl_japan.5.a:0 "¡VÆQdkHh0"
+ bl_japan.6_name:0 "0NpzKN¦hŽx"
+ bl_japan.6_desc:0 "0N6e„˜g«ˆŒp³R0äVïyŒT0W¹e²QzûQŽxÿœQlNFUºNýVËY(‘uU^œ^Œ¦^0"
+ bl_japan.6.a:0 "žRËenwO‰Q6R0"
+ bl_japan.7_name:0 "ÆR8fQÜu"
+ bl_japan.7_desc:0 "¿lwmø‹é…ŒTFUºNQÜuÁyN¥cæ‰wmY'ir0U^œ^ÅV‰˜³QšR=f:VSwmyÿØ=fØž¸‹Ñž^XR(W0"
+ bl_japan.7.a:0 ":VSwmy0"
+ bl_japan.7.b:0 "Øž¸‹Ñž^0"
+ bl_japan.8_name:0 "nmNØu²QûQâl"
+ bl_japan.8_desc:0 "nmNØu0FU8¸uÁTŒTÎW^¡RŽëV.O­dÿFUÁTÏuNm„vqVÍT›Rck(WµOeQU^œ^éy^0"
+ bl_japan.8.a:0 "˜R¹e¡r6R0"
+ bl_japan.8.b:0 "˜R¹eôuc0"
+ bl_japan.9_name:0 ")Y‡v¶R1Y»SS0W"
+ bl_japan.9_desc:0 ")Y‡v¶RòTÏu1Y»SŸS	gS0WÿU^œ^—‰ÎN°e„v'YT¶Rû|-N	ébNMO)Y‡vîvh0"
+ bl_japan.9.a:0 "–:gc	NMO0"

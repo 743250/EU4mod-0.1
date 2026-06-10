@@ -39,12 +39,6 @@ BL_shougun_weixin_modifier = {
 	}
 	if = {
 		limit = {
-			has_saved_global_event_target = xiayi
-		}
-		mf_refresh_xiayi_campaign_effect = yes
-	}
-	if = {
-		limit = {
 			has_global_flag = shogun_weixin.b_global_flag
 		}
 		event_target:zhengyidajiangjun = {
@@ -111,7 +105,7 @@ BL_shougun_weixin_modifier = {
 	}
 	if = {
 		limit = {
-			has_global_flag = shogun_weixin.e_global_flag #货币统一
+			has_global_flag = shogun_weixin.e_global_flag #谱代大名
 		}
 		event_target:zhengyidajiangjun = {
 			every_subject_country = {
@@ -160,18 +154,25 @@ BL_shougun_weixin_modifier = {
 	}
 	if = {
 		limit = {
-			has_global_flag = shogun_weixin.g_global_flag #农本商末
+			has_global_flag = shogun_weixin.g_global_flag #闭关锁国
 		}
 		event_target:zhengyidajiangjun = {
 			every_subject_country = {
 				add_country_modifier = {
-					name = nongbenshangmo
+					name = mf_sakoku_isolation
 					duration = -1
 					hidden = yes
 				}
+				every_subject_country = {
+					add_country_modifier = {
+						name = mf_sakoku_isolation
+						duration = -1
+						hidden = yes
+					}
+				}
 			}
 			add_country_modifier = {
-				name = nongbenshangmo
+				name = mf_sakoku_isolation
 				duration = -1
 				hidden = yes
 			}
@@ -180,7 +181,7 @@ BL_shougun_weixin_modifier = {
 			limit = { has_saved_global_event_target = tianhuang }
 			event_target:tianhuang = {
 				add_country_modifier = {
-					name = nongbenshangmo
+					name = mf_sakoku_isolation
 					duration = -1
 					hidden = yes
 				}
@@ -189,7 +190,7 @@ BL_shougun_weixin_modifier = {
 	}
 	if = {
 		limit = {
-			has_global_flag = shogun_weixin.h_global_flag
+			has_global_flag = shogun_weixin.h_global_flag #参勤交代
 		}
 		event_target:zhengyidajiangjun = {
 			every_subject_country = {
@@ -228,24 +229,24 @@ BL_shougun_weixin_modifier = {
 	}
 	if = {
 		limit = {
-			has_global_flag = shogun_weixin.i_global_flag
+			has_global_flag = shogun_weixin.i_global_flag #征讨虾夷
 		}
 		event_target:zhengyidajiangjun = {
-			every_subject_country = {
-				add_country_modifier = {
-					name = xuewentongzhi_1
-					duration = -1
-					hidden = yes
-				}
-			}
 			add_country_modifier = {
-				name = xuewentongzhi_1
+				name = mf_ezo_campaign_preparation
 				duration = -1
 				hidden = yes
 			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.j_global_flag #公仪裁断
+		}
+		event_target:zhengyidajiangjun = {
 			add_country_modifier = {
-				name = xuewentongzhi_2
-				duration = -1	
+				name = gongyicaiduan
+				duration = -1
 				hidden = yes
 			}
 		}
@@ -253,13 +254,52 @@ BL_shougun_weixin_modifier = {
 			limit = { has_saved_global_event_target = tianhuang }
 			event_target:tianhuang = {
 				add_country_modifier = {
-					name = xuewentongzhi_1
+					name = gongyicaiduan
 					duration = -1
 					hidden = yes
 				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.k_global_flag #国替令
+		}
+		event_target:zhengyidajiangjun = {
+			add_country_modifier = {
+				name = guotiling
+				duration = -1
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
 				add_country_modifier = {
-					name = xuewentongzhi_2
-					duration = -1	
+					name = guotiling
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.l_global_flag #诸藩监察
+		}
+		event_target:zhengyidajiangjun = {
+			add_country_modifier = {
+				name = zhufanjiancha
+				duration = -1
+				hidden = yes
+			}
+		}
+		if = {
+			limit = { has_saved_global_event_target = tianhuang }
+			event_target:tianhuang = {
+				add_country_modifier = {
+					name = zhufanjiancha
+					duration = -1
 					hidden = yes
 				}
 			}
@@ -352,11 +392,16 @@ remove_country_modifier = jinzhongbinggong
 remove_country_modifier = huobitongyi_1
 remove_country_modifier = huobitongyi_2
 remove_country_modifier = nongbenshangmo
+remove_country_modifier = mf_sakoku_isolation
 remove_country_modifier = jiujizhengshi_1
 remove_country_modifier = jiujizhengshi_2
 remove_country_modifier = xuewentongzhi_1
 remove_country_modifier = xuewentongzhi_2
+remove_country_modifier = mf_ezo_campaign_preparation
 remove_country_modifier = wujiazhufa
+remove_country_modifier = gongyicaiduan
+remove_country_modifier = guotiling
+remove_country_modifier = zhufanjiancha
 ##################
 remove_country_modifier = shogun_scale_modifier_0
 remove_country_modifier = shogun_scale_modifier_1

@@ -1,0 +1,77 @@
+namespace = mf_shogun_ai
+
+country_event = {
+	id = mf_shogun_ai.1
+	title = "shogun_yuling_text"
+	desc = "shogun_yuling_x.tt"
+	is_triggered_only = yes
+
+	trigger = {
+		ai = yes
+		has_reform = shogunate
+		tag = event_target:zhengyidajiangjun
+		mf_can_issue_shogun_yuling = yes
+	}
+
+	option = {
+		name = "shogun_yuling.a_title"
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 1.5
+				any_subject_country = {
+					liberty_desire = 50
+				}
+			}
+		}
+		mf_apply_shogun_yuling_a = yes
+	}
+
+	option = {
+		name = "shogun_yuling.b_title"
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 2
+				any_subject_country = {
+					is_at_war = yes
+				}
+			}
+		}
+		mf_apply_shogun_yuling_b = yes
+	}
+
+	option = {
+		name = "shogun_yuling.c_title"
+		ai_chance = {
+			factor = 45
+			modifier = {
+				factor = 2
+				any_subject_country = {
+					is_at_war = yes
+				}
+			}
+		}
+		mf_apply_shogun_yuling_c = yes
+	}
+
+	option = {
+		name = "shogun_yuling.d_title"
+		ai_chance = {
+			factor = 18
+		}
+		mf_apply_shogun_yuling_d = yes
+	}
+
+	option = {
+		name = "shogun_yuling.e_title"
+		ai_chance = {
+			factor = 16
+			modifier = {
+				factor = 2
+				NOT = { manpower_percentage = 0.5 }
+			}
+		}
+		mf_apply_shogun_yuling_e = yes
+	}
+}

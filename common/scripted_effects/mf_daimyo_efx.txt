@@ -73,60 +73,62 @@ year_treasury_reduce = {
 ########## 御统与幕府外交效果 ##########
 mf_change_shogun_value = {
 	# 御统显示与缩放都读 1020；所有增减统一从这里走，防止越过 0-100。
-	1020 = {
-		change_variable = {
-			which = shogun_value
-			value = $value$
-		}
-		if = {
-			limit = {
-				NOT = {
-					check_variable = {
-						which = shogun_value
-						value = 0
+	hidden_effect = {
+		1020 = {
+			change_variable = {
+				which = shogun_value
+				value = $value$
+			}
+			if = {
+				limit = {
+					NOT = {
+						check_variable = {
+							which = shogun_value
+							value = 0
+						}
 					}
 				}
+				set_variable = {
+					which = shogun_value
+					value = 0
+				}
+				set_variable = {
+					which = shogun_value_Profix
+					value = 0
+				}
 			}
-			set_variable = {
-				which = shogun_value
-				value = 0
-			}
-			set_variable = {
-				which = shogun_value_Profix
-				value = 0
-			}
-		}
-		if = {
-			limit = {
-				check_variable = {
+			if = {
+				limit = {
+					check_variable = {
+						which = shogun_value
+						value = 100
+					}
+				}
+				set_variable = {
 					which = shogun_value
 					value = 100
 				}
+				set_variable = {
+					which = shogun_value_Profix
+					value = 0
+				}
 			}
 			set_variable = {
+				which = shogun_value_display
 				which = shogun_value
-				value = 100
 			}
 			set_variable = {
+				which = shogun_value_display_fraction
 				which = shogun_value_Profix
-				value = 0
 			}
-		}
-		set_variable = {
-			which = shogun_value_display
-			which = shogun_value
-		}
-		set_variable = {
-			which = shogun_value_display_fraction
-			which = shogun_value_Profix
-		}
-		multiply_variable = {
-			which = shogun_value_display_fraction
-			value = 0.01
-		}
-		change_variable = {
-			which = shogun_value_display
-			which = shogun_value_display_fraction
+			multiply_variable = {
+				which = shogun_value_display_fraction
+				value = 0.01
+			}
+			change_variable = {
+				which = shogun_value_display
+				which = shogun_value_display_fraction
+			}
 		}
 	}
 }
@@ -161,8 +163,6 @@ mf_initialize_new_shogun_authority_effect = {
 				set_country_flag = mf_tianhuang_target
 			}
 		}
-		mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
-		mf_promote_retainer_daimyos_to_shogunate_effect = yes
 		mf_refresh_tianhuang_target_effect = yes
 		bl_mp_effect = yes
 		bl_shogun_refresh = yes
@@ -185,8 +185,17 @@ mf_promote_retainer_daimyos_to_shogunate_effect = {
 			limit = {
 				is_subject_of_type = mf_retainer_daimyo_vassal
 			}
-			change_subject_type = {
-				subject_type = daimyo_vassal
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Mandate of Heaven"
+						has_dlc = "Art of War"
+						has_dlc = "Leviathan"
+					}
+				}
+				change_subject_type = {
+					subject_type = daimyo_vassal
+				}
 			}
 			mf_normalize_daimyo_first_layer_reform_effect = yes
 		}
@@ -205,49 +214,84 @@ mf_promote_retainer_daimyos_to_shogunate_effect = {
 				is_subject_of_type = mf_daimyo_vassal
 			}
 			mf_rehome_daimyo_subjects_effect = yes
-			change_subject_type = {
-				subject_type = mf_retainer_daimyo_vassal
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Mandate of Heaven"
+						has_dlc = "Art of War"
+						has_dlc = "Leviathan"
+					}
+				}
+				change_subject_type = {
+					subject_type = mf_retainer_daimyo_vassal
+				}
 			}
 			mf_normalize_daimyo_first_layer_reform_effect = yes
 		}
-		clear_global_event_target = mf_daimyo_rehome_lord
+		if = {
+			limit = { has_saved_global_event_target = mf_daimyo_rehome_lord }
+			clear_global_event_target = mf_daimyo_rehome_lord
+		}
 	}
 }
 
 mf_rehome_daimyo_subjects_effect = {
 	# 把被收服或被重整的大名直属陪臣转挂到新上级，避免层级断裂。
-	every_subject_country = {
-		limit = {
-			OR = {
-				is_subject_of_type = daimyo_vassal
-				is_subject_of_type = mf_daimyo_vassal
-				is_subject_of_type = mf_retainer_daimyo_vassal
-			}
-		}
-		if = {
+	if = {
+		limit = { has_saved_global_event_target = mf_daimyo_rehome_lord }
+		every_subject_country = {
 			limit = {
-				is_subject = yes
-			}
-			overlord = {
-				free_vassal = PREV
-			}
-		}
-		event_target:mf_daimyo_rehome_lord = {
-			vassalize = PREV
-		}
-		if = {
-			limit = {
-				event_target:mf_daimyo_rehome_lord = {
-					has_reform = shogunate
+				OR = {
+					is_subject_of_type = daimyo_vassal
+					is_subject_of_type = mf_daimyo_vassal
+					is_subject_of_type = mf_retainer_daimyo_vassal
 				}
 			}
-			change_subject_type = {
-				subject_type = daimyo_vassal
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				overlord = {
+					free_vassal = PREV
+				}
 			}
-		}
-		else = {
-			change_subject_type = {
-				subject_type = mf_retainer_daimyo_vassal
+			event_target:mf_daimyo_rehome_lord = {
+				vassalize = PREV
+			}
+			if = {
+				limit = {
+					event_target:mf_daimyo_rehome_lord = {
+						has_reform = shogunate
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_dlc = "Mandate of Heaven"
+							has_dlc = "Art of War"
+							has_dlc = "Leviathan"
+						}
+					}
+					change_subject_type = {
+						subject_type = daimyo_vassal
+					}
+				}
+				mf_normalize_daimyo_first_layer_reform_effect = yes
+			}
+			else = {
+				if = {
+					limit = {
+						OR = {
+							has_dlc = "Mandate of Heaven"
+							has_dlc = "Art of War"
+							has_dlc = "Leviathan"
+						}
+					}
+					change_subject_type = {
+						subject_type = mf_retainer_daimyo_vassal
+					}
+				}
+				mf_normalize_daimyo_first_layer_reform_effect = yes
 			}
 		}
 	}
@@ -259,19 +303,25 @@ mf_relink_direct_daimyos_after_shogunate_transfer_effect = {
 		limit = {
 			has_reform = shogunate
 		}
-		save_global_event_target_as = mf_daimyo_rehome_lord
 		every_country = {
 			limit = {
 				NOT = { has_reform = shogunate }
 				NOT = { is_subject_of = ROOT }
 				NOT = { war_with = ROOT }
 				OR = {
+					is_subject_of_type = daimyo_vassal
 					is_subject_of_type = mf_daimyo_vassal
-					is_subject_of_type = mf_retainer_daimyo_vassal
+					AND = {
+						is_subject_of_type = mf_retainer_daimyo_vassal
+						overlord = {
+							has_reform = shogunate
+						}
+					}
 					AND = {
 						has_reform = indep_daimyo
 						capital_scope = { region = japan_region }
 						culture_group = japanese_g
+						NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 					}
 					AND = {
 						OR = {
@@ -280,8 +330,15 @@ mf_relink_direct_daimyos_after_shogunate_transfer_effect = {
 						}
 						capital_scope = { region = japan_region }
 						culture_group = japanese_g
+						NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 					}
 				}
+			}
+			if = {
+				limit = {
+					is_subject_of_type = mf_daimyo_vassal
+				}
+				set_country_flag = mf_relink_was_fudai_daimyo
 			}
 			if = {
 				limit = {
@@ -294,51 +351,37 @@ mf_relink_direct_daimyos_after_shogunate_transfer_effect = {
 			ROOT = {
 				vassalize = PREV
 			}
-			mf_rehome_daimyo_subjects_effect = yes
+			# 新幕府转移只重挂当前对象，不拆散该大名自己的合法陪臣层级。
 			if = {
 				limit = {
 					is_subject_of = ROOT
-					is_subject_of_type = mf_retainer_daimyo_vassal
+					OR = {
+						has_dlc = "Mandate of Heaven"
+						has_dlc = "Art of War"
+						has_dlc = "Leviathan"
+					}
 				}
-				change_subject_type = {
-					subject_type = daimyo_vassal
+				if = {
+					limit = {
+						has_country_flag = mf_relink_was_fudai_daimyo
+					}
+					change_subject_type = {
+						subject_type = mf_daimyo_vassal
+					}
+				}
+				else = {
+					change_subject_type = {
+						subject_type = daimyo_vassal
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_subject_of = ROOT
 				}
 				mf_normalize_daimyo_first_layer_reform_effect = yes
 			}
-			if = {
-				limit = {
-					is_subject_of = ROOT
-					has_reform = indep_daimyo
-				}
-				remove_government_reform = indep_daimyo
-				if = {
-					limit = {
-						is_subject_of_type = mf_daimyo_vassal
-					}
-					add_government_reform = mf_daimyo
-				}
-				else = {
-					add_government_reform = daimyo
-				}
-			}
-			if = {
-				limit = {
-					is_subject_of = ROOT
-					is_subject_of_type = mf_daimyo_vassal
-					has_reform = daimyo
-				}
-				remove_government_reform = daimyo
-				add_government_reform = mf_daimyo
-			}
-			if = {
-				limit = {
-					is_subject_of = ROOT
-					is_subject_of_type = daimyo_vassal
-					has_reform = mf_daimyo
-				}
-				remove_government_reform = mf_daimyo
-				add_government_reform = daimyo
-			}
+			clr_country_flag = mf_relink_was_fudai_daimyo
 		}
 		every_country = {
 			limit = {
@@ -346,12 +389,19 @@ mf_relink_direct_daimyos_after_shogunate_transfer_effect = {
 				NOT = { is_subject_of = ROOT }
 				war_with = ROOT
 				OR = {
+					is_subject_of_type = daimyo_vassal
 					is_subject_of_type = mf_daimyo_vassal
-					is_subject_of_type = mf_retainer_daimyo_vassal
+					AND = {
+						is_subject_of_type = mf_retainer_daimyo_vassal
+						overlord = {
+							has_reform = shogunate
+						}
+					}
 					AND = {
 						has_reform = indep_daimyo
 						capital_scope = { region = japan_region }
 						culture_group = japanese_g
+						NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 					}
 					AND = {
 						OR = {
@@ -360,6 +410,7 @@ mf_relink_direct_daimyos_after_shogunate_transfer_effect = {
 						}
 						capital_scope = { region = japan_region }
 						culture_group = japanese_g
+						NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 					}
 				}
 			}
@@ -372,7 +423,6 @@ mf_relink_direct_daimyos_after_shogunate_transfer_effect = {
 			}
 		}
 		mf_promote_retainer_daimyos_to_shogunate_effect = yes
-		clear_global_event_target = mf_daimyo_rehome_lord
 	}
 }
 
@@ -380,47 +430,26 @@ mf_normalize_daimyo_first_layer_reform_effect = {
 	# 第一层改革只允许落到“大名体系”里，避免转封和刷新后残留错误改革。
 	if = {
 		limit = {
-			overlord = {
-				has_reform = shogunate
-			}
-			is_subject_of_type = mf_daimyo_vassal
-		}
-		if = {
-			limit = {
+			OR = {
 				has_reform = daimyo
-			}
-			remove_government_reform = daimyo
-		}
-		if = {
-			limit = {
+				has_reform = mf_daimyo
 				has_reform = indep_daimyo
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+				is_subject_of_type = mf_retainer_daimyo_vassal
 			}
-			remove_government_reform = indep_daimyo
 		}
+		change_government = monarchy
+		remove_government_reform = daimyo
+		remove_government_reform = indep_daimyo
+		remove_government_reform = mf_daimyo
 		if = {
 			limit = {
-				NOT = { has_reform = mf_daimyo }
+				is_subject_of_type = mf_daimyo_vassal
 			}
 			add_government_reform = mf_daimyo
 		}
-	}
-	else = {
-		if = {
-			limit = {
-				has_reform = mf_daimyo
-			}
-			remove_government_reform = mf_daimyo
-		}
-		if = {
-			limit = {
-				has_reform = indep_daimyo
-			}
-			remove_government_reform = indep_daimyo
-		}
-		if = {
-			limit = {
-				NOT = { has_reform = daimyo }
-			}
+		else = {
 			add_government_reform = daimyo
 		}
 	}
@@ -432,17 +461,97 @@ mf_pick_returnable_daimyo_land_effect = {
 			NOT = { is_core = ROOT }
 			any_core_country = {
 				exists = no
-				sort_of_mf = yes
 			}
 		}
 		save_event_target_as = mf_return_daimyo_land_province
 		random_core_country = {
 			limit = {
-				sort_of_mf = yes
+				exists = no
 			}
 			save_event_target_as = mf_return_daimyo_land_owner
 		}
 	}
+}
+
+mf_shogunate_lecture_daimyo_effect = {
+	clr_country_flag = mf_recently_lectured_by_shogun
+	set_country_flag = mf_recently_lectured_by_shogun
+	remove_country_modifier = mf_shogunate_grace
+	add_country_modifier = {
+		name = mf_shogunate_lecture
+		duration = 3650
+	}
+	add_liberty_desire = -10
+	add_prestige = -5
+	add_legitimacy = -5
+}
+
+mf_shogunate_grace_daimyo_effect = {
+	remove_country_modifier = mf_shogunate_lecture
+	add_country_modifier = {
+		name = mf_shogunate_grace
+		duration = 1825
+	}
+	add_liberty_desire = -15
+	add_prestige = 5
+	add_legitimacy = 5
+}
+
+mf_force_partition_daimyo_effect = {
+	# 强制分割会一次性归还目标持有的已灭亡旧家核心，并由 mf_daimyo.12 重新纳入幕府。
+	save_event_target_as = mf_partition_daimyo_target
+	every_owned_province = {
+		limit = {
+			is_capital = no
+			any_core_country = {
+				NOT = { tag = event_target:mf_partition_daimyo_target }
+				NOT = { tag = ROOT }
+			}
+		}
+		random_core_country = {
+			limit = {
+				NOT = { tag = event_target:mf_partition_daimyo_target }
+				NOT = { tag = ROOT }
+			}
+			PREV = {
+				remove_province_modifier = mf_unlawful_daimyo_land
+				cede_province = PREV
+				province_event = {
+					id = mf_daimyo.12
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mf_partition_restored_land
+			}
+		}
+	}
+	add_country_modifier = {
+		name = mf_shogunate_partitioned
+		duration = 3650
+	}
+}
+
+mf_appoint_executor_daimyo_effect = {
+	create_subject = {
+		subject_type = mf_daimyo_vassal
+		subject = FROM
+	}
+	FROM = {
+		mf_normalize_daimyo_first_layer_reform_effect = yes
+		clr_country_flag = mf_shogunate_executor
+		set_country_flag = mf_shogunate_executor
+		add_country_modifier = {
+			name = mf_shogunate_executor
+			duration = -1
+		}
+		add_liberty_desire = -25
+		add_opinion = {
+			who = ROOT
+			modifier = opinion_mf_appointed_executor
+		}
+	}
+	mf_promote_retainer_daimyos_to_shogunate_effect = yes
 }
 
 mf_refresh_shogun_leader_target_effect = {

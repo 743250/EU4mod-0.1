@@ -614,7 +614,6 @@ guiTypes = {
 				name ="shogun_gui_bg"
 				spriteType = "GFX_shogun_gui_bg"
 				position = { x= 150 y = -20 }
-				scripted = yes
 			}
 
 			guiButtonType = {
@@ -731,7 +730,6 @@ guiTypes = {
 				name = "shogun_gui_dip_icon"
 				spriteType = "GFX_bl_iberian_conflict_cathoic"
 				position = { x= 310 y = 220 } 
-				scripted = yes
 			}
 			guiButtonType = {
 				name ="shogun_tianhuang"
@@ -873,7 +871,7 @@ guiTypes = {
 				name = "shogun_weixin.a"
 				scripted = yes
 				position = { x = 472 y = 455 }
-				quadTextureSprite ="GFX_reform_button"	
+				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.a_title"
 				buttonFont = "vic_18s"
 			}
@@ -881,7 +879,7 @@ guiTypes = {
 				name = "shogun_weixin.b"
 				scripted = yes
 				position = { x = 472 y = 489 }
-				quadTextureSprite ="GFX_reform_button"	
+				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.b_title"
 				buttonFont = "vic_18s"
 			}
@@ -889,7 +887,7 @@ guiTypes = {
 				name = "shogun_weixin.c"
 				scripted = yes
 				position = { x = 472 y = 523 }
-				quadTextureSprite ="GFX_reform_button"	
+				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.c_title"
 				buttonFont = "vic_18s"
 			}
@@ -941,6 +939,30 @@ guiTypes = {
 				buttonText = "shogun_weixin.i_title"
 				buttonFont = "vic_18s"
 			}
+			guiButtonType = {
+				name = "shogun_weixin.j"
+				scripted = yes
+				position = { x = 472 y = 455 }
+				quadTextureSprite ="GFX_reform_button"	
+				buttonText = "shogun_weixin.j_title"
+				buttonFont = "vic_18s"
+			}
+			guiButtonType = {
+				name = "shogun_weixin.k"
+				scripted = yes
+				position = { x = 472 y = 489 }
+				quadTextureSprite ="GFX_reform_button"	
+				buttonText = "shogun_weixin.k_title"
+				buttonFont = "vic_18s"
+			}
+			guiButtonType = {
+				name = "shogun_weixin.l"
+				scripted = yes
+				position = { x = 472 y = 523 }
+				quadTextureSprite ="GFX_reform_button"	
+				buttonText = "shogun_weixin.l_title"
+				buttonFont = "vic_18s"
+			}
 			iconType = {
 				name = "shogun_weixin_gou_1"
 				scripted = yes
@@ -973,6 +995,12 @@ guiTypes = {
 			}
 			iconType = {
 				name = "shogun_weixin_gunlun.c"
+				spriteType = "GFX_gunlun_c"
+				position = { x = 677 y = 463 }
+				scripted = yes
+			}
+			iconType = {
+				name = "shogun_weixin_gunlun.d"
 				spriteType = "GFX_gunlun_c"
 				position = { x = 677 y = 463 }
 				scripted = yes
@@ -1598,4 +1626,3 @@ guiTypes = {
 		}
 	}
 }
-

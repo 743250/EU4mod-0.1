@@ -1,0 +1,857 @@
+mf_shogun_missions_authority = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		has_reform = shogunate
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	mf_shogun_abolish_private_barriers = {
+		icon = mission_high_income
+		required_missions = { }
+		position = 9
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_private_barrier_reform_tt
+				has_global_flag = shogun_weixin.a_global_flag
+			}
+			stability = 1
+			mf_shogun_controls_japan_region_except_hokkaido = yes
+		}
+		effect = {
+			add_adm_power = 50
+			add_dip_power = 50
+			mf_change_shogun_value = {
+				value = 5
+			}
+			custom_tooltip = mf_shogun_abolish_private_barriers_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_abolished_private_barriers
+			}
+		}
+	}
+
+	mf_shogun_reaffirm_kubou = {
+		icon = mission_japanese_samurai
+		required_missions = { mf_shogun_abolish_private_barriers }
+		position = 10
+		trigger = {
+			stability = 1
+			legitimacy_equivalent = 60
+			num_of_subjects = 5
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 50
+				}
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_legitimacy_equivalent = {
+				amount = 10
+				republican_tradition = 5
+			}
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_kubou_order
+				duration = 9125
+			}
+		}
+	}
+
+	mf_shogun_house_rolls = {
+		icon = mission_buddhist_monk_praying
+		required_missions = { mf_shogun_reaffirm_kubou }
+		position = 11
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_identity_control_tt
+				has_global_flag = shogun_weixin.c_global_flag
+			}
+			num_of_subjects = 8
+			all_subject_country = {
+				NOT = { liberty_desire = 70 }
+			}
+		}
+		effect = {
+			add_adm_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_daimyo_rolls
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_unlock_lecture_grace_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_unlock_lecture_grace
+			}
+		}
+	}
+
+	mf_shogun_buke_relief_after_sakoku = {
+		icon = mission_samurai
+		required_missions = { mf_shogun_house_rolls }
+		position = 12
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_sakoku_policy_tt
+				has_global_flag = shogun_weixin.g_global_flag
+			}
+			stability = 1
+			all_subject_country = {
+				NOT = { liberty_desire = 70 }
+			}
+		}
+		effect = {
+			add_adm_power = 75
+			add_legitimacy_equivalent = {
+				amount = 5
+				republican_tradition = 3
+			}
+			mf_change_shogun_value = {
+				value = 5
+			}
+			every_subject_country = {
+				add_liberty_desire = -3
+			}
+			add_country_modifier = {
+				name = mf_mission_samurai_relief
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_buke_relief_after_sakoku_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_buke_relief_after_sakoku
+			}
+		}
+	}
+
+	mf_shogun_four_estates_peace = {
+		icon = mission_buddhist_monk_praying
+		required_missions = { mf_shogun_buke_relief_after_sakoku }
+		position = 13
+		trigger = {
+			stability = 2
+			NOT = { num_of_rebel_armies = 1 }
+			NOT = { num_of_rebel_controlled_provinces = 1 }
+			all_subject_country = {
+				NOT = { liberty_desire = 60 }
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_dip_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			every_subject_country = {
+				add_liberty_desire = -3
+			}
+			add_country_modifier = {
+				name = mf_mission_four_estates_peace
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_four_estates_peace_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_four_estates_peace
+				set_country_flag = mf_shogun_lecture_grace_upgraded
+			}
+		}
+	}
+}
+
+mf_shogun_missions_court = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		has_reform = shogunate
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	mf_shogun_restore_court_channel = {
+		icon = mission_high_income
+		required_missions = { }
+		position = 9
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_court_channel_reform_tt
+				has_global_flag = shogun_weixin.d_global_flag
+			}
+			has_saved_global_event_target = tianhuang
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 50
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 75
+			add_prestige = 10
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_court_channel
+				duration = 9125
+			}
+		}
+	}
+
+	mf_shogun_court_arbitration = {
+		icon = mission_japanese_fort
+		required_missions = {
+			mf_shogun_restore_court_channel
+		}
+		position = 11
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_public_arbitration_reform_tt
+				has_global_flag = shogun_weixin.j_global_flag
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_court_channel_reform_tt
+				has_global_flag = shogun_weixin.d_global_flag
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_house_rolls_mission_tt
+				has_country_flag = mf_shogun_unlock_lecture_grace
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_buke_law_mission_tt
+				has_country_flag = mf_shogun_completed_buke_law
+			}
+		}
+		effect = {
+			add_dip_power = 100
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_court_arbitration
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_unlock_arbitration_orders_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_completed_court_arbitration
+				set_country_flag = mf_shogun_unlock_partition
+				set_country_flag = mf_shogun_unlock_executor
+			}
+		}
+	}
+
+	mf_shogun_imperial_excommunication = {
+		icon = mission_papal_bull
+		required_missions = { mf_shogun_court_arbitration }
+		position = 12
+		trigger = {
+			has_saved_global_event_target = tianhuang
+			event_target:tianhuang = {
+				exists = yes
+				has_country_flag = mf_tianhuang_target
+			}
+			prestige = 30
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_court_arbitration_mission_tt
+				has_country_flag = mf_shogun_completed_court_arbitration
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_excommunication_used_tt
+				has_country_flag = mf_shogun_issued_excommunication
+			}
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 70
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 75
+			add_prestige = 10
+			mf_change_shogun_value = {
+				value = 5
+			}
+			custom_tooltip = mf_shogun_excommunication_system_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_excommunication_system
+			}
+		}
+	}
+
+	mf_shogun_kuge_buke_legal_order = {
+		icon = mission_japanese_fort
+		required_missions = {
+			mf_shogun_imperial_excommunication
+			mf_shogun_codify_buke_law
+		}
+		position = 13
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_public_arbitration_reform_tt
+				has_global_flag = shogun_weixin.j_global_flag
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_buke_law_mission_tt
+				has_country_flag = mf_shogun_completed_buke_law
+			}
+			legitimacy_equivalent = 70
+		}
+		effect = {
+			add_dip_power = 75
+			add_mil_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			custom_tooltip = mf_shogun_kuge_buke_legal_order_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_kuge_buke_legal_order
+			}
+		}
+	}
+}
+
+mf_shogun_missions_law = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		has_reform = shogunate
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	mf_shogun_codify_buke_law = {
+		icon = mission_japanese_fort
+		required_missions = { }
+		position = 9
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_buke_law_reform_tt
+				has_global_flag = shogun_weixin.f_global_flag
+			}
+		}
+		effect = {
+			add_mil_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_buke_law
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_unlock_law_orders_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_completed_buke_law
+				set_country_flag = mf_shogun_unlock_return_land
+				set_country_flag = mf_shogun_unlock_enforce_peace
+			}
+		}
+	}
+
+	mf_shogun_enforce_peace_order = {
+		icon = mission_japanese_samurai
+		required_missions = { mf_shogun_codify_buke_law }
+		position = 10
+		trigger = {
+			NOT = {
+				any_subject_country = {
+					is_at_war = yes
+				}
+			}
+		}
+		effect = {
+			add_mil_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			every_subject_country = {
+				add_liberty_desire = -5
+			}
+			add_country_modifier = {
+				name = mf_mission_private_war_settlement
+				duration = 9125
+			}
+			hidden_effect = {
+				set_country_flag = mf_shogun_completed_private_war_settlement
+			}
+		}
+	}
+
+	mf_shogun_punish_sankin_refusal = {
+		icon = mission_japanese_samurai
+		required_missions = { mf_shogun_enforce_peace_order }
+		position = 11
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_sankin_reform_tt
+				has_global_flag = shogun_weixin.h_global_flag
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_buke_law_mission_tt
+				has_country_flag = mf_shogun_completed_buke_law
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_forced_sankin_tt
+				has_country_flag = mf_shogun_forced_sankin_kotai
+			}
+			NOT = {
+				any_subject_country = {
+					has_country_flag = mf_refused_sankin_kotai
+				}
+			}
+			all_subject_country = {
+				NOT = { liberty_desire = 70 }
+			}
+		}
+		effect = {
+			add_mil_power = 75
+			mf_change_shogun_value = {
+				value = 5
+			}
+			custom_tooltip = mf_shogun_sankin_punishment_upgraded_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_sankin_punishment_upgraded
+			}
+		}
+	}
+
+	mf_shogun_executor_system = {
+		icon = mission_unite_home_region
+		required_missions = {
+			mf_shogun_punish_sankin_refusal
+			mf_shogun_court_arbitration
+		}
+		position = 12
+		trigger = {
+			any_subject_country = {
+				has_country_modifier = mf_shogunate_executor
+			}
+		}
+		effect = {
+			add_army_tradition = 10
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_executor_system
+				duration = 9125
+			}
+			hidden_effect = {
+				set_country_flag = mf_shogun_completed_executor_system
+			}
+		}
+	}
+
+	mf_shogun_one_lord_one_master = {
+		icon = mission_have_manufactories
+		required_missions = {
+			mf_shogun_executor_system
+			mf_shogun_transfer_domains
+		}
+		position = 13
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_domain_transfer_reform_tt
+				has_global_flag = shogun_weixin.k_global_flag
+			}
+			all_subject_country = {
+				NOT = { liberty_desire = 60 }
+			}
+			mf_all_direct_daimyos_have_no_forbidden_subjects = yes
+		}
+		effect = {
+			add_adm_power = 75
+			add_mil_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			custom_tooltip = mf_shogun_one_lord_one_master_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_one_lord_one_master
+			}
+		}
+	}
+}
+
+mf_shogun_missions_domains = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		has_reform = shogunate
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	mf_shogun_bakuryo_cadastral_survey = {
+		icon = mission_have_manufactories
+		required_missions = { }
+		position = 9
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_bakuryo_cadastral_survey_tt
+				has_global_flag = shogun_weixin.b_global_flag
+			}
+			has_saved_global_event_target = tianhuang
+			event_target:tianhuang = {
+				exists = yes
+				has_country_flag = mf_tianhuang_target
+			}
+			1020 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_adm_power = 75
+			mf_change_shogun_value = {
+				value = 5
+			}
+			mf_add_permanent_claims_on_japan_region_effect = yes
+			custom_tooltip = mf_shogun_bakuryo_claims_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_bakuryo_cadastral_survey
+			}
+		}
+	}
+
+	mf_shogun_recover_old_houses = {
+		icon = mission_war_chest
+		required_missions = { mf_shogun_codify_buke_law }
+		position = 10
+		trigger = {
+			OR = {
+				any_subject_country = {
+					has_country_modifier = mf_shogunate_partitioned
+				}
+				num_of_subjects = 12
+			}
+		}
+		effect = {
+			add_adm_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_old_houses
+				duration = 9125
+			}
+			hidden_effect = {
+				set_country_flag = mf_shogun_completed_old_houses
+			}
+		}
+	}
+
+	mf_shogun_transfer_domains = {
+		icon = mission_have_manufactories
+		required_missions = { mf_shogun_recover_old_houses }
+		position = 11
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_domain_transfer_reform_tt
+				has_global_flag = shogun_weixin.k_global_flag
+			}
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_court_arbitration_mission_tt
+				has_country_flag = mf_shogun_completed_court_arbitration
+			}
+			all_subject_country = {
+				NOT = { liberty_desire = 70 }
+			}
+		}
+		effect = {
+			add_adm_power = 100
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_domain_transfer
+				duration = 9125
+			}
+			hidden_effect = {
+				set_country_flag = mf_shogun_completed_domain_transfer
+			}
+		}
+	}
+
+	mf_shogun_fudai_central_council = {
+		icon = mission_japanese_samurai
+		required_missions = {
+			mf_shogun_transfer_domains
+			mf_shogun_executor_system
+		}
+		position = 13
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_fudai_reform_tt
+				has_global_flag = shogun_weixin.e_global_flag
+			}
+			calc_true_if = {
+				all_subject_country = {
+					is_subject_of = ROOT
+					is_subject_of_type = mf_daimyo_vassal
+				}
+				amount = 3
+			}
+		}
+		effect = {
+			add_dip_power = 75
+			add_mil_power = 75
+			mf_change_shogun_value = {
+				value = 10
+			}
+			custom_tooltip = mf_shogun_fudai_cap_5_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_fudai_cap_5
+			}
+		}
+	}
+
+	mf_shogun_inspection_network = {
+		icon = mission_asian_trader
+		required_missions = {
+			mf_shogun_fudai_central_council
+		}
+		position = 14
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_inspection_reform_tt
+				has_global_flag = shogun_weixin.l_global_flag
+			}
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 70
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 100
+			mf_change_shogun_value = {
+				value = 10
+			}
+			add_country_modifier = {
+				name = mf_mission_inspection_network
+				duration = 9125
+			}
+			hidden_effect = {
+				set_country_flag = mf_shogun_completed_inspection_network
+			}
+		}
+	}
+
+	mf_shogun_ordered_realm = {
+		icon = mission_unite_home_region
+		required_missions = { mf_shogun_inspection_network }
+		position = 15
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_late_reforms_tt
+				has_global_flag = shogun_weixin.i_global_flag
+				has_global_flag = shogun_weixin.j_global_flag
+				has_global_flag = shogun_weixin.k_global_flag
+				has_global_flag = shogun_weixin.l_global_flag
+			}
+			num_of_subjects = 10
+			all_subject_country = {
+				NOT = { liberty_desire = 55 }
+			}
+			1020 = {
+				check_variable = {
+					which = shogun_value
+					value = 80
+				}
+			}
+		}
+		effect = {
+			add_prestige = 25
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+			mf_change_shogun_value = {
+				value = 20
+			}
+			add_country_modifier = {
+				name = mf_mission_ordered_realm
+				duration = -1
+			}
+		}
+	}
+}
+
+mf_shogun_missions_learning = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		has_reform = shogunate
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	mf_shogun_school_of_order = {
+		icon = mission_buddhist_monk_praying
+		required_missions = { }
+		position = 9
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_learning_reform_tt
+				has_global_flag = shogun_weixin.i_global_flag
+			}
+		}
+		effect = {
+			add_adm_power = 75
+			add_dip_power = 75
+			add_country_modifier = {
+				name = mf_mission_school_of_order
+				duration = 9125
+			}
+		}
+	}
+
+	mf_shogun_ezo_campaign = {
+		icon = mission_japanese_samurai
+		required_missions = { mf_shogun_school_of_order }
+		position = 10
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mf_shogun_requires_ezo_target_tt
+				has_saved_global_event_target = xiayi
+			}
+		}
+		effect = {
+			add_mil_power = 75
+			mf_change_shogun_value = {
+				value = 5
+			}
+			add_country_modifier = {
+				name = mf_mission_ezo_campaign
+				duration = 9125
+			}
+		}
+	}
+
+	mf_shogun_pacify_ezo = {
+		icon = mission_unite_home_region
+		required_missions = { mf_shogun_ezo_campaign }
+		position = 11
+		trigger = {
+			mf_shogun_controls_hokkaido_area = yes
+		}
+		effect = {
+			add_mil_power = 75
+			add_army_tradition = 5
+			mf_change_shogun_value = {
+				value = 5
+			}
+			add_country_modifier = {
+				name = mf_mission_ezo_pacification
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_ezo_scope_expanded_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_ezo_scope_expanded
+			}
+		}
+	}
+
+	mf_shogun_subdue_ryukyu = {
+		icon = mission_invade_island
+		required_missions = { mf_shogun_pacify_ezo }
+		position = 12
+		trigger = {
+			1015 = {
+				OR = {
+					country_or_non_sovereign_subject_holds = ROOT
+					owner = {
+						alliance_with = ROOT
+					}
+					owner = {
+						has_opinion = {
+							who = ROOT
+							value = 100
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 75
+			mf_change_shogun_value = {
+				value = 5
+			}
+			mf_add_permanent_claim_on_ryukyu_effect = yes
+			add_country_modifier = {
+				name = mf_mission_ryukyu_outreach
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_ryukyu_claims_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_ryukyu_frontier
+			}
+		}
+	}
+
+	mf_shogun_korean_campaign = {
+		icon = mission_japanese_samurai
+		required_missions = { mf_shogun_subdue_ryukyu }
+		position = 13
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = korea_region
+				value = 3
+			}
+		}
+		effect = {
+			add_mil_power = 100
+			mf_change_shogun_value = {
+				value = 10
+			}
+			mf_add_permanent_claims_on_korea_region_effect = yes
+			add_country_modifier = {
+				name = mf_mission_korea_campaign
+				duration = 9125
+			}
+			custom_tooltip = mf_shogun_korea_claims_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_korea_frontier
+			}
+		}
+	}
+
+	mf_shogun_china_campaign = {
+		icon = mission_asian_trader
+		required_missions = { mf_shogun_korean_campaign }
+		position = 14
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				superregion = china_superregion
+				value = 20
+			}
+		}
+		effect = {
+			add_prestige = 25
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+			mf_change_shogun_value = {
+				value = 15
+			}
+			add_country_modifier = {
+				name = mf_mission_china_order
+				duration = -1
+			}
+			custom_tooltip = mf_shogun_china_campaign_tt
+			hidden_effect = {
+				set_country_flag = mf_shogun_china_frontier
+			}
+		}
+	}
+}

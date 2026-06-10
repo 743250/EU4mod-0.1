@@ -1,0 +1,137 @@
+﻿l_english:
+ mf_shogun_missions_authority_title:0 "lQ¹eéy^"
+ mf_shogun_missions_authority_desc:0 "U^œ^åN…Q?e‰RšR0«ŽýNéy^ŒTí•sQ?eVrôuchQýVßu¡V0"
+ mf_shogun_missions_court_title:0 "g÷^Õlt"
+ mf_shogun_missions_court_desc:0 "U^œ^Šb)Y‡vîvh0g‹TÝuZŒTlQfkÕlt³ueQ»ltþ”ï0"
+ mf_shogun_missions_law_title:0 "ÂSäRÕl¦^"
+ mf_shogun_missions_law_desc:0 "U^œ^åNÂSäR0fk¶Rø‹Õl0gbLˆýVŒTNýVNIN‹S6R'YTÁyCg0"
+ mf_shogun_missions_domains_title:0 "†˜0WÑvßR"
+ mf_shogun_missions_domains_desc:0 "U^œ^ÇÀh0W0çe¶Rb`Y01ŒãN-N¢gŒTÑvßRQÜuÍ‘’c†˜ýVéy^0"
+ mf_shogun_missions_learning_title:0 "ùRYib.V"
+ mf_shogun_missions_learning_desc:0 "U^œ^(W,gW‰RšRTÿŠbŒ†7Y0	tt0gœœŒT)Yg¹eTØSbqQTYèîvh0"
+ mf_shogun_requires_identity_control_tt:0 "—‰ŒRbôu°e9ei—§Y«ŽýNßu6R§!0"
+ mf_shogun_requires_court_channel_reform_tt:0 "—‰ŒRbôu°e9ei—§Yy-Nv^lQ§!0"
+ mf_shogun_requires_buke_law_reform_tt:0 "—‰ŒRbôu°e9ei—§Yfk¶Rø‹Õl§!0"
+ mf_shogun_requires_public_arbitration_reform_tt:0 "—‰ŒRbôu°e9ei—§YlQêNÁˆ­e§!0"
+ mf_shogun_requires_domain_transfer_reform_tt:0 "—‰ŒRbôu°e9ei—§YýVÿfäN§!0"
+ mf_shogun_requires_inspection_reform_tt:0 "—‰ŒRbôu°e9ei—§Yø‹é…ÑvßR§!0"
+ mf_shogun_requires_learning_reform_tt:0 "—‰ŒRbôu°e9ei—§YV¨‹Œ†7Y§!0"
+ mf_shogun_requires_sakoku_policy_tt:0 "—‰ŒRbôu°e9ei—§Yí•sQ•ýV§!0"
+ mf_shogun_requires_sankin_reform_tt:0 "—‰ŒRbôu°e9ei—§YÂSäR²NãN§!0"
+ mf_shogun_requires_fudai_reform_tt:0 "—‰ŒRbôu°e9ei—§Y1ŒãN'YT§!0"
+ mf_shogun_requires_bakuryo_cadastral_survey_tt:0 "—‰ŒRbôu°e9ei—§YU^†˜Àh0W§!ÿv^òT¾‹Ëz)Y‡vîvh0"
+ mf_shogun_requires_private_barrier_reform_tt:0 "—‰ŒRbôu°e9ei—§YŸ^d–ÁysQ§!0"
+ mf_shogun_requires_late_reforms_tt:0 "—‰ŒRbôu°e9ei—§YV¨‹Œ†7Y§!0§YlQêNÁˆ­e§!0§YýVÿfäN§!ŒT§Yø‹é…ÑvßR§!0"
+ mf_shogun_requires_buke_law_mission_tt:0 "—‰ŒRbûN¡R§YšRfk¶RÕl¦^§!0"
+ mf_shogun_requires_house_rolls_mission_tt:0 "—‰ŒRbûN¡R§Ytetø‹¶RT^§!0"
+ mf_shogun_requires_court_arbitration_mission_tt:0 "—‰ŒRbûN¡R§YlQêNÁˆ­e§!0"
+ mf_shogun_requires_ezo_target_tt:0 "—‰HQÇ§YérÎ‘Œ†7Y§!cšRSVMRŒ†7YV¨‹îvh0"
+ mf_shogun_requires_forced_sankin_tt:0 "—‰óSbŸR:V6RN*NÒbÂS'YTÂS RÂSäR²NãN0"
+ mf_shogun_requires_excommunication_used_tt:0 "—‰óSùRN*NÒb‹T'YTgbLˆÇ§YÝuZ'YT§!0"
+ mf_shogunate_order_authority_lecture_tt:0 "U^œ^—‰óS§Y5§!¹p¡VßuÿŒRbûN¡R§YÛVl‰R5X§!TêS—‰§Y3§!¹p¡Vßu0"
+ mf_shogun_unlock_lecture_grace_tt:0 "ã‰•U^œ^Y²NLˆ¨Rÿ§Y­‹ë‹'YT§!0§YfMQ'YT§!0ŒNwúWNxˆmw§Y5§!¡VßuÿŒRbûN¡R§YÛVl‰R5X§!TˆmwM–:N§Y3§!¡Vßu0"
+ mf_shogun_unlock_law_orders_tt:0 "ã‰•U^œ^Y²NLˆ¨Rÿ§Y‰BlRVØ†˜0W§!0§Y:V6RŒTs^§!0RVØ†˜0W¥c×Söe¡Vßu§G+2§!ÿŒRb§Yb`Yçe¶Réy^§!TÐcGS:N§G+5§!ÿÒbÝuöe¡Vßu§R-2§!v^ÙuˆNRVØ†˜0Wb‰NPãS0:V6RŒTs^úWNxˆmw§Y10§!¡VßuÿŒRb§Ybko`ø‹¶RÁyb§!Tîvh¥c×SöeˆmwM–:N§Y5§!0"
+ mf_shogun_unlock_arbitration_orders_tt:0 "ã‰•U^œ^Y²NLˆ¨Rÿ§Y:V6RRrR§!0§YûN‹TgbLˆýV§!0:V6RRrRîvh¥c×SöeúWNxˆmw§Y25§!¡VßuÿŒRb§YlQêNÁˆ­e§!TM–:N§Y15§!ÿûN‹TgbLˆýVúWNxˆmw§Y20§!¡VßuÿŒRb§YýVÿfäN§!TM–:N§Y10§!0îvhÒbÝuöeÿU^œ^R+R·ƒ—VùR”^b‰NPãS0"
+ mf_shogun_abolish_private_barriers_title:0 "Ÿ^d–ÁysQ"
+ mf_shogun_abolish_private_barriers_desc:0 "U^œ^Ÿ^d–ø‹é…Áy¾‹sQaSÿŠbSï0¿R:WŒTAmCg³ueQlQêN¡rt0ÙN=f>eûNFUºNPW'Yÿw=f©‹AmgÎNU^œ^éy^0"
+ mf_shogun_abolish_private_barriers_tt:0 "Ÿ^d–ÁysQTÿU^œ^VËYŠbýV…QAmCgÎN0W¹e'YTKb-N6eÞV0"
+ mf_shogun_reaffirm_kubou_title:0 "Í‘3ulQ¹eéy^"
+ mf_shogun_reaffirm_kubou_desc:0 "S›Q¶RÅV‰˜HQÁ‹fêñTÍNýwôucø‹¶Rb²‹„vlQ¹eéy^03zšR0TÕl'`0¡VßuŒTôv^S'YTpeÏ‘ÿ=fTíuÁˆ­eCg„vúWNx0"
+ mf_shogun_house_rolls_title:0 "tetø‹¶RT^"
+ mf_shogun_house_rolls_desc:0 "«ŽýNßu6RÅV‰˜K„0Rø‹'YTT^KN-N0¶R<h0-^!kŒTÎN^SsQû|«ˆ°‹UVNegTÿU^œ^Mbýwã‰•§Y­‹ë‹'YT§!ŒT§YfMQ'YT§!0"
+ mf_shogun_buke_relief_after_sakoku_title:0 "šbd`fk¶R"
+ mf_shogun_buke_relief_after_sakoku_desc:0 "í•sQ•ýV‹S6RFUÁTÏuNmŒTYèŽb=gAmeQÿTöeÅV‰˜‰RšbfkëX6–BS0fkëX—V0RôfY6R¦^S›QyVT˜ÿFOôucŒTeˆXTb,gmN–KNNGS0"
+ mf_shogun_buke_relief_after_sakoku_tt:0 "·ƒ—V•gîOckÿ§Yfk¶R‰R5X§!ÿfkëXuQâVpeÏ‘ÐcØšÿFOeˆXT±‚9NGS0"
+ mf_shogun_four_estates_peace_title:0 "ÛVl‰R5X"
+ mf_shogun_four_estates_peace_desc:0 "í•sQT„véy^ÅV‰˜wck‹SNOìrËz>PTNÛSqNÿwN=fjPYu(WÕläN03zšR„v«ŽýNéy^OÍSÇegM–NO­‹ë‹NfMQ„v¡Vßuˆmw0"
+ mf_shogun_four_estates_peace_tt:0 "§Y­‹ë‹'YT§!N§YfMQ'YT§!„v¡VßuˆmwM–:N§Y3§!0"
+ mf_shogun_restore_court_channel_title:0 "y-Nv^lQ"
+ mf_shogun_restore_court_channel_desc:0 "y-Nv^lQ©‹U^œ^Í‘°etetNg÷^KNô•„v<yêN0ûN˜RŒTÁˆ­eS0Ù*NS=fS›Q‹TäNÖS—VTR„vegn0"
+ mf_shogun_court_arbitration_title:0 "lQêNÁˆ­e"
+ mf_shogun_court_arbitration_desc:0 "SVg÷^S0T^ŒTÕl¦^ýòTbbVÿU^œ^ïSåNŠbø‹¶R‰NïzckV³ueQlQêNÁˆ­eÿv^ã‰•§Y:V6RRrR§!ŒT§YûN‹TgbLˆýV§!0"
+ mf_shogun_imperial_excommunication_title:0 "g‹TÝuZ"
+ mf_shogun_imperial_excommunication_desc:0 ")Y‡vîvh:NU^œ^Áˆ­eÐc›Og‹TTR0Ý—bÂSäR0RVØ†˜0W0:V6RŒTs^0RrRbgbLˆýVûN‹T„v'YTÿïSåN«ˆU^œ^åNg‹TÝuZ0"
+ mf_shogun_excommunication_system_tt:0 "ã‰•v^:VSU^œ^Y²NLˆ¨Rÿ§YÝuZ'YT§!0ÝuZON!k'`M–NOîvh§R100§!Zgÿv^Ëe R§Y10§!t^Y²NðX‰Šé`ZŒTÝuZb‰NPãS0"
+ mf_shogun_kuge_buke_legal_order_title:0 "lQfkÕlt"
+ mf_shogun_kuge_buke_legal_order_desc:0 "SVg÷^S0fk¶RÕl¦^ŒTlQêNÁˆ­e’Nøv=e‘dÿU^œ^‹TäN1SNQêS=fS›Q¶RÁyaÿwb:NlQfkqQTb²‹„vÕlt0"
+ mf_shogun_kuge_buke_legal_order_tt:0 "U^œ^Áˆ­e·ƒ—VôfØšÕltb²‹0"
+ mf_shogun_codify_buke_law_title:0 "šRfk¶RÕl¦^"
+ mf_shogun_codify_buke_law_desc:0 "fk¶Rø‹ÕlÅV‰˜b:Nø‹'YTqQTb²‹„véy^ÿwN=f4Nöe‹TäN0Õl¦^bbVTÿU^œ^Mbýwã‰•§Y‰BlRVØ†˜0W§!ŒT§Y:V6RŒTs^§!0"
+ mf_shogun_enforce_peace_order_title:0 "bko`ø‹¶RÁyb"
+ mf_shogun_enforce_peace_order_desc:0 "U^œ^Nýw©‹'YTÁybàeP–ib'Y0‚föe‹SNø‹¶Rb‰Nÿ=fÀhŒšfk¶RÕl¦^=f&Twck	gHe„v,rNek0"
+ mf_shogun_punish_sankin_refusal_title:0 "é`bÒbÂS"
+ mf_shogun_punish_sankin_refusal_desc:0 "ÂSäR²NãNêS	g(WÒbÂSw«ˆžRE–YnTMb=f6R¦^0U^œ^ÅV‰˜Á‹fÒbÂSNOb:N'YTÕ‹¢c-N.YCgZ„vNOb,gKbµk0"
+ mf_shogun_sankin_punishment_upgraded_tt:0 "§Y:V6RÂSäR²NãN§!M–NOìrËz>PT„vHeœgÐcØš0R§G-30%§!0"
+ mf_shogun_executor_system_title:0 "nxËzgbLˆýV"
+ mf_shogun_executor_system_desc:0 "U^œ^NïSýw²NêgbLˆÏkNSÁˆ³Q0gbLˆýVbÅbÑvcwŒTgbLˆ‹TäN„vLw1ÿ=flQêNÁˆ­eT0W¹eK„0W„vsQ.•0"
+ mf_shogun_one_lord_one_master_title:0 "NýVNIN"
+ mf_shogun_one_lord_one_master_desc:0 "'YTNýw(WU^œ^SOû|…Qú^Ëz1»ylQêNÆ‰¿u„v^SýVBSµu0ø‹¶RïSåNÝOYu«ˆ6R¦^b²‹„vj–ã'YTÿFONýwbVbÁy^SýVQÜu0"
+ mf_shogun_one_lord_one_master_tt:0 "Nb	gôv^S'YTòTntV8^^SýVBSµuÿU^œ^ÑvßR6eÊvÐcØš0"
+ mf_shogun_bakuryo_cadastral_survey_title:0 "U^†˜Àh0W"
+ mf_shogun_bakuryo_cadastral_survey_desc:0 "Àh0WŠbåe,gW0W&ŒQ³ueQU^œ^Ng÷^qQTb²‹„vÕltSOû|08lEN±Rðyhˆ¾U^œ^ùRåe,g„vINCgTRÿv^N‰Blê¨RTv^'YT0"
+ mf_shogun_bakuryo_claims_tt:0 "·ƒ—Våe,g0W:S8lEN±Rðy0"
+ mf_shogun_recover_old_houses_title:0 "b`Yçe¶Réy^"
+ mf_shogun_recover_old_houses_desc:0 "«ˆTv^„vçe¶RNýwêSb:NÜww†˜0W„vNèR0U^œ^‰HNžRE–RrRÇib.V'YTÿ‰HNòTÏuôuc³YY„v¶RTXRíu0"
+ mf_shogun_transfer_domains_title:0 "¨cLˆýVÿf"
+ mf_shogun_transfer_domains_desc:0 "ýVÿfäN©‹'YTåwS†˜ýVN=fNïS*c¨R„vÁyµN0U^œ^ïSåN(WNTv^ø‹¶R„vMRÐcNÍ‘’cqSi–„v0W¹e¿R›R0"
+ mf_shogun_fudai_central_council_title:0 "1ŒãN-N¢g"
+ mf_shogun_fudai_central_council_desc:0 "1ŒãN'YT=fU^œ^-N¢g„v0W¹e=eñg0ûN‹T³YY„vàVÚ‹Sé…TÿU^œ^ýwib'Y1ŒãNT˜v^žX:V0W¹egbLˆ›R0"
+ mf_shogun_fudai_cap_5_tt:0 "§YcšR1ŒãN'YT§!NP–ÐcØš0R§Y5§!0"
+ mf_shogun_inspection_network_title:0 "ø‹é…ÑvßRQ"
+ mf_shogun_inspection_network_desc:0 "îvØN0áTÁ‰OŒTgbLˆýVqQT„gbÑvßRQÜu0U^œ^ŠéeŒcácÝäN×‚4YÿŠýwMQNSèÁybÚnbhQb—PU^0"
+ mf_shogun_ordered_realm_title:0 "ø‹ýVRVŽNlQêN"
+ mf_shogun_ordered_realm_desc:0 "SVTg9ei—ŒRb0ø‹'YTÍNÝOcgÎNv^b²‹U^œ^Áˆ­eöeÿU^œ^-'YTéy^¿ONQêS=fçe6R¦^ÿwb:NïScíu„v»ltQÜu0"
+ mf_shogun_school_of_order_title:0 ",gW‰RšR"
+ mf_shogun_school_of_order_desc:0 "SwmSåNY„v,gWéy^òTÏu6emgÿU^œ^ïSåNŠbS¹eV¨‹jO:NqQT›Q‹NîvhÿwN=f©‹ø‹é…TêLˆ¨R0"
+ mf_shogun_ezo_campaign_title:0 "šRŒ†7YV¨‹"
+ mf_shogun_ezo_campaign_desc:0 "Œ†7YîvhN=fUS¯u„vVgùRaŒÿw=fU^œ^SO6RTYö^8O„vqQT¹ƒX0HQcšRîvhÿQ1uU^œ^N'YTÇV¨‹b‰NYt0"
+ mf_shogun_pacify_ezo_title:0 "s^šRŒ†7Y"
+ mf_shogun_pacify_ezo_desc:0 "SwmSÛeQU^œ^SOû|TÿŒ†7Y6R¦^NQêS=fS¹e”^%`åTwQÿU^œ^ïSåNŠbYé…V¨‹îvhibUS0RôfÜ¹eT0"
+ mf_shogun_ezo_scope_expanded_tt:0 "§YérÎ‘Œ†7Y§!NQP–6RîvhÅV‰˜åb	gSwmSwýN0"
+ mf_shogun_subdue_ryukyu_title:0 "šbåu	tt"
+ mf_shogun_subdue_ryukyu_desc:0 "	ttïSåNÇôv–0^SýV0ßvËSbØš‹YasQû|ÛeQåe,gwmNéy^0U^œ^·ƒ—VWS¹ewmïŒT8f¹eT„vÕlt0"
+ mf_shogun_ryukyu_claims_tt:0 "·ƒ—V	tt¹eT8lEN±Rðyÿv^:VSwmN8féy^0"
+ mf_shogun_korean_campaign_title:0 "gœœ²NbVO"
+ mf_shogun_korean_campaign_desc:0 "gœœ¹eTïSåN=f²NQÜuÿmNïSåN=fqQTVOîvh0U^œ^Çå‹‚‚¹pÙuø‹é…N*NïSµc„vùRY›Q‹NúQãS0"
+ mf_shogun_korea_claims_tt:0 "·ƒ—Vgœœ0W:S8lEN±Rðy0"
+ mf_shogun_china_campaign_title:0 ")Ygéy^"
+ mf_shogun_china_campaign_desc:0 "U^œ^ùRY¿u„vÈu¹pN=fàeTv^ÿw=f(WN)Ygéy^„vY²Nb›Q‹NÞz‰N-NÁ‹flQêNCgZ³åN•bS0RwmY0"
+ mf_shogun_china_campaign_tt:0 "·ƒ—V8lENîOckÿ§Y)Ygéy^§!0"
+ mf_mission_kubou_order:0 "Í‘3ulQ¹eéy^"
+ desc_mf_mission_kubou_order:0 "S›Q¶RÍ‘°eÁ‹f†NêñTÍNýwôucø‹¶Rb²‹„véy^0"
+ mf_mission_daimyo_rolls:0 "ø‹¶RT^"
+ desc_mf_mission_daimyo_rolls:0 "'YT¶R<h0-^!kŒTÎN^SsQû|«ˆ³ueQU^œ^°‹UVÿø‹¶Rôf¾–åNÁyaÝÌwlQêN0"
+ mf_mission_samurai_relief:0 "fk¶R‰R5X"
+ desc_mf_mission_samurai_relief:0 "í•sQTU^œ^‰RšbfkëX6–BSÿib'YfkëXuQâVT˜ÿTöebÅbôfØšeˆXT±‚90"
+ mf_mission_four_estates_peace:0 "ÛVl‰R5X"
+ desc_mf_mission_four_estates_peace:0 "«ŽýNéy^ŒTí•sQ?eVr‚föe‹SNO†Nø‹é…»yÃVN0W¹e¨RqN0"
+ mf_mission_court_channel:0 "g÷^S"
+ desc_mf_mission_court_channel:0 "U^œ^Í‘°etet†NNg÷^KNô•„v<yêN0ûN˜RŒTÁˆ­eS0"
+ mf_mission_court_arbitration:0 "lQêNÁˆ­e"
+ desc_mf_mission_court_arbitration:0 "ø‹'YT‰Nïz«ˆ³ueQU^œ^Áˆ­eÿ‹TäNôf¹Rf«ˆÆ‰:N6R¦^w^—Áya0"
+ mf_mission_buke_law:0 "fk¶RÕl¦^"
+ desc_mf_mission_buke_law:0 "U^œ^Šbfk¶Rø‹ÕlK„žR:Nø‹'YTqQTb²‹„v»ltÄ‰R0"
+ mf_mission_private_war_settlement:0 "Áybbko`"
+ desc_mf_mission_private_war_settlement:0 "U^œ^‚föe‹SNø‹¶RÁybÿfk¶RÕl¦^·ƒ—V†NžRE–ZáO0"
+ mf_mission_executor_system:0 "gbLˆýV6R¦^"
+ desc_mf_mission_executor_system:0 "U^œ^òTÏunxËzgbLˆýVÿ©‹Áˆ­e‹TäNýwYK„0R0W¹e0"
+ mf_mission_old_houses:0 "çe¶Réy^"
+ desc_mf_mission_old_houses:0 "«ˆTv^„vçe¶RÍ‘°eÛeQU^œ^°‹UVÿ0W¹e†˜ýVNQêS=fÜww„vÁyµN0"
+ mf_mission_domain_transfer:0 "ýVÿféy^"
+ desc_mf_mission_domain_transfer:0 "ýVÿfäNJR1V†N'YT•gØvŽN0W„v9húWÿOU^œ^ýwÍ‘’cqSi–„v0W¹e¿R›R0"
+ mf_mission_inspection_network:0 "ø‹é…ÑvßRQ"
+ desc_mf_mission_inspection_network:0 "îvØN0áTÁ‰OŒTgbLˆýVqQTÑvcwø‹é…0"
+ mf_mission_ordered_realm:0 "ø‹ýVRVŽNlQêN"
+ desc_mf_mission_ordered_realm:0 "U^œ^-'YTéy^òTÏub:N3zšR„v»ltQÜu0"
+ mf_mission_school_of_order:0 ",gW‰RšR"
+ desc_mf_mission_school_of_order:0 "SwmSåNY„v,gWéy^òTÏu3zšRÿU^œ^ïSåNŠbS¹ejO:NqQT›Q‹N¹eT0"
+ mf_mission_ezo_campaign:0 "Œ†7YV¨‹"
+ desc_mf_mission_ezo_campaign:0 "U^œ^òTÏuŠbYè¹ƒX³ueQqQTV¨‹îvhÿø‹'YTïSåNôVÕuŒ†7Y¹eTïy=t›QyVN¹ƒXÏuŒš0"
+ mf_mission_ezo_pacification:0 "s^šRŒ†7Y"
+ desc_mf_mission_ezo_pacification:0 "SwmSÛeQU^œ^éy^TÿS¹eV¨‹ÏuŒšžX:V†NU^œ^›Q?eZg0"
+ mf_mission_ryukyu_outreach:0 "	ttï"
+ desc_mf_mission_ryukyu_outreach:0 "	tt¹eT„vwmNTwû|«ˆ³ueQU^œ^Æ‰Î‘ÿ8fNwm›Qéy^—V0R:VS0"
+ mf_mission_korea_campaign:0 "gœœ¹eT"
+ desc_mf_mission_korea_campaign:0 "gœœ¹eTb:NU^œ^SOû|ïSµc„vqQTYbŒT›QyVúQãS0"
+ mf_mission_china_order:0 ")Ygéy^"
+ desc_mf_mission_china_order:0 "U^œ^òTÏuÁ‹fê«Žéy^ýwY•bS0RNšN'YF–¹eT0"

@@ -226,22 +226,21 @@ bl_mp_effect = { #月度脉冲增加东西在这里修改
 				value = -0.03 #基础值0
 			}
 		}
-		#大名数量：把幕府链内的谱代、外样、陪臣都算进来。
-		every_country = {
-			limit = {
-				sort_of_mf = yes
-				NOT = { has_reform = shogunate }
-				OR = {
-					is_subject_of = event_target:zhengyidajiangjun
-					overlord = {
-						is_subject_of = event_target:zhengyidajiangjun
+		#大名数量：只计算幕府自己的直属大名。
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				limit = {
+					sort_of_mf = yes
+					OR = {
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
 					}
 				}
-			}
-			1020 = {
-				change_variable = {
-					which = shogun_monthly_value_6 #大名数量
-					value = 0.01 #基础值0
+				1020 = {
+					change_variable = {
+						which = shogun_monthly_value_6 #大名数量
+						value = 0.01 #基础值0
+					}
 				}
 			}
 		}

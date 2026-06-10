@@ -43,7 +43,6 @@ on_startup = {
 			set_global_flag = mf_shogun_initialized
 		}
 		mf_refresh_tianhuang_target_effect = yes
-		mf_promote_retainer_daimyos_to_shogunate_effect = yes
 		bl_shogun_refresh = yes
 	}
 }
@@ -80,6 +79,12 @@ on_siege_won_country = {
 	if = {
 		limit = {
 			has_saved_global_event_target = xiayi
+			event_target:xiayi = {
+				exists = yes
+				has_country_flag = mf_xiayi_target
+				NOT = { sort_of_mf = yes }
+				NOT = { has_country_flag = mf_tianhuang_target }
+			}
 			ROOT = {
 				OR = {
 					tag = event_target:zhengyidajiangjun
@@ -118,14 +123,24 @@ on_province_owner_change = {
 			limit = {
 				tag = event_target:zhengyidajiangjun
 				has_reform = shogunate
+				has_country_modifier = shogun_yuling_b
 			}
-			every_country = {
+			every_subject_country = {
 				limit = {
 					sort_of_mf = yes
 					NOT = { has_reform = shogunate }
 				}
 				country_event = {
 					id = mf_daimyo.10
+				}
+				every_subject_country = {
+					limit = {
+						sort_of_mf = yes
+						NOT = { has_reform = shogunate }
+					}
+					country_event = {
+						id = mf_daimyo.10
+					}
 				}
 			}
 		}
@@ -134,20 +149,14 @@ on_province_owner_change = {
 on_government_change = {
 	mf_refresh_shogun_leader_target_effect = yes
 	mf_initialize_new_shogun_authority_effect = yes
-	mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
-	mf_promote_retainer_daimyos_to_shogunate_effect = yes
 }
 
 on_reform_enacted = {
 	mf_refresh_shogun_leader_target_effect = yes
 	mf_initialize_new_shogun_authority_effect = yes
-	mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
-	mf_promote_retainer_daimyos_to_shogunate_effect = yes
 }
 
 on_reform_changed = {
 	mf_refresh_shogun_leader_target_effect = yes
 	mf_initialize_new_shogun_authority_effect = yes
-	mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
-	mf_promote_retainer_daimyos_to_shogunate_effect = yes
 }

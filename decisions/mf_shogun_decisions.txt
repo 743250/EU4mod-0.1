@@ -36,10 +36,11 @@ country_decisions = {
 						id = mf_daimyo.12
 					}
 				}
+				mf_change_shogun_value = {
+					value = 2
+				}
 			}
-			mf_change_shogun_value = {
-				value = 2
-			}
+			custom_tooltip = mf_release_daimyo_shogun_value_tt
 		}
 		ai_will_do = {
 			factor = 1
