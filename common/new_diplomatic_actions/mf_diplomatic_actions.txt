@@ -71,57 +71,64 @@ shouyexiayi = { # 狩野虾夷：指定与幕府体制国家接壤的征讨目�
 
 	is_visible = {
 		ROOT = {
+			has_reform = shogunate
 			tag = event_target:zhengyidajiangjun
 			has_global_flag = shogun_weixin.i_global_flag
 		}
 		FROM = {
-			NOT = { has_country_flag = mf_tianhuang_target }
-			NOT = { sort_of_mf = yes }
-			NOT = { tag = event_target:zhengyidajiangjun }
-			NOT = { is_subject_of = event_target:zhengyidajiangjun }
+			NOT = { has_country_flag = mf_xiayi_target }
+			NOT = { has_reform = shogunate }
+			NOT = { has_reform = daimyo }
+			NOT = { has_reform = mf_daimyo }
+			NOT = { has_reform = indep_daimyo }
+			NOT = { is_subject_of_type = daimyo_vassal }
+			NOT = { is_subject_of_type = mf_daimyo_vassal }
+			NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 		}
 	}
 
 	is_allowed = {
-		FROM = {
-			NOT = { has_country_flag = mf_xiayi_target }
-		}
 		custom_trigger_tooltip = {
 			tooltip = mf_shouyexiayi_hokkaido_tt
 			OR = {
 				has_country_flag = mf_shogun_ezo_scope_expanded
 				FROM = {
-					mf_target_owns_hokkaido_province = yes
+					OR = {
+						owns_or_non_sovereign_subject_of = 1031
+						owns_or_non_sovereign_subject_of = 1032
+						owns_or_non_sovereign_subject_of = 1847
+						owns_or_non_sovereign_subject_of = 1852
+						owns_or_non_sovereign_subject_of = 4193
+					}
 				}
 			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = mf_shouyexiayi_cooldown_tt
 			OR = {
-				has_global_flag = shogun_weixin.f_global_flag
-					OR = {
-						had_country_flag = {
-							flag = shouyexiayi_flag
-							days = 3650
-						}
-						NOT = { has_country_flag = shouyexiayi_flag }
-					}
+				had_country_flag = {
+					flag = shouyexiayi_flag
+					days = 3650
+				}
+				NOT = { has_country_flag = shouyexiayi_flag }
 			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = mf_shouyexiayi_neighbor_tt
 			OR = {
-				event_target:zhengyidajiangjun = {
+				is_neighbor_of = FROM
+				any_subject_country = {
 					is_neighbor_of = FROM
+					OR = {
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+					}
 				}
 				any_country = {
 					is_neighbor_of = FROM
-					sort_of_mf = yes
-					OR = {
-						is_subject_of = event_target:zhengyidajiangjun
-						overlord = {
-							is_subject_of = event_target:zhengyidajiangjun
-						}
+					is_subject_of_type = mf_retainer_daimyo_vassal
+					overlord = {
+						is_subject_of = ROOT
 					}
 				}
 			}

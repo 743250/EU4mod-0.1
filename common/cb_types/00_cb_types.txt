@@ -169,19 +169,16 @@ cb_mf_xiayi_campaign = {
 
 	prerequisites_self = {
 		is_revolutionary = no
-		has_reform = shogunate
 		has_saved_global_event_target = zhengyidajiangjun
 		tag = event_target:zhengyidajiangjun
 	}
 
 	prerequisites = {
 		has_saved_global_event_target = xiayi
-		has_country_flag = mf_xiayi_target
-		tag = event_target:xiayi
-		NOT = { tag = event_target:zhengyidajiangjun }
-		NOT = { is_subject_of = event_target:zhengyidajiangjun }
-		NOT = { sort_of_mf = yes }
-		NOT = { has_country_flag = mf_tianhuang_target }
+		FROM = {
+			has_country_flag = mf_xiayi_target
+			tag = event_target:xiayi
+		}
 	}
 
 	war_goal = mf_xiayi_conquest_wg

@@ -903,7 +903,20 @@ custom_button = {
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.g.k.tt
 			event_target:zhengyidajiangjun = {
-				mf_shogun_controls_japan_region = yes
+				japan_region = {
+					type = all
+					OR = {
+						country_or_non_sovereign_subject_holds = ROOT
+						owner = {
+							OR = {
+								is_subject_of = ROOT
+								overlord = {
+									is_subject_of = ROOT
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -985,7 +998,25 @@ custom_button = {
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.i.k.tt
 			event_target:zhengyidajiangjun = {
-				mf_shogun_controls_japan_region_except_hokkaido = yes
+				japan_region = {
+					type = all
+					OR = {
+						province_id = 1031
+						province_id = 1032
+						province_id = 1847
+						province_id = 1852
+						province_id = 4193
+						country_or_non_sovereign_subject_holds = ROOT
+						owner = {
+							OR = {
+								is_subject_of = ROOT
+								overlord = {
+									is_subject_of = ROOT
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}

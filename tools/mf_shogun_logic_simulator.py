@@ -239,15 +239,9 @@ class World:
         return (
             attacker_country.alive
             and target_country.alive
-            and "shogunate" in attacker_country.reforms
             and self.event_targets.get("zhengyidajiangjun") == attacker
             and self.event_targets.get("xiayi") == target
             and "mf_xiayi_target" in target_country.flags
-            and target != self.event_targets.get("zhengyidajiangjun")
-            and target_country.overlord != self.event_targets.get("zhengyidajiangjun")
-            and target_country.subject_type not in DAIMYO_SUBJECTS
-            and "sort_of_mf" not in target_country.flags
-            and "mf_tianhuang_target" not in target_country.flags
         )
 
     def higan_cb_return_hecatia_war_available(self, attacker, target):
@@ -324,11 +318,12 @@ def assert_xiayi_cb_script_chain():
     prerequisites_self = block_between(cb, "prerequisites_self = {", "\n\t}\n\n\tprerequisites = {")
     prerequisites = block_between(cb, "prerequisites = {", "\n\t}\n\n\twar_goal = mf_xiayi_conquest_wg")
 
-    World.require("has_reform = shogunate" in prerequisites_self, "xiayi cb requires shogunate attacker")
+    World.require("has_reform = shogunate" not in prerequisites_self, "xiayi cb does not double-lock shogunate reform")
     World.require("tag = event_target:zhengyidajiangjun" in prerequisites_self, "xiayi cb attacker must be current shogun")
     World.require("has_country_flag = mf_xiayi_target" in prerequisites, "xiayi cb target must have xiayi flag")
     World.require("tag = event_target:xiayi" in prerequisites, "xiayi cb target must match xiayi event target")
-    World.require("FROM = {" not in prerequisites and "from = {" not in prerequisites, "xiayi cb target checks stay in target scope")
+    World.require("FROM = {" in prerequisites, "xiayi cb target checks use target FROM scope")
+    World.require("sort_of_mf = yes" not in prerequisites, "xiayi cb does not repeat shogun-system target blockers")
 
 
 def assert_higan_return_hecatia_cb_script_chain():
