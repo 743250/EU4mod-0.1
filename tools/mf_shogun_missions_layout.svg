@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="956" height="774" viewBox="0 0 956 774">
+<svg xmlns="http://www.w3.org/2000/svg" width="956" height="884" viewBox="0 0 956 884">
 <style>
 text{font-family:'Microsoft YaHei','Noto Sans CJK SC',Arial,sans-serif;}
 .bg{fill:#17252f;}
@@ -11,93 +11,93 @@ text{font-family:'Microsoft YaHei','Noto Sans CJK SC',Arial,sans-serif;}
 </style>
 <rect class="bg" x="0" y="0" width="100%" height="100%"/>
 <text class="title" x="52" y="28">EU4 任务树布局预览</text>
-<line class="grid" x1="118.0" y1="34" x2="118.0" y2="729"/>
-<text class="caption" x="103.0" y="756">slot 1</text>
-<line class="grid" x1="298.0" y1="34" x2="298.0" y2="729"/>
-<text class="caption" x="283.0" y="756">slot 2</text>
-<line class="grid" x1="478.0" y1="34" x2="478.0" y2="729"/>
-<text class="caption" x="463.0" y="756">slot 3</text>
-<line class="grid" x1="658.0" y1="34" x2="658.0" y2="729"/>
-<text class="caption" x="643.0" y="756">slot 4</text>
-<line class="grid" x1="838.0" y1="34" x2="838.0" y2="729"/>
-<text class="caption" x="823.0" y="756">slot 5</text>
+<line class="grid" x1="118.0" y1="34" x2="118.0" y2="839"/>
+<text class="caption" x="103.0" y="866">slot 1</text>
+<line class="grid" x1="298.0" y1="34" x2="298.0" y2="839"/>
+<text class="caption" x="283.0" y="866">slot 2</text>
+<line class="grid" x1="478.0" y1="34" x2="478.0" y2="839"/>
+<text class="caption" x="463.0" y="866">slot 3</text>
+<line class="grid" x1="658.0" y1="34" x2="658.0" y2="839"/>
+<text class="caption" x="643.0" y="866">slot 4</text>
+<line class="grid" x1="838.0" y1="34" x2="838.0" y2="839"/>
+<text class="caption" x="823.0" y="866">slot 5</text>
 <text class="caption" x="12" y="81.0">pos 9</text>
 <text class="caption" x="12" y="191.0">pos 10</text>
 <text class="caption" x="12" y="301.0">pos 11</text>
 <text class="caption" x="12" y="411.0">pos 12</text>
 <text class="caption" x="12" y="521.0">pos 13</text>
 <text class="caption" x="12" y="631.0">pos 14</text>
+<text class="caption" x="12" y="741.0">pos 15</text>
 <polyline class="edge" points="118.0,100.0 118.0,132.0 118.0,132.0 118.0,164.0"/>
 <polyline class="edge" points="118.0,210.0 118.0,242.0 118.0,242.0 118.0,274.0"/>
 <polyline class="edge" points="118.0,320.0 118.0,352.0 118.0,352.0 118.0,384.0"/>
+<polyline class="edge" points="118.0,430.0 118.0,462.0 118.0,462.0 118.0,494.0"/>
 <polyline class="edge" points="298.0,100.0 298.0,187.0 298.0,187.0 298.0,274.0"/>
-<polyline class="edge" points="118.0,210.0 118.0,242.0 298.0,242.0 298.0,274.0"/>
 <polyline class="edge" points="298.0,320.0 298.0,352.0 298.0,352.0 298.0,384.0"/>
 <polyline class="edge" points="298.0,430.0 298.0,462.0 298.0,462.0 298.0,494.0"/>
 <polyline class="edge" points="478.0,100.0 478.0,297.0 298.0,297.0 298.0,494.0"/>
 <polyline class="edge" points="478.0,100.0 478.0,132.0 478.0,132.0 478.0,164.0"/>
-<polyline class="edge" points="478.0,210.0 478.0,242.0 478.0,242.0 478.0,274.0"/>
-<polyline class="edge" points="478.0,320.0 478.0,352.0 478.0,352.0 478.0,384.0"/>
+<polyline class="edge" points="478.0,210.0 478.0,297.0 478.0,297.0 478.0,384.0"/>
 <polyline class="edge" points="298.0,320.0 298.0,352.0 478.0,352.0 478.0,384.0"/>
 <polyline class="edge" points="478.0,430.0 478.0,462.0 478.0,462.0 478.0,494.0"/>
 <polyline class="edge" points="658.0,320.0 658.0,407.0 478.0,407.0 478.0,494.0"/>
 <polyline class="edge" points="478.0,100.0 478.0,132.0 658.0,132.0 658.0,164.0"/>
 <polyline class="edge" points="658.0,210.0 658.0,242.0 658.0,242.0 658.0,274.0"/>
-<polyline class="edge" points="658.0,320.0 658.0,352.0 658.0,352.0 658.0,384.0"/>
-<polyline class="edge" points="478.0,430.0 478.0,407.0 658.0,407.0 658.0,384.0"/>
-<polyline class="edge" points="658.0,430.0 658.0,462.0 658.0,462.0 658.0,494.0"/>
+<polyline class="edge" points="658.0,320.0 658.0,407.0 658.0,407.0 658.0,494.0"/>
+<polyline class="edge" points="478.0,430.0 478.0,462.0 658.0,462.0 658.0,494.0"/>
 <polyline class="edge" points="658.0,540.0 658.0,572.0 658.0,572.0 658.0,604.0"/>
+<polyline class="edge" points="658.0,650.0 658.0,682.0 658.0,682.0 658.0,714.0"/>
 <polyline class="edge" points="838.0,100.0 838.0,132.0 838.0,132.0 838.0,164.0"/>
 <polyline class="edge" points="838.0,210.0 838.0,242.0 838.0,242.0 838.0,274.0"/>
 <polyline class="edge" points="838.0,320.0 838.0,352.0 838.0,352.0 838.0,384.0"/>
 <polyline class="edge" points="838.0,430.0 838.0,462.0 838.0,462.0 838.0,494.0"/>
 <polyline class="edge" points="838.0,540.0 838.0,572.0 838.0,572.0 838.0,604.0"/>
-<g><title>mf_shogun_reaffirm_kubou</title><rect class="node" x="52.0" y="54.0" width="132" height="46"/>
-<text class="nodeText" x="118.0" y="77.0">重申公方秩序</text></g>
-<g><title>mf_shogun_house_rolls</title><rect class="node" x="52.0" y="164.0" width="132" height="46"/>
-<text class="nodeText" x="118.0" y="187.0">整理诸家名帐</text></g>
-<g><title>mf_shogun_buke_relief_after_sakoku</title><rect class="node" x="52.0" y="274.0" width="132" height="46"/>
-<text class="nodeText" x="118.0" y="297.0">mf_shogun_…</text></g>
-<g><title>mf_shogun_four_estates_peace</title><rect class="node" x="52.0" y="384.0" width="132" height="46"/>
-<text class="nodeText" x="118.0" y="407.0">mf_shogun_…</text></g>
+<g><title>mf_shogun_abolish_private_barriers</title><rect class="node" x="52.0" y="54.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="77.0">Ÿ^d–Áy…</text></g>
+<g><title>mf_shogun_reaffirm_kubou</title><rect class="node" x="52.0" y="164.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="187.0">Í‘3ulQ…</text></g>
+<g><title>mf_shogun_house_rolls</title><rect class="node" x="52.0" y="274.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="297.0">tetø‹…</text></g>
+<g><title>mf_shogun_buke_relief_after_sakoku</title><rect class="node" x="52.0" y="384.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="407.0">šbd`fk…</text></g>
+<g><title>mf_shogun_four_estates_peace</title><rect class="node" x="52.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="118.0" y="517.0">ÛVl‰R…</text></g>
 <g><title>mf_shogun_restore_court_channel</title><rect class="node" x="232.0" y="54.0" width="132" height="46"/>
-<text class="nodeText" x="298.0" y="77.0">修复朝廷通道</text></g>
+<text class="nodeText" x="298.0" y="77.0">y-Nv^…</text></g>
 <g><title>mf_shogun_court_arbitration</title><rect class="node" x="232.0" y="274.0" width="132" height="46"/>
-<text class="nodeText" x="298.0" y="297.0">公仪裁断</text></g>
+<text class="nodeText" x="298.0" y="297.0">lQêNÁˆ…</text></g>
 <g><title>mf_shogun_imperial_excommunication</title><rect class="node" x="232.0" y="384.0" width="132" height="46"/>
 <text class="nodeText" x="298.0" y="407.0">mf_shogun_…</text></g>
 <g><title>mf_shogun_kuge_buke_legal_order</title><rect class="node" x="232.0" y="494.0" width="132" height="46"/>
-<text class="nodeText" x="298.0" y="517.0">mf_shogun_…</text></g>
+<text class="nodeText" x="298.0" y="517.0">lQfkÕl…</text></g>
 <g><title>mf_shogun_codify_buke_law</title><rect class="node" x="412.0" y="54.0" width="132" height="46"/>
-<text class="nodeText" x="478.0" y="77.0">编定武家法度</text></g>
+<text class="nodeText" x="478.0" y="77.0">šRfk…</text></g>
 <g><title>mf_shogun_enforce_peace_order</title><rect class="node" x="412.0" y="164.0" width="132" height="46"/>
-<text class="nodeText" x="478.0" y="187.0">止息诸家私战</text></g>
-<g><title>mf_shogun_punish_sankin_refusal</title><rect class="node" x="412.0" y="274.0" width="132" height="46"/>
-<text class="nodeText" x="478.0" y="297.0">mf_shogun_…</text></g>
+<text class="nodeText" x="478.0" y="187.0">bko`ø‹…</text></g>
 <g><title>mf_shogun_executor_system</title><rect class="node" x="412.0" y="384.0" width="132" height="46"/>
-<text class="nodeText" x="478.0" y="407.0">确立执行国</text></g>
+<text class="nodeText" x="478.0" y="407.0">nxËzgb…</text></g>
 <g><title>mf_shogun_one_lord_one_master</title><rect class="node" x="412.0" y="494.0" width="132" height="46"/>
-<text class="nodeText" x="478.0" y="517.0">mf_shogun_…</text></g>
+<text class="nodeText" x="478.0" y="517.0">NýVN…</text></g>
 <g><title>mf_shogun_bakuryo_cadastral_survey</title><rect class="node" x="592.0" y="54.0" width="132" height="46"/>
-<text class="nodeText" x="658.0" y="77.0">mf_shogun_…</text></g>
+<text class="nodeText" x="658.0" y="77.0">U^†˜Àh…</text></g>
 <g><title>mf_shogun_recover_old_houses</title><rect class="node" x="592.0" y="164.0" width="132" height="46"/>
-<text class="nodeText" x="658.0" y="187.0">恢复旧家秩序</text></g>
+<text class="nodeText" x="658.0" y="187.0">b`Yçe…</text></g>
 <g><title>mf_shogun_transfer_domains</title><rect class="node" x="592.0" y="274.0" width="132" height="46"/>
-<text class="nodeText" x="658.0" y="297.0">推行国替</text></g>
-<g><title>mf_shogun_fudai_central_council</title><rect class="node" x="592.0" y="384.0" width="132" height="46"/>
-<text class="nodeText" x="658.0" y="407.0">mf_shogun_…</text></g>
-<g><title>mf_shogun_inspection_network</title><rect class="node" x="592.0" y="494.0" width="132" height="46"/>
-<text class="nodeText" x="658.0" y="517.0">诸藩监察网</text></g>
-<g><title>mf_shogun_ordered_realm</title><rect class="node" x="592.0" y="604.0" width="132" height="46"/>
-<text class="nodeText" x="658.0" y="627.0">诸国归于公仪</text></g>
+<text class="nodeText" x="658.0" y="297.0">¨cLˆýV…</text></g>
+<g><title>mf_shogun_fudai_central_council</title><rect class="node" x="592.0" y="494.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="517.0">1ŒãN-N…</text></g>
+<g><title>mf_shogun_inspection_network</title><rect class="node" x="592.0" y="604.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="627.0">ø‹é…Ñv…</text></g>
+<g><title>mf_shogun_ordered_realm</title><rect class="node" x="592.0" y="714.0" width="132" height="46"/>
+<text class="nodeText" x="658.0" y="737.0">ø‹ýVRV…</text></g>
 <g><title>mf_shogun_school_of_order</title><rect class="node" x="772.0" y="54.0" width="132" height="46"/>
-<text class="nodeText" x="838.0" y="77.0">学问与家格</text></g>
+<text class="nodeText" x="838.0" y="77.0">,gW‰R…</text></g>
 <g><title>mf_shogun_ezo_campaign</title><rect class="node" x="772.0" y="164.0" width="132" height="46"/>
-<text class="nodeText" x="838.0" y="187.0">定虾夷征讨</text></g>
+<text class="nodeText" x="838.0" y="187.0">šRŒ†7Y…</text></g>
 <g><title>mf_shogun_pacify_ezo</title><rect class="node" x="772.0" y="274.0" width="132" height="46"/>
-<text class="nodeText" x="838.0" y="297.0">mf_shogun_…</text></g>
+<text class="nodeText" x="838.0" y="297.0">s^šRŒ†…</text></g>
 <g><title>mf_shogun_subdue_ryukyu</title><rect class="node" x="772.0" y="384.0" width="132" height="46"/>
-<text class="nodeText" x="838.0" y="407.0">mf_shogun_…</text></g>
+<text class="nodeText" x="838.0" y="407.0">šbåu	t…</text></g>
 <g><title>mf_shogun_korean_campaign</title><rect class="node" x="772.0" y="494.0" width="132" height="46"/>
 <text class="nodeText" x="838.0" y="517.0">mf_shogun_…</text></g>
 <g><title>mf_shogun_china_campaign</title><rect class="node" x="772.0" y="604.0" width="132" height="46"/>

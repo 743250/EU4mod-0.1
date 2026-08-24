@@ -1,0 +1,58 @@
+po_mf_enforce_executor_appointment = {
+	# 拒绝任命后的强制任命和平。
+	category = 6
+	power_projection = vassalized_rival
+	power_cost_base = 0.33
+	prestige_base = 0.5
+	ae_base = 0.15
+
+	warscore_cost = {
+		all_provinces = 1.0
+		no_provinces = 0.0
+		owner_keeps = 0.0
+		conquered = 0.0
+		returned_core = 0.0
+		released_nation = 0.0
+		cancelled_subject = 0.0
+		concede_colonial_region = 0.0
+	}
+	warscore_cap = 80
+
+	is_make_subject = yes
+	requires_is_allowed = yes
+
+	is_visible = {
+		has_reform = shogunate
+		NOT = {
+			any_subject_country = {
+				has_country_modifier = mf_shogunate_executor
+			}
+		}
+		FROM = {
+			is_subject_of = ROOT
+			OR = {
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+			}
+			NOT = { has_country_modifier = mf_shogunate_executor }
+		}
+	}
+
+	is_allowed = {
+		always = yes
+	}
+
+	effect = {
+		mf_appoint_executor_daimyo_effect = yes
+		mf_change_shogun_value = {
+			value = 5
+		}
+	}
+
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 500
+		}
+	}
+}

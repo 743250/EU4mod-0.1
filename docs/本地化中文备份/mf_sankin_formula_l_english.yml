@@ -1,0 +1,7 @@
+l_english:
+ mf_daimyo.10.formula.d:0 "年度参勤交代来自御令中的固定命令。只要仍为幕府大名，来年仍会再次收到征召。\n\n本次总费用约为§Y[Root.mf_sankin_cost.GetValue]§!¤：固定扣款约§Y[Root.mf_sankin_fixed_cost.GetValue]§!¤，等于总发展度的五分之一；年度扣款约§Y[Root.mf_sankin_year_cost.GetValue]§!¤，等于年度收入的三分之一乘以距离系数。距离系数为到幕府首都的距离除以十二，最高为三。接受后会在约六个月内处于参勤途中；公开拒绝只结算本年度后果，不会产生讨伐或强制参勤。"
+ mf_daimyo.10.formula.a.tt:0 "支付本年度参勤总费用：约§Y[Root.mf_sankin_cost.GetValue]§!¤。\n固定扣款：§Y[Root.mf_sankin_fixed_cost.GetValue]§!¤，等于总发展度除以五。\n年度扣款：§Y[Root.mf_sankin_year_cost.GetValue]§!¤，等于年度收入除以三再乘以距离系数；距离系数为首都距离除以十二，最高为三。\n获得§Y参勤交代途中§!6个月。"
+ mf_daimyo.10.formula.b.tt:0 "拒绝本年度参勤：获得§G10§!威望和持续一年的§Y拒绝参勤交代§!，幕府御统§R-0.5§!。本次拒绝不会产生讨伐理由或后续强制参勤。"
+ shogun_yuling_x_b_formula.tt:0 "将军进入§Y参勤秩序§!：每年触发参勤交代事件。固定扣款等于大名总发展度除以五；年度扣款等于年度收入除以三，再乘以最高为三的首都距离系数。"
+ shogun_weixin.h.formal.a.tt:0 "参勤交代由临时御令升为常法，年度参勤事件到此结束。\n\n幕府获得：\n属国发展度造成的独立倾向：§G-20%§!\n\n幕府体系大名不能再互相结盟，改革前已有的大名同盟将被解除。"
+ mf_sankin_reform_daimyo_alliance_forbidden_tt:0 "正式参勤法度禁止幕府体系大名互相结盟。"

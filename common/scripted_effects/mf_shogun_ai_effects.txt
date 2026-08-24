@@ -123,15 +123,39 @@ mf_refresh_tianhuang_target_effect = {
 }
 
 mf_set_xiayi_campaign_target_effect = {
-	# 设置虾夷征讨目标，战争借口由 cb_types 条件直接提供。
+	# 设置虾夷征讨目标，并立即把战争借口交给当前幕府。
 	every_country = {
 		limit = { has_country_flag = mf_xiayi_target }
 		clr_country_flag = mf_xiayi_target
 	}
 	if = {
 		limit = { has_saved_global_event_target = xiayi }
+		if = {
+			limit = {
+				has_saved_global_event_target = zhengyidajiangjun
+				event_target:zhengyidajiangjun = {
+					has_casus_belli = {
+						type = cb_mf_xiayi_campaign
+						target = event_target:xiayi
+					}
+				}
+			}
+			event_target:zhengyidajiangjun = {
+				remove_casus_belli = {
+					type = cb_mf_xiayi_campaign
+					target = event_target:xiayi
+				}
+			}
+		}
 		clear_global_event_target = xiayi
 	}
 	save_global_event_target_as = xiayi
 	set_country_flag = mf_xiayi_target
+	event_target:zhengyidajiangjun = {
+		add_casus_belli = {
+			type = cb_mf_xiayi_campaign
+			target = ROOT
+			months = 120
+		}
+	}
 }

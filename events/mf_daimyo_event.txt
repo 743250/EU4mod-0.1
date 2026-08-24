@@ -4,7 +4,7 @@ namespace = mf_daimyo
 country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
 	id = mf_daimyo.10
 	title = "mf_daimyo.10.t"
-	desc = "mf_daimyo.10.d"
+	desc = "mf_daimyo.10.formula.d"
 	picture = COUNTRY_COLLAPSE_eventPicture
 
 	is_triggered_only = yes
@@ -33,52 +33,65 @@ country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
 
 	immediate = {
 		hidden_effect = {
-			# 费用 = 发展度/10 + 与宗主首都距离/2 + 固定 3。
+			# 固定扣款取总发展度的五分之一。
 			export_to_variable = {
-				variable_name = mf_sankin_development
+				variable_name = mf_sankin_fixed_cost
 				value = total_development
 			}
+			divide_variable = {
+				which = mf_sankin_fixed_cost
+				value = 5
+			}
+			# 距离系数取大名首都到幕府首都距离的十二分之一，最高为三。
 			export_to_variable = {
-				variable_name = mf_sankin_distance
+				variable_name = mf_sankin_distance_multiplier
 				value = capital_distance
-				who = overlord
-			}
-			set_variable = {
-				which = mf_sankin_cost
-				which = mf_sankin_development
+				who = event_target:zhengyidajiangjun
 			}
 			divide_variable = {
-				which = mf_sankin_cost
-				value = 10
+				which = mf_sankin_distance_multiplier
+				value = 12
 			}
-			set_variable = {
-				which = mf_sankin_distance_cost
-				which = mf_sankin_distance
+			if = {
+				limit = {
+					check_variable = {
+						which = mf_sankin_distance_multiplier
+						value = 3
+					}
+				}
+				set_variable = {
+					which = mf_sankin_distance_multiplier
+					value = 3
+				}
+			}
+			# 年度扣款取一年收入的三分之一，再乘以距离系数。
+			export_to_variable = {
+				variable_name = mf_sankin_year_cost
+				value = years_of_income
 			}
 			divide_variable = {
-				which = mf_sankin_distance_cost
-				value = 2
-			}
-			change_variable = {
-				which = mf_sankin_cost
-				which = mf_sankin_distance_cost
-			}
-			change_variable = {
-				which = mf_sankin_cost
+				which = mf_sankin_year_cost
 				value = 3
+			}
+			multiply_variable = {
+				which = mf_sankin_year_cost
+				which = mf_sankin_distance_multiplier
+			}
+			# 总扣款由固定扣款与年度扣款相加。
+			set_variable = {
+				which = mf_sankin_cost
+				which = mf_sankin_fixed_cost
+			}
+			change_variable = {
+				which = mf_sankin_cost
+				which = mf_sankin_year_cost
 			}
 		}
 	}
 
 	option = {
 		name = "mf_daimyo.10.a"
-		custom_tooltip = mf_daimyo.10.a.tt
-		# 独立倾向低时才会主动接受参勤。
-		trigger = {
-			NOT = {
-				liberty_desire = 50
-			}
-		}
+		custom_tooltip = mf_daimyo.10.formula.a.tt
 		add_country_modifier = {
 			name = mf_sankin_kotai_travel
 			duration = 182
@@ -90,52 +103,14 @@ country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
 			factor = 100
 			modifier = {
 				factor = 0
-				liberty_desire = 50
+				num_of_loans = 10
 			}
 			modifier = {
-				factor = 0
+				factor = 0.1
 				num_of_loans = 5
 			}
-		}
-	}
-
-	option = {
-		name = "mf_daimyo.10.c"
-		custom_tooltip = mf_daimyo.10.c.tt
-		# 财政困难时允许暂缓，但会付出声望、独立倾向和邻国观感代价。
-		trigger = {
-			num_of_loans = 5
-			NOT = {
-				liberty_desire = 50
-			}
-		}
-		add_prestige = -10
-		add_liberty_desire = -10
-		add_country_modifier = {
-			name = mf_sankin_kotai_suspended
-			duration = 365
-		}
-		every_neighbor_country = {
-			limit = {
-				sort_of_mf = yes
-				NOT = { has_reform = shogunate }
-				is_subject_of = event_target:zhengyidajiangjun
-			}
-			add_opinion = {
-				who = ROOT
-				modifier = opinion_mf_sankin_suspended
-			}
-		}
-		ai_chance = {
-			factor = 100
 			modifier = {
-				factor = 0
-				NOT = {
-					num_of_loans = 5
-				}
-			}
-			modifier = {
-				factor = 0
+				factor = 0.2
 				liberty_desire = 50
 			}
 		}
@@ -143,46 +118,9 @@ country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
 
 	option = {
 		name = "mf_daimyo.10.b"
-		custom_tooltip = mf_daimyo.10.b.tt
-		# 高独立倾向大名会拒绝参勤，并给幕府整肃理由。
-		add_country_modifier = {
-			name = mf_sankin_kotai_refused
-			duration = 365
-		}
-		set_country_flag = mf_refused_sankin_kotai
-		overlord = {
-			mf_change_shogun_value = {
-				value = -5
-			}
-			add_casus_belli = {
-				target = ROOT
-				type = cb_disloyal_vassal
-				months = 60
-			}
-			country_event = {
-				id = mf_daimyo.11
-			}
-		}
-		ai_chance = {
-			factor = 0
-			modifier = {
-				factor = 100
-				liberty_desire = 50
-			}
-		}
-	}
-}
-
-country_event = { # 大名拒绝参勤后的幕府提示。
-	id = mf_daimyo.11
-	title = "mf_daimyo.11.t"
-	desc = "mf_daimyo.11.d"
-	picture = COUNTRY_COLLAPSE_eventPicture
-
-	is_triggered_only = yes
-
-	option = {
-		name = "mf_daimyo.11.a"
+		custom_tooltip = mf_daimyo.10.formula.b.tt
+		mf_refuse_sankin_kotai_effect = yes
+		ai_chance = { factor = 100 }
 	}
 }
 

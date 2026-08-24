@@ -1,0 +1,33 @@
+# 只清理已经保存的大名盾徽目标，避免向日志写入未定义目标错误。
+mf_clear_shogun_daimyo_targets_effect = {
+	if = { limit = { has_saved_global_event_target = shogun_daming_1 } clear_global_event_target = shogun_daming_1 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_2 } clear_global_event_target = shogun_daming_2 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_3 } clear_global_event_target = shogun_daming_3 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_4 } clear_global_event_target = shogun_daming_4 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_5 } clear_global_event_target = shogun_daming_5 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_6 } clear_global_event_target = shogun_daming_6 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_7 } clear_global_event_target = shogun_daming_7 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_8 } clear_global_event_target = shogun_daming_8 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_9 } clear_global_event_target = shogun_daming_9 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_10 } clear_global_event_target = shogun_daming_10 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_11 } clear_global_event_target = shogun_daming_11 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_12 } clear_global_event_target = shogun_daming_12 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_13 } clear_global_event_target = shogun_daming_13 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_14 } clear_global_event_target = shogun_daming_14 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_15 } clear_global_event_target = shogun_daming_15 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_16 } clear_global_event_target = shogun_daming_16 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_17 } clear_global_event_target = shogun_daming_17 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_18 } clear_global_event_target = shogun_daming_18 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_19 } clear_global_event_target = shogun_daming_19 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_20 } clear_global_event_target = shogun_daming_20 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_21 } clear_global_event_target = shogun_daming_21 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_22 } clear_global_event_target = shogun_daming_22 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_23 } clear_global_event_target = shogun_daming_23 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_24 } clear_global_event_target = shogun_daming_24 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_25 } clear_global_event_target = shogun_daming_25 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_26 } clear_global_event_target = shogun_daming_26 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_27 } clear_global_event_target = shogun_daming_27 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_28 } clear_global_event_target = shogun_daming_28 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_29 } clear_global_event_target = shogun_daming_29 }
+	if = { limit = { has_saved_global_event_target = shogun_daming_30 } clear_global_event_target = shogun_daming_30 }
+}

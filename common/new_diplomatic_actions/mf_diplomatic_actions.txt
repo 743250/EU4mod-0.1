@@ -63,6 +63,123 @@ xuanxiafengxing = { # 宣下奉行：完成“禁中并公”后，幕府可重�
 	}
 }
 
+mf_return_shogunate_province = {
+	category = shogun
+	alert_index = 42
+	alert_tooltip = mf_return_shogunate_province_tooltip
+	require_acceptance = yes
+
+	is_visible = {
+		has_reform = shogunate
+		has_global_flag = shogun_weixin.b_global_flag
+		FROM = {
+			NOT = { tag = event_target:zhengyidajiangjun }
+			NOT = { is_subject_of = ROOT }
+			NOT = { overlord = { is_subject_of = ROOT } }
+			any_owned_province = { has_province_flag = mf_shogunate_province }
+		}
+	}
+
+	is_allowed = {
+		is_at_war = no
+		FROM = {
+			is_at_war = no
+			any_owned_province = {
+				has_province_flag = mf_shogunate_province
+				any_core_country = {
+					OR = {
+						exists = no
+						tag = event_target:zhengyidajiangjun
+						is_subject_of = event_target:zhengyidajiangjun
+						overlord = { is_subject_of = event_target:zhengyidajiangjun }
+					}
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		hidden_effect = {
+			FROM = { mf_pick_returnable_shogunate_province_effect = yes }
+			event_target:mf_return_shogunate_province = {
+				cede_province = event_target:mf_return_shogunate_province_owner
+				province_event = { id = mf_daimyo.12 }
+			}
+		}
+		mf_change_shogun_value = { value = 2 }
+	}
+
+	on_decline = {
+		FROM = {
+			set_country_flag = mf_refused_return_shogunate_province
+		}
+		add_casus_belli = {
+			target = FROM
+			type = cb_mf_return_daimyo_land
+			months = 60
+		}
+		mf_change_shogun_value = { value = -2 }
+	}
+
+	ai_acceptance = {
+		add_entry = {
+			name = mf_return_shogunate_province_base
+			export_to_variable = { variable_name = ai_value value = 20 }
+		}
+		add_entry = {
+			name = DIPLO_OPPINION
+			export_to_variable = {
+				variable_name = ai_value
+				value = opinion
+				who = FROM
+				with = ROOT
+			}
+			multiply_variable = { which = ai_value value = 0.25 }
+		}
+	}
+
+	ai_will_do = { always = yes }
+}
+
+mf_transfer_illegal_subject = {
+	category = shogun
+	alert_index = 43
+	alert_tooltip = mf_transfer_illegal_subject_tooltip
+	require_acceptance = no
+
+	is_visible = {
+		has_reform = shogunate
+		has_global_flag = shogun_weixin.c_global_flag
+		FROM = {
+			sort_of_mf = yes
+			NOT = { is_subject_of = ROOT }
+			overlord = { is_subject_of = ROOT }
+		}
+	}
+
+	is_allowed = {
+		is_at_war = no
+		FROM = {
+			is_at_war = no
+			overlord = { is_at_war = no }
+		}
+	}
+
+	on_accept = {
+		create_subject = {
+			subject_type = daimyo_vassal
+			subject = FROM
+		}
+		FROM = {
+			mf_normalize_daimyo_first_layer_reform_effect = yes
+		}
+		mf_promote_retainer_daimyos_to_shogunate_effect = yes
+		mf_change_shogun_value = { value = 2 }
+	}
+
+	ai_will_do = { always = yes }
+}
+
 shouyexiayi = { # 狩野虾夷：指定与幕府体制国家接壤的征讨目标。
 	category = shogun
 	alert_index = 18
@@ -70,11 +187,9 @@ shouyexiayi = { # 狩野虾夷：指定与幕府体制国家接壤的征讨目�
 	require_acceptance = no
 
 	is_visible = {
-		ROOT = {
-			has_reform = shogunate
-			tag = event_target:zhengyidajiangjun
-			has_global_flag = shogun_weixin.i_global_flag
-		}
+		has_reform = shogunate
+		tag = event_target:zhengyidajiangjun
+		has_global_flag = shogun_weixin.i_global_flag
 		FROM = {
 			NOT = { has_country_flag = mf_xiayi_target }
 			NOT = { has_reform = shogunate }
@@ -830,11 +945,8 @@ mf_appoint_executor_daimyo = {
 		has_reform = shogunate
 		has_country_flag = mf_shogun_unlock_executor
 		NOT = {
-			calc_true_if = {
-				all_subject_country = {
-					has_country_modifier = mf_shogunate_executor
-				}
-				amount = 1
+			any_subject_country = {
+				has_country_modifier = mf_shogunate_executor
 			}
 		}
 		FROM = {
@@ -994,11 +1106,11 @@ mf_excommunicate_daimyo = {
 		has_global_flag = shogun_weixin.d_global_flag
 		has_saved_global_event_target = tianhuang
 		FROM = {
-			is_subject_of = ROOT
 			OR = {
-				is_subject_of_type = daimyo_vassal
-				is_subject_of_type = mf_daimyo_vassal
+				is_subject_of = ROOT
+				overlord = { is_subject_of = ROOT }
 			}
+			sort_of_mf = yes
 		}
 	}
 
@@ -1015,11 +1127,11 @@ mf_excommunicate_daimyo = {
 			custom_trigger_tooltip = {
 				tooltip = mf_excommunicate_daimyo_refusal_tt
 				OR = {
-					has_country_flag = mf_refused_sankin_kotai
 					has_country_flag = mf_refused_return_land
 					has_country_flag = mf_refused_enforce_daimyo_peace
 					has_country_flag = mf_refused_partition_daimyo
 					has_country_flag = mf_refused_executor_appointment
+					has_country_flag = mf_refused_return_shogunate_province
 				}
 			}
 			custom_trigger_tooltip = {
@@ -1048,76 +1160,7 @@ mf_excommunicate_daimyo = {
 			months = 120
 		}
 		set_country_flag = mf_shogun_issued_excommunication
-	}
-
-	ai_will_do = {
-		always = yes
-	}
-}
-
-mf_enforce_sankin_kotai = {
-	category = shogun
-	alert_index = 40
-	alert_tooltip = mf_enforce_sankin_kotai_tooltip
-	require_acceptance = no
-
-	# 幕府对所有直属大名都能看到该行动，是否拒绝过参勤交代由 is_allowed 解释。
-	is_visible = {
-		has_reform = shogunate
-		has_global_flag = shogun_weixin.h_global_flag
-		FROM = {
-			is_subject_of = ROOT
-			OR = {
-				is_subject_of_type = daimyo_vassal
-				is_subject_of_type = mf_daimyo_vassal
-			}
-		}
-	}
-
-	is_allowed = {
-		is_at_war = no
-		FROM = {
-			is_at_war = no
-			custom_trigger_tooltip = {
-				tooltip = mf_enforce_sankin_kotai_refused_tt
-				has_country_flag = mf_refused_sankin_kotai
-			}
-		}
-	}
-
-	on_accept = {
-		FROM = {
-			clr_country_flag = mf_refused_sankin_kotai
-			add_country_modifier = {
-				name = mf_sankin_kotai_travel
-				duration = 182
-			}
-			if = {
-				limit = {
-					ROOT = {
-						has_country_flag = mf_shogun_sankin_punishment_upgraded
-					}
-				}
-				add_liberty_desire = -30
-			}
-			else = {
-				add_liberty_desire = -15
-			}
-		}
-		set_country_flag = mf_shogun_forced_sankin_kotai
-		if = {
-			limit = {
-				has_country_flag = mf_shogun_sankin_punishment_upgraded
-			}
-			mf_change_shogun_value = {
-				value = 5
-			}
-		}
-		else = {
-			mf_change_shogun_value = {
-				value = 2
-			}
-		}
+		mf_change_shogun_value = { value = 2 }
 	}
 
 	ai_will_do = {

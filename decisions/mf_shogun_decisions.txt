@@ -46,4 +46,43 @@ country_decisions = {
 			factor = 1
 		}
 	}
+
+	mf_register_shogunate_provinces = {
+		major = yes
+		potential = {
+			has_reform = shogunate
+			tag = event_target:zhengyidajiangjun
+			has_global_flag = shogun_weixin.b_global_flag
+		}
+		allow = {
+			is_at_war = no
+			OR = {
+				any_owned_province = {
+					NOT = { has_province_flag = mf_shogunate_province }
+				}
+				any_subject_country = {
+					OR = {
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+						is_subject_of_type = mf_retainer_daimyo_vassal
+					}
+					OR = {
+						any_owned_province = {
+							NOT = { has_province_flag = mf_shogunate_province }
+						}
+						any_subject_country = {
+							is_subject_of_type = mf_retainer_daimyo_vassal
+							any_owned_province = {
+								NOT = { has_province_flag = mf_shogunate_province }
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			mf_mark_shogunate_provinces_effect = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
 }

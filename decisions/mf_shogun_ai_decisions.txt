@@ -60,6 +60,7 @@ country_decisions = {
 			ai = yes
 			has_reform = shogunate
 			tag = event_target:zhengyidajiangjun
+			has_global_flag = shogun_weixin.i_global_flag
 		}
 		allow = {
 			NOT = { has_saved_global_event_target = xiayi }
@@ -272,9 +273,18 @@ country_decisions = {
 					value = 80
 				}
 			}
-			OR = {
-				has_global_flag = shogun_weixin.b_global_flag
-				has_global_flag = shogun_weixin.c_global_flag
+			calc_true_if = {
+				all_subject_country = {
+					OR = {
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+					}
+					has_opinion = {
+						who = ROOT
+						value = 150
+					}
+				}
+				amount = 2
 			}
 		}
 		effect = {
@@ -394,8 +404,7 @@ country_decisions = {
 			has_country_modifier = shogun_yuling_b
 		}
 		effect = {
-			set_global_flag = shogun_weixin.h_global_flag
-			mf_change_shogun_value = { value = -70 }
+			mf_complete_sankin_reform_effect = yes
 		}
 		ai_will_do = {
 			factor = 35
@@ -418,23 +427,8 @@ country_decisions = {
 				}
 			}
 			japan_region = {
-				type = all
-				OR = {
-					province_id = 1031
-					province_id = 1032
-					province_id = 1847
-					province_id = 1852
-					province_id = 4193
-					country_or_non_sovereign_subject_holds = ROOT
-					owner = {
-						OR = {
-							is_subject_of = ROOT
-							overlord = {
-								is_subject_of = ROOT
-							}
-						}
-					}
-				}
+				NOT = { area = hokkaido_area }
+				owned_by = ROOT
 			}
 		}
 		effect = {

@@ -4,6 +4,7 @@ country_event = {
 	id = mf_shogun_ai.1
 	title = "shogun_yuling_text"
 	desc = "shogun_yuling_x.tt"
+	picture = COURT_eventPicture
 	is_triggered_only = yes
 
 	trigger = {
@@ -29,6 +30,9 @@ country_event = {
 
 	option = {
 		name = "shogun_yuling.b_title"
+		trigger = {
+			NOT = { has_global_flag = shogun_weixin.h_global_flag }
+		}
 		ai_chance = {
 			factor = 60
 			modifier = {

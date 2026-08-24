@@ -167,21 +167,29 @@ cb_mf_shogunate_excommunication = {
 cb_mf_xiayi_campaign = {
 	valid_for_subject = no
 
+	is_triggered_only = yes
+	months = 120
+
+	war_goal = mf_xiayi_conquest_wg
+}
+
+cb_mf_shogunate_japan_campaign = {
+	valid_for_subject = no
+
 	prerequisites_self = {
+		has_reform = shogunate
 		is_revolutionary = no
-		has_saved_global_event_target = zhengyidajiangjun
-		tag = event_target:zhengyidajiangjun
 	}
 
 	prerequisites = {
-		has_saved_global_event_target = xiayi
-		FROM = {
-			has_country_flag = mf_xiayi_target
-			tag = event_target:xiayi
+		any_owned_province = { region = japan_region }
+		NOT = { is_subject_of = FROM }
+		NOT = {
+			overlord = { is_subject_of = FROM }
 		}
 	}
 
-	war_goal = mf_xiayi_conquest_wg
+	war_goal = take_capital
 }
 
 # A HRE prince has been annexed
@@ -696,6 +704,14 @@ cb_sengoku = {
 	prerequisites_self = {
 		is_subject = yes
 		is_revolutionary = no
+		NOT = { has_global_flag = shogun_weixin.h_global_flag }
+		event_target:zhengyidajiangjun = {
+			has_country_modifier = jap_sengoku_jidai
+		}
+		OR = {
+			is_subject_of = event_target:zhengyidajiangjun
+			overlord = { is_subject_of = event_target:zhengyidajiangjun }
+		}
 		OR = {
 			has_reform = daimyo
 			has_reform = mf_daimyo
@@ -727,6 +743,10 @@ cb_sengoku = {
 				has_country_flag = ikko_ikki_peasants_flag
 			}
 			is_subject = yes
+			OR = {
+				is_subject_of = event_target:zhengyidajiangjun
+				overlord = { is_subject_of = event_target:zhengyidajiangjun }
+			}
 		}
 	}
 

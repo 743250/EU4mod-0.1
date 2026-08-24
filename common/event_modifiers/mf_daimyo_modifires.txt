@@ -81,4 +81,5 @@ mf_shogunate_excommunication = {
 	diplomatic_reputation = -3
 	global_unrest = 3
 	legitimacy = -1
+	can_not_declare_war = yes
 }

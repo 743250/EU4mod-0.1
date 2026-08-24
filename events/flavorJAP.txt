@@ -3299,48 +3299,6 @@ country_event = {
 
 
 
-#Independent as Daimyo
-country_event = {
-	id = flavor_jap.57
-	title = flavor_jap.57.t
-	desc = flavor_jap.57.d
-	picture = BATTLE_eventPicture
-	
-	trigger = {
-		has_reform = daimyo
-		NOT = { is_subject_of_type = daimyo_vassal }
-		NOT = { is_subject_of_type = mf_daimyo_vassal }
-		NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
-	}
-	
-	mean_time_to_happen = {
-		months = 1
-	}
-	
-	option = {
-		name = flavor_jap.57.a
-		trigger = {
-			any_country = {
-				has_reform = shogunate
-			}
-		}
-		add_government_reform = indep_daimyo
-		add_legitimacy = -25
-	}
-	option = {
-		name = flavor_jap.57.b
-		trigger = {
-			NOT = {
-				any_country = {
-					has_reform = shogunate
-				}
-			}
-		}
-		add_government_reform = indep_daimyo
-	}
-}
-
-
 # Returning to the fold
 country_event = {
 	id = flavor_jap.58

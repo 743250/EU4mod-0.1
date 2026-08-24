@@ -164,7 +164,7 @@ custom_button = {
 	}
 	trigger = {
 		hidden_trigger = {
-			ROOT = { tag = event_target:zhengyidajiangjun }
+			tag = event_target:zhengyidajiangjun
 			event_target:zhengyidajiangjun = {
 				mf_can_issue_shogun_yuling = yes
 			}
@@ -178,9 +178,7 @@ custom_button = {
 				event_target:zhengyidajiangjun = {
 					mf_can_issue_shogun_yuling = yes
 				}
-				ROOT = { 
-					tag = event_target:zhengyidajiangjun 
-				}
+				tag = event_target:zhengyidajiangjun
 			}
 			event_target:zhengyidajiangjun = {
 				mf_apply_shogun_yuling_a = yes
@@ -205,7 +203,8 @@ custom_button = {
 	}
 	trigger = {
 		hidden_trigger = {
-			ROOT = { tag = event_target:zhengyidajiangjun }
+			NOT = { has_global_flag = shogun_weixin.h_global_flag }
+			tag = event_target:zhengyidajiangjun
 			event_target:zhengyidajiangjun = {
 				mf_can_issue_shogun_yuling = yes
 			}
@@ -213,15 +212,13 @@ custom_button = {
 	}
 	effect = {
 		custom_tooltip = shogun_yuling_x.tt
-		custom_tooltip = shogun_yuling_x_b.tt
+		custom_tooltip = shogun_yuling_x_b_formula.tt
 		if = {
 			limit = {
 				event_target:zhengyidajiangjun = {
 					mf_can_issue_shogun_yuling = yes
 				}
-				ROOT = { 
-					tag = event_target:zhengyidajiangjun 
-				}
+				tag = event_target:zhengyidajiangjun
 			}
 			event_target:zhengyidajiangjun = {
 				mf_apply_shogun_yuling_b = yes
@@ -246,7 +243,7 @@ custom_button = {
 	}
 	trigger = {
 		hidden_trigger = {
-			ROOT = { tag = event_target:zhengyidajiangjun }
+			tag = event_target:zhengyidajiangjun
 			event_target:zhengyidajiangjun = {
 				mf_can_issue_shogun_yuling = yes
 			}
@@ -260,9 +257,7 @@ custom_button = {
 				event_target:zhengyidajiangjun = {
 					mf_can_issue_shogun_yuling = yes
 				}
-				ROOT = { 
-					tag = event_target:zhengyidajiangjun 
-				}
+				tag = event_target:zhengyidajiangjun
 			}
 			event_target:zhengyidajiangjun = {
 				hidden_effect = {
@@ -282,7 +277,7 @@ custom_button = {
 	}
 	trigger = {
 		hidden_trigger = {
-			ROOT = { tag = event_target:zhengyidajiangjun }
+			tag = event_target:zhengyidajiangjun
 			event_target:zhengyidajiangjun = {
 				mf_can_issue_shogun_yuling = yes
 			}
@@ -296,9 +291,7 @@ custom_button = {
 				event_target:zhengyidajiangjun = {
 					mf_can_issue_shogun_yuling = yes
 				}
-				ROOT = { 
-					tag = event_target:zhengyidajiangjun 
-				}
+				tag = event_target:zhengyidajiangjun
 			}
 			event_target:zhengyidajiangjun = {
 				mf_apply_shogun_yuling_d = yes
@@ -323,7 +316,7 @@ custom_button = {
 	}
 	trigger = {
 		hidden_trigger = {
-			ROOT = { tag = event_target:zhengyidajiangjun }
+			tag = event_target:zhengyidajiangjun
 			event_target:zhengyidajiangjun = {
 				mf_can_issue_shogun_yuling = yes
 			}
@@ -337,9 +330,7 @@ custom_button = {
 				event_target:zhengyidajiangjun = {
 					mf_can_issue_shogun_yuling = yes
 				}
-				ROOT = { 
-					tag = event_target:zhengyidajiangjun 
-				}
+				tag = event_target:zhengyidajiangjun
 			}
 			event_target:zhengyidajiangjun = {
 				mf_apply_shogun_yuling_e = yes
@@ -494,8 +485,6 @@ custom_icon = { # 维新完成标记图标
 			limit = {
 				NOT = {
 					has_country_flag = weixin_page_2
-				}
-				NOT = {
 					has_country_flag = weixin_page_3
 				}
 			}
@@ -533,8 +522,6 @@ custom_icon = {
 			limit = {
 				NOT = {
 					has_country_flag = weixin_page_2
-				}
-				NOT = {
 					has_country_flag = weixin_page_3
 				}
 			}
@@ -572,8 +559,6 @@ custom_icon = {
 			limit = {
 				NOT = {
 					has_country_flag = weixin_page_2
-				}
-				NOT = {
 					has_country_flag = weixin_page_3
 				}
 			}
@@ -609,8 +594,6 @@ custom_button = {
 	potential = {
 		NOT = {
 			has_country_flag = weixin_page_2
-		}
-		NOT = {
 			has_country_flag = weixin_page_3
 		}
 	}
@@ -623,9 +606,7 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 	}
 	effect = {
@@ -649,8 +630,6 @@ custom_button = {
 	potential = {
 		NOT = {
 			has_country_flag = weixin_page_2
-		}
-		NOT = {
 			has_country_flag = weixin_page_3
 		}
 	}
@@ -663,16 +642,12 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.b.a.tt
-			event_target:zhengyidajiangjun = {
-				all_subject_country = {
-					NOT = { liberty_desire = 50 }
-				}
+			all_subject_country = {
+				NOT = { liberty_desire = 50 }
 			}
 		}
 	}
@@ -696,8 +671,6 @@ custom_button = {
 	potential = {
 		NOT = {
 			has_country_flag = weixin_page_2
-		}
-		NOT = {
 			has_country_flag = weixin_page_3
 		}
 	}
@@ -710,9 +683,7 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 	}
 	effect = {
@@ -747,9 +718,7 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 	}
 	effect = {
@@ -784,15 +753,22 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.e.k.tt
-			OR = {
-				has_global_flag = shogun_weixin.b_global_flag
-				has_global_flag = shogun_weixin.c_global_flag
+			calc_true_if = {
+				all_subject_country = {
+					OR = {
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+					}
+					has_opinion = {
+						who = ROOT
+						value = 150
+					}
+				}
+				amount = 2
 			}
 		}
 	}
@@ -830,16 +806,12 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.b.a.tt
-			event_target:zhengyidajiangjun = {
-				all_subject_country = {
-					NOT = { liberty_desire = 50 }
-				}
+			all_subject_country = {
+				NOT = { liberty_desire = 50 }
 			}
 		}
 		custom_trigger_tooltip = {
@@ -887,32 +859,26 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		is_at_war = no
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.b.a.tt
-			event_target:zhengyidajiangjun = {
-				all_subject_country = {
-					NOT = { liberty_desire = 50 }
-				}
+			all_subject_country = {
+				NOT = { liberty_desire = 50 }
 			}
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.g.k.tt
-			event_target:zhengyidajiangjun = {
-				japan_region = {
-					type = all
-					OR = {
-						country_or_non_sovereign_subject_holds = ROOT
-						owner = {
-							OR = {
+			japan_region = {
+				type = all
+				OR = {
+					country_or_non_sovereign_subject_holds = ROOT
+					owner = {
+						OR = {
+							is_subject_of = ROOT
+							overlord = {
 								is_subject_of = ROOT
-								overlord = {
-									is_subject_of = ROOT
-								}
 							}
 						}
 					}
@@ -950,15 +916,11 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.h.k.tt
-			event_target:zhengyidajiangjun = {
-				has_country_modifier = shogun_yuling_b
-			}
+			has_country_modifier = shogun_yuling_b
 		}
 	}
 	effect = {
@@ -968,10 +930,9 @@ custom_button = {
 			}
 			custom_tooltip = weixin_complete.tt
 		}
-		custom_tooltip = shogun_weixin.h.a.tt
+		custom_tooltip = shogun_weixin.h.formal.a.tt
 		hidden_effect = {
-			set_global_flag = shogun_weixin.h_global_flag
-			mf_change_shogun_value = { value = -70 }
+			mf_complete_sankin_reform_effect = yes
 		}
 	}
 	tooltip = shogun_weixin.x.tt
@@ -991,32 +952,13 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.i.k.tt
-			event_target:zhengyidajiangjun = {
-				japan_region = {
-					type = all
-					OR = {
-						province_id = 1031
-						province_id = 1032
-						province_id = 1847
-						province_id = 1852
-						province_id = 4193
-						country_or_non_sovereign_subject_holds = ROOT
-						owner = {
-							OR = {
-								is_subject_of = ROOT
-								overlord = {
-									is_subject_of = ROOT
-								}
-							}
-						}
-					}
-				}
+			japan_region = {
+				NOT = { area = hokkaido_area }
+				owned_by = ROOT
 			}
 		}
 	}
@@ -1050,9 +992,7 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.j.k.tt
@@ -1091,9 +1031,7 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.k.k.tt
@@ -1130,9 +1068,7 @@ custom_button = {
 					value = 80
 				}
 			}
-			ROOT = {
-				tag = event_target:zhengyidajiangjun
-			}
+			tag = event_target:zhengyidajiangjun
 		}
 		custom_trigger_tooltip = {
 			tooltip = shogun_weixin.l.k.tt
@@ -1164,8 +1100,6 @@ custom_icon = {
 	potential = {
 		NOT = {
 			has_country_flag = weixin_page_2
-		}
-		NOT = {
 			has_country_flag = weixin_page_3
 		}
 	}
@@ -1203,13 +1137,11 @@ custom_button = {
 	}
 	trigger = {
 	}
-	effect = {
+		effect = {
 		if = {
 			limit = {
 				NOT = {
 					has_country_flag = weixin_page_2
-				}
-				NOT = {
 					has_country_flag = weixin_page_3
 				}
 			}
@@ -1246,13 +1178,11 @@ custom_button = {
 	}
 	trigger = {
 	}
-	effect = {
+		effect = {
 		if = {
 			limit = {
 				NOT = {
 					has_country_flag = weixin_page_2
-				}
-				NOT = {
 					has_country_flag = weixin_page_3
 				}
 			}

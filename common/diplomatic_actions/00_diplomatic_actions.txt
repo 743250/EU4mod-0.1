@@ -118,16 +118,29 @@ declarewar = {
 	#}
 	####MOD
 	condition = {
-		tooltip = CANNOT_DECLARE_WARS_OTHER_THAN_INDEPENDENCE_WARS
+		tooltip = mf_shogunate_internal_war_forbidden_tt
 		potential = {
 			has_global_flag = shogun_weixin.f_global_flag
-			FROM = { NOT = { overlord_of = ROOT } }
-			is_subject_of = event_target:zhengyidajiangjun 
+			sort_of_mf = yes
+			OR = {
+				tag = event_target:zhengyidajiangjun
+				is_subject_of = event_target:zhengyidajiangjun
+				overlord = { is_subject_of = event_target:zhengyidajiangjun }
+			}
 		}
 		allow = {
 			OR = {
 				NOT = { has_global_flag = shogun_weixin.f_global_flag }
 				FROM = { overlord_of = ROOT }
+				FROM = {
+					NOT = {
+						OR = {
+							tag = event_target:zhengyidajiangjun
+							is_subject_of = event_target:zhengyidajiangjun
+							overlord = { is_subject_of = event_target:zhengyidajiangjun }
+						}
+					}
+				}
 			}
 		}
 	}
@@ -252,6 +265,35 @@ declarewar = {
 }
 
 allianceaction = {
+	condition = {
+		tooltip = mf_sankin_reform_daimyo_alliance_forbidden_tt
+		potential = {
+			has_global_flag = shogun_weixin.h_global_flag
+			sort_of_mf = yes
+			NOT = { has_reform = shogunate }
+			OR = {
+				is_subject_of = event_target:zhengyidajiangjun
+				overlord = { is_subject_of = event_target:zhengyidajiangjun }
+			}
+		}
+		allow = {
+			OR = {
+				NOT = { has_global_flag = shogun_weixin.h_global_flag }
+				FROM = {
+					NOT = {
+						AND = {
+							sort_of_mf = yes
+							NOT = { has_reform = shogunate }
+							OR = {
+								is_subject_of = event_target:zhengyidajiangjun
+								overlord = { is_subject_of = event_target:zhengyidajiangjun }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	condition = {
 		tooltip = PIRATE_DENIED_ALLIANCE
 		potential = {

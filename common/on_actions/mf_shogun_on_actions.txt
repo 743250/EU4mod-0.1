@@ -71,7 +71,6 @@ on_monthly_pulse = {
 			tag = event_target:zhengyidajiangjun
 		}
 		bl_mp_effect = yes
-		bl_shogun_refresh = yes
 	}
 }
 
@@ -124,6 +123,7 @@ on_province_owner_change = {
 				tag = event_target:zhengyidajiangjun
 				has_reform = shogunate
 				has_country_modifier = shogun_yuling_b
+				NOT = { has_global_flag = shogun_weixin.h_global_flag }
 			}
 			every_subject_country = {
 				limit = {

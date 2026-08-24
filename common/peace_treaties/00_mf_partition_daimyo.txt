@@ -1,0 +1,63 @@
+po_mf_partition_daimyo = {
+	# 幕府强制分割：只执行恢复旧家，不允许借此直接吞并目标。
+	category = 6
+	power_projection = vassalized_rival
+	power_cost_base = 0.1
+	prestige_base = 1.0
+	ae_base = 0.0
+
+	warscore_cost = {
+		all_provinces = 0.0
+		no_provinces = 500.0
+		owner_keeps = 0.0
+		conquered = 0.0
+		returned_core = 0.0
+		released_nation = 0.0
+		cancelled_subject = 0.0
+		concede_colonial_region = 0.0
+	}
+	warscore_cap = 80
+
+	requires_is_allowed = yes
+
+	is_visible = {
+		has_reform = shogunate
+		FROM = {
+			is_subject_of = ROOT
+			OR = {
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
+			}
+			any_owned_province = {
+				is_capital = no
+				any_core_country = {
+					exists = no
+				}
+			}
+		}
+	}
+
+	is_allowed = {
+		always = yes
+	}
+
+	effect = {
+		FROM = {
+			mf_force_partition_daimyo_effect = yes
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mf_demanded_partition
+			}
+		}
+		mf_change_shogun_value = {
+			value = 5
+		}
+	}
+
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+	}
+}

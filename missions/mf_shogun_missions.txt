@@ -385,48 +385,10 @@ mf_shogun_missions_law = {
 		}
 	}
 
-	mf_shogun_punish_sankin_refusal = {
-		icon = mission_japanese_samurai
-		required_missions = { mf_shogun_enforce_peace_order }
-		position = 11
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = mf_shogun_requires_sankin_reform_tt
-				has_global_flag = shogun_weixin.h_global_flag
-			}
-			custom_trigger_tooltip = {
-				tooltip = mf_shogun_requires_buke_law_mission_tt
-				has_country_flag = mf_shogun_completed_buke_law
-			}
-			custom_trigger_tooltip = {
-				tooltip = mf_shogun_requires_forced_sankin_tt
-				has_country_flag = mf_shogun_forced_sankin_kotai
-			}
-			NOT = {
-				any_subject_country = {
-					has_country_flag = mf_refused_sankin_kotai
-				}
-			}
-			all_subject_country = {
-				NOT = { liberty_desire = 70 }
-			}
-		}
-		effect = {
-			add_mil_power = 75
-			mf_change_shogun_value = {
-				value = 5
-			}
-			custom_tooltip = mf_shogun_sankin_punishment_upgraded_tt
-			hidden_effect = {
-				set_country_flag = mf_shogun_sankin_punishment_upgraded
-			}
-		}
-	}
-
 	mf_shogun_executor_system = {
 		icon = mission_unite_home_region
 		required_missions = {
-			mf_shogun_punish_sankin_refusal
+			mf_shogun_enforce_peace_order
 			mf_shogun_court_arbitration
 		}
 		position = 12

@@ -59,13 +59,10 @@ daimyo = {
 	allow_normal_conversion = no
 	potential = {
 		NOT = { has_country_flag = formed_japan_flag }
-		overlord = {
-			OR = {
-				has_reform = shogunate
-				has_reform = daimyo
-			}
+		OR = {
+			is_subject_of_type = daimyo_vassal
+			is_subject_of_type = mf_retainer_daimyo_vassal
 		}
-		NOT = { is_subject_of_type = mf_daimyo_vassal }
 	}
 	replacement_on_independence_war = indep_daimyo
 	legacy_equivalent = daimyo_legacy
@@ -126,12 +123,11 @@ indep_daimyo = {
 	potential = {
 		NOT = { has_country_flag = formed_japan_flag }
 		OR = {
+			is_subject = no
+			is_subject_of_type = tributary_state
+		}
+		OR = {
 			AND = {
-				OR = {
-					#overlord = { NOT = { has_reform = shogunate } }
-					is_subject = no
-					is_subject_of_type = tributary_state
-				}
 				capital_scope = { region = japan_region }
 				culture_group = japanese_g
 			}

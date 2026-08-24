@@ -175,30 +175,12 @@ mf_initialize_new_shogun_authority_effect = {
 
 mf_promote_retainer_daimyos_to_shogunate_effect = {
 	# 统一整理幕府属国层级。
-	# 幕府不能保留陪臣大名，非幕府大名也不能直接拥有谱代大名。
+	# 陪臣可由任何幕府体系国家直属；非幕府国家不能直接拥有谱代大名。
 	if = {
 		limit = {
 			has_reform = shogunate
 		}
 		save_global_event_target_as = zhengyidajiangjun
-		every_subject_country = {
-			limit = {
-				is_subject_of_type = mf_retainer_daimyo_vassal
-			}
-			if = {
-				limit = {
-					OR = {
-						has_dlc = "Mandate of Heaven"
-						has_dlc = "Art of War"
-						has_dlc = "Leviathan"
-					}
-				}
-				change_subject_type = {
-					subject_type = daimyo_vassal
-				}
-			}
-			mf_normalize_daimyo_first_layer_reform_effect = yes
-		}
 		mf_refresh_tianhuang_target_effect = yes
 		bl_shogun_refresh = yes
 	}
@@ -449,8 +431,23 @@ mf_normalize_daimyo_first_layer_reform_effect = {
 			}
 			add_government_reform = mf_daimyo
 		}
-		else = {
+		else_if = {
+			limit = {
+				OR = {
+					is_subject_of_type = daimyo_vassal
+					is_subject_of_type = mf_retainer_daimyo_vassal
+				}
+			}
 			add_government_reform = daimyo
+		}
+		else_if = {
+			limit = {
+				OR = {
+					is_subject = no
+					is_subject_of_type = tributary_state
+				}
+			}
+			add_government_reform = indep_daimyo
 		}
 	}
 }
@@ -584,5 +581,19 @@ mf_refresh_shogun_leader_target_effect = {
 			}
 		}
 		save_global_event_target_as = zhengyidajiangjun
+		if = {
+			limit = {
+				has_saved_global_event_target = xiayi
+				event_target:xiayi = {
+					exists = yes
+					has_country_flag = mf_xiayi_target
+				}
+			}
+			add_casus_belli = {
+				type = cb_mf_xiayi_campaign
+				target = event_target:xiayi
+				months = 120
+			}
+		}
 	}
 }

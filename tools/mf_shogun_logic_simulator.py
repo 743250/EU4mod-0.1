@@ -21,6 +21,39 @@ def block_between(text, start, end):
     return text[start_index:end_index]
 
 
+def find_matching_brace(text, open_index):
+    depth = 0
+    for index in range(open_index, len(text)):
+        if text[index] == "{":
+            depth += 1
+        elif text[index] == "}":
+            depth -= 1
+            if depth == 0:
+                return index
+    raise AssertionError("unmatched brace")
+
+
+def named_block(text, name):
+    start = text.index(f"{name} = {{")
+    brace = text.index("{", start)
+    end = find_matching_brace(text, brace)
+    return text[start:end + 1]
+
+
+def daimyo_reform_allows_subject_type(subject_type):
+    reforms = read_mod_text("common/government_reforms/mf_government_reforms_monarchies.txt")
+    daimyo = named_block(reforms, "daimyo")
+    potential = named_block(daimyo, "potential")
+    return f"is_subject_of_type = {subject_type}" in potential
+
+
+def indep_daimyo_reform_allows_free_or_tributary():
+    reforms = read_mod_text("common/government_reforms/mf_government_reforms_monarchies.txt")
+    indep_daimyo = named_block(reforms, "indep_daimyo")
+    potential = named_block(indep_daimyo, "potential")
+    return "is_subject = no" in potential and "is_subject_of_type = tributary_state" in potential
+
+
 @dataclass
 class Country:
     tag: str
@@ -30,7 +63,14 @@ class Country:
     provinces: set[str] = field(default_factory=set)
     modifiers: set[str] = field(default_factory=set)
     flags: set[str] = field(default_factory=set)
-    cbs: set[str] = field(default_factory=set)
+    cbs: set[tuple[str, str]] = field(default_factory=set)
+    treasury: float = 100.0
+    total_development: float = 60.0
+    yearly_income: float = 120.0
+    prestige: float = 0.0
+    liberty_desire: float = 0.0
+    loans: int = 0
+    opinions: dict[str, int] = field(default_factory=dict)
     alive: bool = True
 
 
@@ -39,6 +79,10 @@ class World:
         self.countries: dict[str, Country] = {}
         self.event_targets: dict[str, str] = {}
         self.shogun_authority = 50
+        self.global_flags: set[str] = set()
+        self.shogun_modifiers: set[str] = set()
+        self.province_flags: dict[str, set[str]] = {}
+        self.shogunate_province_home: dict[str, str] = {}
 
     def add_country(self, tag, reforms=None, provinces=None):
         self.countries[tag] = Country(
@@ -52,6 +96,15 @@ class World:
         country.overlord = overlord
         country.subject_type = subject_type
 
+    def grant_cb(self, holder, target, cb_type):
+        self.countries[holder].cbs.add((cb_type, target))
+
+    def remove_cb(self, holder, target, cb_type):
+        self.countries[holder].cbs.discard((cb_type, target))
+
+    def has_cb(self, holder, target, cb_type):
+        return (cb_type, target) in self.countries[holder].cbs
+
     def normalize_daimyo_reform(self, tag):
         country = self.countries[tag]
         if not (country.reforms & {"daimyo", "mf_daimyo", "indep_daimyo"} or country.subject_type in DAIMYO_SUBJECTS):
@@ -59,8 +112,34 @@ class World:
         country.reforms -= {"daimyo", "mf_daimyo", "indep_daimyo"}
         if country.subject_type == "mf_daimyo_vassal":
             country.reforms.add("mf_daimyo")
-        else:
+        elif country.subject_type in {"daimyo_vassal", "mf_retainer_daimyo_vassal"}:
             country.reforms.add("daimyo")
+        elif country.overlord is None or country.subject_type == "tributary_state":
+            country.reforms.add("indep_daimyo")
+
+    def reform_potential_valid(self, tag, reform):
+        country = self.countries[tag]
+        if reform == "daimyo":
+            if "formed_japan_flag" in country.flags:
+                return False
+            return daimyo_reform_allows_subject_type(country.subject_type)
+        if reform == "mf_daimyo":
+            return (
+                country.subject_type == "mf_daimyo_vassal"
+                and country.overlord is not None
+                and "shogunate" in self.countries[country.overlord].reforms
+            )
+        if reform == "indep_daimyo":
+            return indep_daimyo_reform_allows_free_or_tributary() and (
+                country.overlord is None or country.subject_type == "tributary_state"
+            )
+        return True
+
+    def refresh_first_layer_reform_validity(self, tag):
+        country = self.countries[tag]
+        for reform in list(country.reforms & {"daimyo", "mf_daimyo", "indep_daimyo"}):
+            if not self.reform_potential_valid(tag, reform):
+                country.reforms.remove(reform)
 
     def can_use_sengoku_cb(self, attacker, defender):
         a = self.countries[attacker]
@@ -72,7 +151,122 @@ class World:
             and d.overlord == "SHO"
             and a.subject_type in {"daimyo_vassal", "mf_daimyo_vassal"}
             and d.subject_type in {"daimyo_vassal", "mf_daimyo_vassal"}
+            and "jap_sengoku_jidai" in self.shogun_modifiers
+            and "shogun_weixin.h_global_flag" not in self.global_flags
         )
+
+    @staticmethod
+    def sankin_cost(total_development, distance, yearly_income):
+        fixed_cost = total_development / 5
+        distance_multiplier = min(distance / 12, 3)
+        yearly_income_cost = yearly_income / 3 * distance_multiplier
+        total_cost = fixed_cost + yearly_income_cost
+        return distance_multiplier, fixed_cost, yearly_income_cost, total_cost
+
+    @staticmethod
+    def sankin_refusal_chance(liberty_desire, loans):
+        accept_weight = 100.0
+        if loans >= 10:
+            accept_weight *= 0
+        if loans >= 5:
+            accept_weight *= 0.1
+        if liberty_desire >= 50:
+            accept_weight *= 0.2
+        refusal_weight = 100.0
+        return refusal_weight / (accept_weight + refusal_weight)
+
+    def sankin_targets(self):
+        if "shogun_yuling_b" not in self.shogun_modifiers:
+            return []
+        if "shogun_weixin.h_global_flag" in self.global_flags:
+            return []
+        shogun = self.event_targets.get("zhengyidajiangjun")
+        direct = [country for country in self.countries.values() if country.overlord == shogun]
+        targets = [country.tag for country in direct if country.subject_type in DAIMYO_SUBJECTS]
+        for lord in direct:
+            targets.extend(
+                country.tag
+                for country in self.countries.values()
+                if country.overlord == lord.tag and country.subject_type == "mf_retainer_daimyo_vassal"
+            )
+        return targets
+
+    def accept_sankin(self, target, distance):
+        country = self.countries[target]
+        _, _, _, total_cost = self.sankin_cost(country.total_development, distance, country.yearly_income)
+        country.treasury -= total_cost
+        country.modifiers.add("mf_sankin_kotai_travel")
+
+    def refuse_sankin(self, target):
+        country = self.countries[target]
+        country.prestige += 10
+        country.modifiers.add("mf_sankin_kotai_refused")
+        self.shogun_authority -= 0.5
+
+    def complete_sankin_reform(self):
+        targets = self.sankin_targets()
+        self.global_flags.add("shogun_weixin.h_global_flag")
+        self.shogun_modifiers.discard("shogun_yuling_b")
+        self.shogun_modifiers.discard("mf_sankin_kotai_began")
+        self.shogun_modifiers.add("jiujizhengshi_2")
+        for target in targets:
+            self.countries[target].modifiers.discard("mf_sankin_kotai_refused")
+            self.countries[target].modifiers.discard("mf_sankin_kotai_travel")
+
+    def can_form_alliance(self, actor, target):
+        if "shogun_weixin.h_global_flag" not in self.global_flags:
+            return True
+        shogun = self.event_targets.get("zhengyidajiangjun")
+        actor_is_daimyo = actor != shogun and self.is_shogunate_member(actor)
+        target_is_daimyo = target != shogun and self.is_shogunate_member(target)
+        return not (actor_is_daimyo and target_is_daimyo)
+
+    def is_shogunate_member(self, tag):
+        shogun = self.event_targets.get("zhengyidajiangjun")
+        current = tag
+        visited = set()
+        while current and current not in visited:
+            if current == shogun:
+                return True
+            visited.add(current)
+            current = self.countries[current].overlord
+        return False
+
+    def owner_of(self, province):
+        return next((country.tag for country in self.countries.values() if province in country.provinces), None)
+
+    def transfer_province(self, province, new_owner):
+        old_owner = self.owner_of(province)
+        if old_owner:
+            self.countries[old_owner].provinces.discard(province)
+        self.countries[new_owner].provinces.add(province)
+
+    def mark_shogunate_province(self, province):
+        owner = self.owner_of(province)
+        self.require(owner is not None and self.is_shogunate_member(owner), "province belongs to the shogunate system")
+        self.province_flags.setdefault(province, set()).add("mf_shogunate_province")
+        self.shogunate_province_home[province] = owner
+
+    def return_marked_shogunate_province(self, province):
+        self.require("mf_shogunate_province" in self.province_flags.get(province, set()), "province is marked by the shogunate")
+        home = self.shogunate_province_home[province]
+        self.transfer_province(province, home)
+
+    def transfer_illegal_subject_to_shogun(self, former_lord, subject):
+        self.require(self.countries[subject].overlord == former_lord, "illegal subject belongs to the requested daimyo")
+        shogun = self.event_targets["zhengyidajiangjun"]
+        self.set_subject(subject, shogun, "daimyo_vassal")
+        self.normalize_daimyo_reform(subject)
+        self.shogun_authority += 2
+
+    def can_declare_war(self, attacker, defender):
+        if "mf_shogunate_excommunication" in self.countries[attacker].modifiers:
+            return False
+        if "shogun_weixin.f_global_flag" not in self.global_flags:
+            return True
+        if self.countries[attacker].overlord == defender:
+            return True
+        return not (self.is_shogunate_member(attacker) and self.is_shogunate_member(defender))
 
     def demand_all_provinces(self, attacker, defender):
         self.require(self.can_use_sengoku_cb(attacker, defender), "A can declare sengoku war on B")
@@ -119,11 +313,11 @@ class World:
         self.normalize_daimyo_reform(scope)
 
     def execute_mf_promote_retainer_daimyos_to_shogunate_effect(self, scope):
-        if "shogunate" not in self.countries[scope].reforms:
+        if "shogunate" in self.countries[scope].reforms:
             return
         for country in self.countries.values():
-            if country.overlord == scope and country.subject_type == "mf_retainer_daimyo_vassal":
-                self.set_subject(country.tag, scope, "daimyo_vassal")
+            if country.overlord == scope and country.subject_type == "mf_daimyo_vassal":
+                self.set_subject(country.tag, scope, "mf_retainer_daimyo_vassal")
                 self.execute_mf_normalize_daimyo_first_layer_reform_effect(scope=country.tag)
 
     def release_extinct_retainer(self, lord, tag, province):
@@ -155,7 +349,7 @@ class World:
         self.require(province in self.countries[holder].provinces, "holder owns the refused province")
         self.countries[holder].flags.add("mf_recently_refused_return_daimyo_land")
         self.countries[holder].modifiers.add("mf_unlawful_daimyo_land")
-        self.countries["SHO"].cbs.add("cb_mf_return_daimyo_land")
+        self.grant_cb("SHO", holder, "cb_mf_return_daimyo_land")
         self.shogun_authority -= 5
 
     def lecture_daimyo(self, target):
@@ -189,7 +383,7 @@ class World:
 
     def partition_decline(self, target):
         self.countries[target].flags.add("mf_refused_partition_daimyo")
-        self.countries["SHO"].cbs.add("cb_mf_partition_daimyo")
+        self.grant_cb("SHO", target, "cb_mf_partition_daimyo")
 
     def appoint_executor(self, target):
         self.require(not any("mf_shogunate_executor" in c.modifiers for c in self.countries.values()), "no existing executor")
@@ -200,7 +394,13 @@ class World:
 
     def executor_decline(self, target):
         self.countries[target].flags.add("mf_refused_executor_appointment")
-        self.countries["SHO"].cbs.add("cb_mf_enforce_executor_service")
+        self.grant_cb("SHO", target, "cb_mf_enforce_executor_service")
+
+    def excommunicate_daimyo(self, target):
+        self.countries[target].flags.add("mf_under_shogunate_excommunication")
+        self.countries[target].modifiers.add("mf_shogunate_excommunication")
+        self.grant_cb("SHO", target, "cb_mf_shogunate_excommunication")
+        self.shogun_authority += 2
 
     def transfer_shogunate(self, new_shogun):
         old_shogun = self.countries["SHO"]
@@ -209,15 +409,13 @@ class World:
         new.reforms.add("shogunate")
         new.overlord = None
         new.subject_type = None
+        self.event_targets["zhengyidajiangjun"] = new_shogun
+        xiayi = self.event_targets.get("xiayi")
+        if xiayi:
+            self.grant_cb(new_shogun, xiayi, "cb_mf_xiayi_campaign")
         for country in self.countries.values():
             if country.tag not in {"SHO", new_shogun} and country.overlord == "SHO":
                 country.overlord = new_shogun
-
-    def promote_direct_retainer_under_shogun(self, target):
-        self.require(self.countries[target].overlord == "SHO", "target is direct subject of shogun")
-        self.require(self.countries[target].subject_type == "mf_retainer_daimyo_vassal", "target is direct retainer")
-        self.set_subject(target, "SHO", "daimyo_vassal")
-        self.normalize_daimyo_reform(target)
 
     def demote_illegal_fudai_under_daimyo(self, target):
         overlord = self.countries[target].overlord
@@ -227,21 +425,24 @@ class World:
         self.normalize_daimyo_reform(target)
 
     def set_xiayi_target(self, target):
+        old_target = self.event_targets.get("xiayi")
+        shogun = self.event_targets.get("zhengyidajiangjun")
+        if old_target and shogun:
+            self.remove_cb(shogun, old_target, "cb_mf_xiayi_campaign")
         for country in self.countries.values():
             country.flags.discard("mf_xiayi_target")
         self.countries[target].flags.add("mf_xiayi_target")
         self.event_targets["xiayi"] = target
+        if shogun:
+            self.grant_cb(shogun, target, "cb_mf_xiayi_campaign")
 
     def cb_mf_xiayi_campaign_available(self, attacker, target):
         assert_xiayi_cb_script_chain()
-        attacker_country = self.countries[attacker]
         target_country = self.countries[target]
         return (
-            attacker_country.alive
+            self.countries[attacker].alive
             and target_country.alive
-            and self.event_targets.get("zhengyidajiangjun") == attacker
-            and self.event_targets.get("xiayi") == target
-            and "mf_xiayi_target" in target_country.flags
+            and self.has_cb(attacker, target, "cb_mf_xiayi_campaign")
         )
 
     def higan_cb_return_hecatia_war_available(self, attacker, target):
@@ -263,15 +464,8 @@ class World:
         self.require(self.cb_mf_xiayi_campaign_available("SHO", target), "xiayi campaign cb is available")
         self.set_subject(target, "SHO", "daimyo_vassal")
         self.countries[target].flags.discard("mf_xiayi_target")
+        self.remove_cb("SHO", target, "cb_mf_xiayi_campaign")
         self.normalize_daimyo_reform(target)
-
-    def flavor_jap_57_can_trigger(self, tag):
-        country = self.countries[tag]
-        return (
-            country.alive
-            and "daimyo" in country.reforms
-            and country.subject_type not in {"daimyo_vassal", "mf_daimyo_vassal", "mf_retainer_daimyo_vassal"}
-        )
 
     @staticmethod
     def require(condition, message):
@@ -280,8 +474,8 @@ class World:
 
 
 def assert_private_subjugation_script_chain():
-    treaty_text = read_mod_text("common/peace_treaties/mf_daimyo_peace_treaties.txt")
-    treaty = block_between(treaty_text, "po_mf_subjugate_daimyo = {", "po_mf_partition_daimyo = {")
+    treaty_text = read_mod_text("common/peace_treaties/00_mf_subjugate_daimyo.txt")
+    treaty = treaty_text
     ordered_tokens = [
         "save_global_event_target_as = mf_daimyo_rehome_lord",
         "create_subject =",
@@ -314,16 +508,16 @@ def assert_private_subjugation_script_chain():
 
 def assert_xiayi_cb_script_chain():
     cb_text = read_mod_text("common/cb_types/00_cb_types.txt")
-    cb = block_between(cb_text, "cb_mf_xiayi_campaign = {", "# A HRE prince has been annexed")
-    prerequisites_self = block_between(cb, "prerequisites_self = {", "\n\t}\n\n\tprerequisites = {")
-    prerequisites = block_between(cb, "prerequisites = {", "\n\t}\n\n\twar_goal = mf_xiayi_conquest_wg")
+    cb = named_block(cb_text, "cb_mf_xiayi_campaign")
+    World.require("is_triggered_only = yes" in cb, "xiayi cb is granted explicitly")
+    World.require("prerequisites_self" not in cb, "xiayi cb does not wait for attacker prerequisite refresh")
+    World.require("prerequisites =" not in cb, "xiayi cb does not wait for target prerequisite refresh")
 
-    World.require("has_reform = shogunate" not in prerequisites_self, "xiayi cb does not double-lock shogunate reform")
-    World.require("tag = event_target:zhengyidajiangjun" in prerequisites_self, "xiayi cb attacker must be current shogun")
-    World.require("has_country_flag = mf_xiayi_target" in prerequisites, "xiayi cb target must have xiayi flag")
-    World.require("tag = event_target:xiayi" in prerequisites, "xiayi cb target must match xiayi event target")
-    World.require("FROM = {" in prerequisites, "xiayi cb target checks use target FROM scope")
-    World.require("sort_of_mf = yes" not in prerequisites, "xiayi cb does not repeat shogun-system target blockers")
+    effect_text = read_mod_text("common/scripted_effects/mf_shogun_ai_effects.txt")
+    effect = effect_text[effect_text.index("mf_set_xiayi_campaign_target_effect = {"):]
+    World.require("add_casus_belli = {" in effect, "xiayi target effect grants the cb immediately")
+    World.require("type = cb_mf_xiayi_campaign" in effect, "xiayi target effect grants the real cb key")
+    World.require("target = ROOT" in effect, "xiayi target effect grants the cb against its target scope")
 
 
 def assert_higan_return_hecatia_cb_script_chain():
@@ -343,6 +537,7 @@ def build_world():
     world.set_subject("A", "SHO", "daimyo_vassal")
     world.set_subject("B", "SHO", "daimyo_vassal")
     world.event_targets["zhengyidajiangjun"] = "SHO"
+    world.shogun_modifiers.add("jap_sengoku_jidai")
     return world
 
 
@@ -362,7 +557,6 @@ def test_private_war_subjugation():
     world.require(world.countries["B"].overlord == "A", "B's overlord is A")
     world.require(world.countries["B"].subject_type == "mf_retainer_daimyo_vassal", "B is A's retainer daimyo")
     world.require(world.countries["B"].reforms == {"daimyo"}, "B keeps the daimyo reform")
-    world.require(not world.flavor_jap_57_can_trigger("B"), "flavor_jap.57 cannot turn B into an independent daimyo")
     world.require(world.countries["A"].overlord == "SHO", "A remains under the shogunate")
     world.require(world.countries["A"].subject_type == "daimyo_vassal", "A remains an outside daimyo")
 
@@ -376,7 +570,14 @@ def test_release_extinct_retainer():
     world.require(world.countries["B2"].reforms == {"daimyo"}, "released daimyo has the daimyo reform")
     world.require(world.countries["A"].overlord == "SHO", "A remains under the shogunate")
     world.require(world.countries["A"].subject_type == "daimyo_vassal", "A remains an outside daimyo")
-    world.require(not world.flavor_jap_57_can_trigger("B2"), "flavor_jap.57 cannot turn the released retainer into an independent daimyo")
+
+
+def test_independent_daimyo_normalization_without_flavor_jap_57():
+    world = World()
+    world.add_country("A", reforms={"daimyo"}, provinces={"a1"})
+
+    world.normalize_daimyo_reform("A")
+    world.require(world.countries["A"].reforms == {"indep_daimyo"}, "mod normalization handles a truly independent daimyo")
 
 
 def test_fudai_subjugated_by_outside_daimyo():
@@ -420,7 +621,7 @@ def test_return_land_accept_and_decline():
     before = world.shogun_authority
     world.return_land_decline("A", "old1")
     world.require("mf_unlawful_daimyo_land" in world.countries["A"].modifiers, "decline marks unlawful land")
-    world.require("cb_mf_return_daimyo_land" in world.countries["SHO"].cbs, "decline gives return land cb")
+    world.require(world.has_cb("SHO", "A", "cb_mf_return_daimyo_land"), "decline gives return land cb against its holder")
     world.require(world.shogun_authority < before, "decline lowers authority")
 
 
@@ -447,7 +648,7 @@ def test_lecture_grace_enforce_partition_executor():
 
     world.countries["A"].provinces.add("old1")
     world.partition_decline("A")
-    world.require("cb_mf_partition_daimyo" in world.countries["SHO"].cbs, "partition decline gives cb")
+    world.require(world.has_cb("SHO", "A", "cb_mf_partition_daimyo"), "partition decline gives cb against its target")
     world.force_partition("A", "OLD", "old1")
     world.require(world.countries["OLD"].overlord == "SHO", "partition restores old daimyo")
 
@@ -456,7 +657,84 @@ def test_lecture_grace_enforce_partition_executor():
     world.require(world.countries["A"].reforms == {"mf_daimyo"}, "executor has fudai reform")
     world.executor_decline("B")
     world.require("mf_refused_executor_appointment" in world.countries["B"].flags, "executor decline flag is applied")
-    world.require("cb_mf_enforce_executor_service" in world.countries["SHO"].cbs, "executor decline gives cb")
+    world.require(world.has_cb("SHO", "B", "cb_mf_enforce_executor_service"), "executor decline gives cb against its target")
+
+
+def test_sankin_refusal_and_reform_cleanup():
+    world = build_world()
+    world.shogun_modifiers.add("shogun_yuling_b")
+    world.add_country("C", reforms={"daimyo"}, provinces={"c1"})
+    world.set_subject("C", "A", "mf_retainer_daimyo_vassal")
+    world.add_country("D", reforms={"daimyo"}, provinces={"d1"})
+    world.set_subject("D", "A", "mf_retainer_daimyo_vassal")
+    world.countries["A"].yearly_income = 120
+    world.countries["A"].treasury = 500
+    world.countries["A"].liberty_desire = 60
+    world.countries["B"].yearly_income = 120
+    world.countries["B"].treasury = 500
+    world.countries["B"].liberty_desire = 40
+    world.countries["B"].loans = 6
+    world.countries["D"].loans = 11
+
+    distance_multiplier, fixed_cost, yearly_income_cost, total_cost = world.sankin_cost(60, 24, 120)
+    world.require(distance_multiplier == 2, "sankin distance multiplier follows distance divided by twelve")
+    world.require(fixed_cost == 12, "sankin fixed cost follows total development divided by five")
+    world.require(yearly_income_cost == 80, "sankin yearly income cost follows income divided by three times distance")
+    world.require(total_cost == 92, "sankin total cost combines fixed and yearly costs")
+    world.require(world.sankin_refusal_chance(50, 10) == 1.0, "ten-loan daimyo always refuses")
+    world.require(abs(world.sankin_refusal_chance(49, 5) - 100 / 110) < 1e-12, "five loans use accept weight ten against refusal weight one hundred")
+    world.require(abs(world.sankin_refusal_chance(50, 0) - 100 / 120) < 1e-12, "fifty liberty desire uses accept weight twenty against refusal weight one hundred")
+    world.require(abs(world.sankin_refusal_chance(50, 5) - 100 / 102) < 1e-12, "debt and liberty modifiers multiply on the accept option")
+    world.require(world.sankin_refusal_chance(49, 0) == 0.5, "unmodified accept and refusal weights are equal")
+
+    targets = world.sankin_targets()
+    world.require(targets == ["A", "B", "C", "D"], "annual sankin targets include direct daimyos and their retainers")
+
+    before = world.countries["A"].treasury
+    world.accept_sankin("A", 24)
+    world.require(world.countries["A"].treasury == before - 92, "accepting sankin removes the combined fixed and yearly cost")
+    world.require("mf_sankin_kotai_travel" in world.countries["A"].modifiers, "accepted sankin applies the travel modifier")
+
+    before = world.countries["B"].prestige
+    authority_before = world.shogun_authority
+    world.refuse_sankin("B")
+    world.require(world.countries["B"].prestige == before + 10, "refusing sankin adds prestige")
+    world.require("mf_sankin_kotai_refused" in world.countries["B"].modifiers, "refusing sankin applies the refusal modifier")
+    world.require(world.shogun_authority == authority_before - 0.5, "refusing sankin lowers shogun authority by point five")
+    world.require("mf_refused_sankin_kotai" not in world.countries["B"].flags, "refusing sankin does not set a persistent refusal flag")
+    world.require(not world.has_cb("SHO", "B", "cb_disloyal_vassal"), "refusing sankin does not grant a punishment cb")
+
+    world.refuse_sankin("D")
+    world.require("mf_sankin_kotai_refused" in world.countries["D"].modifiers, "retainer refusal applies only the temporary modifier")
+    world.require(world.can_form_alliance("A", "B"), "daimyos can ally before the formal reform")
+
+    world.complete_sankin_reform()
+    world.require("shogun_weixin.h_global_flag" in world.global_flags, "sankin reform flag is recorded")
+    world.require("shogun_yuling_b" not in world.shogun_modifiers, "sankin reform clears the temporary edict")
+    world.require(world.sankin_targets() == [], "yearly sankin pulse stops after the reform")
+    world.require(not world.can_use_sengoku_cb("A", "B"), "sankin reform also closes the sengoku CB")
+    for tag in ["B", "D"]:
+        world.require("mf_sankin_kotai_refused" not in world.countries[tag].modifiers, f"reform clears {tag}'s refusal modifier")
+    world.require("mf_sankin_kotai_travel" not in world.countries["A"].modifiers, "formal reform ends an active sankin journey")
+    world.require("jiujizhengshi_2" in world.shogun_modifiers, "formal sankin reform lowers subject-development liberty desire")
+    world.require(not world.can_form_alliance("A", "B"), "formal sankin reform forbids alliances between shogunate daimyos")
+    world.add_country("X", reforms={"indep_daimyo"}, provinces={"x1"})
+    world.add_country("Y", reforms=set(), provinces={"y1"})
+    world.require(world.can_form_alliance("X", "Y"), "the shogunate reform does not block external alliances")
+
+
+def test_internal_war_ban_scope():
+    world = build_world()
+    world.global_flags.add("shogun_weixin.f_global_flag")
+    world.add_country("X", reforms={"daimyo"}, provinces={"x1"})
+    world.add_country("Y", reforms={"daimyo"}, provinces={"y1"})
+    world.add_country("Z", reforms=set(), provinces={"z1"})
+    world.set_subject("X", "SHO", "daimyo_vassal")
+    world.set_subject("Y", "SHO", "daimyo_vassal")
+
+    world.require(not world.can_declare_war("X", "Y"), "sibling daimyos cannot declare internal wars once reform 6 is active")
+    world.require(world.can_declare_war("X", "SHO"), "independence wars remain allowed")
+    world.require(world.can_declare_war("X", "Z"), "external wars remain allowed")
 
 
 def test_shogunate_transfer_and_layer_cleanup():
@@ -470,14 +748,64 @@ def test_shogunate_transfer_and_layer_cleanup():
 
     world = build_world()
     world.set_subject("B", "SHO", "mf_retainer_daimyo_vassal")
-    world.promote_direct_retainer_under_shogun("B")
-    world.require(world.countries["B"].subject_type == "daimyo_vassal", "direct shogun retainer becomes outside daimyo")
+    world.execute_mf_promote_retainer_daimyos_to_shogunate_effect("SHO")
+    world.normalize_daimyo_reform("B")
+    world.require(world.countries["B"].subject_type == "mf_retainer_daimyo_vassal", "direct shogun retainer stays legal")
+    world.require(world.countries["B"].reforms == {"daimyo"}, "direct shogun retainer keeps daimyo reform")
 
     world = build_world()
     world.set_subject("B", "A", "mf_daimyo_vassal")
     world.demote_illegal_fudai_under_daimyo("B")
     world.require(world.countries["B"].subject_type == "mf_retainer_daimyo_vassal", "non-shogun fudai becomes retainer")
     world.require(world.countries["B"].reforms == {"daimyo"}, "demoted fudai gets daimyo reform")
+
+
+def test_retainer_daimyo_reform_stability():
+    world = build_world()
+    world.countries["A"].reforms = {"mf_daimyo"}
+    world.set_subject("A", "SHO", "mf_daimyo_vassal")
+    world.set_subject("B", "A", "mf_retainer_daimyo_vassal")
+    world.countries["B"].reforms = {"daimyo"}
+
+    world.add_country("I", reforms={"indep_daimyo"}, provinces={"i1"})
+    world.add_country("C", reforms={"daimyo"}, provinces={"c1"})
+    world.set_subject("C", "I", "mf_retainer_daimyo_vassal")
+
+    world.add_country("D", reforms={"daimyo"}, provinces={"d1"})
+    world.set_subject("D", "SHO", "mf_retainer_daimyo_vassal")
+
+    world.add_country("T", reforms={"indep_daimyo"}, provinces={"t1"})
+    world.set_subject("T", "SHO", "tributary_state")
+
+    world.add_country("V", reforms={"indep_daimyo"}, provinces={"v1"})
+    world.set_subject("V", "I", "vassal")
+    world.require(not world.reform_potential_valid("V", "indep_daimyo"), "ordinary subjects cannot keep indep_daimyo")
+
+    for _ in range(8):
+        for tag, overlord in [("B", "A"), ("C", "I"), ("D", "SHO")]:
+            world.require(world.reform_potential_valid(tag, "daimyo"), f"{tag}'s daimyo reform remains valid")
+            world.refresh_first_layer_reform_validity(tag)
+            world.require(world.countries[tag].reforms == {"daimyo"}, f"{tag} keeps daimyo before normalization")
+            world.execute_mf_normalize_daimyo_first_layer_reform_effect(scope=tag)
+            world.require(world.countries[tag].overlord == overlord, f"{tag}'s overlord remains stable")
+            world.require(
+                world.countries[tag].subject_type == "mf_retainer_daimyo_vassal",
+                f"{tag} remains a retainer daimyo",
+            )
+            world.require(world.countries[tag].reforms == {"daimyo"}, f"{tag} keeps daimyo after normalization")
+
+        for tag in ["I", "T"]:
+            world.require(world.reform_potential_valid(tag, "indep_daimyo"), f"{tag}'s indep_daimyo remains valid")
+            world.refresh_first_layer_reform_validity(tag)
+            world.execute_mf_normalize_daimyo_first_layer_reform_effect(scope=tag)
+            world.require(world.countries[tag].reforms == {"indep_daimyo"}, f"{tag} keeps indep_daimyo")
+
+        world.refresh_first_layer_reform_validity("V")
+        world.execute_mf_normalize_daimyo_first_layer_reform_effect(scope="V")
+        world.require("indep_daimyo" not in world.countries["V"].reforms, "ordinary vassal loses indep_daimyo")
+
+    world.require(world.countries["A"].reforms == {"mf_daimyo"}, "fudai overlord keeps mf_daimyo")
+    world.require(world.countries["I"].reforms == {"indep_daimyo"}, "independent overlord keeps indep_daimyo")
 
 
 def test_xiayi_campaign():
@@ -505,6 +833,104 @@ def test_xiayi_campaign_cb_availability():
     world.require(world.event_targets.get("xiayi") == "XIA", "xiayi event target points to XIA")
 
 
+def test_shogun_governance_cbs_coexist():
+    world = build_world()
+    world.add_country("XIA", reforms=set(), provinces={"x1"})
+    world.set_xiayi_target("XIA")
+    world.require(world.has_cb("SHO", "XIA", "cb_mf_xiayi_campaign"), "xiayi designation immediately grants its targeted cb")
+
+    world.countries["A"].provinces.add("old1")
+    world.return_land_decline("A", "old1")
+    world.excommunicate_daimyo("A")
+    world.require(world.has_cb("SHO", "A", "cb_mf_return_daimyo_land"), "return-land refusal grants its targeted cb")
+    world.require(world.has_cb("SHO", "A", "cb_mf_shogunate_excommunication"), "excommunication grants its targeted cb")
+    world.require(world.has_cb("SHO", "XIA", "cb_mf_xiayi_campaign"), "governance cbs do not overwrite the xiayi cb")
+
+    world.add_country("NEW", reforms={"daimyo"}, provinces={"new1"})
+    world.transfer_shogunate("NEW")
+    world.require(world.has_cb("NEW", "XIA", "cb_mf_xiayi_campaign"), "new shogun inherits the current xiayi campaign cb")
+
+
+def test_sankin_cost_refusal_and_reform_end():
+    world = build_world()
+    world.shogun_modifiers.add("shogun_yuling_b")
+    world.add_country("C", reforms={"daimyo"}, provinces={"c1"})
+    world.set_subject("C", "A", "mf_retainer_daimyo_vassal")
+
+    expected = {
+        0: (0.0, 12.0, 0.0, 12.0),
+        12: (1.0, 12.0, 40.0, 52.0),
+        24: (2.0, 12.0, 80.0, 92.0),
+        48: (3.0, 12.0, 120.0, 132.0),
+    }
+    for distance, result in expected.items():
+        world.require(world.sankin_cost(60, distance, 120) == result, f"sankin cost is correct at distance {distance}")
+
+    world.require(abs(world.sankin_refusal_chance(50, 0) - 100 / 120) < 1e-12, "fifty liberty desire multiplies accept weight by point two")
+    world.require(abs(world.sankin_refusal_chance(0, 5) - 100 / 110) < 1e-12, "five loans multiply accept weight by point one")
+    world.require(world.sankin_refusal_chance(80, 10) == 1.0, "ten loans force refusal even when other modifiers overlap")
+    world.require(world.sankin_refusal_chance(0, 0) == 0.5, "base accept and refusal weights are both one hundred")
+    world.require(set(world.sankin_targets()) == {"A", "B", "C"}, "yearly sankin covers direct and second-layer daimyo")
+
+    before_treasury = world.countries["A"].treasury
+    world.accept_sankin("A", 12)
+    world.require(world.countries["A"].treasury == before_treasury - 52, "sankin removes the combined development and income cost")
+    before_authority = world.shogun_authority
+    world.refuse_sankin("B")
+    world.require(world.countries["B"].prestige == 10, "sankin refusal raises daimyo prestige")
+    world.require("mf_sankin_kotai_refused" in world.countries["B"].modifiers, "sankin refusal applies its one-year modifier")
+    world.require("mf_refused_sankin_kotai" not in world.countries["B"].flags, "sankin refusal does not create a persistent flag")
+    world.require(not world.has_cb("SHO", "B", "cb_disloyal_vassal"), "sankin refusal does not create a punishment cb")
+    world.require(world.shogun_authority == before_authority - 0.5, "sankin refusal lowers shogun authority by point five")
+
+    world.complete_sankin_reform()
+    world.require(world.sankin_targets() == [], "sankin reform stops the yearly event")
+    world.require(not world.can_use_sengoku_cb("A", "B"), "sankin reform removes the Onin internal cb")
+    world.require("mf_sankin_kotai_refused" not in world.countries["B"].modifiers, "formal reform ends the active refusal modifier")
+    world.require("jiujizhengshi_2" in world.shogun_modifiers, "formal reform grants the shogun liberty-desire control")
+
+
+def test_shogunate_province_marking_and_return():
+    world = build_world()
+    world.add_country("OUT", reforms=set(), provinces={"o1"})
+    world.mark_shogunate_province("a1")
+    world.transfer_province("a1", "OUT")
+    world.require("mf_shogunate_province" in world.province_flags["a1"], "shogunate province mark survives owner change")
+    world.return_marked_shogunate_province("a1")
+    world.require(world.owner_of("a1") == "A", "marked province returns to its shogunate home")
+
+
+def test_transfer_illegal_subject_to_shogun():
+    world = build_world()
+    world.set_subject("B", "A", "mf_retainer_daimyo_vassal")
+    before = world.shogun_authority
+    world.transfer_illegal_subject_to_shogun("A", "B")
+    world.require(world.countries["B"].overlord == "SHO", "illegal subject is transferred to the shogun")
+    world.require(world.countries["B"].subject_type == "daimyo_vassal", "transferred subject becomes direct outside daimyo")
+    world.require(world.countries["B"].reforms == {"daimyo"}, "transferred subject receives daimyo reform")
+    world.require(world.shogun_authority == before + 2, "accepted illegal-subject transfer raises authority")
+
+
+def test_excommunication_and_internal_war_boundaries():
+    world = build_world()
+    world.add_country("C", reforms={"daimyo"}, provinces={"c1"})
+    world.add_country("OUT", reforms=set(), provinces={"o1"})
+    world.set_subject("C", "A", "mf_retainer_daimyo_vassal")
+
+    before = world.shogun_authority
+    world.excommunicate_daimyo("A")
+    world.require(not world.can_declare_war("A", "OUT"), "excommunicated daimyo cannot declare an external war")
+    world.require(world.countries["A"].subject_type == "daimyo_vassal", "excommunication does not change subject type")
+    world.require(world.shogun_authority == before + 2, "excommunication raises shogun authority")
+
+    world.countries["A"].modifiers.discard("mf_shogunate_excommunication")
+    world.global_flags.add("shogun_weixin.f_global_flag")
+    world.require(not world.can_declare_war("A", "B"), "buke law blocks direct daimyo internal war")
+    world.require(not world.can_declare_war("C", "B"), "buke law blocks retainer internal war")
+    world.require(world.can_declare_war("A", "OUT"), "buke law allows external war")
+    world.require(world.can_declare_war("C", "A"), "buke law preserves independence war against the overlord")
+
+
 def test_higan_return_hecatia_cb_scope():
     world = World()
     world.add_country("HIG", reforms=set(), provinces={"h1"})
@@ -525,13 +951,22 @@ def main():
         test_private_war_annex,
         test_private_war_subjugation,
         test_release_extinct_retainer,
+        test_independent_daimyo_normalization_without_flavor_jap_57,
         test_fudai_subjugated_by_outside_daimyo,
         test_direct_shogun_release,
         test_return_land_accept_and_decline,
         test_lecture_grace_enforce_partition_executor,
+        test_sankin_refusal_and_reform_cleanup,
+        test_internal_war_ban_scope,
         test_shogunate_transfer_and_layer_cleanup,
+        test_retainer_daimyo_reform_stability,
         test_xiayi_campaign,
         test_xiayi_campaign_cb_availability,
+        test_shogun_governance_cbs_coexist,
+        test_sankin_cost_refusal_and_reform_end,
+        test_shogunate_province_marking_and_return,
+        test_transfer_illegal_subject_to_shogun,
+        test_excommunication_and_internal_war_boundaries,
         test_higan_return_hecatia_cb_scope,
     ]
     for test in tests:

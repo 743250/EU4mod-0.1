@@ -242,12 +242,7 @@ mf_retainer_daimyo_vassal = { # 陪臣大名
 	copy_from = mf_daimyo_vassal # 继承大名基础规则
 	count = vassal
 	is_potential_overlord = {
-		NOT = { has_reform = shogunate }
-		OR = {
-			has_reform = daimyo
-			has_reform = mf_daimyo
-			has_reform = indep_daimyo
-		}
+		sort_of_mf = yes
 	}
 
 	overlord_can_be_subject = yes
