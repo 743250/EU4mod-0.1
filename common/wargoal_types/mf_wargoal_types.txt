@@ -4,18 +4,12 @@ mf_sengoku_subjugation = {
 	attacker = {
 		badboy_factor = 0.75
 		prestige_factor = 1
-		peace_cost_factor = 1.0	
-
-		allowed_provinces = {
-			owned_by = FROM
-		}
+		peace_cost_factor = 1.0
 		
 		peace_options = {
-			po_demand_provinces
 			po_mf_subjugate_daimyo
 		}
-
-		prov_desc = ALL_PROVS
+		deny_annex = yes
 	}
 	
 	defender = {
@@ -23,16 +17,10 @@ mf_sengoku_subjugation = {
 		prestige_factor = 1
 		peace_cost_factor = 1
 
-		allowed_provinces = {
-			owned_by = ROOT
-		}
-
 		peace_options = {
-			po_demand_provinces
 			po_mf_subjugate_daimyo
 		}
-
-		prov_desc = ALL_PROVS
+		deny_annex = yes
 	}
 
 	war_name = PRIMITIVE_WAR_NAME
@@ -52,6 +40,7 @@ mf_return_daimyo_land_wg = {
 
 		peace_options = {
 			po_return_cores
+			po_mf_return_shogunate_provinces
 		}
 	}
 

@@ -1,50 +1,58 @@
 country_decisions = {
 	mf_release_retainer_daimyo_from_land = {
-		major = yes
+		major = no
 		potential = {
+			ai = yes
+			NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 			OR = {
-				is_subject_of_type = daimyo_vassal
-				is_subject_of_type = mf_daimyo_vassal
+				has_reform = daimyo
+				has_reform = mf_daimyo
+				has_reform = indep_daimyo
 			}
-			overlord = {
-				has_reform = shogunate
+			any_owned_province = {
+				any_core_country = {
+					exists = no
+					culture_group = japanese_g
+				}
 			}
-			mf_has_releasable_extinct_daimyo_land = yes
+			NOT = { has_global_flag = shogun_weixin.f_global_flag }
 		}
 		allow = {
 			is_at_war = no
-			mf_has_releasable_extinct_daimyo_land = yes
 		}
 		effect = {
-			hidden_effect = {
-				save_global_event_target_as = mf_release_retainer_daimyo_overlord
-				random_owned_province = {
-					limit = {
-						OR = {
-							region = japan_region
-							ROOT = { has_global_flag = shogun_weixin.f_global_flag }
-						}
-						any_core_country = {
-							exists = no
-						}
-					}
-					save_event_target_as = mf_release_retainer_daimyo_land_province
-					random_core_country = {
-						limit = {
-							exists = no
-						}
-						save_event_target_as = mf_release_retainer_daimyo_land_owner
+			random_owned_province = {
+				limit = {
+					any_core_country = {
+						exists = no
+						culture_group = japanese_g
 					}
 				}
-				event_target:mf_release_retainer_daimyo_land_province = {
-					cede_province = event_target:mf_release_retainer_daimyo_land_owner
-					province_event = {
-						id = mf_daimyo.13
-					}
-				}
+				save_event_target_as = mf_release_retainer_daimyo_land_province
 			}
-			mf_change_shogun_value = {
-				value = 2
+			event_target:mf_release_retainer_daimyo_land_province = {
+				random_core_country = {
+					limit = {
+						exists = no
+						culture_group = japanese_g
+					}
+					save_event_target_as = mf_release_retainer_daimyo_land_owner
+				}
+				cede_province = event_target:mf_release_retainer_daimyo_land_owner
+			}
+			create_subject = {
+				subject_type = mf_retainer_daimyo_vassal
+				subject = event_target:mf_release_retainer_daimyo_land_owner
+			}
+			event_target:mf_release_retainer_daimyo_land_owner = {
+				add_government_reform = mf_retainer_daimyo
+			}
+			event_target:mf_release_retainer_daimyo_land_owner = {
+				add_opinion = {
+					who = ROOT
+					modifier = released_vassal
+				}
+				adopt_reform_progress = ROOT
 			}
 		}
 		ai_will_do = {

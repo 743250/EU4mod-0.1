@@ -1,5 +1,5 @@
 ########## 幕府外交行动 ##########
-xuanxiafengxing = { # 宣下奉行：完成“禁中并公”后，幕府可重新指定天皇目标。
+xuanxiafengxing = { # 绝罚改革同时保留宣下奉行，用于重新指定天皇目标。
 	category = shogun
 	alert_index = 17
 	alert_tooltip = xuanxiafengxing_tooltip
@@ -63,6 +63,7 @@ xuanxiafengxing = { # 宣下奉行：完成“禁中并公”后，幕府可重�
 	}
 }
 
+##归还非法省份，可对幕府内外使用
 mf_return_shogunate_province = {
 	category = shogun
 	alert_index = 42
@@ -70,61 +71,164 @@ mf_return_shogunate_province = {
 	require_acceptance = yes
 
 	is_visible = {
-		has_reform = shogunate
+		tag = event_target:zhengyidajiangjun
 		has_global_flag = shogun_weixin.b_global_flag
-		FROM = {
-			NOT = { tag = event_target:zhengyidajiangjun }
-			NOT = { is_subject_of = ROOT }
-			NOT = { overlord = { is_subject_of = ROOT } }
-			any_owned_province = { has_province_flag = mf_shogunate_province }
-		}
 	}
 
 	is_allowed = {
 		is_at_war = no
 		FROM = {
-			is_at_war = no
 			any_owned_province = {
 				has_province_flag = mf_shogunate_province
-				any_core_country = {
-					OR = {
-						exists = no
-						tag = event_target:zhengyidajiangjun
-						is_subject_of = event_target:zhengyidajiangjun
-						overlord = { is_subject_of = event_target:zhengyidajiangjun }
-					}
-				}
+				NOT = { is_core = FROM }
 			}
+			is_at_war = no
 		}
 	}
 
 	on_accept = {
 		hidden_effect = {
-			FROM = { mf_pick_returnable_shogunate_province_effect = yes }
-			event_target:mf_return_shogunate_province = {
-				cede_province = event_target:mf_return_shogunate_province_owner
-				province_event = { id = mf_daimyo.12 }
+			FROM = {
+				save_event_target_as = mf_illegal_land_holder
+				random_owned_province = {
+					limit = {
+						has_province_flag = mf_shogunate_province
+						NOT = { is_core = event_target:mf_illegal_land_holder }
+					}
+					save_event_target_as = mf_return_shogunate_province
+				}
 			}
+			event_target:mf_return_shogunate_province = {
+				remove_province_modifier = mf_unlawful_daimyo_land
+				if = {
+					limit = {
+						any_core_country = { sort_of_mf = yes }
+					}
+					random_core_country = {
+						limit = { sort_of_mf = yes }
+						save_event_target_as = mf_return_shogunate_province_owner
+					}
+					cede_province = event_target:mf_return_shogunate_province_owner
+					province_event = { id = mf_daimyo.12 }
+				}
+				else = {
+					cede_province = event_target:zhengyidajiangjun
+				}
+			}
+		}
+		reverse_add_opinion = {
+			who = FROM
+			modifier = opinion_mf_demanded_unlawful_land
 		}
 		mf_change_shogun_value = { value = 2 }
 	}
-
 	on_decline = {
 		FROM = {
+			save_event_target_as = mf_illegal_land_holder
 			set_country_flag = mf_refused_return_shogunate_province
+			# 拒绝归还时，把目标持有的全部无本国核心登记领地标记为非法领土。
+			every_owned_province = {
+				limit = {
+					has_province_flag = mf_shogunate_province
+					NOT = { is_core = event_target:mf_illegal_land_holder }
+				}
+				remove_province_modifier = mf_unlawful_daimyo_land
+				add_province_modifier = {
+					name = mf_unlawful_daimyo_land
+					duration = -1
+				}
+			}
 		}
 		add_casus_belli = {
 			target = FROM
 			type = cb_mf_return_daimyo_land
 			months = 60
 		}
+		reverse_add_opinion = {
+			who = FROM
+			modifier = opinion_mf_demanded_unlawful_land
+		}
 		mf_change_shogun_value = { value = -2 }
 	}
 
 	ai_acceptance = {
 		add_entry = {
-			name = mf_return_shogunate_province_base
-			export_to_variable = { variable_name = ai_value value = 20 }
+			name = mf_shogunate_order_base_reluctance
+			export_to_variable = { variable_name = ai_value value = -75 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_negative_prestige
+			limit = { NOT = { prestige = 0 } }
+			export_to_variable = {
+				variable_name = ai_value
+				value = prestige
+				who = ROOT
+			}
+			multiply_variable = { which = ai_value value = 0.2 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_previously_demanded
+			limit = {
+				reverse_has_opinion_modifier = {
+					who = FROM
+					modifier = opinion_mf_demanded_unlawful_land
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = -100 }
+		}
+		add_entry = {
+			name = mf_shogunate_diplomatic_acceptance
+			export_to_variable = {
+				variable_name = ai_value
+				value = modifier:mf_shogunate_diplomatic_acceptance
+				who = ROOT
+			}
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = AI_DIPLOMATIC_REPUTATION
+			export_to_variable = {
+				variable_name = ai_value
+				value = trigger_value:diplomatic_reputation
+			}
+			multiply_variable = { which = ai_value value = 2 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = mf_return_land_outside_shogunate
+			export_to_variable = { variable_name = ai_value value = -50 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_fear
+			# 军力威慑同时比较人力和纪律，沿用彼岸治理行动的连续计算。
+			export_to_variable = {
+				variable_name = ai_value
+				value = manpower
+				who = ROOT
+				with = FROM
+			}
+			export_to_variable = {
+				variable_name = mf_target_manpower
+				value = manpower
+				who = FROM
+			}
+			subtract_variable = { which = ai_value which = mf_target_manpower }
+			export_to_variable = {
+				variable_name = mf_shogun_discipline
+				value = modifier:discipline
+				who = ROOT
+			}
+			export_to_variable = {
+				variable_name = mf_target_discipline
+				value = modifier:discipline
+				who = FROM
+			}
+			subtract_variable = { which = mf_shogun_discipline which = mf_target_discipline }
+			multiply_variable = { which = mf_shogun_discipline value = 100 }
+			change_variable = { which = ai_value which = mf_shogun_discipline }
+			multiply_variable = { which = ai_value value = 0.4 }
+			round_variable = { which = ai_value value = 0 }
 		}
 		add_entry = {
 			name = DIPLO_OPPINION
@@ -134,18 +238,42 @@ mf_return_shogunate_province = {
 				who = FROM
 				with = ROOT
 			}
-			multiply_variable = { which = ai_value value = 0.25 }
+			multiply_variable = { which = ai_value value = 0.2 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = mf_return_land_unfriendly_attitude
+			limit = {
+				FROM = {
+					OR = {
+						ai_attitude = { who = ROOT attitude = attitude_rivalry }
+						ai_attitude = { who = ROOT attitude = attitude_hostile }
+						ai_attitude = { who = ROOT attitude = attitude_outraged }
+					}
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = -1000 }
+		}
+		add_entry = {
+			name = DIPLO_HISTORICAL_RIVAL
+			limit = {
+				OR = {
+					historical_rival_with = FROM
+					FROM = { historical_rival_with = ROOT }
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = -100 }
 		}
 	}
 
 	ai_will_do = { always = yes }
 }
 
-mf_transfer_illegal_subject = {
+mf_transfer_illegal_subject = { # 选择具体家臣后，由其原宗主决定是否归还国家。
 	category = shogun
 	alert_index = 43
 	alert_tooltip = mf_transfer_illegal_subject_tooltip
-	require_acceptance = no
+	require_acceptance = yes
 
 	is_visible = {
 		has_reform = shogunate
@@ -166,21 +294,177 @@ mf_transfer_illegal_subject = {
 	}
 
 	on_accept = {
+		save_event_target_as = mf_return_country_shogun
+		FROM = {
+			save_event_target_as = mf_return_country_subject
+			overlord = {
+				save_event_target_as = mf_return_country_overlord
+			}
+		}
+		mf_return_country_opinion_effect = yes
 		create_subject = {
 			subject_type = daimyo_vassal
 			subject = FROM
 		}
-		FROM = {
-			mf_normalize_daimyo_first_layer_reform_effect = yes
-		}
-		mf_promote_retainer_daimyos_to_shogunate_effect = yes
+		FROM = { add_government_reform = daimyo }
 		mf_change_shogun_value = { value = 2 }
+	}
+
+	on_decline = {
+		save_event_target_as = mf_return_country_shogun
+		FROM = {
+			save_event_target_as = mf_return_country_subject
+			overlord = { save_event_target_as = mf_return_country_overlord }
+		}
+		mf_return_country_opinion_effect = yes
+	}
+
+	ai_acceptance = {
+		add_entry = {
+			name = mf_shogunate_order_base_reluctance
+			export_to_variable = { variable_name = ai_value value = -50 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_negative_prestige
+			limit = { NOT = { prestige = 0 } }
+			export_to_variable = {
+				variable_name = ai_value
+				value = prestige
+				who = ROOT
+			}
+			multiply_variable = { which = ai_value value = 0.2 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_previously_demanded
+			limit = {
+				FROM = {
+					overlord = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = opinion_mf_returned_country
+						}
+					}
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = -100 }
+		}
+		add_entry = {
+			name = mf_shogunate_diplomatic_acceptance
+			export_to_variable = {
+				variable_name = ai_value
+				value = modifier:mf_shogunate_diplomatic_acceptance
+				who = ROOT
+			}
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = DIPLO_OPPINION
+			FROM = {
+				export_to_variable = {
+					variable_name = ai_value
+					value = opinion
+					who = overlord
+					with = ROOT
+				}
+			}
+			multiply_variable = { which = ai_value value = 0.2 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_fear
+			# 目标侧的兵力与纪律全部读取家臣的原宗主，不能读取 FROM 家臣本身。
+			FROM = {
+				export_to_variable = {
+					variable_name = ai_value
+					value = manpower
+					who = ROOT
+					with = overlord
+				}
+				export_to_variable = {
+					variable_name = mf_return_country_overlord_manpower
+					value = manpower
+					who = overlord
+				}
+				subtract_variable = {
+					which = ai_value
+					which = mf_return_country_overlord_manpower
+				}
+				export_to_variable = {
+					variable_name = mf_return_country_shogun_discipline
+					value = modifier:discipline
+					who = ROOT
+				}
+				export_to_variable = {
+					variable_name = mf_return_country_overlord_discipline
+					value = modifier:discipline
+					who = overlord
+				}
+				subtract_variable = {
+					which = mf_return_country_shogun_discipline
+					which = mf_return_country_overlord_discipline
+				}
+				multiply_variable = {
+					which = mf_return_country_shogun_discipline
+					value = 100
+				}
+				change_variable = {
+					which = ai_value
+					which = mf_return_country_shogun_discipline
+				}
+			}
+			multiply_variable = { which = ai_value value = 0.4 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_target_development
+			export_to_variable = {
+				variable_name = ai_value
+				value = total_development
+				who = FROM
+			}
+			multiply_variable = { which = ai_value value = -0.5 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = AI_DIPLOMATIC_REPUTATION
+			export_to_variable = {
+				variable_name = ai_value
+				value = trigger_value:diplomatic_reputation
+			}
+			multiply_variable = { which = ai_value value = 2 }
+			round_variable = { which = ai_value value = 0 }
+		}
+		add_entry = {
+			name = mf_return_country_overlord_refuses
+			limit = {
+				FROM = {
+					overlord = {
+						OR = {
+							ai_attitude = { who = ROOT attitude = attitude_hostile }
+							ai_attitude = { who = ROOT attitude = attitude_outraged }
+							ai_attitude = { who = ROOT attitude = attitude_rivalry }
+							ai_attitude = { who = ROOT attitude = attitude_disloyal }
+							ai_attitude = { who = ROOT attitude = attitude_rebellious }
+						}
+					}
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = -1000 }
+		}
+		add_entry = {
+			name = DIPLO_HISTORICAL_RIVAL
+			limit = {
+				FROM = { overlord = { historical_rival_with = ROOT } }
+			}
+			export_to_variable = { variable_name = ai_value value = -100 }
+		}
 	}
 
 	ai_will_do = { always = yes }
 }
 
-shouyexiayi = { # 狩野虾夷：指定与幕府体制国家接壤的征讨目标。
+shouyexiayi = { # 狩野虾夷：基础改革限北海道目标，后期改革扩展到相邻体系外国。
 	category = shogun
 	alert_index = 18
 	alert_tooltip = shouyexiayi_tooltip
@@ -195,10 +479,10 @@ shouyexiayi = { # 狩野虾夷：指定与幕府体制国家接壤的征讨目�
 			NOT = { has_reform = shogunate }
 			NOT = { has_reform = daimyo }
 			NOT = { has_reform = mf_daimyo }
+			NOT = { has_reform = mf_retainer_daimyo }
 			NOT = { has_reform = indep_daimyo }
 			NOT = { is_subject_of_type = daimyo_vassal }
 			NOT = { is_subject_of_type = mf_daimyo_vassal }
-			NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 		}
 	}
 
@@ -206,7 +490,7 @@ shouyexiayi = { # 狩野虾夷：指定与幕府体制国家接壤的征讨目�
 		custom_trigger_tooltip = {
 			tooltip = mf_shouyexiayi_hokkaido_tt
 			OR = {
-				has_country_flag = mf_shogun_ezo_scope_expanded
+				has_global_flag = shogun_weixin.g_global_flag
 				FROM = {
 					OR = {
 						owns_or_non_sovereign_subject_of = 1031
@@ -267,7 +551,7 @@ mf_convert_daimyo = {
 	category = shogun
 	alert_index = 6
 	alert_tooltip = mf_convert_daimyo_tooltip
-	require_acceptance = no
+	require_acceptance = yes
 
 	# 只把身份条件放在可见性里；具体业务门槛放到 is_allowed，让按钮灰掉并给 tooltip。
 	is_visible = {
@@ -283,10 +567,6 @@ mf_convert_daimyo = {
 		is_at_war = no
 		FROM = {
 			is_at_war = no
-			custom_trigger_tooltip = {
-				tooltip = mf_convert_daimyo_neighbor_tt
-				is_neighbor_of = ROOT
-			}
 			custom_trigger_tooltip = {
 				tooltip = mf_convert_daimyo_small_daimyo_tt
 				NOT = { total_development = 100 }
@@ -330,11 +610,109 @@ mf_convert_daimyo = {
 			subject = FROM
 		}
 		FROM = {
-			mf_normalize_daimyo_first_layer_reform_effect = yes
-		}
-		mf_promote_retainer_daimyos_to_shogunate_effect = yes
-		FROM = {
+			add_government_reform = mf_daimyo
 			add_liberty_desire = -50
+		}
+	}
+
+	ai_acceptance = {
+		add_entry = {
+			name = mf_shogunate_diplomatic_acceptance
+			export_to_variable = {
+				variable_name = ai_value
+				value = modifier:mf_shogunate_diplomatic_acceptance
+				who = ROOT
+			}
+		}
+		add_entry = {
+			name = DIPLO_OPPINION
+			export_to_variable = {
+				variable_name = ai_value
+				value = opinion
+				who = FROM
+				with = ROOT
+			}
+			multiply_variable = { which = ai_value value = 0.2 }
+		}
+		add_entry = {
+			name = AI_TRUST_TOWARDS_ROOT
+			export_to_variable = {
+				variable_name = ai_value
+				value = trust
+				who = FROM
+				with = ROOT
+			}
+			subtract_variable = { which = ai_value value = 50 }
+			multiply_variable = { which = ai_value value = 0.4 }
+		}
+		add_entry = {
+			name = mf_shogunate_order_target_development
+			export_to_variable = {
+				variable_name = ai_value
+				value = total_development
+				who = FROM
+			}
+			multiply_variable = { which = ai_value value = -0.5 }
+		}
+		add_entry = {
+			name = mf_fudai_refuses_shogunate
+			limit = {
+				FROM = {
+					OR = {
+						ai_attitude = { who = ROOT attitude = attitude_hostile }
+						ai_attitude = { who = ROOT attitude = attitude_outraged }
+						ai_attitude = { who = ROOT attitude = attitude_rivalry }
+						ai_attitude = { who = ROOT attitude = attitude_disloyal }
+						ai_attitude = { who = ROOT attitude = attitude_rebellious }
+					}
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = -1000 }
+		}
+		add_entry = {
+			name = DIPLO_IS_THREAT
+			limit = { FROM = { ai_attitude = { who = ROOT attitude = attitude_threatened } } }
+			export_to_variable = { variable_name = ai_value value = 100 }
+		}
+		add_entry = {
+			name = DIPLO_FRIENDLINESS
+			limit = {
+				FROM = {
+					OR = {
+						ai_attitude = { who = ROOT attitude = attitude_friendly }
+						ai_attitude = { who = ROOT attitude = attitude_loyal }
+					}
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = 20 }
+		}
+		add_entry = {
+			name = AI_DIPLOMATIC_REPUTATION
+			export_to_variable = {
+				variable_name = ai_value
+				value = trigger_value:diplomatic_reputation
+			}
+			multiply_variable = { which = ai_value value = 2 }
+		}
+		add_entry = {
+			name = DIPLO_HISTORICAL_RIVAL
+			limit = {
+				OR = {
+					historical_rival_with = FROM
+					FROM = { historical_rival_with = ROOT }
+				}
+			}
+			export_to_variable = { variable_name = ai_value value = -100 }
+		}
+		add_entry = {
+			name = DIPLO_BORDER_DISTANCE
+			export_to_variable = {
+				variable_name = ai_value
+				value = border_distance
+				who = FROM
+				with = ROOT
+			}
+			multiply_variable = { which = ai_value value = -0.5 }
 		}
 	}
 
@@ -404,7 +782,16 @@ mf_lecture_daimyo = {
 
 	on_accept = {
 		FROM = {
-			mf_shogunate_lecture_daimyo_effect = yes
+			clr_country_flag = mf_recently_lectured_by_shogun
+			set_country_flag = mf_recently_lectured_by_shogun
+			remove_country_modifier = mf_shogunate_grace
+			add_country_modifier = {
+				name = mf_shogunate_lecture
+				duration = 3650
+			}
+			add_liberty_desire = -10
+			add_prestige = -5
+			add_legitimacy = -5
 			add_opinion = {
 				who = ROOT
 				modifier = opinion_mf_lectured_by_shogun
@@ -480,7 +867,14 @@ mf_bestow_shogunate_grace = {
 
 	on_accept = {
 		FROM = {
-			mf_shogunate_grace_daimyo_effect = yes
+			remove_country_modifier = mf_shogunate_lecture
+			add_country_modifier = {
+				name = mf_shogunate_grace
+				duration = 1825
+			}
+			add_liberty_desire = -15
+			add_prestige = 5
+			add_legitimacy = 5
 			add_opinion = {
 				who = ROOT
 				modifier = opinion_mf_graced_by_shogun
@@ -1106,11 +1500,11 @@ mf_excommunicate_daimyo = {
 		has_global_flag = shogun_weixin.d_global_flag
 		has_saved_global_event_target = tianhuang
 		FROM = {
+			is_subject_of = ROOT
 			OR = {
-				is_subject_of = ROOT
-				overlord = { is_subject_of = ROOT }
+				is_subject_of_type = daimyo_vassal
+				is_subject_of_type = mf_daimyo_vassal
 			}
-			sort_of_mf = yes
 		}
 	}
 
@@ -1132,6 +1526,16 @@ mf_excommunicate_daimyo = {
 					has_country_flag = mf_refused_partition_daimyo
 					has_country_flag = mf_refused_executor_appointment
 					has_country_flag = mf_refused_return_shogunate_province
+					any_subject_country = {
+						is_subject_of_type = mf_retainer_daimyo_vassal
+						OR = {
+							has_country_flag = mf_refused_return_land
+							has_country_flag = mf_refused_enforce_daimyo_peace
+							has_country_flag = mf_refused_partition_daimyo
+							has_country_flag = mf_refused_executor_appointment
+							has_country_flag = mf_refused_return_shogunate_province
+						}
+					}
 				}
 			}
 			custom_trigger_tooltip = {
@@ -1194,7 +1598,7 @@ mf_return_daimyo_land = {
 			custom_trigger_tooltip = {
 				tooltip = mf_return_daimyo_land_has_land_tt
 				any_owned_province = {
-					NOT = { is_core = ROOT }
+					NOT = { is_core = FROM }
 					any_core_country = {
 						exists = no
 					}
@@ -1220,7 +1624,18 @@ mf_return_daimyo_land = {
 	on_accept = {
 		hidden_effect = {
 			FROM = {
-				mf_pick_returnable_daimyo_land_effect = yes
+				save_event_target_as = mf_illegal_land_holder
+				random_owned_province = {
+					limit = {
+						NOT = { is_core = event_target:mf_illegal_land_holder }
+						any_core_country = { exists = no }
+					}
+					save_event_target_as = mf_return_daimyo_land_province
+					random_core_country = {
+						limit = { exists = no }
+						save_event_target_as = mf_return_daimyo_land_owner
+					}
+				}
 			}
 		}
 		event_target:mf_return_daimyo_land_province = {
@@ -1253,16 +1668,21 @@ mf_return_daimyo_land = {
 	on_decline = {
 		hidden_effect = {
 			FROM = {
-				mf_pick_returnable_daimyo_land_effect = yes
+				save_event_target_as = mf_illegal_land_holder
+				# 拒绝恢复旧家领地时，标记目标持有的全部无本国核心旧家省份。
+				every_owned_province = {
+					limit = {
+						NOT = { is_core = event_target:mf_illegal_land_holder }
+						any_core_country = { exists = no }
+					}
+					remove_province_modifier = mf_unlawful_daimyo_land
+					add_province_modifier = {
+						name = mf_unlawful_daimyo_land
+						duration = -1
+					}
+				}
 				set_country_flag = mf_refused_return_land
 			}
-		}
-		event_target:mf_return_daimyo_land_province = {
-			add_province_modifier = {
-				name = mf_unlawful_daimyo_land
-				duration = -1
-			}
-			add_nationalism = 10
 		}
 		FROM = {
 			add_opinion = {
@@ -1285,17 +1705,8 @@ mf_return_daimyo_land = {
 		mf_change_shogun_value = { value = -2 }
 	}
 
-	# AI 接受度仿原版外交行动写法拆成多项，方便 tooltip 展示每个政治因素。
+	# 关系、态度、外交声誉、军力和维新积累共同决定是否服从。
 	ai_acceptance = {
-		# 基础值：默认先不让 AI 轻易接受，后面的每一项只是在这个底子上修正。
-		add_entry = {
-			name = BASE
-			export_to_variable = {
-				variable_name = ai_value
-				value = -100
-			}
-		}
-		# 幕府外交接受度由维新改革和后续可见治理奖励提供，用来统一增强幕府命令的说服力。
 		add_entry = {
 			name = mf_shogunate_diplomatic_acceptance
 			export_to_variable = {
@@ -1303,140 +1714,35 @@ mf_return_daimyo_land = {
 				value = modifier:mf_shogunate_diplomatic_acceptance
 				who = ROOT
 			}
+			round_variable = { which = ai_value value = 0 }
 		}
-		# 将军统御足够高时，归还领地更像是在恢复秩序，AI 更容易点头。
 		add_entry = {
-			name = mf_return_daimyo_land_high_authority
-			limit = {
-				1020 = {
-					check_variable = {
-						which = shogun_value
-						value = 80
-					}
-				}
-			}
+			name = AI_DIPLOMATIC_REPUTATION
 			export_to_variable = {
 				variable_name = ai_value
-				value = 80
+				value = trigger_value:diplomatic_reputation
 			}
+			multiply_variable = { which = ai_value value = 2 }
+			round_variable = { which = ai_value value = 0 }
 		}
-		# 统御值达到中上水平时，AI 也会明显更愿意接受。
-		add_entry = {
-			name = mf_return_daimyo_land_good_authority
-			limit = {
-				1020 = {
-					check_variable = {
-						which = shogun_value
-						value = 60
-					}
-				}
-				NOT = {
-					1020 = {
-						check_variable = {
-							which = shogun_value
-							value = 80
-						}
-					}
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 45
-			}
-		}
-		# 统御偏弱时，要求归还领地更像在挑衅，AI 会明显抗拒。
-		add_entry = {
-			name = mf_return_daimyo_land_weak_authority
-			limit = {
-				NOT = {
-					1020 = {
-						check_variable = {
-							which = shogun_value
-							value = 40
-						}
-					}
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -70
-			}
-		}
-		# 幕府兵力压倒对方时，归还领地就不只是谈判，而是带有强迫性质。
 		add_entry = {
 			name = mf_return_daimyo_land_dominant_shogun
-			limit = {
-				military_strength = {
-					who = FROM
-					value = 2
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 80
-			}
+			limit = { military_strength = { who = FROM value = 2 } }
+			export_to_variable = { variable_name = ai_value value = 30 }
 		}
-		# 将军略强于对方时，AI 会把它看成可以忍受的压力。
 		add_entry = {
 			name = mf_return_daimyo_land_stronger_shogun
 			limit = {
-				military_strength = {
-					who = FROM
-					value = 1.25
-				}
-				NOT = {
-					military_strength = {
-						who = FROM
-						value = 2
-					}
-				}
+				military_strength = { who = FROM value = 1.5 }
+				NOT = { military_strength = { who = FROM value = 2 } }
 			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = 40
-			}
+			export_to_variable = { variable_name = ai_value value = 15 }
 		}
-		# 目标大名如果足够强，就会把“归还领地”理解成向自己施压，抗拒上升。
 		add_entry = {
 			name = mf_return_daimyo_land_strong_daimyo
-			limit = {
-				FROM = {
-					military_strength = {
-						who = ROOT
-						value = 1.25
-					}
-				}
-				NOT = {
-					FROM = {
-						military_strength = {
-							who = ROOT
-							value = 2
-						}
-					}
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -60
-			}
+			limit = { NOT = { military_strength = { who = FROM value = 1 } } }
+			export_to_variable = { variable_name = ai_value value = -100 }
 		}
-		# 目标大名兵力压倒将军时，这项外交几乎等于自找麻烦。
-		add_entry = {
-			name = mf_return_daimyo_land_dominant_daimyo
-			limit = {
-				FROM = {
-					military_strength = {
-						who = ROOT
-						value = 2
-					}
-				}
-			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -110
-			}
-		}
-		# 关系和信任是缓冲项：关系越好，越容易接受归还。
 		add_entry = {
 			name = DIPLO_OPPINION
 			export_to_variable = {
@@ -1447,58 +1753,42 @@ mf_return_daimyo_land = {
 			}
 			multiply_variable = {
 				which = ai_value
-				value = 0.25
+				value = 0.125
 			}
+			round_variable = { which = ai_value value = 0 }
 		}
-		# 既有信任会降低敌意，但不会完全抵消大局压力。
 		add_entry = {
-			name = AI_TRUST_TOWARDS_ROOT
-			export_to_variable = {
-				variable_name = ai_value
-				value = trust
-				who = FROM
-				with = ROOT
-			}
-			subtract_variable = {
-				which = ai_value
-				value = 50
-			}
-			multiply_variable = {
-				which = ai_value
-				value = 0.5
-			}
-		}
-		# 独立倾向越高，说明这个大名越不愿意把领土吐回去。
-		add_entry = {
-			name = AI_LIBERTY_DESIRE
-			export_to_variable = {
-				variable_name = ai_value
-				value = liberty_desire
-				who = FROM
-			}
-			multiply_variable = {
-				which = ai_value
-				value = -0.75
-			}
-		}
-		# 刚刚归还过领地的对象，短期内不再重复强迫，避免 AI 频繁被同一条外交打断。
-		add_entry = {
-			name = mf_return_daimyo_land_recent_return
+			name = mf_return_land_unfriendly_attitude
 			limit = {
 				FROM = {
-					has_country_flag = mf_recently_returned_daimyo_land
-					NOT = {
-						had_country_flag = {
-							flag = mf_recently_returned_daimyo_land
-							days = 1825
-						}
+					OR = {
+						ai_attitude = { who = ROOT attitude = attitude_rivalry }
+						ai_attitude = { who = ROOT attitude = attitude_hostile }
+						ai_attitude = { who = ROOT attitude = attitude_outraged }
+						ai_attitude = { who = ROOT attitude = attitude_domineering }
+						ai_attitude = { who = ROOT attitude = attitude_disloyal }
+						ai_attitude = { who = ROOT attitude = attitude_rebellious }
 					}
 				}
 			}
-			export_to_variable = {
-				variable_name = ai_value
-				value = -1000
+			export_to_variable = { variable_name = ai_value value = -25 }
+		}
+		add_entry = {
+			name = mf_return_land_neutral_attitude
+			limit = { FROM = { ai_attitude = { who = ROOT attitude = attitude_neutral } } }
+			export_to_variable = { variable_name = ai_value value = -5 }
+		}
+		add_entry = {
+			name = mf_return_land_friendly_attitude
+			limit = {
+				FROM = {
+					OR = {
+						ai_attitude = { who = ROOT attitude = attitude_friendly }
+						ai_attitude = { who = ROOT attitude = attitude_loyal }
+					}
+				}
 			}
+			export_to_variable = { variable_name = ai_value value = 25 }
 		}
 	}
 

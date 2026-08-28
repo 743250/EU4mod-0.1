@@ -1,0 +1,98 @@
+﻿l_english:
+ mf_return_shogunate_province:0 "‰BlRVØU^œ^†˜0W"
+ mf_return_shogunate_province_title:0 "‰BlRVØU^œ^†˜0W"
+ mf_return_shogunate_province_tooltip:0 "‰Bl[From.GetName]RVØU^œ^‰v°‹„vçe†˜0"
+ mf_return_shogunate_province_desc:0 "‰Bl[From.GetName]RVØNWWU^œ^‰v°‹„v†˜0W0wýNXR(W°sXRU^œ^SOû|ýV¶R8hÃVöeSRVØå‹ýVÿ&TR1uU^œ^ôv¥c6eÞV0"
+ mf_shogunate_order_base_reluctance:0 "úWNx—bÒb"
+ mf_shogunate_order_negative_prestige:0 "U^œ^ZgNON"
+ mf_shogunate_order_previously_demanded:0 "dkMRòTÏuÐcúQÇT‰|‰Bl"
+ mf_shogunate_order_fear:0 "Ouç`U^œ^›Q›R"
+ mf_return_land_outside_shogunate:0 "U^œ^SOû|YýV¶R"
+ mf_return_land_unfriendly_attitude:0 "ùRU^œ^`¦^NËS„U"
+ mf_return_land_neutral_attitude:0 "ùRU^œ^`¦^-NËz"
+ mf_return_land_friendly_attitude:0 "ùRU^œ^`¦^ËS„U"
+ mf_transfer_illegal_subject:0 "‰BlRVØýV¶R"
+ mf_transfer_illegal_subject_title:0 "‰BlRVØýV¶R"
+ mf_transfer_illegal_subject_tooltip:0 "‰BlSVMR—RINRVØ[From.GetName]ÿOvQb:NS›Qôv^S'YT0"
+ mf_transfer_illegal_subject_desc:0 "U^œ^S‰Bl[From.GetName]„vSVMR—RIN>eV¶R…Qßu^S0ŸS—RINTaTÿ[From.GetName]MbOb:NS›Qôv^S'YTÿŸS—RINŒTvQÖNU^œ^'YTýOàVU^œ^r^„˜¶R…Qéy^wM–NOùRU^œ^„v‹Ya0"
+ mf_return_country_other_daimyo_opinion_tt:0 "vQÖNU^œ^SOû|'YTùRU^œ^„v‹Ya§R-10§!ÿcíu§Y10§!t^0"
+ mf_return_country_overlord_refuses:0 "ŸS—RINÒbÝuU^œ^‰Bl"
+ mf_shogunate_internal_war_forbidden_tt:0 "fk¶Rø‹ÕlÄ‰šRÿ'YTKNô•„v‰Nïz1uU^œ^Yt0'YTÍNïSùRYVbÿmNïSùR—RINÑS¨RìrËzb‰N0"
+ mf_shouyexiayi_hokkaido_tt:0 "ŒRb§Yí•sQ•ýV§!MRÿîvhÅV‰˜åb	góSN*NSwmSwýN0"
+
+
+ DIPLOMACYACTION_CATEGORY_shogun:0 "U^œ^Y²N"
+ DIPLOMACYACTION_CATEGORY_:0 "U^œ^Y²N"
+ xuanxiafengxing:0 "±RNIYLˆ"
+ xuanxiafengxing_title:0 "±RNIYLˆ"
+ xuanxiafengxing_tooltip:0 "cšR[From.GetName]:N)Y‡v0"
+ xuanxiafengxing_desc:0 "U^œ^Sb²‹[From.GetName]:N)Y‡vÿOvQãNhˆg÷^Nåe,g„v.Oßuéy^0cšR)Y‡v±‚9§Y10§!¡VßuÿKNT§Y10§!t^…QNýwQ!kcšR0"
+ xuanxiafengxing.a.tt:0 "*geg§Y10§!t^…QNýwÍ‘°ecšR)Y‡v0"
+ mf_xuanxiafengxing_authority_tt:0 "U^œ^óS—‰§Y10§!¹p¡Vßu0"
+ mf_xuanxiafengxing_cooldown_tt:0 "Ý»yN!k±RNIYLˆòTÏuÇ»S§Y10§!t^0"
+ shouyexiayi:0 "érÎ‘Œ†7Y"
+ shouyexiayi_title:0 "érÎ‘Œ†7Y"
+ shouyexiayi_tooltip:0 "S[From.GetName]cšR:NŒ†7YV¨‹îvh0"
+ shouyexiayi_desc:0 "S[From.GetName]cšR:NŒ†7Yÿ÷SìSU^œ^SOû|qQTùRvQÑS¨RV¨‹0NŒ†7Y²Nböe·ƒ—V§Y10%§!F–›QëXlN§Y10%§!ºN›Rb`Y¦^ÿ`S†˜Œ†7YwýNöe	g§Y20%§!‚i‡s·ƒ—V8hÃV0"
+ shouyexiayi.a.tt:0 "cšRT§Y10§!t^…QNýwôfbcŒ†7Yîvh0"
+ neighbor_subject.tt:0 "å‹ýV»¥cóSN*NU^œ^SOû|ýV¶R0"
+ mf_shouyexiayi_cooldown_tt:0 "Ý»yN!kcšRŒ†7YîvhòTÏuÇ»S§Y10§!t^0"
+ mf_shouyexiayi_neighbor_tt:0 "îvhÅV‰˜»¥cóSN*NU^œ^SOû|ýV¶R0"
+ mf_convert_daimyo:0 "cšR1ŒãN'YT"
+ mf_convert_daimyo_title:0 "cšR1ŒãN'YT"
+ mf_convert_daimyo_desc:0 "S[From.GetName]ûN‹T:N1ŒãN'YT01ŒãN'YT×S0RS›QáOûNÿïSåNÂSNU^œ^?e¡RÿFOmN—‰bÅbôfY›QyV0"
+ mf_convert_daimyo_tooltip:0 "Så‹'YTcšR:N1ŒãN'YT0"
+ mf_convert_daimyo_small_daimyo_tt:0 "îvh'YT„vÑSUS¦^NOŽN§Y100§!ÿNåb	gSŽN§Y5§!µ^ÎW^0"
+ mf_convert_daimyo_limit_tt:0 "U^œ^SVMRåb	g„v1ŒãN'YTSŽN§Y3§!TÿŒRbûN¡R§Y1ŒãN-N¢g§!TNP–ÐcØš0R§Y5§!T0"
+ mf_fudai_refuses_shogunate:0 "ÒbÝu¥c×SU^œ^ûN‹T"
+ mf_lecture_daimyo:0 "­‹ë‹'YT"
+ mf_lecture_daimyo_title:0 "­‹ë‹'YT"
+ mf_lecture_daimyo_tooltip:0 "lQV­‹ë‹å‹'YT0"
+ mf_lecture_daimyo_desc:0 "U^œ^SlQV­‹ë‹[From.GetName]ÿmc³RvQZgv^žX RýV…QN3z0Lˆ¨R±‚9§Y5§!¡VßuÿŒRb§Y3zšR>yOéy^§!T±‚9M–NO:N§Y3§!¡Vßu0"
+ mf_lecture_daimyo_cooldown_tt:0 "å‹'YTÝ»yN!k×S­‹ë‹òTÏuÇ»S§Y5§!t^0"
+ mf_bestow_shogunate_grace:0 "fMQ'YT"
+ mf_bestow_shogunate_grace_title:0 "fMQ'YT"
+ mf_bestow_shogunate_grace_tooltip:0 "fMQå‹'YTÿv^b`YvQNU^œ^„vsQû|0"
+ mf_bestow_shogunate_grace_desc:0 "U^œ^SfMQ[From.GetName]Ç»S„vÇ•ÿåN9e„UÌS¹esQû|v^M–NOvQìrËz>PT0Lˆ¨R±‚9§Y5§!¡VßuÿŒRb§Y3zšR>yOéy^§!T±‚9M–NO:N§Y3§!¡Vßu0"
+ mf_enforce_daimyo_peace:0 ":V6RŒTs^"
+ mf_enforce_daimyo_peace_title:0 ":V6RŒTs^"
+ mf_enforce_daimyo_peace_tooltip:0 "‰Blå‹'YTjPbkùRU^œ^SOû|…QvQÖN'YT„vÛIe0"
+ mf_enforce_daimyo_peace_desc:0 "‰Bl[From.GetName]jPbkÛIevQÖNU^œ^'YT0ùR¹e¥c×SöeÿU^œ^±‚9§Y10§!¡VßuÿŒRb§Y6Rbk'YTb‰N§!TM–NO:N§Y5§!¡Vßu0ùR¹eÒbÝuöeÿS›QS ReQ2–¡V¹ejOb0"
+ mf_enforce_daimyo_peace_target_tt:0 "îvhÅV‰˜ck(WjO:NÛIe¹eIeûQæSN*NU^œ^ôv^S'YT0"
+ mf_return_daimyo_land:0 "‰BlRVØ†˜0W"
+ mf_return_daimyo_land_title:0 "‰BlRVØ†˜0W"
+ mf_return_daimyo_land_desc:0 "‰Bl[From.GetName]RVØb‰N-NTv^„vçe'YT†˜0W0ùR¹e¥c×SöeÿU^œ^·ƒ—V§G2§!¡VßuÿŒRb§Yb`Yçe¶Réy^§!TÐcØš:N§G5§!¡Vßu0ùR¹eÒbÝuöeÿøvsQwýNS«ˆÆ‰:N^—Õl†˜0WÿU^œ^mNS·ƒ—Vb‰Nt1u0"
+ mf_return_daimyo_land_tooltip:0 "‰Blib.VÇ¦^„v'YTRVØ«ˆTv^„v†˜0W0"
+ mf_return_daimyo_land_has_land_tt:0 "îvh'YTåb	góSN*NÍN	gòTmp¡Nçe¶R8hÃV„vwýN0"
+ mf_return_daimyo_land_high_authority:0 "U^œ^ßu¡VgØš"
+ mf_return_daimyo_land_good_authority:0 "U^œ^ßu¡VƒØš"
+ mf_return_daimyo_land_weak_authority:0 "U^œ^ßu¡VN³"
+ mf_return_daimyo_land_dominant_shogun:0 "U^œ^›Q›R‹SPîvh"
+ mf_return_daimyo_land_stronger_shogun:0 "U^œ^›Q›R:VŽNîvh"
+ mf_return_daimyo_land_strong_daimyo:0 "îvh'YT›Q›R:VÛv"
+ mf_return_daimyo_land_dominant_daimyo:0 "îvh'YT›Q›R‹SPU^œ^"
+ mf_return_daimyo_land_recent_return:0 "gÑòTÏuRVØÇ†˜0W"
+ mf_release_daimyo_from_shogun_land_title:0 "Í‘°eRS'YT"
+ mf_release_daimyo_from_shogun_land_desc:0 "(WS›Qµc6R„vçe†˜Nb`YN*NòTÏump¡N„v'YTýV¶Rÿv^OvQb:NU^œ^ôv^S'YT0"
+ mf_release_daimyo_from_shogun_land_tooltip:0 "b`YN*NòTÏump¡N„v'YTýV¶R0"
+ mf_release_daimyo_shogun_value_tt:0 "b`YN*NòTÏump¡N„v'YTýV¶RÿU^œ^·ƒ—V§G2§!¡Vßu0"
+ mf_release_retainer_daimyo_from_land_title:0 "RSçe¶R"
+ mf_release_retainer_daimyo_from_land_desc:0 "(WêñT„v†˜0WNb`YN*NòTÏump¡N„v'YTýV¶Rÿv^OvQb:N¶Rã0°eýV¶ROçub—RINòTÏuÇ‘(u„v?eœ^9ei—0"
+ mf_release_retainer_daimyo_from_land_tooltip:0 "b`YN*NòTÏump¡N„v'YTýV¶Rÿv^OvQb:NbìN„v^SýV0"
+ mf_demand_partition_daimyo:0 ":V6RRrR"
+ mf_demand_partition_daimyo_title:0 ":V6RRrR"
+ mf_demand_partition_daimyo_tooltip:0 "‰Blå‹'YTb`Y«ˆvQTv^„vçe'YTýV¶R0"
+ mf_demand_partition_daimyo_desc:0 "‰Bl[From.GetName]²NúQèRTv^†˜0Wÿv^(WÙ›NwýNb`YòTÏump¡N„v'YTýV¶R0ùR¹e¥c×Söe±‚9§Y15§!¡VßuÿùR¹eÒbÝuöe±‚9§Y25§!¡Vßuÿv^ÙuˆNU^œ^:V6RRrRb‰Nt1u0"
+ mf_demand_partition_daimyo_land_tt:0 "îvhóSc	g§Y3§!*N^—–™ý0NÍN	gòTmp¡Nçe¶R8hÃV„vwýN0"
+ mf_appoint_executor_daimyo:0 "ûN‹TgbLˆýV"
+ mf_appoint_executor_daimyo_title:0 "ûN‹TgbLˆýV"
+ mf_appoint_executor_daimyo_tooltip:0 "ûN‹Tå‹'YT:NgbLˆýV0"
+ mf_appoint_executor_daimyo_desc:0 "S[From.GetName]ûN‹T:N1ŒãN'YTŒTU^œ^gbLˆýVÿOvQOS©RÑvcwvQÖN'YTv^gbLˆU^œ^‹TäN0ûN‹T±‚9§Y20§!¡VßuÿŒRb§YýVÿfäN§!TM–NO:N§Y10§!¡Vßu0ùR¹eÒbÝuöeÿU^œ^S·ƒ—V:V6RûN‹Tb‰Nt1u0"
+ mf_appoint_executor_daimyo_size_tt:0 "îvhÑSUS¦^ÅV‰˜NOŽN§Y300§!0"
+ mf_excommunicate_daimyo:0 "ÝuZ'YT"
+ mf_excommunicate_daimyo_title:0 "ÝuZ'YT"
+ mf_excommunicate_daimyo_tooltip:0 "ÝuZÒbÝuU^œ^‹TäN„v'YT0"
+ mf_excommunicate_daimyo_desc:0 "P©Rg÷^„vTINÝuZ[From.GetName]0ÝuZcíuASt^ÿS%NÍ‘mc³Rå‹ýV„vZg0Y²NðX‰ŠŒTýV…Q3zšRÿv^ÙuˆNU^œ^øv”^„vb‰Nt1u0"
+ mf_excommunicate_daimyo_court_tt:0 "U^œ^ÅV‰˜òT¾‹Ëz)Y‡vîvh0"
+ mf_excommunicate_daimyo_refusal_tt:0 "îvhÅV‰˜ÒbÝuÇóSNy˜U^œ^‹TäN0"
+ mf_excommunicate_daimyo_active_tt:0 "îvhSVMR*g×S0RU^œ^ÝuZ0"

@@ -1,0 +1,67 @@
+﻿l_english:
+ cb_mf_shogunate_japan_campaign:0 "s^šRåe,g"
+ cb_mf_shogunate_japan_campaign_desc:0 "U^œ^åNßuNåe,géy^:NTÿùRµc6Råe,g†˜W„vYèýV¶RÑS¨Rb‰N0"
+ CB_ALLOWED_cb_mf_shogunate_japan_campaign:0 "s^šRU^œ^SOû|Y„våe,g†˜W"
+ MF_SHOGUNATE_JAPAN_CAMPAIGN_WAR_NAME:0 "$ORDER$$FIRST$s^šR$SECOND_NAME$KNb"
+
+
+ cb_mf_return_daimyo_land:0 "‰BlRVØ'YT†˜0W"
+ cb_mf_return_daimyo_land_desc:0 "Ù*N'YTÒbÝuRVØb‰N-NTv^„vçe†˜0U^œ^S(ufk›RgbLˆHQMR„v‹TäNÿb`Y«ˆTv^„v'YTýV¶R0"
+ CB_ALLOWED_cb_mf_return_daimyo_land:0 "ëOîvhRVØçe'YT†˜0W"
+ MF_RETURN_DAIMYO_LAND_WAR_NAME:0 "‰BlRVØ'YT†˜0W"
+ mf_return_daimyo_land_wg:0 "RVØ'YT†˜0W"
+ mf_return_daimyo_land_wg_desc:0 "`S†˜îvhwýNÿëOLe¹eRVØçe'YT†˜0W0"
+ cb_mf_partition_daimyo:0 ":V6RRrR'YT"
+ cb_mf_partition_daimyo_desc:0 "Ù*N'YTÒbÝugbLˆU^œ^„vRrR‹TäN0U^œ^SëOvQ²NúQTv^†˜0Wÿv^b`YòTÏump¡N„v'YTýV¶R0"
+ CB_ALLOWED_cb_mf_partition_daimyo:0 ":V6RRrRîvh'YT"
+ mf_partition_daimyo_wg:0 ":V6RRrR"
+ mf_partition_daimyo_wg_desc:0 "`S†˜Le¹e–™ýÿëOvQ²NúQTv^„vçe'YT†˜0W0"
+ MF_PARTITION_DAIMYO_WAR_NAME:0 "$ORDER$$FIRST$:V6RRrR$SECOND_NAME$KNb"
+ po_mf_partition_daimyo:0 ":V6RRrR"
+ po_mf_partition_daimyo_desc:0 "[From.GetName]S²NúQèRTv^†˜0W0(WÙ›NwýNb`Y„v'YTýV¶RS ReQU^œ^SOû|0"
+ CB_ALLOWED_po_mf_partition_daimyo:0 "RrRîvhv^b`Yçe'YTýV¶R"
+ PEACE_po_mf_partition_daimyo:0 ":V6RRrR$GIVERS$"
+ po_mf_return_shogunate_provinces_desc:0 "[From.GetName]c	g„v^—ÕlU^œ^†˜0WS«ˆßuNYR0XR(W°sXRU^œ^SOû|8hÃVýV„vwýNRVØùR”^ýV¶RÿvQYOwýN1uU^œ^6eÞV0"
+ CB_ALLOWED_po_mf_return_shogunate_provinces:0 "YRhQè^—ÕlU^œ^†˜0W"
+ PEACE_po_mf_return_shogunate_provinces:0 "RVØ$GIVERS$c	g„vU^œ^†˜0W"
+ cb_mf_enforce_executor_service:0 ":V6RûN‹TgbLˆýV"
+ cb_mf_enforce_executor_service_desc:0 "Ù*N'YTÒbÝub:NU^œ^gbLˆýV0S›QSëOvQ¥c×SûN‹Tÿv^bÅbÑvcwvQÖN'YT„v1ûN0"
+ CB_ALLOWED_cb_mf_enforce_executor_service:0 ":V6Rîvh¥c×SgbLˆýVûN‹T"
+ mf_enforce_executor_position_wg:0 ":V6RûN‹TgbLˆýV"
+ mf_enforce_executor_position_wg_desc:0 "`S†˜Le¹e–™ýÿëOvQ¥c×SU^œ^gbLˆýVûN‹T0"
+ MF_EXECUTOR_DAIMYO_WAR_NAME:0 "$ORDER$$FIRST$ûN‹T$SECOND_NAME$KNb"
+ po_mf_enforce_executor_appointment:0 ":V6RûN‹TgbLˆýV"
+ po_mf_enforce_executor_appointment_desc:0 "[From.GetName]Sb:N1ŒãN'YTŒTU^œ^gbLˆýVÿOS©RS›QÑvcwvQÖN'YT0"
+ CB_ALLOWED_po_mf_enforce_executor_appointment:0 ":V6Rîvh¥c×SgbLˆýVûN‹T"
+ PEACE_po_mf_enforce_executor_appointment:0 "ûN‹T$GIVERS$:NgbLˆýV"
+ cb_mf_shogunate_excommunication:0 "U^œ^ÝuZ"
+ cb_mf_shogunate_excommunication_desc:0 "Ù*N'YTàVY!kÒbÝuU^œ^‹TäNw×S0RÝuZ0U^œ^ïSåNÑS¨Rb‰NÿëOvQÍ‘°egÎNS›Q0"
+ CB_ALLOWED_cb_mf_shogunate_excommunication:0 "ëO×SÝuZ„v'YTgÎNU^œ^"
+ mf_shogunate_excommunication_wg:0 ":V6RgÎN"
+ mf_shogunate_excommunication_wg_desc:0 "`S†˜Le¹e–™ýÿëO×SÝuZ„v'YTÍ‘°egÎNU^œ^0"
+ MF_SHOGUNATE_EXCOMMUNICATION_WAR_NAME:0 "$ORDER$$FIRST$ÝuZ$SECOND_NAME$KNb"
+ po_mf_enforce_shogunate_obedience:0 ":V6RgÎNU^œ^"
+ po_mf_enforce_shogunate_obedience_desc:0 "[From.GetName]SÍ‘°egÎNU^œ^ÿã‰d–ÝuZÿv^M–NO,gýVÊSvQ¶Rã„vìrËz>PT0"
+ CB_ALLOWED_po_mf_enforce_shogunate_obedience:0 ":V6RîvhgÎNU^œ^‹TäN0"
+ PEACE_po_mf_enforce_shogunate_obedience:0 ":V6R$GIVERS$gÎNU^œ^"
+ cb_mf_xiayi_campaign:0 "Œ†7YV¨‹"
+ cb_mf_xiayi_campaign_desc:0 "U^œ^òTSÙ*NýV¶RcšR:NŒ†7YV¨‹îvh0S›QŒTT'YTïSåN:YÖSvQ†˜WÿbëOvQb:NU^œ^'YT0"
+ CB_ALLOWED_cb_mf_xiayi_campaign:0 "V¨‹Œ†7Yîvh"
+ MF_XIAYI_CAMPAIGN_WAR_NAME:0 "$ORDER$$FIRST$V¨‹$SECOND_NAME$KNb"
+ mf_xiayi_conquest_wg:0 "VgwýN"
+ mf_xiayi_conquest_wg_desc:0 "`S†˜cšRwýNÿ:NU^œ^SOû|:YÖS°e„v†˜0W0"
+ mf_xiayi_campaign_wg:0 "6eg:N'YT"
+ mf_xiayi_campaign_wg_desc:0 "`S†˜Le¹e–™ýÿëOvQb:NS›Qôv^S'YT0"
+ po_mf_subjugate_xiayi_daimyo:0 "6eg:N'YT"
+ po_mf_subjugate_xiayi_daimyo_desc:0 "[From.GetName]Sb:NS›Qôv^S„v'YT0"
+ CB_ALLOWED_po_mf_subjugate_xiayi_daimyo:0 "SŒ†7Yîvh6eg:NU^œ^'YT"
+ PEACE_po_mf_subjugate_xiayi_daimyo:0 "6eg$GIVERS$:NU^œ^'YT"
+ po_mf_subjugate_daimyo:0 "6e:N¶Rã"
+ po_mf_subjugate_daimyo_desc:0 "[From.GetName]Sb:N[Root.GetName]„v¶Rã0"
+ CB_ALLOWED_po_mf_subjugate_daimyo:0 "6e:N¶Rã"
+ PEACE_po_mf_subjugate_daimyo:0 "6e:N$TAKERS$„v¶Rã"
+ cb_mf_sengoku:0 "býV6eg"
+ cb_mf_sengoku_desc:0 "býV6eg=f'YTKNô•‰N:Y0W¹e8—Cg„vb‰N0Üw)RwïSåN6egb%'YTÊSvQ¶Rãÿib'YêñT„v¶RãÆ–âV0"
+ CB_ALLOWED_cb_mf_sengoku:0 "6egb%'YTÊSvQ¶Rã"
+ mf_sengoku_subjugation:0 "6eg'YT"
+ mf_sengoku_subjugation_desc:0 "`S†˜Le¹e–™ýÿëOb%'YTÊSvQ¶RããgŽNÜw)Rw0"
