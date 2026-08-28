@@ -682,7 +682,7 @@ guiTypes = {
 				scripted = yes
 				format = centre
 				textureFile = ""
-				font = "vic_26s"
+				font = "vic_22s"
 				borderSize = {x = 0 y = 0}
 				#text = "FACTIONS_TITLE"	
 				maxWidth = 172
@@ -805,7 +805,7 @@ guiTypes = {
 				buttonFont = "vic_18_black"
 				clicksound = click
 			}
-			# yuling completed icons
+			# 御令完成图标
 			iconType = {
 				name = "shogun_yuling_gou_1"
 				scripted = yes
@@ -870,17 +870,9 @@ guiTypes = {
 	
 			############维新
 			guiButtonType = {
-				name = "shogun_weixin.a"
-				scripted = yes
-				position = { x = 472 y = 455 }
-				quadTextureSprite ="GFX_reform_button"
-				buttonText = "shogun_weixin.a_title"
-				buttonFont = "vic_18s"
-			}
-			guiButtonType = {
 				name = "shogun_weixin.b"
 				scripted = yes
-				position = { x = 472 y = 489 }
+				position = { x = 472 y = 455 }
 				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.b_title"
 				buttonFont = "vic_18s"
@@ -888,7 +880,7 @@ guiTypes = {
 			guiButtonType = {
 				name = "shogun_weixin.c"
 				scripted = yes
-				position = { x = 472 y = 523 }
+				position = { x = 472 y = 489 }
 				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.c_title"
 				buttonFont = "vic_18s"
@@ -896,7 +888,7 @@ guiTypes = {
 			guiButtonType = {
 				name = "shogun_weixin.d"
 				scripted = yes
-				position = { x = 472 y = 455 }
+				position = { x = 472 y = 523 }
 				quadTextureSprite ="GFX_reform_button"	
 				buttonText = "shogun_weixin.d_title"
 				buttonFont = "vic_18s"
@@ -904,7 +896,7 @@ guiTypes = {
 			guiButtonType = {
 				name = "shogun_weixin.e"
 				scripted = yes
-				position = { x = 472 y = 489 }
+				position = { x = 472 y = 455 }
 				quadTextureSprite ="GFX_reform_button"	
 				buttonText = "shogun_weixin.e_title"
 				buttonFont = "vic_18s"
@@ -912,7 +904,7 @@ guiTypes = {
 			guiButtonType = {
 				name = "shogun_weixin.f"
 				scripted = yes
-				position = { x = 472 y = 523 }
+				position = { x = 472 y = 455 }
 				quadTextureSprite ="GFX_reform_button"	
 				buttonText = "shogun_weixin.f_title"
 				buttonFont = "vic_18s"
@@ -920,7 +912,7 @@ guiTypes = {
 			guiButtonType = {
 				name = "shogun_weixin.g"
 				scripted = yes
-				position = { x = 472 y = 455 }
+				position = { x = 472 y = 489 }
 				quadTextureSprite ="GFX_reform_button"	
 				buttonText = "shogun_weixin.g_title"
 				buttonFont = "vic_18s"
@@ -945,7 +937,7 @@ guiTypes = {
 				name = "shogun_weixin.j"
 				scripted = yes
 				position = { x = 472 y = 455 }
-				quadTextureSprite ="GFX_reform_button"	
+				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.j_title"
 				buttonFont = "vic_18s"
 			}
@@ -953,7 +945,7 @@ guiTypes = {
 				name = "shogun_weixin.k"
 				scripted = yes
 				position = { x = 472 y = 489 }
-				quadTextureSprite ="GFX_reform_button"	
+				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.k_title"
 				buttonFont = "vic_18s"
 			}
@@ -961,7 +953,7 @@ guiTypes = {
 				name = "shogun_weixin.l"
 				scripted = yes
 				position = { x = 472 y = 523 }
-				quadTextureSprite ="GFX_reform_button"	
+				quadTextureSprite ="GFX_reform_button"
 				buttonText = "shogun_weixin.l_title"
 				buttonFont = "vic_18s"
 			}
@@ -1397,13 +1389,6 @@ guiTypes = {
 				shortcut = "ESCAPE"
 			}
 		}
-	
-
-
-
-
-
-
 
 	############### Power mechanics for a country ################
 

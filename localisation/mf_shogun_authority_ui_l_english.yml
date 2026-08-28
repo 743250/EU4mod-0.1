@@ -1,0 +1,17 @@
+﻿l_english:
+ shogun_yutong_value:0 "[1020.shogun_value_display.GetValue]"
+ shogun_yutong_small_value:0 "[1020.shogun_value.GetValue]"
+ neutral_prefix:0 "§Y"
+ negative_prefix:0 "§R"
+ positive_prefix:0 "§G+"
+ Getshogun_monthly_value_2_PosNeg.tt:0 "\n§Y[1020.GetName]§!N(WU^œ^»lNÿ§R-0.03§!"
+ Getshogun_monthly_value_3_PosNeg.tt:0 "\n§Y[1818.GetName]§!N(WU^œ^»lNÿ§R-0.03§!"
+ Getshogun_monthly_value_4_PosNeg.tt:0 "\n§Y[4186.GetName]§!N(WU^œ^»lNÿ§R-0.03§!"
+ Getshogun_monthly_value_5_PosNeg.tt:0 "\n§Y[1028.GetName]§!N(WU^œ^»lNÿ§R-0.03§!"
+ shogun_yutong_monthly_value:0 "[1020.Getshogun_monthly_value_PosNeg][1020.shogun_monthly_value.GetValue]§!"
+ shogun_yutong_monthly_value.tt:0 "Ïkg§Y¡Vßu§!ØSSÿ\n3zšR¦^ÿ[1020.Getshogun_monthly_value_1_PosNeg][1020.shogun_monthly_value_1.GetValue]§!\nôv^S'YTÿ§G+[1020.shogun_monthly_value_6.GetValue]§!\n1ŒãN'YTÿ§G+[1020.shogun_monthly_value_9.GetValue]§!\nŒ†7YV¨‹ÿ§G+[1020.shogun_monthly_value_10.GetValue]§!\nckßu'`ÿ[1020.Getshogun_monthly_value_7_PosNeg][1020.shogun_monthly_value_7.GetValue]§!\nåe,géy^ÿ[1020.Getshogun_monthly_value_8_PosNeg][1020.shogun_monthly_value_8.GetValue]§![Getshogun_monthly_value_2_PosNeg][Getshogun_monthly_value_3_PosNeg][Getshogun_monthly_value_4_PosNeg][Getshogun_monthly_value_5_PosNeg]"
+ shogun_yutong_value.tt:0 "¡VßuãNhˆU^œ^ùR'YT„vµc6R›R0S›QïSåNˆmw¡Vßu¨cLˆôu°e9ei—bÇ‘ÖSU^œ^Lˆ¨R0\n\nýV¶R3zšR0ƒØšckßu'`0ôv^S'YT01ŒãN'YTŒTåe,g…QèŒTs^OÐcØš¡Vßuÿåe,g†˜W«ˆYè¿R›Rµc6R0Í‘‰0W:S1YˆRŒT'YTb‰NOM–NO¡Vßu0"
+ Getshogun_value_Profix.a.tt:0 "0[1020.shogun_value_Profix.GetValue]"
+ Getshogun_value_Profix.b.tt:0 "[1020.shogun_value_Profix.GetValue]"
+ mf_shogun_monthly_fudai_tt:0 "1ŒãN'YTÿ§G+[1020.shogun_monthly_value_9.GetValue]§!"
+ mf_shogun_monthly_xiayi_tt:0 "Œ†7YV¨‹ÿ§G+[1020.shogun_monthly_value_10.GetValue]§!"

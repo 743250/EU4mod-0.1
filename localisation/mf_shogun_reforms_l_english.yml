@@ -1,17 +1,62 @@
-l_english:
- mf_register_shogunate_provinces_title:0 "登记幕府省份"
- mf_register_shogunate_provinces_desc:0 "把幕府、直属大名与下一层陪臣当前拥有的省份登记为幕府省份。登记会在省份易主后继续保留。"
- mf_return_shogunate_province:0 "要求归还幕府省份"
- mf_return_shogunate_province_title:0 "要求归还幕府省份"
- mf_return_shogunate_province_tooltip:0 "要求体系外国归还其占有的幕府省份。"
- mf_return_shogunate_province_desc:0 "要求[From.GetName]交还一块已经登记的幕府省份。省份优先归还现存的幕府体系核心国；没有时恢复一个已灭亡核心国为幕府直属大名。"
- mf_return_shogunate_province_base:0 "幕府归还要求"
- mf_transfer_illegal_subject:0 "解放属国为直属大名"
- mf_transfer_illegal_subject_title:0 "解放属国为直属大名"
- mf_transfer_illegal_subject_tooltip:0 "把选中的非幕府直属体系属国解放为幕府直属普通大名。"
- mf_transfer_illegal_subject_desc:0 "将[From.GetName]从当前宗主名下解放，并改立为幕府直属普通大名。陪臣大名也可以成为该行动的目标。"
- mf_shogunate_internal_war_forbidden_tt:0 "武家诸法禁止幕府体系成员互相发动战争，但仍允许对体系外国宣战以及对宗主发动独立战争。"
- cb_mf_shogunate_japan_campaign:0 "平定日本"
- cb_mf_shogunate_japan_campaign_desc:0 "幕府可以讨伐占有日本地区省份、但不属于本幕府大名体系的国家。"
- CB_ALLOWED_cb_mf_shogunate_japan_campaign:0 "目标占有日本地区省份且不属于本幕府体系。"
- MF_SHOGUNATE_JAPAN_CAMPAIGN_WAR_NAME:0 "$ORDER$$FIRST$平定$SECOND_NAME$之战"
+﻿l_english:
+ shogun_weixin.b_title:0 "U^†˜Àh0W"
+ shogun_weixin.c_title:0 "«ŽýNßu6R"
+ shogun_weixin.d_title:0 "y-Nv^lQ"
+ shogun_weixin.e_title:0 "1ŒãN'YT"
+ shogun_weixin.h_title:0 "ÂSäR²NãN"
+ shogun_weixin.i_title:0 "V¨‹Œ†7Y"
+ shogun_weixin.j_title:0 "lQêNÁˆ­e"
+ shogun_weixin.k_title:0 "ýVÿfäN"
+ shogun_weixin.l_title:0 "ø‹é…ÑvßR"
+ shogun_weixin.f_title:0 "fk¶Rø‹Õl"
+ shogun_weixin.g_title:0 "í•sQ•ýV"
+ Getjiangjun_trigger.a.tt:0 "§RêS	g)Y‡vbV7Y'YS›QïSåN¨cLˆôu°e0§!"
+ shogun_weixin_gunlun.tt:0 "§O¹pûQ­r4YRbc9ei—u˜b—0§!"
+ mf_weixin_common_requirements_tt:0 "§Yôu°e9ei—§!\nU^œ^åb	góS§Y80§!¡VßuöeïSåN¨cLˆ9ei—0Ïky˜9ei—±‚9§Y70§!¡Vßu0"
+ mf_weixin_not_completed_tt:0 "å‹y˜ôu°eS*gŒRb0"
+ mf_weixin_authority_requirement_tt:0 "U^œ^óSåb	g§Y80§!¡Vßu0ŒRb9ei—S±‚9§Y70§!¡Vßu0"
+ mf_weixin_current_shogun_tt:0 "1uV7Y'YS›Q¨cLˆÙy˜9ei—0"
+ mf_weixin_peace_requirement_tt:0 "U^œ^SVMRYŽNŒTs^0"
+ shogun_weixin.b.a.tt:0 "Nb	gôv^S^SýVìrËz>PTNOŽN§Y50%§!0"
+ shogun_weixin.e.k.tt:0 "óS2NTôv^S'YTùRS›Q„v‹Ya¾0R§Y150§!0"
+ shogun_weixin.i.k.tt:0 "d–SwmSYÿåe,g0W:S†v1uU^œ^Œcµc0"
+ mf_weixin_j_prerequisites_tt:0 "òTŒRbMRmQy˜ôu°eÿ§Yy-Nv^lQ0«ŽýNßu6R0U^†˜Àh0W01ŒãN'YT0V¨‹Œ†7Y0ÂSäR²NãN§!0"
+ shogun_weixin.k.k.tt:0 "òTŒRb§YlQêNÁˆ­e§!0"
+ shogun_weixin.l.k.tt:0 "òTŒRb§YýVÿfäN§!ÿNóSûN‹TÇN*N§YU^œ^gbLˆýV§!0"
+ mf_weixin_f_prerequisites_tt:0 "òTŒRbMRkNy˜ôu°eÿSìb§YlQêNÁˆ­e0ýVÿfäN0ø‹é…ÑvßR§!0"
+ mf_weixin_g_prerequisites_tt:0 "òTŒRb§Yfk¶Rø‹Õl§!0"
+ mf_weixin_b_effect_tt:0 "§Yã‰•ÿ§!³Q®‹§Y‰v°‹U^œ^†˜0W§!ŒTY²NLˆ¨R§Y‰BlRVØU^œ^†˜0W§!0U^œ^ïSåN‰v°‹êñTNôv^S'YTµc6R„v†˜0Wÿv^‰BlvQÖNýV¶RRVØÙ›NwýN0"
+ mf_weixin_c_effect_tt:0 "§Yã‰•ÿ§!Y²NLˆ¨R§Yl:Nôv^S'YT§!0U^œ^ïSåNŠb'YTµc6R„v^—Õl^SýV9e:NS›Qôv^S'YTÿÏk!kLˆ¨R·ƒ—V§G2§!¡Vßu0"
+ mf_weixin_d_effect_tt:0 "§Yã‰•ÿ§!Y²NLˆ¨R§YÝuZ'YT§!0U^œ^ïSåNÝuZÒbÝu‹TäN„v'YTÿv^·ƒ—Vøv”^„vb‰Nt1u0bŸRÝuZ'YT·ƒ—V§G2§!¡Vßu0"
+ mf_weixin_e_effect_tt:0 "§Yã‰•ÿ§!Y²NLˆ¨R§YcšR1ŒãN'YT§!0U^œ^gRïSåNûN‹T§Y3§!T1ŒãN'YTÿÏkTôv^S1ŒãN'YTÏkgÐc›O§G+0.02§!¡Vßu0"
+ mf_weixin_e_all_daimyos_tt:0 "Nb	gU^œ^ôv^S'YT·ƒ—V§Y1ŒãN-N¢g§!ÿ\nF–›QÄ‰!jNP–ÿ§G+5%§!\nìrËz>PTÿ§G-5%§!"
+ mf_weixin_i_effect_tt:0 "§Yã‰•ÿ§!Y²NLˆ¨R§YérÎ‘Œ†7Y§!0U^œ^ïSåNŠbåb	gSwmSwýNv^NU^œ^SOû|¥cäX„výV¶RcšR:NŒ†7YV¨‹îvh0NŒ†7Y²NböeÿU^œ^Ïkg·ƒ—V§G+0.02§!¡Vßu0"
+ mf_weixin_h_all_daimyos_tt:0 "Nb	gU^œ^SOû|'YT·ƒ—V§YÂSäR²NãN§!ÿ\nÏkgê»l¦^ØSSÿ§R+0.25%§!"
+ shogun_weixin.k.a.tt:0 "§YûN‹TgbLˆýV§!Nb—„v¡VßuM–NO:N§Y10§!0"
+ mf_weixin_f_effect_tt:0 "§Yfk¶Rø‹Õl§!ybkU^œ^SOû|…Q„v'YT’NøvÑS¨Rb‰N0'YTÍNïSùRYVbÿmNïSùR—RINÑS¨RìrËzb‰N0"
+ mf_weixin_f_all_daimyos_tt:0 "Nb	gU^œ^ôv^S'YT·ƒ—V§Yfk¶Rø‹Õl§!ÿ\nìrËz>PTÿ§G-5%§!\nU^œ^Y²N¥c×S¦^ÿ§G+10§!\nAQ¸‹O(u§Ylûy^SýV§!ŒTs^ag>k"
+ mf_weixin_g_effect_tt:0 "§YérÎ‘Œ†7Y§!°s(WïSåNcšRûNUONU^œ^SOû|¥cäX„vYèýV¶R0"
+ mulingjiandi:0 "U^†˜Àh0W"
+ desc_mulingjiandi:0 "U^œ^Í‘°eNÏ‘ŒT‰v°‹W0WÿÎNwŒcácôfÆQnx„vz6eN†˜0W°‹UV0"
+ shenfentongzhi:0 "«ŽýNßu6R"
+ desc_shenfentongzhi:0 "'YT0fkëX0œQl0åT.SŒTFUºN„v«ŽýN×S0Rfnx¡rtÿU^œ^mNýwôf	gHe0Wµc6R0W¹e>yO0"
+ jinzhongbinggong:0 "y-Nv^lQ"
+ desc_jinzhongbinggong:0 "U^œ^Ä‰ƒg÷^„v<yêNNûN˜R6R¦^ÿ(Wfk¶R?eCgŒTg÷^KNô•ú^Ëz3zšRTwû|0"
+ huobitongyi_1:0 "1ŒãN-N¢g"
+ desc_huobitongyi_1:0 "×S0RS›QáOûN„v'YTÂSNU^œ^?e¡Rÿv^bÅbôfY›QyV0"
+ huobitongyi_2:0 "1ŒãN-N¢g"
+ desc_huobitongyi_2:0 "1ŒãN'YTOS©RS›QYt?e¡RÿOU^œ^„v‹TäNýwYôf	gHe0W.O¾0R0W¹e0"
+ wujiazhufa:0 "fk¶Rø‹Õl"
+ desc_wujiazhufa:0 "fk¶Rø‹ÕlÄ‰šR†N'YT„vb‰N0RSŒTÎN^SsQû|ÿ=fT'YTqQTuˆR„vU^œ^ÕläN0"
+ jiujizhengshi_1:0 "ÂSäR²NãN"
+ desc_jiujizhengshi_1:0 "'YT—‰šRgMRŽVU^œ^ÂSäRÿ•ÅeLˆ0–Lˆ–OŒT2N0WuImýÙué…ýV0?e&^eg‰lÍ‘Åb0"
+ jiujizhengshi_2:0 "ÂSäR²NãN"
+ desc_jiujizhengshi_2:0 "T'YTšRgMRŽVU^œ^ÂSäRÿS›Q—VåNÑvcw0W¹e†˜INÿv^US:yU^œ^ùRhQýV„vµc6R0"
+ mf_ezo_campaign_preparation:0 "V¨‹Œ†7Y"
+ desc_mf_ezo_campaign_preparation:0 "•gÆQYS¹eV¨‹ÿOU^œ^›Q–ïy=t†N”^ÒR·Q¹ƒXjOb„vÏuŒš0"
+ gongyicaiduan:0 "lQêNÁˆ­e"
+ desc_gongyicaiduan:0 "U^œ^1Yt'YTKNô•„v‰NïzÿOS›Q„vÁˆ³Qb:NT¹eýÅV‰˜uˆR„vÄ‰R0"
+ guotiling:0 "ýVÿfäN"
+ desc_guotiling:0 "U^œ^ïSåNlS'YTv^Í‘°e‰R’c†˜0Wÿ2–bk:V'Y„v0W¹e¿R›R•gµc6RTN0W:S0"
+ zhufanjiancha:0 "ø‹é…ÑvßR"
+ desc_zhufanjiancha:0 "îvØN0áTÁ‰OŒTgbLˆýVqQTÑvcwT0W'YTÿOU^œ^ýwYôféeÑS°sÝäN0ÁybŒT^—Õl|Qv^0"

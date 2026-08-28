@@ -1,48 +1,13 @@
 on_startup = {
 	if = {
-		limit = {
-			has_reform = shogunate
-		}
-		mf_refresh_shogun_leader_target_effect = yes
+		limit = { has_reform = shogunate }
 		save_global_event_target_as = zhengyidajiangjun
-		if = {
-			limit = {
-				NOT = { has_saved_global_event_target = tianhuang }
-			}
-			random_subject_country = {
-				save_global_event_target_as = tianhuang
-				set_country_flag = mf_tianhuang_target
-			}
+		1020 = {
+			set_variable = { which = shogun_value value = 50 }
+			set_variable = { which = shogun_value_Profix value = 0 }
+			set_variable = { which = shogun_value_display value = 50 }
+			set_variable = { which = shogun_value_display_fraction value = 0 }
 		}
-		mf_refresh_tianhuang_target_effect = yes
-		if = {
-			limit = {
-				NOT = { has_global_flag = mf_shogun_initialized }
-			}
-			1020 = {
-				set_variable = {
-					which = shogun_value
-					value = 50
-				}
-				set_variable = {
-					which = shogun_value_Profix
-					value = 0
-				}
-			}
-			bl_mp_effect = yes
-			1020 = {
-				set_variable = {
-					which = shogun_value
-					value = 50
-				}
-				set_variable = {
-					which = shogun_value_Profix
-					value = 0
-				}
-			}
-			set_global_flag = mf_shogun_initialized
-		}
-		mf_refresh_tianhuang_target_effect = yes
 		bl_shogun_refresh = yes
 	}
 }
@@ -51,24 +16,16 @@ on_monthly_pulse = {
 	if = {
 		limit = {
 			has_reform = shogunate
-		}
-		mf_refresh_shogun_leader_target_effect = yes
-		mf_initialize_new_shogun_authority_effect = yes
-		save_global_event_target_as = zhengyidajiangjun
-		if = {
-			limit = {
-				NOT = { has_saved_global_event_target = tianhuang }
-			}
-			random_subject_country = {
-				save_global_event_target_as = tianhuang
-				set_country_flag = mf_tianhuang_target
-			}
-		}
-		mf_refresh_tianhuang_target_effect = yes
-	}
-	if = {
-		limit = {
+			has_saved_global_event_target = zhengyidajiangjun
 			tag = event_target:zhengyidajiangjun
+		}
+		if = {
+			limit = { has_global_flag = shogun_weixin.d_global_flag }
+			mf_refresh_tianhuang_target_effect = yes
+		}
+		if = {
+			limit = { has_global_flag = shogun_weixin.i_global_flag }
+			mf_refresh_xiayi_target_effect = yes
 		}
 		bl_mp_effect = yes
 	}
@@ -77,7 +34,9 @@ on_monthly_pulse = {
 on_siege_won_country = {
 	if = {
 		limit = {
+			has_saved_global_event_target = zhengyidajiangjun
 			has_saved_global_event_target = xiayi
+			event_target:zhengyidajiangjun = { has_reform = shogunate }
 			event_target:xiayi = {
 				exists = yes
 				has_country_flag = mf_xiayi_target
@@ -90,14 +49,32 @@ on_siege_won_country = {
 					is_subject_of = event_target:zhengyidajiangjun
 				}
 			}
-			FROM = {
-				owned_by = event_target:xiayi
-			}
+			FROM = { owned_by = event_target:xiayi }
 		}
 		random = {
 			chance = 20
-			FROM = {
-				add_core = ROOT
+			FROM = { add_core = ROOT }
+		}
+	}
+}
+
+on_yearly_pulse = {
+	if = {
+		limit = {
+			has_reform = shogunate
+		}
+		every_subject_country = {
+			limit = {
+				sort_of_mf = yes
+				NOT = { has_reform = shogunate }
+			}
+			country_event = { id = mf_daimyo.10 }
+			every_subject_country = {
+				limit = {
+					sort_of_mf = yes
+					NOT = { has_reform = shogunate }
+				}
+				country_event = { id = mf_daimyo.10 }
 			}
 		}
 	}
@@ -105,58 +82,13 @@ on_siege_won_country = {
 
 on_province_owner_change = {
 	if = {
-		limit = {
-			province_id = 1020
-		}
+		limit = { province_id = 1020 }
+		# 原版 japan.1 当日完成幕府交接，玩家新幕府次日补充自定义属国。
 		owner = {
-			country_event = {
-				id = mf_daimyo.14
-				days = 1
+			if = {
+				limit = { ai = no }
+				country_event = { id = mf_daimyo.13 days = 1 }
 			}
 		}
 	}
-}
-
-	on_yearly_pulse = {
-		if = {
-			limit = {
-				tag = event_target:zhengyidajiangjun
-				has_reform = shogunate
-				has_country_modifier = shogun_yuling_b
-				NOT = { has_global_flag = shogun_weixin.h_global_flag }
-			}
-			every_subject_country = {
-				limit = {
-					sort_of_mf = yes
-					NOT = { has_reform = shogunate }
-				}
-				country_event = {
-					id = mf_daimyo.10
-				}
-				every_subject_country = {
-					limit = {
-						sort_of_mf = yes
-						NOT = { has_reform = shogunate }
-					}
-					country_event = {
-						id = mf_daimyo.10
-					}
-				}
-			}
-		}
-}
-
-on_government_change = {
-	mf_refresh_shogun_leader_target_effect = yes
-	mf_initialize_new_shogun_authority_effect = yes
-}
-
-on_reform_enacted = {
-	mf_refresh_shogun_leader_target_effect = yes
-	mf_initialize_new_shogun_authority_effect = yes
-}
-
-on_reform_changed = {
-	mf_refresh_shogun_leader_target_effect = yes
-	mf_initialize_new_shogun_authority_effect = yes
 }

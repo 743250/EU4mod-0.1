@@ -6,6 +6,5 @@ shogunate_mechanic = {
 	}
 	
 	interactions = {
-		# 旧幕府交互已收束到御令面板，政府机制本体不再单独提供参勤、刀狩和驱逐浪人。
 	}
 }

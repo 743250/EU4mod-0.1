@@ -21,11 +21,25 @@ mf_apply_shogun_yuling_a = {
 }
 
 mf_apply_shogun_yuling_b = {
-	# 鍙傚嫟浜や唬寰′护锛氭妸骞曞簻鏈綋鍒囨崲鍒板弬鍕ょЗ搴忕姸鎬侊紝骞村害鍙傚嫟浜嬩欢閾剧户缁礋璐ｈ澶у悕鐨勫疄闄呮墽琛屻€?
+	# 参勤交代御令沿用原版政府互动效果。
 	add_legitimacy = -20
+	add_dip_power = 50
 	add_country_modifier = {
-		name = mf_sankin_kotai_began
+		name = overlord_sankin_kotai
 		duration = 3650
+	}
+	custom_tooltip = mf_shogun_every_daimyo_sankin_kotai_tt
+	hidden_effect = {
+		every_subject_country = {
+			limit = {
+				sort_of_mf = yes
+				NOT = { has_reform = shogunate }
+			}
+			add_country_modifier = {
+				name = subject_sankin_kotai
+				duration = 3650
+			}
+		}
 	}
 	add_country_modifier = {
 		name = shogun_yuling_b
@@ -33,18 +47,22 @@ mf_apply_shogun_yuling_b = {
 		hidden = yes
 	}
 }
+
 mf_apply_shogun_yuling_c = {
-	# 鍒€鐙╀护锛氬帇浣庤澶у悕鏀诲煄鏁堢巼锛岃€屼笉鏄洿鎺ョ姝㈡垬浜夈€?
+	# 刀狩令降低幕府体系大名的攻城能力。
 	add_legitimacy = -20
-	every_subject_country = {
-		add_country_modifier = {
-			name = mf_daimyo_siege_restriction
-			duration = 3650
-		}
+	custom_tooltip = mf_shogun_every_daimyo_sword_hunt_tt
+	hidden_effect = {
 		every_subject_country = {
 			add_country_modifier = {
 				name = mf_daimyo_siege_restriction
 				duration = 3650
+			}
+			every_subject_country = {
+				add_country_modifier = {
+					name = mf_daimyo_siege_restriction
+					duration = 3650
+				}
 			}
 		}
 	}
@@ -56,7 +74,7 @@ mf_apply_shogun_yuling_c = {
 }
 
 mf_apply_shogun_yuling_d = {
-	# 婵炴垶姊归崝鏇犵博閼哥數鈻曢柟閭﹀墴閻涙捇鏌ㄥ☉娆愮殤缂侇喒鈧秮瑙勬償閿涘嫧鍋撳畡閭﹀殫闁炽儱寮舵慨銏ゆ煏?
+	# 乐市乐座促进幕府控制下的市场和贸易。
 	add_country_modifier = {
 		name = leshilezuo
 		duration = 3650
@@ -70,7 +88,7 @@ mf_apply_shogun_yuling_d = {
 }
 
 mf_apply_shogun_yuling_e = {
-	# 闂佺绻樺褔宕鈧畷姘跺幢濞嗘鈧煡鏌ㄥ☉娆掑闁哥喐顨嗙粋宥団偓锝庝簽閳ь剙鍢查銉╁灳閸欏袘闂?
+	# 兵农分离加强幕府的常备军。
 	add_country_modifier = {
 		name = bingnongfenli
 		duration = 3650
@@ -84,7 +102,7 @@ mf_apply_shogun_yuling_e = {
 }
 
 mf_refresh_tianhuang_target_effect = {
-	# ROOT 婵炴垶鎸搁幖顐ょ礊鐎ｎ喖绀堢€广儱鎳愰搴ㄥ箹鐎涙ê娈犻柍褜鍓欓崐鐣屸偓姘ュ灪瀵板嫰鍩￠崘鈺冩毈闁诲海顢婇崺鏍涘畝鍕€舵い鎾寸箞椤庢鏌熺€涙澧抽柛鏃€姘ㄧ划瀣嫚閼碱剦鍟傞柟鐓庣摠缁牏绱炵€ｎ剙瀵插ù鍏肩懅缁€澶愭煕閹烘挾鎳囬柛锝嗘倐瀵剚锛愭担铏圭厾闂佺儵鏅濋ˉ鎰閻楀牆绶炵憸宥夊箖閺囩喓鈻旀い鎾跺枎閻﹀綊鎮楃憴鍕惛闁?
+	# 只清理已经失效的天皇目标；新目标必须由宣下奉行外交行动指定。
 	if = {
 		limit = {
 			has_saved_global_event_target = tianhuang
@@ -107,55 +125,41 @@ mf_refresh_tianhuang_target_effect = {
 		}
 		clear_global_event_target = tianhuang
 	}
-	if = {
-		limit = {
-			NOT = { has_saved_global_event_target = tianhuang }
-		}
-		random_subject_country = {
-			limit = {
-				NOT = { has_country_flag = mf_xiayi_target }
-				NOT = { has_country_flag = mf_tianhuang_target }
-			}
-			save_global_event_target_as = tianhuang
-			set_country_flag = mf_tianhuang_target
-		}
-	}
 }
 
 mf_set_xiayi_campaign_target_effect = {
-	# 设置虾夷征讨目标，并立即把战争借口交给当前幕府。
-	every_country = {
-		limit = { has_country_flag = mf_xiayi_target }
-		clr_country_flag = mf_xiayi_target
-	}
+	# 替换当前虾夷目标；持续战争理由由 cb_mf_xiayi_campaign 的动态条件提供。
 	if = {
 		limit = { has_saved_global_event_target = xiayi }
-		if = {
-			limit = {
-				has_saved_global_event_target = zhengyidajiangjun
-				event_target:zhengyidajiangjun = {
-					has_casus_belli = {
-						type = cb_mf_xiayi_campaign
-						target = event_target:xiayi
-					}
-				}
-			}
-			event_target:zhengyidajiangjun = {
-				remove_casus_belli = {
-					type = cb_mf_xiayi_campaign
-					target = event_target:xiayi
-				}
-			}
+		event_target:xiayi = {
+			clr_country_flag = mf_xiayi_target
 		}
 		clear_global_event_target = xiayi
 	}
 	save_global_event_target_as = xiayi
 	set_country_flag = mf_xiayi_target
-	event_target:zhengyidajiangjun = {
-		add_casus_belli = {
-			type = cb_mf_xiayi_campaign
-			target = ROOT
-			months = 120
+}
+
+mf_refresh_xiayi_target_effect = {
+	# 目标灭亡、进入幕府体系或失去虾夷标记时清理缓存，动态 CB 随条件立即失效。
+	if = {
+		limit = {
+			has_saved_global_event_target = xiayi
+			OR = {
+				event_target:xiayi = { exists = no }
+				event_target:xiayi = {
+					OR = {
+						NOT = { has_country_flag = mf_xiayi_target }
+						sort_of_mf = yes
+						has_country_flag = mf_tianhuang_target
+					}
+				}
+			}
 		}
+		if = {
+			limit = { event_target:xiayi = { exists = yes } }
+			event_target:xiayi = { clr_country_flag = mf_xiayi_target }
+		}
+		clear_global_event_target = xiayi
 	}
 }

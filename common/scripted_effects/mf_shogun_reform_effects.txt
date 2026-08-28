@@ -1,5 +1,50 @@
 ########## 幕府大型计划共用效果 ##########
 
+mf_calculate_monthly_reform_authority_effect = {
+	# 维新月度统御分项在京都变量中单独计算，避免与普通大名数量混在一起。
+	set_variable = {
+		which = shogun_monthly_value_9
+		value = 0.00
+	}
+	set_variable = {
+		which = shogun_monthly_value_10
+		value = 0.00
+	}
+	if = {
+		limit = { has_global_flag = shogun_weixin.e_global_flag }
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				limit = { is_subject_of_type = mf_daimyo_vassal }
+				1020 = {
+					change_variable = {
+						which = shogun_monthly_value_9
+						value = 0.02
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = shogun_weixin.i_global_flag
+			has_saved_global_event_target = xiayi
+			event_target:xiayi = {
+				exists = yes
+				has_country_flag = mf_xiayi_target
+				NOT = { sort_of_mf = yes }
+				NOT = { has_country_flag = mf_tianhuang_target }
+			}
+			event_target:zhengyidajiangjun = {
+				war_with = event_target:xiayi
+			}
+		}
+		change_variable = {
+			which = shogun_monthly_value_10
+			value = 0.02
+		}
+	}
+}
+
 mf_add_permanent_claims_on_japan_region_effect = {
 	# 给日本地区未核心、未永久宣称省份添加永久宣称。
 	japan_region = {
@@ -9,12 +54,6 @@ mf_add_permanent_claims_on_japan_region_effect = {
 		}
 		add_permanent_claim = ROOT
 	}
-}
-
-mf_add_permanent_claims_on_ryukyu_korea_effect = {
-	# 琉球方向只取冲绳单省，避免误覆盖越南区域。
-	mf_add_permanent_claim_on_ryukyu_effect = yes
-	mf_add_permanent_claims_on_korea_region_effect = yes
 }
 
 mf_add_permanent_claim_on_ryukyu_effect = {
@@ -43,54 +82,12 @@ mf_add_permanent_claims_on_korea_region_effect = {
 	}
 }
 
-mf_clear_shogun_refusal_flags_effect = {
-	# 在当前国家作用域清理拒绝幕府命令留下的惩戒与冷却标记。
-	clr_country_flag = mf_refused_return_land
-	clr_country_flag = mf_recently_refused_return_daimyo_land
-	clr_country_flag = mf_refused_enforce_daimyo_peace
-	clr_country_flag = mf_refused_partition_daimyo
-	clr_country_flag = mf_refused_executor_appointment
-	clr_country_flag = mf_refused_return_shogunate_province
-	clr_country_flag = mf_under_shogunate_excommunication
-}
-
-mf_refuse_sankin_kotai_effect = {
-	# 拒绝只结算本次参勤，不记录拒参状态或产生后续讨伐理由。
-	add_prestige = 10
-	add_country_modifier = {
-		name = mf_sankin_kotai_refused
-		duration = 365
-	}
-	event_target:zhengyidajiangjun = {
-		mf_change_shogun_value = { value = -0.5 }
-	}
-}
-
-mf_end_sankin_event_state_effect = {
-	# 正式改革完成后，结束当前大名仍在生效的参勤临时状态。
-	remove_country_modifier = mf_sankin_kotai_refused
-	remove_country_modifier = mf_sankin_kotai_travel
-	# 改革生效时立即解除现有大名同盟；后续结盟由外交行动入口禁止。
-	every_known_country = {
-		limit = {
-			alliance_with = PREV
-			sort_of_mf = yes
-			NOT = { has_reform = shogunate }
-			OR = {
-				is_subject_of = event_target:zhengyidajiangjun
-				overlord = { is_subject_of = event_target:zhengyidajiangjun }
-			}
-		}
-		break_alliance = PREV
-	}
-}
-
 mf_complete_sankin_reform_effect = {
-	# 玩家和 AI 共用同一正式改革收束链。
+	# 玩家和 AI 共用同一参勤改革效果。
 	set_global_flag = shogun_weixin.h_global_flag
 	mf_change_shogun_value = { value = -70 }
 	remove_country_modifier = shogun_yuling_b
-	remove_country_modifier = mf_sankin_kotai_began
+	remove_country_modifier = overlord_sankin_kotai
 	add_country_modifier = {
 		name = jiujizhengshi_2
 		duration = -1
@@ -101,86 +98,22 @@ mf_complete_sankin_reform_effect = {
 			sort_of_mf = yes
 			NOT = { has_reform = shogunate }
 		}
-		mf_end_sankin_event_state_effect = yes
+		remove_country_modifier = subject_sankin_kotai
+		add_country_modifier = {
+			name = jiujizhengshi_1
+			duration = -1
+			hidden = yes
+		}
 		every_subject_country = {
 			limit = {
 				sort_of_mf = yes
 				NOT = { has_reform = shogunate }
 			}
-			mf_end_sankin_event_state_effect = yes
-		}
-	}
-}
-
-mf_mark_shogunate_provinces_effect = {
-	# 登记当前幕府、直属大名和下一层陪臣所有尚未登记的省份。
-	every_owned_province = {
-		limit = { NOT = { has_province_flag = mf_shogunate_province } }
-		set_province_flag = mf_shogunate_province
-	}
-	every_subject_country = {
-		limit = {
-			OR = {
-				is_subject_of_type = daimyo_vassal
-				is_subject_of_type = mf_daimyo_vassal
-				is_subject_of_type = mf_retainer_daimyo_vassal
-			}
-		}
-		every_owned_province = {
-			limit = { NOT = { has_province_flag = mf_shogunate_province } }
-			set_province_flag = mf_shogunate_province
-		}
-		every_subject_country = {
-			limit = { is_subject_of_type = mf_retainer_daimyo_vassal }
-			every_owned_province = {
-				limit = { NOT = { has_province_flag = mf_shogunate_province } }
-				set_province_flag = mf_shogunate_province
-			}
-		}
-	}
-}
-
-mf_pick_returnable_shogunate_province_effect = {
-	random_owned_province = {
-		limit = {
-			has_province_flag = mf_shogunate_province
-			any_core_country = {
-				OR = {
-					exists = no
-					tag = event_target:zhengyidajiangjun
-					is_subject_of = event_target:zhengyidajiangjun
-					overlord = { is_subject_of = event_target:zhengyidajiangjun }
-				}
-			}
-		}
-		save_event_target_as = mf_return_shogunate_province
-		if = {
-			limit = {
-				any_core_country = {
-					exists = yes
-					OR = {
-						tag = event_target:zhengyidajiangjun
-						is_subject_of = event_target:zhengyidajiangjun
-						overlord = { is_subject_of = event_target:zhengyidajiangjun }
-					}
-				}
-			}
-			random_core_country = {
-				limit = {
-					exists = yes
-					OR = {
-						tag = event_target:zhengyidajiangjun
-						is_subject_of = event_target:zhengyidajiangjun
-						overlord = { is_subject_of = event_target:zhengyidajiangjun }
-					}
-				}
-				save_event_target_as = mf_return_shogunate_province_owner
-			}
-		}
-		else = {
-			random_core_country = {
-				limit = { exists = no }
-				save_event_target_as = mf_return_shogunate_province_owner
+			remove_country_modifier = subject_sankin_kotai
+			add_country_modifier = {
+				name = jiujizhengshi_1
+				duration = -1
+				hidden = yes
 			}
 		}
 	}

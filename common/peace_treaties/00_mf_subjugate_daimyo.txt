@@ -1,5 +1,5 @@
 po_mf_subjugate_daimyo = {
-	# 大名之间的收服和平：不割地、不灭国，只把败者收为胜者的陪臣大名。
+	# 大名之间的收服和平：败者和败者原有家臣都成为胜者的直属家臣。
 	category = 6
 	power_projection = vassalized_rival
 	power_cost_base = 1.0
@@ -22,47 +22,36 @@ po_mf_subjugate_daimyo = {
 	requires_is_allowed = yes
 
 	is_visible = {
-		OR = {
-			is_subject_of_type = daimyo_vassal
-			is_subject_of_type = mf_daimyo_vassal
-		}
-		FROM = {
-			OR = {
-				is_subject_of_type = daimyo_vassal
-				is_subject_of_type = mf_daimyo_vassal
-			}
-		}
+		NOT = { has_reform = shogunate }
 	}
 
 	is_allowed = {
-		OR = {
-			is_subject_of_type = daimyo_vassal
-			is_subject_of_type = mf_daimyo_vassal
-		}
-		FROM = {
-			OR = {
-				is_subject_of_type = daimyo_vassal
-				is_subject_of_type = mf_daimyo_vassal
-			}
-		}
+		NOT = { has_reform = shogunate }
+		NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
 	}
 
 	effect = {
-		save_global_event_target_as = mf_daimyo_rehome_lord
-		create_subject = {
-			subject = FROM
-			subject_type = mf_retainer_daimyo_vassal
-		}
-		FROM = {
-			mf_rehome_daimyo_subjects_effect = yes
-		}
-		FROM = {
-			mf_normalize_daimyo_first_layer_reform_effect = yes
-		}
-		mf_promote_retainer_daimyos_to_shogunate_effect = yes
 		if = {
-			limit = { has_saved_global_event_target = mf_daimyo_rehome_lord }
-			clear_global_event_target = mf_daimyo_rehome_lord
+			limit = { NOT = { has_reform = shogunate } }
+			FROM = {
+				every_subject_country = {
+					limit = { is_subject_of_type = mf_retainer_daimyo_vassal }
+					ROOT = {
+						create_subject = {
+							subject = PREV
+							subject_type = mf_retainer_daimyo_vassal
+						}
+					}
+					add_government_reform = mf_retainer_daimyo
+				}
+			}
+			create_subject = {
+				subject = FROM
+				subject_type = mf_retainer_daimyo_vassal
+			}
+			FROM = {
+				add_government_reform = mf_retainer_daimyo
+			}
 		}
 	}
 

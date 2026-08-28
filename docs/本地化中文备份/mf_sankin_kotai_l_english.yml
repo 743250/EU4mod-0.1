@@ -1,0 +1,11 @@
+l_english:
+ mf_daimyo.10.t:0 "年度参勤交代"
+ mf_daimyo.10.formula.d:0 "按照参勤交代制度，[Root.GetName]今年应当前往幕府参勤。长途旅行、随行队伍和在幕府驻留都需要大量开支，但拒绝参勤也会被视为公开违抗将军。"
+ mf_daimyo.10.a:0 "按时参加参勤"
+ mf_daimyo.10.formula.a.tt:0 "支付§Y[Root.mf_sankin_cost.GetValue]§!¤参勤费用。"
+ mf_daimyo.10.b:0 "拒绝参勤"
+ mf_daimyo.10.formula.b.tt:0 "我们将拒绝本年度的参勤安排。"
+ mf_sankin_kotai_travel:0 "参勤交代途中"
+ desc_mf_sankin_kotai_travel:0 "参勤队伍正在往返幕府。沿途交通、护卫和驻留费用增加了藩国的财政负担，但大名离开领地也使国内反对势力暂时难以行动。"
+ mf_sankin_kotai_refused:0 "拒绝参勤交代"
+ desc_mf_sankin_kotai_refused:0 "该大名公开拒绝参加本年度的参勤交代，借此表明自己不会完全服从幕府安排。"

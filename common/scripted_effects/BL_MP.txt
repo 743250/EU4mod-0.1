@@ -226,15 +226,12 @@ bl_mp_effect = { #月度脉冲增加东西在这里修改
 				value = -0.03 #基础值0
 			}
 		}
-		#大名数量：只计算幕府自己的直属大名。
+		#普通大名数量：只计算幕府直属普通大名；谱代由独立维新分项计算。
 		event_target:zhengyidajiangjun = {
 			every_subject_country = {
 				limit = {
 					sort_of_mf = yes
-					OR = {
-						is_subject_of_type = daimyo_vassal
-						is_subject_of_type = mf_daimyo_vassal
-					}
+					is_subject_of_type = daimyo_vassal
 				}
 				1020 = {
 					change_variable = {
@@ -258,6 +255,8 @@ bl_mp_effect = { #月度脉冲增加东西在这里修改
 				}
 			}
 		}
+		#谱代和虾夷目标按当前维新规则计算，并保留独立显示分项。
+		mf_calculate_monthly_reform_authority_effect = yes
 		##########正统性
 		if = {
 			limit = {
@@ -364,6 +363,14 @@ bl_mp_effect = { #月度脉冲增加东西在这里修改
 		change_variable = {
 			which = shogun_monthly_value
 			which = shogun_monthly_value_8
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_9
+		}
+		change_variable = {
+			which = shogun_monthly_value
+			which = shogun_monthly_value_10
 		}
 		change_variable = { #将御统月度增长值加入小数中
 			which = shogun_value_Profix

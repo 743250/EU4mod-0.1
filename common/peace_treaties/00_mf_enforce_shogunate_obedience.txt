@@ -38,12 +38,28 @@ po_mf_enforce_shogunate_obedience = {
 
 	effect = {
 		FROM = {
-			mf_clear_shogun_refusal_flags_effect = yes
+			# 清理拒绝幕府命令留下的惩戒与冷却标记。
+			clr_country_flag = mf_refused_return_land
+			clr_country_flag = mf_recently_refused_return_daimyo_land
+			clr_country_flag = mf_refused_enforce_daimyo_peace
+			clr_country_flag = mf_refused_partition_daimyo
+			clr_country_flag = mf_refused_executor_appointment
+			clr_country_flag = mf_refused_return_shogunate_province
+			clr_country_flag = mf_under_shogunate_excommunication
 			remove_country_modifier = mf_shogunate_excommunication
 			add_liberty_desire = -30
 			add_opinion = {
 				who = ROOT
 				modifier = opinion_mf_forced_shogunate_obedience
+			}
+			every_subject_country = {
+				limit = { is_subject_of_type = mf_retainer_daimyo_vassal }
+				clr_country_flag = mf_refused_return_land
+				clr_country_flag = mf_recently_refused_return_daimyo_land
+				clr_country_flag = mf_refused_enforce_daimyo_peace
+				clr_country_flag = mf_refused_partition_daimyo
+				clr_country_flag = mf_refused_executor_appointment
+				clr_country_flag = mf_refused_return_shogunate_province
 			}
 		}
 		mf_change_shogun_value = {

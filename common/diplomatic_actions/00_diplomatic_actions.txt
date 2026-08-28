@@ -116,10 +116,11 @@ declarewar = {
 	#		}
 	#	}
 	#}
-	####MOD
+	# 永久禁止幕府体系内部战争；保留对外战争和独立战争。
 	condition = {
 		tooltip = mf_shogunate_internal_war_forbidden_tt
 		potential = {
+			has_saved_global_event_target = zhengyidajiangjun
 			has_global_flag = shogun_weixin.f_global_flag
 			sort_of_mf = yes
 			OR = {
@@ -144,7 +145,13 @@ declarewar = {
 			}
 		}
 	}
-	####MOD
+	condition = {
+		tooltip = NO_WAR_ON_OTHER_VASSALS
+		potential = {
+			FROM = { is_subject_of_type = mf_retainer_daimyo_vassal }
+		}
+		allow = { always = no }
+	}
 	condition = {
 		tooltip = AI_CANNOT_DECLARE_WHEN_STABILITY_LOSS
 		potential = {
@@ -265,35 +272,6 @@ declarewar = {
 }
 
 allianceaction = {
-	condition = {
-		tooltip = mf_sankin_reform_daimyo_alliance_forbidden_tt
-		potential = {
-			has_global_flag = shogun_weixin.h_global_flag
-			sort_of_mf = yes
-			NOT = { has_reform = shogunate }
-			OR = {
-				is_subject_of = event_target:zhengyidajiangjun
-				overlord = { is_subject_of = event_target:zhengyidajiangjun }
-			}
-		}
-		allow = {
-			OR = {
-				NOT = { has_global_flag = shogun_weixin.h_global_flag }
-				FROM = {
-					NOT = {
-						AND = {
-							sort_of_mf = yes
-							NOT = { has_reform = shogunate }
-							OR = {
-								is_subject_of = event_target:zhengyidajiangjun
-								overlord = { is_subject_of = event_target:zhengyidajiangjun }
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 	condition = {
 		tooltip = PIRATE_DENIED_ALLIANCE
 		potential = {

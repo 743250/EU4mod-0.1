@@ -4,6 +4,7 @@ sort_of_mf = {
 		has_reform = shogunate
 		has_reform = daimyo
 		has_reform = mf_daimyo
+		has_reform = mf_retainer_daimyo
 		has_reform = indep_daimyo
 		is_subject_of_type = daimyo_vassal
 		is_subject_of_type = mf_daimyo_vassal

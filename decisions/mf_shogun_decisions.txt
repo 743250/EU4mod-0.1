@@ -1,7 +1,8 @@
 country_decisions = {
-	mf_release_daimyo_from_shogun_land = {
+	mf_release_daimyo_from_shogun_land = {#归还非法领土
 		major = yes
 		potential = {
+			has_saved_global_event_target = zhengyidajiangjun
 			has_reform = shogunate
 			tag = event_target:zhengyidajiangjun
 			mf_has_releasable_extinct_daimyo_land = yes
@@ -47,9 +48,10 @@ country_decisions = {
 		}
 	}
 
-	mf_register_shogunate_provinces = {
+	mf_register_shogunate_provinces = {#注册幕府省份
 		major = yes
 		potential = {
+			has_saved_global_event_target = zhengyidajiangjun
 			has_reform = shogunate
 			tag = event_target:zhengyidajiangjun
 			has_global_flag = shogun_weixin.b_global_flag
@@ -64,7 +66,6 @@ country_decisions = {
 					OR = {
 						is_subject_of_type = daimyo_vassal
 						is_subject_of_type = mf_daimyo_vassal
-						is_subject_of_type = mf_retainer_daimyo_vassal
 					}
 					OR = {
 						any_owned_province = {
@@ -81,7 +82,30 @@ country_decisions = {
 			}
 		}
 		effect = {
-			mf_mark_shogunate_provinces_effect = yes
+			# 登记当前幕府、直属大名和下一层家臣所有尚未登记的省份。
+			every_owned_province = {
+				limit = { NOT = { has_province_flag = mf_shogunate_province } }
+				set_province_flag = mf_shogunate_province
+			}
+			every_subject_country = {
+				limit = {
+					OR = {
+						is_subject_of_type = daimyo_vassal
+						is_subject_of_type = mf_daimyo_vassal
+					}
+				}
+				every_owned_province = {
+					limit = { NOT = { has_province_flag = mf_shogunate_province } }
+					set_province_flag = mf_shogunate_province
+				}
+				every_subject_country = {
+					limit = { is_subject_of_type = mf_retainer_daimyo_vassal }
+					every_owned_province = {
+						limit = { NOT = { has_province_flag = mf_shogunate_province } }
+						set_province_flag = mf_shogunate_province
+					}
+				}
+			}
 		}
 		ai_will_do = { factor = 1 }
 	}

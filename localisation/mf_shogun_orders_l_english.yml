@@ -1,0 +1,32 @@
+﻿l_english:
+ shogun_yuling.a_title:0 "qšjmºN"
+ shogun_yuling.b_title:0 "ÂSäR²NãN"
+ shogun_yuling.c_title:0 "RéräN"
+ shogun_yuling.d_title:0 "PN^PNµ^"
+ shogun_yuling.e_title:0 "uQœQR»y"
+ shogun_yuling.a.tt:0 "qšjmºN[Root.Get_shogun_yuling_jiangjun][Root.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling.b.tt:0 "ÂSäR²NãN[Root.Get_shogun_yuling_jiangjun][Root.Get_shogun_yuling_cd_trigger]"
+ mf_shogun_every_daimyo_sankin_kotai_tt:0 "\n*geg§Y10§!t^…QÿNb	gU^œ^ôv^S'YTS·ƒ—Vÿ\nÏkgê»l¦^ØSSÿ§R+0.25%§!"
+ mf_shogun_every_daimyo_sword_hunt_tt:0 "\n*geg§Y10§!t^…QÿNb	gU^œ^SOû|'YTS·ƒ—V§YRéräN§!ÿ\nôVÎWýw›Rÿ§R-30%§!"
+ shogun_yuling.c.tt:0 "RéräN[Root.Get_shogun_yuling_jiangjun][Root.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling.d.tt:0 "PN^PNµ^[Root.Get_shogun_yuling_jiangjun][Root.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling.e.tt:0 "uQœQR»y[Root.Get_shogun_yuling_jiangjun][Root.Get_shogun_yuling_cd_trigger]"
+ shogun_yuling_x.tt:0 "NNy˜¡VäNÓumgTMbýw˜^°e„v¡VäN0"
+ Get_shogun_yuling_jiangjun.a.tt:0 "\n§R- ¡VäN‰˜1uV7Y'YS›Q˜^0§!"
+ Get_shogun_yuling_cd_trigger.a.tt:0 "\n§R- U^œ^òT	gNy˜¡VäNck(WuHe0§!"
+ shogun_yuling_a:0 "qšjmºN¡VäN"
+ shogun_yuling_b:0 "ÂSäR²NãN¡VäN"
+ shogun_yuling_c:0 "RéräN¡VäN"
+ shogun_yuling_d:0 "PN^PNµ^¡VäN"
+ shogun_yuling_e:0 "uQœQR»y¡VäN"
+ desc_shogun_yuling_a:0 "U^œ^ck(WÛbšbbqš¡l	gIN¶R„vfkëXÿåNÏQS0W¹eN„v8n»yfkÅˆ0"
+ desc_shogun_yuling_b:0 "U^œ^‰BlT'YTšRgMRŽVS›QNb(W0WÂSäRÿåN R:VùR0W¹e†˜IN„vµc6R0"
+ desc_shogun_yuling_c:0 "U^œ^ck(W6e4œQlŒTúR>yÁyÏ…„vfkhVÿJR1V0W¹e¿R›RÑS¨RÛSqN„výw›R0"
+ desc_shogun_yuling_d:0 "U^œ^ÖSˆmèR^:WyrCgŒT0W¹esQaSÿŸ±RFUºNê1uÏu%„ÿÃOÛÎWG•N8fÑSUS0"
+ desc_shogun_yuling_e:0 "U^œ^SfkëXNœQlRR:NNT«ŽýNÿO›QyVôf RNNÿmN©‹œQNuµNôf R3zšR0"
+ quzhulangren:0 "qšjmºN"
+ desc_quzhulangren:0 "¡l	gIN¶R„vfkëX«ˆÛbšbbqšÿ0W¹eN„v8n»yfkÅˆàVdkÏQS0"
+ leshilezuo:0 "PN^PNµ^"
+ desc_leshilezuo:0 "çe	g^:WyrCgŒT0W¹esQaS×S0RP–6RÿFUºNïSåNôfê1u0WÏu%„ŒTÐ“'ir0"
+ bingnongfenli:0 "uQœQR»y"
+ desc_bingnongfenli:0 "fkëXNœQl«ˆRR:NNT«ŽýNÿ›Q–n1»y4NöeVìSÿb:Nôf3zšR„v8^Y›RÏ‘0"

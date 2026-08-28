@@ -3,6 +3,7 @@ mf_shogun_missions_authority = {
 	generic = no
 	ai = yes
 	potential = {
+		always = no # 暂不启用本模组任务树
 		has_reform = shogunate
 		NOT = { map_setup = map_setup_random }
 	}
@@ -13,10 +14,6 @@ mf_shogun_missions_authority = {
 		required_missions = { }
 		position = 9
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = mf_shogun_requires_private_barrier_reform_tt
-				has_global_flag = shogun_weixin.a_global_flag
-			}
 			stability = 1
 			mf_shogun_controls_japan_region_except_hokkaido = yes
 		}
@@ -124,7 +121,6 @@ mf_shogun_missions_authority = {
 				name = mf_mission_samurai_relief
 				duration = 9125
 			}
-			custom_tooltip = mf_shogun_buke_relief_after_sakoku_tt
 			hidden_effect = {
 				set_country_flag = mf_shogun_buke_relief_after_sakoku
 			}
@@ -170,6 +166,7 @@ mf_shogun_missions_court = {
 	generic = no
 	ai = yes
 	potential = {
+		always = no # 暂不启用本模组任务树
 		has_reform = shogunate
 		NOT = { map_setup = map_setup_random }
 	}
@@ -323,6 +320,7 @@ mf_shogun_missions_law = {
 	generic = no
 	ai = yes
 	potential = {
+		always = no # 暂不启用本模组任务树
 		has_reform = shogunate
 		NOT = { map_setup = map_setup_random }
 	}
@@ -448,6 +446,7 @@ mf_shogun_missions_domains = {
 	generic = no
 	ai = yes
 	potential = {
+		always = no # 暂不启用本模组任务树
 		has_reform = shogunate
 		NOT = { map_setup = map_setup_random }
 	}
@@ -653,6 +652,7 @@ mf_shogun_missions_learning = {
 	generic = no
 	ai = yes
 	potential = {
+		always = no # 暂不启用本模组任务树
 		has_reform = shogunate
 		NOT = { map_setup = map_setup_random }
 	}
@@ -716,10 +716,6 @@ mf_shogun_missions_learning = {
 			add_country_modifier = {
 				name = mf_mission_ezo_pacification
 				duration = 9125
-			}
-			custom_tooltip = mf_shogun_ezo_scope_expanded_tt
-			hidden_effect = {
-				set_country_flag = mf_shogun_ezo_scope_expanded
 			}
 		}
 	}
@@ -810,7 +806,6 @@ mf_shogun_missions_learning = {
 				name = mf_mission_china_order
 				duration = -1
 			}
-			custom_tooltip = mf_shogun_china_campaign_tt
 			hidden_effect = {
 				set_country_flag = mf_shogun_china_frontier
 			}

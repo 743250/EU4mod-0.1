@@ -1,17 +1,9 @@
-mf_sankin_kotai_began = {
-	state_maintenance_modifier = 1
-	development_cost = -0.2
-}
 mf_sankin_kotai_travel = {
 	state_maintenance_modifier = 0.5
 	global_unrest = -1
 }
 mf_sankin_kotai_refused = {
 	global_unrest = 2
-}
-mf_sankin_kotai_suspended = {
-	prestige = -0.5
-	global_unrest = 1
 }
 # 高统御下的大名攻城限制。
 mf_daimyo_authority_siege_restriction = {

@@ -1,0 +1,55 @@
+﻿l_english:
+ haixiao:0 "wmxUâlÊS0W:S"
+ mozhiyingwuzheyihui:0 "qVfkw?e‰N"
+ zhuxiangzhigaige:0 "©RaN6R¦^"
+ kaikenzuqing:0 "°e0uVÑS"
+ fengraozhimengsui:0 "Ik6e"
+ qianghuahaijin:0 ":VSwmy"
+ xingxingxiangrong:0 "FUNAucƒ"
+ desc_haixiao:0 "èTjm-^wS¿l¸SÿgdÁk†NœQ0u0nQgŒT=nãS0Œp:S—‰ˆV•öeô•Mbýwb`Y0"
+ desc_mozhiyingwuzheyihui:0 "wGPS›Q„v.Oû•VÑS†N¡VNb…Qè„vCg›R—e‰N0U^œ^„vZáO×S0Rmc³RÿFO	gýw›R„v˜RXTmN—V0RôfYËeUSzzô•0"
+ desc_zhuxiangzhigaige:0 "U^œ^Í‘°e‰R’c©RaNŒT¿R:WbÅb„v³RyV0SïÐ“nb`YÿegŽVFUÅemN&^eg†NôfY6eeQ0"
+ desc_kaikenzuqing:0 "³‰ŒTœQl«ˆÄuÇuwegV¦WRƒ0W0°eœQ0užX R†N®|ß˜µNÏ‘ÿmN	g©RŽNb`YbTºNãS0"
+ desc_fengraozhimengsui:0 "Œp³RŒTäVïy.b†N%NÍ‘Ik6eÿåTJWN„^íVý¾–åNôucck8^uµN0"
+ desc_qianghuahaijin:0 "U^œ^ R:VùR=nãSŒT¿lwmFUï„vÀhåg0pÁy8f×S0R‹S6RÿTÕl8fRôf¹Rf×S0R?eœ^µc6R0"
+ desc_xingxingxiangrong:0 "ÎW^0^:WŒT¿lwmFUïåeÊvAucƒÿ'irN‹vö”(WhQýVT0WN­eAm¨R0"
+ bl_japan.1_name:0 "sQN'Y0W—"
+ bl_japan.1_desc:0 "N:W'Y0W—­ˆûQ†NsQN0ÎW^0SïŒT^y>y%NÍ‘×SmcÿU^œ^ÅV‰˜³QšR•beQYS›RÏ‘QeNmŒplv^ôuc0W¹eéy^0"
+ bl_japan.1.a:0 "hQ›RQeNmŒpl"
+ bl_japan.1.a.tt:0 "[Root.GetName]ÏQS§R10.00§!¹p¡Vßu0"
+ bl_japan.1.b:0 "êSýwO`—0W¹eêLˆQeŒp"
+ bl_japan.1.b.tt:0 "[Root.GetName]ÏQS§R20.00§!¹p¡Vßu0"
+ bl_japan.2_name:0 "[GetYear]wmxU"
+ bl_japan.2_desc:0 "wmxU­ˆûQ†N¿lwm0W:SÿgdÁk'YÏ‘9‚êS0nQgŒT=nãS0U^œ^ÅV‰˜KSëVÄuÇuQeŒpNÍ‘ú^0"
+ bl_japan.2.a:0 "ËzIRÄuÇuQeŒp"
+ bl_japan.3_name:0 "S›Q¡VNb„vqVfkw"
+ bl_japan.3_desc:0 "S›Q¡VNb.OúQ	gsQqVfkw„vAmŠÿU^œ^˜RXTŒTT'YTýVËY`‘uS›Q„vwžR«ŽýN0Ù:W?e»lqS:gÅV‰˜KSëVã‰³Q0"
+ bl_japan.3.a:0 "nd–ÂSN4–Œ„vºN"
+ bl_japan.3.b:0 "çuíuôuc°s¶r"
+ bl_japan.3.b.tt:0 "[Root.GetName]žX R§G10.00§!¹p¡Vßu0"
+ bl_japan.4_name:0 "©RaN6R9ei—Hh"
+ bl_japan.4_desc:0 "ÂSäR²NãNžX R†N¿R:WŒT¿lQg„^„vÅb0FUºNŒT0W¹e˜RXTÐcúQ9ei—©RaN6R¦^ÿåN9e„USïÐ“v^ÏQ‰0W¹e³RyV0"
+ bl_japan.4.a:0 "¨cLˆÙy˜9ei—0"
+ bl_japan.4.b:0 "ôuc°sLˆ6R¦^"
+ bl_japan.5_name:0 "°e0uV¦W®‹Hh"
+ bl_japan.5_desc:0 "0W¹e˜RXT÷‹Blib'Y°e0uVÑS0åTz—‰'YÏ‘³R›RŒT4l)R•beQÿFOŒRbTïSåN>fW„žX R®|ß˜µNÏ‘0"
+ bl_japan.5.a:0 "ybÆQ°e0uVÑS"
+ bl_japan.6_name:0 "%NÍ‘Ik6e"
+ bl_japan.6_desc:0 "Œp³R0äVïyŒT0W¹e²QzüRô®|ß˜µNÏ‘ÜNOŽN„˜g0œQlŒTFUºNý(W(‘uU^œ^”^ùRqS:g„výw›R0"
+ bl_japan.6.a:0 "¨cLˆnwO‰Q"
+ bl_japan.7_name:0 "pÁy8fQÜu"
+ bl_japan.7_desc:0 "¿lwmø‹é…ŒTFUºNQÜuÁyN¥cæ‰wmY'ir0U^œ^ÅV‰˜³QšR=f:VSwmyÿØ=fØž¸‹Ñž^XR(W0"
+ bl_japan.7.a:0 ":VSwmy0"
+ bl_japan.7.b:0 "Øž¸‹Ñž^0"
+ bl_japan.8_name:0 "nmNØu„vAmLˆ"
+ bl_japan.8_desc:0 "nmNØuŒTvQÖNÎW^‡eS–NwFUNAucƒëV.O­d0FUÁTÏuNmck(W9eØS.Oßu>yOÿmN:NU^œ^&^eg°e„v¡rtî•˜˜0"
+ bl_japan.8.a:0 " R:V˜R¹e¡rt"
+ bl_japan.8.b:0 "AQ¸‹vQê1uÑSUS"
+ bl_japan.9_name:0 ")Y‡v1Y»S†˜0W"
+ bl_japan.9_desc:0 "ŸS,gãNhˆ)Y‡v„výV¶RòTÏu1Y»ShQè†˜0W0U^œ^ÅV‰˜(W°s	g'YT-NcšR°e„v)Y‡v0"
+ bl_japan.9.a:0 "cšR°e„v)Y‡v"
+
+
+ mf_daimyo.12.t:0 "RVØ'YT†˜0W"
+ mf_daimyo.12.d:0 "U^œ^òTÏujOúQÁˆ³QÿÙWW«ˆTv^„v†˜0W”^SVRVØÙuŸSeg„v'YT0"
+ mf_daimyo.12.a:0 "gbLˆU^œ^Áˆ³Q"

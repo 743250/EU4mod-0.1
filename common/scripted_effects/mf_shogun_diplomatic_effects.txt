@@ -1,0 +1,27 @@
+mf_return_country_opinion_effect = {
+	# 接受或拒绝都表明幕府已经干预家内统属，因此原宗主和其他大名都会不满。
+	event_target:mf_return_country_overlord = {
+		add_opinion = {
+			who = event_target:mf_return_country_shogun
+			modifier = opinion_mf_returned_country
+		}
+	}
+	custom_tooltip = mf_return_country_other_daimyo_opinion_tt
+	hidden_effect = {
+		every_country = {
+			limit = {
+				sort_of_mf = yes
+				OR = {
+					is_subject_of = event_target:mf_return_country_shogun
+					overlord = { is_subject_of = event_target:mf_return_country_shogun }
+				}
+				NOT = { tag = event_target:mf_return_country_overlord }
+				NOT = { tag = event_target:mf_return_country_subject }
+			}
+			add_opinion = {
+				who = event_target:mf_return_country_shogun
+				modifier = opinion_mf_shogunate_intervened_in_daimyo_house
+			}
+		}
+	}
+}

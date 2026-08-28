@@ -1,5 +1,8 @@
 mf_xiayi_campaign_modifier = {
+	# 虾夷征讨采用类似圣战的交战触发修正；统御分项在月度效果中按同一条件结算。
 	potential = {
+		has_saved_global_event_target = zhengyidajiangjun
+		has_global_flag = shogun_weixin.i_global_flag
 		OR = {
 			has_reform = shogunate
 			sort_of_mf = yes

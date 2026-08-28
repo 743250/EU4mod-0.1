@@ -14,15 +14,9 @@ country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
 		NOT = { has_reform = shogunate }
 		overlord = {
 			OR = {
-				AND = {
+				has_reform = shogunate
+				overlord = {
 					has_reform = shogunate
-					has_country_modifier = shogun_yuling_b
-				}
-				AND = {
-					overlord = {
-						has_reform = shogunate
-						has_country_modifier = shogun_yuling_b
-					}
 				}
 			}
 		}
@@ -34,7 +28,7 @@ country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
 	immediate = {
 		hidden_effect = {
 			# 固定扣款取总发展度的五分之一。
-			export_to_variable = {
+		export_to_variable = {
 				variable_name = mf_sankin_fixed_cost
 				value = total_development
 			}
@@ -119,7 +113,12 @@ country_event = { # 年度参勤交代要求：由 on_yearly_pulse 触发。
 	option = {
 		name = "mf_daimyo.10.b"
 		custom_tooltip = mf_daimyo.10.formula.b.tt
-		mf_refuse_sankin_kotai_effect = yes
+		# 拒绝只结算本次参勤，不记录拒参状态或产生后续讨伐理由。
+		add_prestige = 10
+		add_country_modifier = {
+			name = mf_sankin_kotai_refused
+			duration = 365
+		}
 		ai_chance = { factor = 100 }
 	}
 }
@@ -147,10 +146,6 @@ province_event = { # 被恢复的大名重新纳入幕府体系。
 						subject_type = daimyo_vassal
 						subject = PREV
 					}
-					PREV = {
-						mf_normalize_daimyo_first_layer_reform_effect = yes
-					}
-					mf_promote_retainer_daimyos_to_shogunate_effect = yes
 				}
 			}
 		}
@@ -161,62 +156,55 @@ province_event = { # 被恢复的大名重新纳入幕府体系。
 	}
 }
 
-province_event = { # 大名从自有领地中分封陪臣大名。
+country_event = { # 原版 japan.1 完成后的幕府交接补充。
 	id = mf_daimyo.13
-	title = "mf_daimyo.13.t"
-	desc = "mf_daimyo.13.d"
-	picture = COUNTRY_COLLAPSE_eventPicture
-
-	is_triggered_only = yes
+	title = none
+	desc = none
+	picture = none
 	hidden = yes
-
-	immediate = {
-		owner = {
-			if = {
-				limit = {
-					NOT = { tag = event_target:mf_release_retainer_daimyo_overlord }
-					NOT = { is_subject_of = event_target:mf_release_retainer_daimyo_overlord }
-				}
-				event_target:mf_release_retainer_daimyo_overlord = {
-					create_subject = {
-						subject_type = mf_retainer_daimyo_vassal
-						subject = PREV
-					}
-					PREV = {
-						mf_normalize_daimyo_first_layer_reform_effect = yes
-					}
-					mf_promote_retainer_daimyos_to_shogunate_effect = yes
-				}
-			}
-		}
-	}
-
-	option = {
-		name = "mf_daimyo.13.a"
-	}
-}
-
-country_event = {
-	id = mf_daimyo.14
-	title = "mf_daimyo.12.t"
-	desc = "mf_daimyo.12.d"
-	picture = COURT_eventPicture
-
 	is_triggered_only = yes
-	hidden = yes
 
 	trigger = {
+		ai = no
 		has_reform = shogunate
+		has_saved_global_event_target = zhengyidajiangjun
+		NOT = { tag = event_target:zhengyidajiangjun }
+		1020 = { owned_by = ROOT }
 	}
 
 	immediate = {
-		mf_initialize_new_shogun_authority_effect = yes
-		mf_relink_direct_daimyos_after_shogunate_transfer_effect = yes
-		mf_promote_retainer_daimyos_to_shogunate_effect = yes
-		swap_non_generic_missions = yes
+		event_target:zhengyidajiangjun = {
+			every_subject_country = {
+				limit = {
+					OR = {
+						is_subject_of_type = mf_daimyo_vassal
+						is_subject_of_type = mf_retainer_daimyo_vassal
+					}
+				}
+				set_country_flag = mf_transfer_to_new_shogunate
+				grant_independence = yes
+			}
+		}
+			every_country = {
+				limit = { has_country_flag = mf_transfer_to_new_shogunate }
+				ROOT = { vassalize = PREV }
+				change_subject_type = { subject_type = daimyo_vassal }
+				add_government_reform = daimyo
+				clr_country_flag = mf_transfer_to_new_shogunate
+			}
+			every_subject_country = {
+				limit = { is_subject_of_type = mf_retainer_daimyo_vassal }
+				change_subject_type = { subject_type = daimyo_vassal }
+				add_government_reform = daimyo
+			}
+		save_global_event_target_as = zhengyidajiangjun
+		1020 = {
+			set_variable = { which = shogun_value value = 50 }
+			set_variable = { which = shogun_value_Profix value = 0 }
+			set_variable = { which = shogun_value_display value = 50 }
+			set_variable = { which = shogun_value_display_fraction value = 0 }
+		}
 	}
 
-	option = {
-		name = "mf_daimyo.12.a"
-	}
+	option = { name = OK }
 }

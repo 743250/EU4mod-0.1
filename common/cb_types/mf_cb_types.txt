@@ -1,0 +1,109 @@
+cb_mf_return_daimyo_land = {
+	valid_for_subject = no
+
+	is_triggered_only = yes
+	months = 60
+
+	war_goal = mf_return_daimyo_land_wg
+}
+
+cb_mf_partition_daimyo = {
+	valid_for_subject = no
+
+	is_triggered_only = yes
+	months = 60
+
+	war_goal = mf_partition_daimyo_wg
+}
+
+cb_mf_enforce_executor_service = {
+	valid_for_subject = no
+
+	is_triggered_only = yes
+	months = 120
+
+	war_goal = mf_enforce_executor_position_wg
+}
+
+cb_mf_shogunate_excommunication = {
+	valid_for_subject = no
+
+	is_triggered_only = yes
+	months = 120
+
+	war_goal = mf_shogunate_excommunication_wg
+}
+
+#虾夷的宣战借口
+cb_mf_xiayi_campaign = {
+	valid_for_subject = no
+
+	prerequisites_self = {
+		tag = event_target:zhengyidajiangjun
+	}
+	prerequisites = {
+		tag = event_target:xiayi
+		has_country_flag = mf_xiayi_target
+		NOT = { sort_of_mf = yes }
+		NOT = { has_country_flag = mf_tianhuang_target }
+	}
+
+	war_goal = mf_xiayi_conquest_wg
+}
+
+cb_mf_shogunate_japan_campaign = {
+	valid_for_subject = no
+
+	prerequisites_self = {
+		has_reform = shogunate
+		is_revolutionary = no
+	}
+	prerequisites = {
+		any_owned_province = { region = japan_region }
+		NOT = { is_subject_of = FROM }
+		NOT = {
+			overlord = { is_subject_of = FROM }
+		}
+	}
+
+	war_goal = take_capital
+}
+
+# 战国收服——大名内战借口，也可对家臣使用,家臣会自动让宗主接管战争
+cb_mf_sengoku = {
+	valid_for_subject = no
+	exclusive = yes
+
+	prerequisites_self = {
+		is_revolutionary = no
+		NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
+		OR = {
+			has_reform = daimyo
+			has_reform = mf_daimyo
+			has_reform = indep_daimyo
+		}
+	}
+
+	prerequisites = {
+		NOT = { is_subject_of_type = mf_retainer_daimyo_vassal }
+		OR = {#是大名
+			has_reform = daimyo
+			has_reform = mf_daimyo
+			has_reform = indep_daimyo
+		}
+		if= {
+			limit = {
+				is_neighbor_of = FROM
+			}
+		}
+		else = {
+			FROM = {
+				any_subject_country = {
+					is_subject_of_type = mf_retainer_daimyo_vassal
+					is_neighbor_of = ROOT
+				}
+			}
+		}
+	}
+	war_goal = mf_sengoku_subjugation
+}

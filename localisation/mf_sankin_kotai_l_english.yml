@@ -1,0 +1,11 @@
+﻿l_english:
+ mf_daimyo.10.t:0 "t^¦^ÂSäR²NãN"
+ mf_daimyo.10.formula.d:0 "	cgqÂSäR²NãN6R¦^ÿ[Root.GetName]ÊNt^”^SVMRŽVU^œ^ÂSäR0•ÅeLˆ0–Lˆ–OŒT(WU^œ^‰šYuý—‰'YÏ‘V=eÿFOÒbÝuÂSäRmNO«ˆÆ‰:NlQVÝ—bS›Q0"
+ mf_daimyo.10.a:0 "	cöeÂS RÂSäR"
+ mf_daimyo.10.formula.a.tt:0 "=eØN§Y[Root.mf_sankin_cost.GetValue]§!¤ÂSäR9(u0"
+ mf_daimyo.10.b:0 "ÒbÝuÂSäR"
+ mf_daimyo.10.formula.b.tt:0 "bìNSÒbÝu,gt^¦^„vÂSäR‰R’c0"
+ mf_sankin_kotai_travel:0 "ÂSäR²NãN-N"
+ desc_mf_sankin_kotai_travel:0 "ÂSäR–Ock(WŽVÔU^œ^0¿l²N0²bkSŒT‰šYu9(užX R†Né…ýV„v0?eÅbÿFO'YT»yV†˜0WmNOýV…QÍSùR¿R›R‚föe¾–åNLˆ¨R0"
+ mf_sankin_kotai_refused:0 "ÒbÝuÂSäR²NãN"
+ desc_mf_sankin_kotai_refused:0 "å‹'YTlQVÒbÝuÂS R,gt^¦^„vÂSäR²NãNÿPdkhˆfêñTNOŒRhQgÎNU^œ^‰R’c0"

@@ -59,10 +59,8 @@ daimyo = {
 	allow_normal_conversion = no
 	potential = {
 		NOT = { has_country_flag = formed_japan_flag }
-		OR = {
-			is_subject_of_type = daimyo_vassal
-			is_subject_of_type = mf_retainer_daimyo_vassal
-		}
+		is_subject_of_type = daimyo_vassal
+		overlord = { has_reform = shogunate }
 	}
 	replacement_on_independence_war = indep_daimyo
 	legacy_equivalent = daimyo_legacy
@@ -85,13 +83,14 @@ daimyo = {
 		locked_government_type = yes
 	}
 }
+
 mf_daimyo = {
 	icon = "daimyo"
 	allow_normal_conversion = no
 	potential = {
 		NOT = { has_country_flag = formed_japan_flag }
-		overlord = { has_reform = shogunate }
 		is_subject_of_type = mf_daimyo_vassal
+		overlord = { has_reform = shogunate }
 	}
 	replacement_on_independence_war = indep_daimyo
 	legacy_equivalent = daimyo_legacy
@@ -114,9 +113,50 @@ mf_daimyo = {
 		locked_government_type = yes
 	}
 	ai = {
-		factor = 1000 # should always be picked if available
+		factor = 1000 # 条件满足时始终优先选择
 	}
 }
+
+# 家臣使用独立的第一层改革，避免触发原版独立大名事件。
+mf_retainer_daimyo = {
+	icon = "daimyo"
+	allow_normal_conversion = no
+	potential = {
+		NOT = { has_country_flag = formed_japan_flag }
+		is_subject_of_type = mf_retainer_daimyo_vassal
+		overlord = {
+			OR = {
+				has_reform = daimyo
+				has_reform = mf_daimyo
+				has_reform = indep_daimyo
+			}
+		}
+	}
+	replacement_on_independence_war = indep_daimyo
+	legacy_equivalent = daimyo_legacy
+	fixed_rank = 1
+	maintain_dynasty = yes
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	lock_level_when_selected = yes
+	nation_designer_trigger = {
+		culture_group = japanese_g
+		technology_group = chinese
+		capital_scope = { region = japan_region }
+	}
+	modifiers = {
+		land_morale = 0.1
+		infantry_power = 0.1
+		amount_of_samurai = 4
+	}
+	custom_attributes = {
+		locked_government_type = yes
+	}
+	ai = {
+		factor = 1000
+	}
+}
+
 indep_daimyo = {
 	icon = "samurai"
 	allow_normal_conversion = no

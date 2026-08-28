@@ -8,9 +8,19 @@ opinion_mf_refused_return_land = {
 	years = 10
 }
 
-opinion_mf_sankin_suspended = {
-	opinion = -20
-	years = 5
+opinion_mf_demanded_unlawful_land = {
+	opinion = -25
+	years = 10
+}
+
+opinion_mf_returned_country = {
+	opinion = -50
+	years = 15
+}
+
+opinion_mf_shogunate_intervened_in_daimyo_house = {
+	opinion = -10
+	years = 10
 }
 
 opinion_mf_lectured_by_shogun = {

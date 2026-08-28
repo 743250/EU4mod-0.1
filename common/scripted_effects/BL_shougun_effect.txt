@@ -1,45 +1,7 @@
 BL_shougun_weixin_modifier = {
 	if = {
 		limit = {
-			has_global_flag = shogun_weixin.a_global_flag
-		}
-		event_target:zhengyidajiangjun = {
-			every_subject_country = {
-				add_country_modifier = {
-					name = feichuguanqia_1
-					duration = -1
-					hidden = yes
-				}
-			}
-			add_country_modifier = {
-				name = feichuguanqia_1
-				duration = -1
-				hidden = yes
-			}
-			add_country_modifier = {
-				name = feichuguanqia_2
-				duration = -1
-			}
-		}
-		if = {
-			limit = { has_saved_global_event_target = tianhuang }
-			event_target:tianhuang = {
-				add_country_modifier = {
-					name = feichuguanqia_1
-					duration = -1
-					hidden = yes
-				}
-				add_country_modifier = {
-					name = feichuguanqia_2
-					duration = -1
-					hidden = yes
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			has_global_flag = shogun_weixin.b_global_flag
+			has_global_flag = shogun_weixin.b_global_flag #幕领检地
 		}
 		event_target:zhengyidajiangjun = {
 			add_country_modifier = {
@@ -61,7 +23,7 @@ BL_shougun_weixin_modifier = {
 	}
 	if = {
 		limit = {
-			has_global_flag = shogun_weixin.c_global_flag
+			has_global_flag = shogun_weixin.c_global_flag #身份统制
 		}
 		event_target:zhengyidajiangjun = {
 			add_country_modifier = {
@@ -85,6 +47,7 @@ BL_shougun_weixin_modifier = {
 		limit = {
 			has_global_flag = shogun_weixin.d_global_flag #禁中并公
 		}
+		# 绝罚改革同时保留朝廷法理修正和宣下奉行入口。
 		event_target:zhengyidajiangjun = { 
 			add_country_modifier = {
 				name = jinzhongbinggong
@@ -154,76 +117,35 @@ BL_shougun_weixin_modifier = {
 	}
 	if = {
 		limit = {
-			has_global_flag = shogun_weixin.g_global_flag #闭关锁国
+			has_global_flag = shogun_weixin.h_global_flag #参勤交代
 		}
 		event_target:zhengyidajiangjun = {
 			every_subject_country = {
+				limit = {
+					sort_of_mf = yes
+					NOT = { has_reform = shogunate }
+				}
 				add_country_modifier = {
-					name = mf_sakoku_isolation
+					name = jiujizhengshi_1
 					duration = -1
 					hidden = yes
 				}
 				every_subject_country = {
+					limit = {
+						sort_of_mf = yes
+						NOT = { has_reform = shogunate }
+					}
 					add_country_modifier = {
-						name = mf_sakoku_isolation
+						name = jiujizhengshi_1
 						duration = -1
 						hidden = yes
 					}
 				}
 			}
 			add_country_modifier = {
-				name = mf_sakoku_isolation
-				duration = -1
-				hidden = yes
-			}
-		}
-		if = {
-			limit = { has_saved_global_event_target = tianhuang }
-			event_target:tianhuang = {
-				add_country_modifier = {
-					name = mf_sakoku_isolation
-					duration = -1
-					hidden = yes
-				}
-			}
-		}
-	}
-	if = {
-		limit = {
-			has_global_flag = shogun_weixin.h_global_flag #参勤交代
-		}
-		event_target:zhengyidajiangjun = {
-			every_subject_country = {
-				add_country_modifier = {
-					name = jiujizhengshi_1
-					duration = -1
-					hidden = yes
-				}
-			}
-			add_country_modifier = {
-				name = jiujizhengshi_1
-				duration = -1
-				hidden = yes
-			}
-			add_country_modifier = {
 				name = jiujizhengshi_2
 				duration = -1	
 				hidden = yes
-			}
-		}
-		if = {
-			limit = { has_saved_global_event_target = tianhuang }
-			event_target:tianhuang = {
-				add_country_modifier = {
-					name = jiujizhengshi_1
-					duration = -1
-					hidden = yes
-				}
-				add_country_modifier = {
-					name = jiujizhengshi_2
-					duration = -1
-					hidden = yes
-				}
 			}
 		}
 	}
@@ -384,14 +306,11 @@ BL_shogun_express_modifier = {
 
 BL_shogun_remove_modifier = {
 remove_country_modifier = jinzhongbinggong
-remove_country_modifier = feichuguanqia_1
-remove_country_modifier = feichuguanqia_2
 remove_country_modifier = mulingjiandi
 remove_country_modifier = shenfentongzhi
 remove_country_modifier = jinzhongbinggong
 remove_country_modifier = huobitongyi_1
 remove_country_modifier = huobitongyi_2
-remove_country_modifier = nongbenshangmo
 remove_country_modifier = mf_sakoku_isolation
 remove_country_modifier = jiujizhengshi_1
 remove_country_modifier = jiujizhengshi_2

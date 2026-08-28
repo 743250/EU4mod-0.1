@@ -321,48 +321,6 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = Getweixin_trigger
-	random = no
-	
-	text = {
-		trigger = {
-			NOT = {
-				check_variable = {
-					which = shogun_value
-					value = 80
-				}
-			}
-		}
-		localisation_key = Getweixin_trigger.a.tt
-	}
-
-	text = {
-		localisation_key = Getweixin_trigger.b.tt
-		trigger = {
-			NOT = {
-				check_variable = {
-					which = shogun_value
-					value = 80
-				}
-			}
-			has_global_flag = shogun_weixin.a_global_flag
-		}
-	}
-
-	#text = {
-	#	localisation_key = Getweixin_trigger.c.tt
-	#	trigger = {
-	#		has_global_flag = shogun_weixin.a_global_flag
-	#	}
-	#}
-	text = {
-		localisation_key = Getweixin_trigger.d.tt
-		trigger = {
-			always = yes
-		}
-	}
-}
-defined_text = {
 	name = Getjiangjun_trigger
 	random = no
 	
@@ -384,32 +342,6 @@ defined_text = {
 			}
 		}
 		localisation_key = Getjiangjun_trigger.a.tt
-	}
-}
-defined_text = {
-	name = Getshogun_express_modifier
-	random = no
-	
-	text = {
-		trigger = {
-			NOT = {
-				check_variable = {
-					which = shogun_value
-					value = 50
-				}
-			}
-		}
-		localisation_key = Getshogun_express_modifier.a.tt
-	}
-
-	text = {
-		trigger = {
-			check_variable = {
-				which = shogun_value
-				value = 51
-			}
-		}
-		localisation_key = Getshogun_express_modifier.b.tt
 	}
 }
 defined_text = {

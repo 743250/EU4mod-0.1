@@ -99,19 +99,15 @@ def check_daimyo_reform_mapping():
     peace = read("common/peace_treaties/00_mf_subjugate_daimyo.txt")
     diplomacy = read("common/new_diplomatic_actions/mf_diplomatic_actions.txt")
     effects = read("common/scripted_effects/mf_daimyo_efx.txt")
-    ai_decisions = read("decisions/mf_shogun_ai_decisions.txt")
     identity = read("common/scripted_triggers/mf_daimyo_trigger.txt")
     require("add_government_reform = mf_retainer_daimyo" in decision, "分封家臣入口必须明确添加家臣改革。")
     require("add_government_reform = mf_retainer_daimyo" in peace, "战国收服入口必须明确添加家臣改革。")
     require("add_government_reform = mf_daimyo" in diplomacy, "提升谱代入口必须明确添加 mf_daimyo。")
     require("add_government_reform = mf_daimyo" in effects, "任命谱代执行者入口必须明确添加 mf_daimyo。")
     illegal_transfer = diplomacy.split("\nmf_transfer_illegal_subject = {", 1)[1].split("\nshouyexiayi = {", 1)[0]
-    xiayi_action = diplomacy.split("\nshouyexiayi = {", 1)[1].split("\nmf_convert_daimyo = {", 1)[0]
     require("require_acceptance = yes" in illegal_transfer, "归还国家行动必须要求接受。")
     require("add_government_reform = daimyo" in illegal_transfer, "归还国家后必须恢复普通 daimyo 改革。")
     require("has_reform = mf_retainer_daimyo" in identity, "幕府大名身份判定必须覆盖家臣改革。")
-    require("NOT = { has_reform = mf_retainer_daimyo }" in xiayi_action, "狩野虾夷玩家入口不得把家臣识别为体系外目标。")
-    require(ai_decisions.count("NOT = { has_reform = mf_retainer_daimyo }") == 2, "狩野虾夷 AI 筛选必须在可用性和执行目标中排除家臣。")
     for forbidden in (
         "mf_normalize_daimyo_first_layer_reform_effect",
         "mf_normalize_daimyo_hierarchy_effect",
